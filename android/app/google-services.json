@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1058327461934",
+    "project_id": "f-f-pizza-7sui91",
+    "storage_bucket": "f-f-pizza-7sui91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058327461934:android:1d45951551b0c7b00fdfbf",
+        "android_client_info": {
+          "package_name": "com.anatret.ffpizza"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI17r8gdymuNvssSdpGRWk28ThrlRru1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058327461934:android:3836fe1340b235fa0fdfbf",
+        "android_client_info": {
+          "package_name": "com.anatret.wholesaler"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI17r8gdymuNvssSdpGRWk28ThrlRru1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
