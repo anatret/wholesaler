@@ -504,8 +504,11 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                       ),
                       Text(
                         formatNumber(
-                          functions
-                              .summPizza(FFAppState().orderForEdit.toList()),
+                          functions.summPizza(
+                              (FFAppState().orderForEdit.isNotEmpty
+                                      ? FFAppState().orderForEdit
+                                      : oneOrderPage2OrderRecord.cart)
+                                  .toList()),
                           formatType: FormatType.decimal,
                           decimalType: DecimalType.automatic,
                           currency: '₩',
@@ -550,7 +553,18 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                               },
                             ),
                           });
+                        } else {
+                          await oneOrderPage2OrderRecord.reference.update({
+                            ...mapToFirestore(
+                              {
+                                'cart': getCartListFirestoreData(
+                                  oneOrderPage2OrderRecord.cart,
+                                ),
+                              },
+                            ),
+                          });
                         }
+
                         if (oneOrderPage2OrderRecord.orderStatus ==
                             OrderStatus.newOrder) {
                           await oneOrderPage2OrderRecord.reference
