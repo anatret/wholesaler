@@ -259,6 +259,7 @@ class _RegPageWidgetState extends State<RegPageWidget> {
                           fontSize: 18.0,
                           letterSpacing: 0.0,
                         ),
+                    keyboardType: TextInputType.name,
                     validator: _model.nameFieldTextControllerValidator
                         .asValidator(context),
                   ),

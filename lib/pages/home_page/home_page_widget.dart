@@ -858,7 +858,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                                 image: DecorationImage(
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.contain,
                                   image: Image.network(
                                     rowBanersRecord.url,
                                   ).image,
@@ -968,34 +968,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 '_model.searchTextFieldTextController',
                                 const Duration(milliseconds: 2000),
                                 () async {
-                                  await queryPizzaRecordOnce()
-                                      .then(
-                                        (records) => _model
-                                            .simpleSearchResults = TextSearch(
-                                          records
-                                              .map(
-                                                (record) =>
-                                                    TextSearchItem.fromTerms(
-                                                        record, [
-                                                  record.name,
-                                                  record.description,
-                                                  record.barcode
-                                                ]),
-                                              )
+                                  if (_model.searchTextFieldTextController
+                                              .text !=
+                                          '') {
+                                    await queryPizzaRecordOnce()
+                                        .then(
+                                          (records) => _model
+                                              .simpleSearchResults = TextSearch(
+                                            records
+                                                .map(
+                                                  (record) =>
+                                                      TextSearchItem.fromTerms(
+                                                          record, [
+                                                    record.name,
+                                                    record.description,
+                                                    record.barcode
+                                                  ]),
+                                                )
+                                                .toList(),
+                                          )
+                                              .search(_model
+                                                  .searchTextFieldTextController
+                                                  .text)
+                                              .map((r) => r.object)
                                               .toList(),
                                         )
-                                            .search(_model
-                                                .searchTextFieldTextController
-                                                .text)
-                                            .map((r) => r.object)
-                                            .toList(),
-                                      )
-                                      .onError((_, __) =>
-                                          _model.simpleSearchResults = [])
-                                      .whenComplete(() => safeSetState(() {}));
+                                        .onError((_, __) =>
+                                            _model.simpleSearchResults = [])
+                                        .whenComplete(
+                                            () => safeSetState(() {}));
 
-                                  _model.isSearchDoing = true;
-                                  safeSetState(() {});
+                                    _model.isSearchDoing = true;
+                                    safeSetState(() {});
+                                  } else {
+                                    _model.isSearchDoing = false;
+                                    safeSetState(() {});
+                                  }
                                 },
                               ),
                               autofocus: false,
@@ -1061,37 +1069,45 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         onTap: () async {
                                           _model.searchTextFieldTextController
                                               ?.clear();
-                                          await queryPizzaRecordOnce()
-                                              .then(
-                                                (records) => _model
-                                                        .simpleSearchResults =
-                                                    TextSearch(
-                                                  records
-                                                      .map(
-                                                        (record) =>
-                                                            TextSearchItem
-                                                                .fromTerms(
-                                                                    record, [
-                                                          record.name,
-                                                          record.description,
-                                                          record.barcode
-                                                        ]),
-                                                      )
-                                                      .toList(),
-                                                )
-                                                        .search(_model
-                                                            .searchTextFieldTextController
-                                                            .text)
-                                                        .map((r) => r.object)
+                                          if (_model.searchTextFieldTextController
+                                                      .text !=
+                                                  '') {
+                                            await queryPizzaRecordOnce()
+                                                .then(
+                                                  (records) => _model
+                                                          .simpleSearchResults =
+                                                      TextSearch(
+                                                    records
+                                                        .map(
+                                                          (record) =>
+                                                              TextSearchItem
+                                                                  .fromTerms(
+                                                                      record, [
+                                                            record.name,
+                                                            record.description,
+                                                            record.barcode
+                                                          ]),
+                                                        )
                                                         .toList(),
-                                              )
-                                              .onError((_, __) => _model
-                                                  .simpleSearchResults = [])
-                                              .whenComplete(
-                                                  () => safeSetState(() {}));
+                                                  )
+                                                          .search(_model
+                                                              .searchTextFieldTextController
+                                                              .text)
+                                                          .map((r) => r.object)
+                                                          .toList(),
+                                                )
+                                                .onError((_, __) => _model
+                                                    .simpleSearchResults = [])
+                                                .whenComplete(
+                                                    () => safeSetState(() {}));
 
-                                          _model.isSearchDoing = true;
-                                          safeSetState(() {});
+                                            _model.isSearchDoing = true;
+                                            safeSetState(() {});
+                                          } else {
+                                            _model.isSearchDoing = false;
+                                            safeSetState(() {});
+                                          }
+
                                           safeSetState(() {});
                                         },
                                         child: Icon(
@@ -1177,7 +1193,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                     child: Builder(
                       builder: (context) {
                         final llistOfPizza = (_model.isSearchDoing
