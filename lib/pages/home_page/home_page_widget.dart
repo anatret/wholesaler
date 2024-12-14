@@ -1177,7 +1177,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                     child: Builder(
                       builder: (context) {
                         final llistOfPizza = (_model.isSearchDoing
