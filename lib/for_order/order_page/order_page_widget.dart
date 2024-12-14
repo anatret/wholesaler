@@ -1298,11 +1298,8 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                       listViewStoreWholeStoresRecord)
                                                 ],
                                                 initialPageName:
-                                                    'OneOrderPage2',
-                                                parameterData: {
-                                                  'order': _model
-                                                      .newOrder?.reference,
-                                                },
+                                                    'ManagerOrderListPage',
+                                                parameterData: {},
                                               );
                                               FFAppState().cart = [];
                                               safeSetState(() {});

@@ -554,11 +554,17 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                             ),
                           });
                         } else {
+                          FFAppState().orderForEdit = oneOrderPage2OrderRecord
+                              .cart
+                              .toList()
+                              .cast<CartStruct>();
+                          safeSetState(() {});
+
                           await oneOrderPage2OrderRecord.reference.update({
                             ...mapToFirestore(
                               {
                                 'cart': getCartListFirestoreData(
-                                  oneOrderPage2OrderRecord.cart,
+                                  FFAppState().orderForEdit,
                                 ),
                               },
                             ),
