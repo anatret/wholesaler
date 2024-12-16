@@ -40,6 +40,11 @@ bool checkCart(
   return result;
 }
 
+DocumentReference getWholeUserRefCopy(DocumentReference wholeStore) {
+  // returne user reference from wholestore
+  return wholeStore.collection('users').doc('user_id');
+}
+
 int summFunction(
   int count,
   int price,

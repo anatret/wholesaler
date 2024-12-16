@@ -563,6 +563,7 @@ class _RegPageWidgetState extends State<RegPageWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
+                      await authManager.refreshUser();
                       GoRouter.of(context).prepareAuthEvent();
                       if (_model.passFieldTextController.text !=
                           _model.confirmPassFieldTextController.text) {
@@ -595,7 +596,28 @@ class _RegPageWidgetState extends State<RegPageWidget> {
                             userType: UserTypes.user,
                           ));
 
-                      context.goNamedAuth('HomePage', context.mounted);
+                      if (currentUserEmailVerified != true) {
+                        await authManager.sendEmailVerification();
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: const Text('Подтверждение электронной почты'),
+                              content: const Text(
+                                  'На вашу электронную почту отправлено письмо с запросом подтверждения. Пожалуйста, проверьте свою почту и следуйте инструкциям для завершения процесса.'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: const Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+
+                      context.goNamedAuth('AuthPage', context.mounted);
                     },
                     text: FFLocalizations.of(context).getText(
                       'wh2m7n2e' /* Зарегистрироваться */,

@@ -162,7 +162,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Зарегистрироваться',
       'ko': '',
     },
-    '5huu9gbx': {
+    '87yyv8xt': {
       'ru': 'Забыли пароль?',
       'ko': '',
     },

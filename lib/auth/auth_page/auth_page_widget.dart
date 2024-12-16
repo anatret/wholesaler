@@ -263,6 +263,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     0.0, 8.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    await authManager.refreshUser();
                                     GoRouter.of(context).prepareAuthEvent();
 
                                     final user =
@@ -275,8 +276,35 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                       return;
                                     }
 
-                                    context.goNamedAuth(
-                                        'HomePage', context.mounted);
+                                    if (currentUserEmailVerified == true) {
+                                      if (currentUserDocument?.store != null) {
+                                        context.pushNamedAuth(
+                                            'HomePage', context.mounted);
+                                      } else {
+                                        context.pushNamedAuth(
+                                            'RegStorePage', context.mounted);
+                                      }
+                                    } else {
+                                      await authManager.sendEmailVerification();
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title:
+                                                const Text('Почта не подтверждена!'),
+                                            content: const Text(
+                                                'На вашу электронную почту отправлено письмо с запросом подтверждения. Пожалуйста, проверьте свою почту и следуйте инструкциям для завершения процесса.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'gnvt3by0' /* Войти */,
@@ -350,7 +378,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                     },
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        '5huu9gbx' /* Забыли пароль? */,
+                        '87yyv8xt' /* Забыли пароль? */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Inter',
