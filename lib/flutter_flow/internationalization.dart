@@ -173,6 +173,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // HomePage
   {
+    'bu8386f5': {
+      'ru': '1',
+      'ko': '',
+    },
     '2wqzgu9f': {
       'ru': '3',
       'ko': '',
@@ -569,16 +573,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Штрихкод',
       'ko': '',
     },
+    'cn811g7x': {
+      'ru': 'Ссылка на Товар',
+      'ko': '',
+    },
     '4t9c3hi7': {
       'ru': 'Описание',
-      'ko': '',
-    },
-    'b1aro14w': {
-      'ru': 'Ингридиенты',
-      'ko': '',
-    },
-    'aveefgkb': {
-      'ru': 'Нет ингридиентов',
       'ko': '',
     },
     'fzn7691g': {
@@ -611,30 +611,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'j6gmjn44': {
       'ru': 'Сигареты',
-      'ko': '',
-    },
-    'mlxlec4u': {
-      'ru': 'Стоимость маленькой',
-      'ko': '',
-    },
-    'bmrk9yn0': {
-      'ru': 'Граммы',
-      'ko': '',
-    },
-    'yg2tayso': {
-      'ru': 'Стоимость средней',
-      'ko': '',
-    },
-    'ekgapt13': {
-      'ru': 'Граммы',
-      'ko': '',
-    },
-    'gh4p6h5v': {
-      'ru': 'Стоимость большой',
-      'ko': '',
-    },
-    'wammnlsc': {
-      'ru': 'Граммы',
       'ko': '',
     },
     '3gpgpbpt': {

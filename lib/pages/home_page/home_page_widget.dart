@@ -6,6 +6,7 @@ import '/components/often_ordered/often_ordered_widget.dart';
 import '/components/pizza_item/pizza_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:text_search/text_search.dart';
@@ -56,7 +57,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               )
               .where(
                 'store',
-                isEqualTo: currentUserDocument?.userType != UserTypes.user
+                isEqualTo: currentUserDocument?.userType == UserTypes.manager
                     ? currentUserDocument?.store
                     : null,
               ),
@@ -102,44 +103,75 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Stack(
-                            alignment: const AlignmentDirectional(1.0, -1.0),
-                            children: [
-                              const Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 2.0, 5.0, 0.0),
-                                child: Icon(
-                                  Icons.notifications_none,
-                                  color: Color(0xFF3C3C3C),
-                                  size: 24.0,
-                                ),
+                          badges.Badge(
+                            badgeContent: Text(
+                              FFLocalizations.of(context).getText(
+                                'bu8386f5' /* 1 */,
                               ),
-                              Container(
-                                width: 16.0,
-                                height: 16.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  shape: BoxShape.circle,
-                                ),
-                                alignment: const AlignmentDirectional(0.0, 0.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    '2wqzgu9f' /* 3 */,
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.white,
+                                    fontSize: 12.0,
+                                    letterSpacing: 0.0,
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        fontSize: 9.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
-                              ),
-                            ],
+                            ),
+                            showBadge: true,
+                            shape: badges.BadgeShape.circle,
+                            badgeColor: FlutterFlowTheme.of(context).primary,
+                            elevation: 0.0,
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                8.0, 8.0, 8.0, 8.0),
+                            position: badges.BadgePosition.topEnd(),
+                            animationType: badges.BadgeAnimationType.scale,
+                            toAnimate: true,
+                            child: Icon(
+                              Icons.notifications_outlined,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 26.0,
+                            ),
                           ),
+                          if (false)
+                            Stack(
+                              alignment: const AlignmentDirectional(1.0, -1.0),
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 2.0, 5.0, 0.0),
+                                  child: Icon(
+                                    Icons.notifications_none,
+                                    color: Color(0xFF3C3C3C),
+                                    size: 24.0,
+                                  ),
+                                ),
+                                Container(
+                                  width: 16.0,
+                                  height: 16.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      '2wqzgu9f' /* 3 */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          fontSize: 9.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
                         ],
                       ),
                     ),
@@ -1247,11 +1279,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   llistOfPizza[llistOfPizzaIndex];
                               return Visibility(
                                 visible: () {
-                                  if (currentUserDocument?.userType ==
-                                      UserTypes.user) {
+                                  if ((currentUserDocument?.userType ==
+                                          UserTypes.user) ||
+                                      (currentUserDocument?.userType ==
+                                          UserTypes.admin)) {
                                     return true;
-                                  } else if ((currentUserDocument?.userType !=
-                                              UserTypes.user) &&
+                                  } else if ((currentUserDocument?.userType ==
+                                              UserTypes.manager) &&
                                           (llistOfPizzaItem.store ==
                                               currentUserDocument?.store)
                                       ? true

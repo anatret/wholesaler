@@ -12,6 +12,9 @@ enum ProductType {
   vine,
   cognac,
   cigarettes,
+  vegetablesfruits,
+  freezing,
+  seafood,
 }
 
 enum UserTypes {

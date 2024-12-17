@@ -40,12 +40,18 @@ class StoresRecord extends FirestoreRecord {
   String get room => _room ?? '';
   bool hasRoom() => _room != null;
 
+  // "itsCoupang" field.
+  bool? _itsCoupang;
+  bool get itsCoupang => _itsCoupang ?? false;
+  bool hasItsCoupang() => _itsCoupang != null;
+
   void _initializeFields() {
     _storeName = snapshotData['storeName'] as String?;
     _user = snapshotData['user'] as DocumentReference?;
     _address = snapshotData['address'] as String?;
     _phone = snapshotData['phone'] as String?;
     _room = snapshotData['room'] as String?;
+    _itsCoupang = snapshotData['itsCoupang'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -87,6 +93,7 @@ Map<String, dynamic> createStoresRecordData({
   String? address,
   String? phone,
   String? room,
+  bool? itsCoupang,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -95,6 +102,7 @@ Map<String, dynamic> createStoresRecordData({
       'address': address,
       'phone': phone,
       'room': room,
+      'itsCoupang': itsCoupang,
     }.withoutNulls,
   );
 
@@ -110,12 +118,13 @@ class StoresRecordDocumentEquality implements Equality<StoresRecord> {
         e1?.user == e2?.user &&
         e1?.address == e2?.address &&
         e1?.phone == e2?.phone &&
-        e1?.room == e2?.room;
+        e1?.room == e2?.room &&
+        e1?.itsCoupang == e2?.itsCoupang;
   }
 
   @override
-  int hash(StoresRecord? e) => const ListEquality()
-      .hash([e?.storeName, e?.user, e?.address, e?.phone, e?.room]);
+  int hash(StoresRecord? e) => const ListEquality().hash(
+      [e?.storeName, e?.user, e?.address, e?.phone, e?.room, e?.itsCoupang]);
 
   @override
   bool isValidKey(Object? o) => o is StoresRecord;

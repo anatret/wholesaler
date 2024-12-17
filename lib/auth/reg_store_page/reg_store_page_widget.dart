@@ -767,6 +767,7 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                                 address: _model.addressStoreTextController.text,
                                 phone: _model.phoneFieldTextController.text,
                                 room: _model.roomStoreTextController.text,
+                                itsCoupang: false,
                               ));
                               _model.newStoreID =
                                   StoresRecord.getDocumentFromData(
@@ -780,6 +781,7 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                                             .phoneFieldTextController.text,
                                         room:
                                             _model.roomStoreTextController.text,
+                                        itsCoupang: false,
                                       ),
                                       storesRecordReference);
 

@@ -406,6 +406,37 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                   ),
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                await launchURL(
+                                    widget.documentProduct!.linkToProduct);
+                              },
+                              child: Text(
+                                valueOrDefault<String>(
+                                  widget.documentProduct?.linkToProduct,
+                                  'ссылка на продукт',
+                                ),
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .colorLink,
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       if (false)
@@ -613,62 +644,65 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                   .withoutNulls
                                   .toList(),
                               widget.documentProduct!.reference)) {
-                            return Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  FFAppState().addToCart(CartStruct(
-                                    pizza: widget.documentProduct?.reference,
-                                    price: widget.documentProduct?.price,
-                                    count: 1,
-                                  ));
-                                  safeSetState(() {});
-                                  Navigator.pop(context);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Пицца добавлена в корзину',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              letterSpacing: 0.0,
-                                            ),
+                            return Visibility(
+                              visible: !widget.documentProduct!.itsCoupang,
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 8.0, 0.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    FFAppState().addToCart(CartStruct(
+                                      pizza: widget.documentProduct?.reference,
+                                      price: widget.documentProduct?.price,
+                                      count: 1,
+                                    ));
+                                    safeSetState(() {});
+                                    Navigator.pop(context);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Пицца добавлена в корзину',
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        duration: const Duration(milliseconds: 2400),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
                                       ),
-                                      duration: const Duration(milliseconds: 2400),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
+                                    );
+                                  },
+                                  text:
+                                      'Добавить в корзину за ${widget.documentProduct?.price.toString()} ₩',
+                                  options: FFButtonOptions(
+                                    width: double.infinity,
+                                    height: 48.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: Colors.white,
+                                          fontSize: 14.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    borderSide: const BorderSide(
+                                      color: Colors.transparent,
                                     ),
-                                  );
-                                },
-                                text:
-                                    'Добавить в корзину за ${widget.documentProduct?.price.toString()} ₩',
-                                options: FFButtonOptions(
-                                  width: double.infinity,
-                                  height: 48.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: Colors.white,
-                                        fontSize: 14.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                  borderSide: const BorderSide(
-                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
-                                  borderRadius: BorderRadius.circular(30.0),
                                 ),
                               ),
                             );
