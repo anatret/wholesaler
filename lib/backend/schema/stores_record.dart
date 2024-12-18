@@ -45,6 +45,26 @@ class StoresRecord extends FirestoreRecord {
   bool get itsCoupang => _itsCoupang ?? false;
   bool hasItsCoupang() => _itsCoupang != null;
 
+  // "saobcha" field.
+  String? _saobcha;
+  String get saobcha => _saobcha ?? '';
+  bool hasSaobcha() => _saobcha != null;
+
+  // "saobchaImg" field.
+  String? _saobchaImg;
+  String get saobchaImg => _saobchaImg ?? '';
+  bool hasSaobchaImg() => _saobchaImg != null;
+
+  // "storeIsVerified" field.
+  bool? _storeIsVerified;
+  bool get storeIsVerified => _storeIsVerified ?? false;
+  bool hasStoreIsVerified() => _storeIsVerified != null;
+
+  // "logoImg" field.
+  String? _logoImg;
+  String get logoImg => _logoImg ?? '';
+  bool hasLogoImg() => _logoImg != null;
+
   void _initializeFields() {
     _storeName = snapshotData['storeName'] as String?;
     _user = snapshotData['user'] as DocumentReference?;
@@ -52,6 +72,10 @@ class StoresRecord extends FirestoreRecord {
     _phone = snapshotData['phone'] as String?;
     _room = snapshotData['room'] as String?;
     _itsCoupang = snapshotData['itsCoupang'] as bool?;
+    _saobcha = snapshotData['saobcha'] as String?;
+    _saobchaImg = snapshotData['saobchaImg'] as String?;
+    _storeIsVerified = snapshotData['storeIsVerified'] as bool?;
+    _logoImg = snapshotData['logoImg'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -94,6 +118,10 @@ Map<String, dynamic> createStoresRecordData({
   String? phone,
   String? room,
   bool? itsCoupang,
+  String? saobcha,
+  String? saobchaImg,
+  bool? storeIsVerified,
+  String? logoImg,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -103,6 +131,10 @@ Map<String, dynamic> createStoresRecordData({
       'phone': phone,
       'room': room,
       'itsCoupang': itsCoupang,
+      'saobcha': saobcha,
+      'saobchaImg': saobchaImg,
+      'storeIsVerified': storeIsVerified,
+      'logoImg': logoImg,
     }.withoutNulls,
   );
 
@@ -119,12 +151,26 @@ class StoresRecordDocumentEquality implements Equality<StoresRecord> {
         e1?.address == e2?.address &&
         e1?.phone == e2?.phone &&
         e1?.room == e2?.room &&
-        e1?.itsCoupang == e2?.itsCoupang;
+        e1?.itsCoupang == e2?.itsCoupang &&
+        e1?.saobcha == e2?.saobcha &&
+        e1?.saobchaImg == e2?.saobchaImg &&
+        e1?.storeIsVerified == e2?.storeIsVerified &&
+        e1?.logoImg == e2?.logoImg;
   }
 
   @override
-  int hash(StoresRecord? e) => const ListEquality().hash(
-      [e?.storeName, e?.user, e?.address, e?.phone, e?.room, e?.itsCoupang]);
+  int hash(StoresRecord? e) => const ListEquality().hash([
+        e?.storeName,
+        e?.user,
+        e?.address,
+        e?.phone,
+        e?.room,
+        e?.itsCoupang,
+        e?.saobcha,
+        e?.saobchaImg,
+        e?.storeIsVerified,
+        e?.logoImg
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is StoresRecord;

@@ -729,10 +729,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': '3',
       'ko': '',
     },
-    'veu8tt7w': {
-      'ru': 'Мой магазин',
-      'ko': '',
-    },
     'k0zdqdbm': {
       'ru': 'Имя магазина',
       'ko': '',
@@ -747,6 +743,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2c3nkl8s': {
       'ru': 'Квартира',
+      'ko': '',
+    },
+    'jjzngdsn': {
+      'ru': 'САОБЧА',
+      'ko': '',
+    },
+    'yuugvyux': {
+      'ru': 'загрузите',
+      'ko': '',
+    },
+    'k83lppxf': {
+      'ru': 'фото акции',
+      'ko': '',
+    },
+    'jcnrwec5': {
+      'ru': 'Формат: JPG, PNG',
+      'ko': '',
+    },
+    '3ln56ul1': {
+      'ru': 'Изменить фото',
       'ko': '',
     },
     'b5e49uua': {

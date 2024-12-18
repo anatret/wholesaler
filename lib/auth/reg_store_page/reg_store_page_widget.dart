@@ -35,6 +35,8 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
     _model.addressStoreFocusNode ??= FocusNode();
 
     _model.roomStoreFocusNode ??= FocusNode();
+
+    _model.saobchaFocusNode ??= FocusNode();
   }
 
   @override
@@ -187,162 +189,179 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                     await _model.waitForFirestoreRequestCompleted();
                   },
                   child: ListView(
-                    padding: EdgeInsets.zero,
+                    padding: const EdgeInsets.fromLTRB(
+                      0,
+                      0,
+                      0,
+                      32.0,
+                    ),
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 24.0, 0.0, 40.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'veu8tt7w' /* Мой магазин */,
-                          ),
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                fontFamily: 'Outfit',
-                                fontSize: 32.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                              ),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              listViewStoresRecord!.storeIsVerified
+                                  ? 'Проверка пройдена'
+                                  : 'Магазин на проверке',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: listViewStoresRecord.storeIsVerified
+                                        ? FlutterFlowTheme.of(context).success
+                                        : FlutterFlowTheme.of(context).error,
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          ],
                         ),
                       ),
-                      if (false)
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, -1.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 40.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                final selectedMedia =
-                                    await selectMediaWithSourceBottomSheet(
-                                  context: context,
-                                  maxWidth: 131.00,
-                                  maxHeight: 120.00,
-                                  imageQuality: 52,
-                                  allowPhoto: true,
-                                );
-                                if (selectedMedia != null &&
-                                    selectedMedia.every((m) =>
-                                        validateFileFormat(
-                                            m.storagePath, context))) {
-                                  safeSetState(
-                                      () => _model.isDataUploading = true);
-                                  var selectedUploadedFiles =
-                                      <FFUploadedFile>[];
+                      Align(
+                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 40.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              // ActionStoreLogo
+                              final selectedMedia =
+                                  await selectMediaWithSourceBottomSheet(
+                                context: context,
+                                maxWidth: 131.00,
+                                maxHeight: 120.00,
+                                imageQuality: 52,
+                                allowPhoto: true,
+                              );
+                              if (selectedMedia != null &&
+                                  selectedMedia.every((m) => validateFileFormat(
+                                      m.storagePath, context))) {
+                                safeSetState(
+                                    () => _model.isDataUploading1 = true);
+                                var selectedUploadedFiles = <FFUploadedFile>[];
 
-                                  var downloadUrls = <String>[];
-                                  try {
-                                    selectedUploadedFiles = selectedMedia
-                                        .map((m) => FFUploadedFile(
-                                              name:
-                                                  m.storagePath.split('/').last,
-                                              bytes: m.bytes,
-                                              height: m.dimensions?.height,
-                                              width: m.dimensions?.width,
-                                              blurHash: m.blurHash,
-                                            ))
-                                        .toList();
+                                var downloadUrls = <String>[];
+                                try {
+                                  selectedUploadedFiles = selectedMedia
+                                      .map((m) => FFUploadedFile(
+                                            name: m.storagePath.split('/').last,
+                                            bytes: m.bytes,
+                                            height: m.dimensions?.height,
+                                            width: m.dimensions?.width,
+                                            blurHash: m.blurHash,
+                                          ))
+                                      .toList();
 
-                                    downloadUrls = (await Future.wait(
-                                      selectedMedia.map(
-                                        (m) async => await uploadData(
-                                            m.storagePath, m.bytes),
-                                      ),
-                                    ))
-                                        .where((u) => u != null)
-                                        .map((u) => u!)
-                                        .toList();
-                                  } finally {
-                                    _model.isDataUploading = false;
-                                  }
-                                  if (selectedUploadedFiles.length ==
-                                          selectedMedia.length &&
-                                      downloadUrls.length ==
-                                          selectedMedia.length) {
-                                    safeSetState(() {
-                                      _model.uploadedLocalFile =
-                                          selectedUploadedFiles.first;
-                                      _model.uploadedFileUrl =
-                                          downloadUrls.first;
-                                    });
-                                  } else {
-                                    safeSetState(() {});
-                                    return;
-                                  }
+                                  downloadUrls = (await Future.wait(
+                                    selectedMedia.map(
+                                      (m) async => await uploadData(
+                                          m.storagePath, m.bytes),
+                                    ),
+                                  ))
+                                      .where((u) => u != null)
+                                      .map((u) => u!)
+                                      .toList();
+                                } finally {
+                                  _model.isDataUploading1 = false;
                                 }
-                              },
-                              child: SizedBox(
-                                width: 142.0,
-                                height: 120.0,
-                                child: Stack(
-                                  children: [
-                                    Builder(
-                                      builder: (context) {
-                                        if (_model.uploadedFileUrl != '') {
-                                          return Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
-                                            child: Container(
-                                              width: 120.0,
-                                              height: 120.0,
-                                              clipBehavior: Clip.antiAlias,
-                                              decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Image.network(
-                                                _model.uploadedFileUrl,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          );
-                                        } else {
-                                          return Container(
+                                if (selectedUploadedFiles.length ==
+                                        selectedMedia.length &&
+                                    downloadUrls.length ==
+                                        selectedMedia.length) {
+                                  safeSetState(() {
+                                    _model.uploadedLocalFile1 =
+                                        selectedUploadedFiles.first;
+                                    _model.uploadedFileUrl1 =
+                                        downloadUrls.first;
+                                  });
+                                } else {
+                                  safeSetState(() {});
+                                  return;
+                                }
+                              }
+                            },
+                            child: SizedBox(
+                              width: 142.0,
+                              height: 120.0,
+                              child: Stack(
+                                children: [
+                                  Builder(
+                                    builder: (context) {
+                                      if ((_model.uploadedFileUrl1 != '') ||
+                                          (listViewStoresRecord.logoImg !=
+                                                  '')) {
+                                        return Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, -1.0),
+                                          child: Container(
                                             width: 120.0,
                                             height: 120.0,
                                             clipBehavior: Clip.antiAlias,
                                             decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                             ),
-                                            child: Image.asset(
-                                              'assets/images/Group_110.png',
+                                            child: Image.network(
+                                              _model.uploadedFileUrl1 !=
+                                                          ''
+                                                  ? _model.uploadedFileUrl1
+                                                  : listViewStoresRecord
+                                                      .logoImg,
                                               fit: BoxFit.cover,
                                             ),
-                                          );
-                                        }
-                                      },
-                                    ),
-                                    Align(
-                                      alignment: const AlignmentDirectional(1.0, 1.0),
-                                      child: Container(
-                                        width: 34.0,
-                                        height: 34.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        child: Icon(
-                                          Icons.edit,
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          size: 15.0,
-                                        ),
+                                          ),
+                                        );
+                                      } else {
+                                        return Container(
+                                          width: 120.0,
+                                          height: 120.0,
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Image.asset(
+                                            'assets/images/Group_110.png',
+                                            fit: BoxFit.cover,
+                                          ),
+                                        );
+                                      }
+                                    },
+                                  ),
+                                  Align(
+                                    alignment: const AlignmentDirectional(1.0, 1.0),
+                                    child: Container(
+                                      width: 34.0,
+                                      height: 34.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      child: Icon(
+                                        Icons.edit,
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                        size: 15.0,
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
+                      ),
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
@@ -350,7 +369,7 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                           controller: _model.nameFieldTextController ??=
                               TextEditingController(
                             text: (listViewStoresRecord != null) == true
-                                ? listViewStoresRecord?.storeName
+                                ? listViewStoresRecord.storeName
                                 : null,
                           ),
                           focusNode: _model.nameFieldFocusNode,
@@ -446,7 +465,7 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                             controller: _model.phoneFieldTextController ??=
                                 TextEditingController(
                               text: (listViewStoresRecord != null) == true
-                                  ? listViewStoresRecord?.phone
+                                  ? listViewStoresRecord.phone
                                   : currentPhoneNumber,
                             ),
                             focusNode: _model.phoneFieldFocusNode,
@@ -546,7 +565,7 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                           controller: _model.addressStoreTextController ??=
                               TextEditingController(
                             text: (listViewStoresRecord != null) == true
-                                ? listViewStoresRecord?.address
+                                ? listViewStoresRecord.address
                                 : null,
                           ),
                           focusNode: _model.addressStoreFocusNode,
@@ -641,7 +660,7 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                           controller: _model.roomStoreTextController ??=
                               TextEditingController(
                             text: (listViewStoresRecord != null) == true
-                                ? listViewStoresRecord?.room
+                                ? listViewStoresRecord.room
                                 : null,
                           ),
                           focusNode: _model.roomStoreFocusNode,
@@ -730,16 +749,273 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                        child: TextFormField(
+                          controller: _model.saobchaTextController ??=
+                              TextEditingController(
+                            text: (listViewStoresRecord != null) == true
+                                ? listViewStoresRecord.saobcha
+                                : null,
+                          ),
+                          focusNode: _model.saobchaFocusNode,
+                          onChanged: (_) => EasyDebounce.debounce(
+                            '_model.saobchaTextController',
+                            const Duration(milliseconds: 2000),
+                            () => safeSetState(() {}),
+                          ),
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: FFLocalizations.of(context).getText(
+                              'jjzngdsn' /* САОБЧА */,
+                            ),
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: FlutterFlowTheme.of(context).accent4,
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).alternate,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.edit_document,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 16.0,
+                            ),
+                            suffixIcon:
+                                _model.saobchaTextController!.text.isNotEmpty
+                                    ? InkWell(
+                                        onTap: () async {
+                                          _model.saobchaTextController?.clear();
+                                          safeSetState(() {});
+                                        },
+                                        child: const Icon(
+                                          Icons.clear,
+                                          color: Color(0xFF757575),
+                                          size: 16.0,
+                                        ),
+                                      )
+                                    : null,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                          validator: _model.saobchaTextControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 16.0, 0.0),
+                              child: Container(
+                                width: 180.0,
+                                height: 180.0,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFF3F3F3),
+                                  image: DecorationImage(
+                                    fit: BoxFit.contain,
+                                    image: Image.network(
+                                      _model.uploadedFileUrl2 != ''
+                                          ? _model.uploadedFileUrl2
+                                          : listViewStoresRecord.saobchaImg,
+                                    ).image,
+                                  ),
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                              ),
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'yuugvyux' /* загрузите */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'k83lppxf' /* фото акции */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'jcnrwec5' /* Формат: JPG, PNG */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    // ActionLoadSaobcha
+                                    final selectedMedia = await selectMedia(
+                                      maxWidth: 512.00,
+                                      maxHeight: 512.00,
+                                      imageQuality: 100,
+                                      mediaSource: MediaSource.photoGallery,
+                                      multiImage: false,
+                                    );
+                                    if (selectedMedia != null &&
+                                        selectedMedia.every((m) =>
+                                            validateFileFormat(
+                                                m.storagePath, context))) {
+                                      safeSetState(
+                                          () => _model.isDataUploading2 = true);
+                                      var selectedUploadedFiles =
+                                          <FFUploadedFile>[];
+
+                                      var downloadUrls = <String>[];
+                                      try {
+                                        selectedUploadedFiles = selectedMedia
+                                            .map((m) => FFUploadedFile(
+                                                  name: m.storagePath
+                                                      .split('/')
+                                                      .last,
+                                                  bytes: m.bytes,
+                                                  height: m.dimensions?.height,
+                                                  width: m.dimensions?.width,
+                                                  blurHash: m.blurHash,
+                                                ))
+                                            .toList();
+
+                                        downloadUrls = (await Future.wait(
+                                          selectedMedia.map(
+                                            (m) async => await uploadData(
+                                                m.storagePath, m.bytes),
+                                          ),
+                                        ))
+                                            .where((u) => u != null)
+                                            .map((u) => u!)
+                                            .toList();
+                                      } finally {
+                                        _model.isDataUploading2 = false;
+                                      }
+                                      if (selectedUploadedFiles.length ==
+                                              selectedMedia.length &&
+                                          downloadUrls.length ==
+                                              selectedMedia.length) {
+                                        safeSetState(() {
+                                          _model.uploadedLocalFile2 =
+                                              selectedUploadedFiles.first;
+                                          _model.uploadedFileUrl2 =
+                                              downloadUrls.first;
+                                        });
+                                      } else {
+                                        safeSetState(() {});
+                                        return;
+                                      }
+                                    }
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    '3ln56ul1' /* Изменить фото */,
+                                  ),
+                                  options: FFButtonOptions(
+                                    width: 140.0,
+                                    height: 34.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: Colors.white,
+                                          fontSize: 14.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    borderSide: const BorderSide(
+                                      color: Colors.transparent,
+                                    ),
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ),
+                                ),
+                              ].divide(const SizedBox(height: 4.0)),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             if ((listViewStoresRecord != null) == true) {
-                              await listViewStoresRecord!.reference
+                              await listViewStoresRecord.reference
                                   .update(createStoresRecordData(
                                 storeName: _model.nameFieldTextController.text,
                                 address: _model.addressStoreTextController.text,
                                 phone: _model.phoneFieldTextController.text,
                                 room: _model.roomStoreTextController.text,
+                                saobcha: _model.saobchaTextController.text,
+                                logoImg: _model.uploadedFileUrl1 != ''
+                                    ? _model.uploadedFileUrl1
+                                    : listViewStoresRecord.logoImg,
+                                saobchaImg: _model.uploadedFileUrl2 != ''
+                                    ? _model.uploadedFileUrl2
+                                    : listViewStoresRecord.saobchaImg,
                               ));
                               await showDialog(
                                 context: context,
@@ -768,6 +1044,10 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                                 phone: _model.phoneFieldTextController.text,
                                 room: _model.roomStoreTextController.text,
                                 itsCoupang: false,
+                                saobcha: _model.saobchaTextController.text,
+                                logoImg: _model.uploadedFileUrl1,
+                                saobchaImg: _model.uploadedFileUrl2,
+                                storeIsVerified: false,
                               ));
                               _model.newStoreID =
                                   StoresRecord.getDocumentFromData(
@@ -782,6 +1062,11 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                                         room:
                                             _model.roomStoreTextController.text,
                                         itsCoupang: false,
+                                        saobcha:
+                                            _model.saobchaTextController.text,
+                                        logoImg: _model.uploadedFileUrl1,
+                                        saobchaImg: _model.uploadedFileUrl2,
+                                        storeIsVerified: false,
                                       ),
                                       storesRecordReference);
 

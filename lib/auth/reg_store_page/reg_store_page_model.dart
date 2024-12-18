@@ -9,10 +9,10 @@ class RegStorePageModel extends FlutterFlowModel<RegStorePageWidget> {
   ///  State fields for stateful widgets in this page.
 
   Completer<List<StoresRecord>>? firestoreRequestCompleter;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading1 = false;
+  FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl1 = '';
 
   // State field(s) for NameField widget.
   FocusNode? nameFieldFocusNode;
@@ -31,6 +31,15 @@ class RegStorePageModel extends FlutterFlowModel<RegStorePageWidget> {
   FocusNode? roomStoreFocusNode;
   TextEditingController? roomStoreTextController;
   String? Function(BuildContext, String?)? roomStoreTextControllerValidator;
+  // State field(s) for saobcha widget.
+  FocusNode? saobchaFocusNode;
+  TextEditingController? saobchaTextController;
+  String? Function(BuildContext, String?)? saobchaTextControllerValidator;
+  bool isDataUploading2 = false;
+  FFUploadedFile uploadedLocalFile2 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl2 = '';
+
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   StoresRecord? newStoreID;
 
@@ -50,6 +59,9 @@ class RegStorePageModel extends FlutterFlowModel<RegStorePageWidget> {
 
     roomStoreFocusNode?.dispose();
     roomStoreTextController?.dispose();
+
+    saobchaFocusNode?.dispose();
+    saobchaTextController?.dispose();
   }
 
   /// Additional helper methods.
