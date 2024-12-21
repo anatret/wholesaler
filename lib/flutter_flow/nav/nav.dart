@@ -95,9 +95,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'HomePage')
-              : const HomePageWidget(),
+          builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
           name: 'RegPage',
@@ -246,6 +244,34 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'MyClients',
           path: '/myClients',
           builder: (context, params) => const MyClientsWidget(),
+        ),
+        FFRoute(
+          name: 'HomePageWholeStore',
+          path: '/homePageWholeStore',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'HomePageWholeStore')
+              : const HomePageWholeStoreWidget(),
+        ),
+        FFRoute(
+          name: 'WholeStorePage',
+          path: '/wholeStorePage',
+          builder: (context, params) => WholeStorePageWidget(
+            wholeStore: params.getParam(
+              'wholeStore',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['stores'],
+            ),
+            searchText: params.getParam(
+              'searchText',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'payment',
+          path: '/payment',
+          builder: (context, params) => const PaymentWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

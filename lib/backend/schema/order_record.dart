@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -121,6 +123,72 @@ class OrderRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       OrderRecord._(reference, mapFromFirestore(data));
+
+  static OrderRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      OrderRecord.getDocumentFromData(
+        {
+          'numOrder': convertAlgoliaParam(
+            snapshot.data['numOrder'],
+            ParamType.int,
+            false,
+          ),
+          'createDate': convertAlgoliaParam(
+            snapshot.data['createDate'],
+            ParamType.DateTime,
+            false,
+          ),
+          'cart': safeGet(
+            () => (snapshot.data['cart'] as Iterable)
+                .map((d) => CartStruct.fromAlgoliaData(d).toMap())
+                .toList(),
+          ),
+          'address': snapshot.data['address'],
+          'home': snapshot.data['home'],
+          'room': snapshot.data['room'],
+          'phone': snapshot.data['phone'],
+          'comment': snapshot.data['comment'],
+          'typePay': snapshot.data['typePay'],
+          'userOrder': convertAlgoliaParam(
+            snapshot.data['userOrder'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'orderStatus': convertAlgoliaParam<OrderStatus>(
+            snapshot.data['orderStatus'],
+            ParamType.Enum,
+            false,
+          ),
+          'store': convertAlgoliaParam(
+            snapshot.data['store'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'wholeStore': convertAlgoliaParam(
+            snapshot.data['wholeStore'],
+            ParamType.DocumentReference,
+            false,
+          ),
+        },
+        OrderRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<OrderRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'order',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>

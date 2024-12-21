@@ -55,3 +55,20 @@ int summFunction(
 DocumentReference getWholeUserRef(StoresRecord wholeStore) {
   return wholeStore.user as DocumentReference;
 }
+
+List<DocumentReference> getStoreListFromProductList(
+    List<PizzaRecord> pizzaList) {
+  // исправь функцию что бы работала и возвращает уникальные store
+  List<DocumentReference> storeList = [];
+  for (var pizza in pizzaList) {
+    if (pizza.store != null && !storeList.contains(pizza.store)) {
+      storeList.add(pizza.store as DocumentReference);
+    }
+  }
+  return storeList;
+}
+
+int getSizeOfCartList(List<CartStruct> cartList) {
+  // верни длину cartList
+  return cartList.length;
+}

@@ -211,7 +211,7 @@ class _FavoritPageWidgetState extends State<FavoritPageWidget> {
                         );
                       },
                     );
-                  }).divide(const SizedBox(height: 16.0)),
+                  }),
                 );
               },
             ),

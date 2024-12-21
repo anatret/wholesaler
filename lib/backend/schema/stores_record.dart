@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -97,6 +99,45 @@ class StoresRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       StoresRecord._(reference, mapFromFirestore(data));
+
+  static StoresRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      StoresRecord.getDocumentFromData(
+        {
+          'storeName': snapshot.data['storeName'],
+          'user': convertAlgoliaParam(
+            snapshot.data['user'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'address': snapshot.data['address'],
+          'phone': snapshot.data['phone'],
+          'room': snapshot.data['room'],
+          'itsCoupang': snapshot.data['itsCoupang'],
+          'saobcha': snapshot.data['saobcha'],
+          'saobchaImg': snapshot.data['saobchaImg'],
+          'storeIsVerified': snapshot.data['storeIsVerified'],
+          'logoImg': snapshot.data['logoImg'],
+        },
+        StoresRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<StoresRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'stores',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>

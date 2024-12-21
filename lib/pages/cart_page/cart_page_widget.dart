@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'cart_page_model.dart';
@@ -58,49 +59,67 @@ class _CartPageWidgetState extends State<CartPageWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Stack(
-                        alignment: const AlignmentDirectional(1.0, -1.0),
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 2.0, 5.0, 0.0),
-                            child: Icon(
-                              Icons.notifications_none,
-                              color: Color(0xFF3C3C3C),
-                              size: 24.0,
-                            ),
-                          ),
-                          Container(
-                            width: 16.0,
-                            height: 16.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primary,
-                              shape: BoxShape.circle,
-                            ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                '05da8w7x' /* 3 */,
+                      Container(
+                        decoration: const BoxDecoration(),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 5.0, 0.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.safePop();
+                                },
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 9.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
                             ),
+                          ],
+                        ),
+                      ),
+                      badges.Badge(
+                        badgeContent: Text(
+                          FFLocalizations.of(context).getText(
+                            '2o8xil44' /* 1 */,
                           ),
-                        ],
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.white,
+                                    fontSize: 12.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                        ),
+                        showBadge: true,
+                        shape: badges.BadgeShape.circle,
+                        badgeColor: FlutterFlowTheme.of(context).primary,
+                        elevation: 0.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                        position: badges.BadgePosition.topEnd(),
+                        animationType: badges.BadgeAnimationType.scale,
+                        toAnimate: true,
+                        child: Icon(
+                          Icons.notifications_outlined,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 26.0,
+                        ),
                       ),
                     ],
                   ),
@@ -243,7 +262,7 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                             },
                           ),
                         );
-                      }).divide(const SizedBox(height: 16.0)),
+                      }),
                     );
                   },
                 ),

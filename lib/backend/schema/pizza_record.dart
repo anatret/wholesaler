@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -112,6 +114,55 @@ class PizzaRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       PizzaRecord._(reference, mapFromFirestore(data));
+
+  static PizzaRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      PizzaRecord.getDocumentFromData(
+        {
+          'name': snapshot.data['name'],
+          'description': snapshot.data['description'],
+          'price': convertAlgoliaParam(
+            snapshot.data['price'],
+            ParamType.int,
+            false,
+          ),
+          'img': snapshot.data['img'],
+          'productType': convertAlgoliaParam<ProductType>(
+            snapshot.data['productType'],
+            ParamType.Enum,
+            false,
+          ),
+          'inStock': snapshot.data['inStock'],
+          'oftenOrdered': snapshot.data['oftenOrdered'],
+          'isDeleted': snapshot.data['isDeleted'],
+          'barcode': snapshot.data['barcode'],
+          'store': convertAlgoliaParam(
+            snapshot.data['store'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'itsCoupang': snapshot.data['itsCoupang'],
+          'linkToProduct': snapshot.data['linkToProduct'],
+        },
+        PizzaRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<PizzaRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'pizza',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>

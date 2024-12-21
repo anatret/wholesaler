@@ -29,3 +29,8 @@ export '/pages/stores/stores_widget.dart' show StoresWidget;
 export '/for_order/one_order_page2/one_order_page2_widget.dart'
     show OneOrderPage2Widget;
 export '/admin/my_clients/my_clients_widget.dart' show MyClientsWidget;
+export '/pages/home_page_whole_store/home_page_whole_store_widget.dart'
+    show HomePageWholeStoreWidget;
+export '/pages/whole_store_page/whole_store_page_widget.dart'
+    show WholeStorePageWidget;
+export '/payment/payment_widget.dart' show PaymentWidget;

@@ -149,6 +149,14 @@ final parametersBuilderMap =
         },
       ),
   'MyClients': ParameterData.none(),
+  'HomePageWholeStore': ParameterData.none(),
+  'WholeStorePage': (data) async => ParameterData(
+        allParams: {
+          'wholeStore': getParameter<DocumentReference>(data, 'wholeStore'),
+          'searchText': getParameter<String>(data, 'searchText'),
+        },
+      ),
+  'payment': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

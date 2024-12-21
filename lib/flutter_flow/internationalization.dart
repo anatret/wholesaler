@@ -278,10 +278,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CartPage
   {
-    '05da8w7x': {
-      'ru': '3',
-      'ko': '',
-    },
     'v13zoxhq': {
       'ru': 'Корзина',
       'ko': '',
@@ -292,6 +288,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'l0sj2axs': {
       'ru': 'Перейти к оформлению',
+      'ko': '',
+    },
+    '2o8xil44': {
+      'ru': '1',
       'ko': '',
     },
     'xf38p9sp': {
@@ -859,6 +859,180 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
     },
     'jqzrbeyk': {
+      'ru': 'Home',
+      'ko': '',
+    },
+  },
+  // HomePageWholeStore
+  {
+    '8knbeohg': {
+      'ru': '1',
+      'ko': '',
+    },
+    '0wqmy3zq': {
+      'ru': '3',
+      'ko': '',
+    },
+    'z06xs94n': {
+      'ru': 'Поиск',
+      'ko': '',
+    },
+    'nx3saamf': {
+      'ru': 'Водка',
+      'ko': '',
+    },
+    'nn9hfurq': {
+      'ru': 'Вино',
+      'ko': '',
+    },
+    '0l79ocsg': {
+      'ru': 'Коньяк',
+      'ko': '',
+    },
+    'eyyw2qrj': {
+      'ru': 'Напитки',
+      'ko': '',
+    },
+    '18bnz4uh': {
+      'ru': 'Соусы',
+      'ko': '',
+    },
+    'tolgmnro': {
+      'ru': 'Консервы',
+      'ko': '',
+    },
+    '1t2kahon': {
+      'ru': 'Бакалея',
+      'ko': '',
+    },
+    '7xrqkjfp': {
+      'ru': 'Сигареты',
+      'ko': '',
+    },
+    'k3ci3v2w': {
+      'ru': 'Часто заказывают',
+      'ko': '',
+    },
+    'rz7o2sbd': {
+      'ru': 'Показать удаленые',
+      'ko': '',
+    },
+    'mc3n5gye': {
+      'ru': 'Home',
+      'ko': '',
+    },
+  },
+  // WholeStorePage
+  {
+    'asv7rqlm': {
+      'ru': '1',
+      'ko': '',
+    },
+    't2s2flnj': {
+      'ru': 'Водка',
+      'ko': '',
+    },
+    '1eagki9m': {
+      'ru': 'Вино',
+      'ko': '',
+    },
+    'uhjxqeh7': {
+      'ru': 'Коньяк',
+      'ko': '',
+    },
+    'y5cl5zvn': {
+      'ru': 'Напитки',
+      'ko': '',
+    },
+    'zcaamoak': {
+      'ru': 'Соусы',
+      'ko': '',
+    },
+    '1e1ud9a3': {
+      'ru': 'Консервы',
+      'ko': '',
+    },
+    '2lu8hts2': {
+      'ru': 'Бакалея',
+      'ko': '',
+    },
+    'll5keqev': {
+      'ru': 'Сигареты',
+      'ko': '',
+    },
+    'lwnk6ozr': {
+      'ru': 'Часто заказывают',
+      'ko': '',
+    },
+    'wkshynz5': {
+      'ru': 'Поиск',
+      'ko': '',
+    },
+    '9lccamso': {
+      'ru': 'Показать удаленые',
+      'ko': '',
+    },
+    '64vwyl00': {
+      'ru': 'В корзине',
+      'ko': '',
+    },
+    'v6iiokm5': {
+      'ru': 'Home',
+      'ko': '',
+    },
+  },
+  // payment
+  {
+    'fohtynin': {
+      'ru': 'Subscription / Payment',
+      'ko': '',
+    },
+    'ixo7t97c': {
+      'ru': 'Your Subscription',
+      'ko': '',
+    },
+    'jva11say': {
+      'ru': 'Monthly',
+      'ko': '',
+    },
+    'pp0pb58t': {
+      'ru': '\$15.99/mo',
+      'ko': '',
+    },
+    '00bk6umn': {
+      'ru': 'Gain unlimited access to all the content we have to offer! ',
+      'ko': '',
+    },
+    'k5b8ia5r': {
+      'ru': 'Other Offers',
+      'ko': '',
+    },
+    'wgpuv0cv': {
+      'ru': 'Annual (save \$12)',
+      'ko': '',
+    },
+    'm3ibs5ms': {
+      'ru': '\$180/yr',
+      'ko': '',
+    },
+    'xxtkmyeu': {
+      'ru': 'Gain unlimited access to all the content we have to offer! ',
+      'ko': '',
+    },
+    'm3w3vp7s': {
+      'ru': 'Free Limited Access',
+      'ko': '',
+    },
+    'ua5dne1y': {
+      'ru':
+          'Continue with limited access at no cost. Browse blogs and videos aimed to help you in your journey!',
+      'ko': '',
+    },
+    'iusaz50k': {
+      'ru': 'Change Plan',
+      'ko': '',
+    },
+    '3pc56npp': {
       'ru': 'Home',
       'ko': '',
     },

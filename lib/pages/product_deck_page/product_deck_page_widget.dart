@@ -406,37 +406,38 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                   ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                await launchURL(
-                                    widget.documentProduct!.linkToProduct);
-                              },
-                              child: Text(
-                                valueOrDefault<String>(
-                                  widget.documentProduct?.linkToProduct,
-                                  'ссылка на продукт',
+                          if (widget.documentProduct?.itsCoupang ?? true)
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 0.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await launchURL(
+                                      widget.documentProduct!.linkToProduct);
+                                },
+                                child: Text(
+                                  valueOrDefault<String>(
+                                    widget.documentProduct?.linkToProduct,
+                                    'ссылка на продукт',
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .colorLink,
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        decoration: TextDecoration.underline,
+                                      ),
                                 ),
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context)
-                                          .colorLink,
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      decoration: TextDecoration.underline,
-                                    ),
                               ),
                             ),
-                          ),
                         ],
                       ),
                       if (false)
@@ -651,33 +652,143 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                     0.0, 8.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    FFAppState().addToCart(CartStruct(
-                                      pizza: widget.documentProduct?.reference,
-                                      price: widget.documentProduct?.price,
-                                      count: 1,
-                                    ));
-                                    safeSetState(() {});
-                                    Navigator.pop(context);
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Пицца добавлена в корзину',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                letterSpacing: 0.0,
-                                              ),
+                                    if (FFAppState().wholeSalerinCart == null) {
+                                      FFAppState().addToCart(CartStruct(
+                                        pizza:
+                                            widget.documentProduct?.reference,
+                                        price: widget.documentProduct?.price,
+                                        count: 1,
+                                      ));
+                                      FFAppState().wholeSalerinCart =
+                                          widget.documentProduct?.store;
+                                      safeSetState(() {});
+                                      Navigator.pop(context);
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Товар добавлен в корзину',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          duration:
+                                              const Duration(milliseconds: 2400),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
                                         ),
-                                        duration: const Duration(milliseconds: 2400),
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondary,
-                                      ),
-                                    );
+                                      );
+                                    } else if ((FFAppState().wholeSalerinCart !=
+                                            null) &&
+                                        (FFAppState().wholeSalerinCart ==
+                                            widget.documentProduct?.store)) {
+                                      FFAppState().addToCart(CartStruct(
+                                        pizza:
+                                            widget.documentProduct?.reference,
+                                        price: widget.documentProduct?.price,
+                                        count: 1,
+                                      ));
+                                      safeSetState(() {});
+                                      Navigator.pop(context);
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Товар добавлен в корзину',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          duration:
+                                              const Duration(milliseconds: 2400),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                        ),
+                                      );
+                                    } else {
+                                      var confirmDialogResponse =
+                                          await showDialog<bool>(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: const Text(
+                                                        'Ошибка добавления'),
+                                                    content: const Text(
+                                                        'В корзине уже находятся товары от другого поставщика. Пожалуйста, завершите оформление текущего заказа или очистите корзину, чтобы добавить новый товар.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                false),
+                                                        child: const Text('Отмена'),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                true),
+                                                        child: const Text(
+                                                            'Очистить и добавлить '),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              ) ??
+                                              false;
+                                      if (confirmDialogResponse) {
+                                        FFAppState().cart = [];
+                                        FFAppState().wholeSalerinCart = null;
+                                        safeSetState(() {});
+                                        FFAppState().addToCart(CartStruct(
+                                          pizza: widget
+                                              .documentProduct?.reference,
+                                          price: widget.documentProduct?.price,
+                                          count: 1,
+                                        ));
+                                        FFAppState().wholeSalerinCart =
+                                            widget.documentProduct?.store;
+                                        safeSetState(() {});
+                                        Navigator.pop(context);
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Товар добавлен в корзину',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .info,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                            ),
+                                            duration:
+                                                const Duration(milliseconds: 2400),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
+                                      }
+                                    }
                                   },
                                   text:
                                       'Добавить в корзину за ${widget.documentProduct?.price.toString()} ₩',

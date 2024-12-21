@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -279,12 +280,37 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     if (currentUserEmailVerified == true) {
                                       if (currentUserDocument?.store != null) {
                                         context.pushNamedAuth(
-                                            'HomePage', context.mounted);
+                                            'HomePageWholeStore',
+                                            context.mounted);
                                       } else {
+                                        await StoresRecord.collection
+                                            .doc()
+                                            .set(createStoresRecordData(
+                                              user: currentUserReference,
+                                            ));
+
                                         context.pushNamedAuth(
                                             'RegStorePage', context.mounted);
                                       }
                                     } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: const Text(
+                                                'Подтверждение электронной почты'),
+                                            content: const Text(
+                                                'На вашу электронную почту отправлено письмо с запросом подтверждения. Пожалуйста, проверьте свою почту и следуйте инструкциям для завершения процесса.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                       await authManager.sendEmailVerification();
                                       await showDialog(
                                         context: context,

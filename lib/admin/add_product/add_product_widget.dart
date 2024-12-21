@@ -1220,7 +1220,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                             );
                             Navigator.pop(context);
                             if (widget.isEdit) {
-                              context.goNamed('HomePage');
+                              context.goNamed('HomePageWholeStore');
                             } else {
                               context.goNamed('AddProduct');
                             }

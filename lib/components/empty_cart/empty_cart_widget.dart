@@ -104,7 +104,7 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
           FFButtonWidget(
             onPressed: () async {
               if ((widget.page == 'cart') || (widget.page == 'favorit')) {
-                context.pushNamed('HomePage');
+                context.pushNamed('HomePageWholeStore');
               } else if (widget.page == 'order') {
                 context.goNamed('CartPage');
               } else if (widget.page == 'newOrder') {

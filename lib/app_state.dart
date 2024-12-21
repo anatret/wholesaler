@@ -40,6 +40,10 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _favorits;
     });
+    _safeInit(() {
+      _wholeSalerinCart =
+          prefs.getString('ff_wholeSalerinCart')?.ref ?? _wholeSalerinCart;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -146,6 +150,15 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInOrderForEdit(int index, CartStruct value) {
     orderForEdit.insert(index, value);
+  }
+
+  DocumentReference? _wholeSalerinCart;
+  DocumentReference? get wholeSalerinCart => _wholeSalerinCart;
+  set wholeSalerinCart(DocumentReference? value) {
+    _wholeSalerinCart = value;
+    value != null
+        ? prefs.setString('ff_wholeSalerinCart', value.path)
+        : prefs.remove('ff_wholeSalerinCart');
   }
 }
 

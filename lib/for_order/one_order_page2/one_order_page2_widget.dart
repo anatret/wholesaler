@@ -337,7 +337,7 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                               ),
                             ],
                           ),
-                        ].divide(const SizedBox(height: 2.0)),
+                        ].divide(const SizedBox(height: 6.0)),
                       );
                     },
                   ),
