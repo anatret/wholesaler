@@ -43,6 +43,8 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
 
     _model.commentFieldTextController ??= TextEditingController();
     _model.commentFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -1225,6 +1227,9 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                       OrderStatus.newOrder,
                                                   store: orderPagePizzaRecord
                                                       .store,
+                                                  wholeStore:
+                                                      listViewStoreWholeStoresRecord
+                                                          .reference,
                                                 ),
                                                 ...mapToFirestore(
                                                   {
@@ -1266,6 +1271,9 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                       OrderStatus.newOrder,
                                                   store: orderPagePizzaRecord
                                                       .store,
+                                                  wholeStore:
+                                                      listViewStoreWholeStoresRecord
+                                                          .reference,
                                                 ),
                                                 ...mapToFirestore(
                                                   {
@@ -1282,7 +1290,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                 notificationTitle:
                                                     'Новый заказ',
                                                 notificationText:
-                                                    'Новый заказ на сумму ${formatNumber(
+                                                    '${myStoreListViewStoresRecord?.storeName} заказал на сумму ${formatNumber(
                                                   functions.summPizza(_model
                                                       .newOrder!.cart
                                                       .toList()),
@@ -1292,16 +1300,28 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                       DecimalType.automatic,
                                                   currency: '₩ ',
                                                 )}',
+                                                notificationImageUrl:
+                                                    myStoreListViewStoresRecord
+                                                                    ?.logoImg !=
+                                                                null &&
+                                                            myStoreListViewStoresRecord
+                                                                    ?.logoImg !=
+                                                                ''
+                                                        ? myStoreListViewStoresRecord
+                                                            ?.logoImg
+                                                        : '',
                                                 notificationSound: 'default',
                                                 userRefs: [
-                                                  functions.getWholeUserRef(
-                                                      listViewStoreWholeStoresRecord)
+                                                  listViewStoreWholeStoresRecord
+                                                      .user!
                                                 ],
                                                 initialPageName:
                                                     'ManagerOrderListPage',
                                                 parameterData: {},
                                               );
                                               FFAppState().cart = [];
+                                              FFAppState().wholeSalerinCart =
+                                                  null;
                                               safeSetState(() {});
 
                                               context

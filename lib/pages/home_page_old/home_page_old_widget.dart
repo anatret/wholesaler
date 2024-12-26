@@ -10,28 +10,30 @@ import 'package:badges/badges.dart' as badges;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:text_search/text_search.dart';
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'home_page_old_model.dart';
+export 'home_page_old_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
+class HomePageOldWidget extends StatefulWidget {
+  const HomePageOldWidget({super.key});
 
   @override
-  State<HomePageWidget> createState() => _HomePageWidgetState();
+  State<HomePageOldWidget> createState() => _HomePageOldWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
-  late HomePageModel _model;
+class _HomePageOldWidgetState extends State<HomePageOldWidget> {
+  late HomePageOldModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => HomePageOldModel());
 
     _model.searchTextFieldTextController ??= TextEditingController();
     _model.searchTextFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -80,7 +82,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
             );
           }
-          List<PizzaRecord> homePagePizzaRecordList = snapshot.data!;
+          List<PizzaRecord> homePageOldPizzaRecordList = snapshot.data!;
 
           return Scaffold(
             key: scaffoldKey,
@@ -953,7 +955,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
                 Builder(
                   builder: (context) {
-                    final offenOrderedList = homePagePizzaRecordList
+                    final offenOrderedList = homePageOldPizzaRecordList
                         .where((e) => e.oftenOrdered == true)
                         .toList();
 
@@ -1264,7 +1266,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         builder: (context) {
                           final llistOfPizza = (_model.isSearchDoing
                                   ? _model.simpleSearchResults
-                                  : homePagePizzaRecordList)
+                                  : homePageOldPizzaRecordList)
                               .toList();
 
                           return ListView.separated(

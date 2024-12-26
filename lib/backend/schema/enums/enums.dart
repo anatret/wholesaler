@@ -15,6 +15,10 @@ enum ProductType {
   vegetablesfruits,
   freezing,
   seafood,
+  babyfood,
+  meat,
+  hardwarestore,
+  others,
 }
 
 enum UserTypes {

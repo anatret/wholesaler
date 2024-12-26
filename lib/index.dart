@@ -1,6 +1,6 @@
 // Export pages
 export '/auth/auth_page/auth_page_widget.dart' show AuthPageWidget;
-export '/pages/home_page/home_page_widget.dart' show HomePageWidget;
+export '/pages/home_page_old/home_page_old_widget.dart' show HomePageOldWidget;
 export '/auth/reg_page/reg_page_widget.dart' show RegPageWidget;
 export '/pages/favorit_page/favorit_page_widget.dart' show FavoritPageWidget;
 export '/pages/cart_page/cart_page_widget.dart' show CartPageWidget;
@@ -34,3 +34,6 @@ export '/pages/home_page_whole_store/home_page_whole_store_widget.dart'
 export '/pages/whole_store_page/whole_store_page_widget.dart'
     show WholeStorePageWidget;
 export '/payment/payment_widget.dart' show PaymentWidget;
+export '/auth/profile_edit/profile_edit_widget.dart' show ProfileEditWidget;
+export '/delete_instruction_page/delete_instruction_page_widget.dart'
+    show DeleteInstructionPageWidget;

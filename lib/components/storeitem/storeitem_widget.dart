@@ -31,6 +31,8 @@ class _StoreitemWidgetState extends State<StoreitemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => StoreitemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

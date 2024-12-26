@@ -13,7 +13,7 @@ class FFLocalizations {
   static FFLocalizations of(BuildContext context) =>
       Localizations.of<FFLocalizations>(context, FFLocalizations)!;
 
-  static List<String> languages() => ['ru', 'ko'];
+  static List<String> languages() => ['ru', 'en', 'ko'];
 
   static late SharedPreferences _prefs;
   static Future initialize() async =>
@@ -39,9 +39,10 @@ class FFLocalizations {
 
   String getVariableText({
     String? ruText = '',
+    String? enText = '',
     String? koText = '',
   }) =>
-      [ruText, koText][languageIndex] ?? '';
+      [ruText, enText, koText][languageIndex] ?? '';
 
   static const Set<String> _languagesWithShortCode = {
     'ar',
@@ -148,298 +149,365 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'cqrdl5at': {
       'ru': 'Email',
-      'ko': '',
+      'en': 'Email',
+      'ko': '이메일',
     },
     '7a7uldtu': {
       'ru': 'Пароль',
-      'ko': '',
+      'en': 'Password',
+      'ko': '비밀번호',
     },
     'gnvt3by0': {
-      'ru': 'Войти',
-      'ko': '',
+      'ru': 'Логин',
+      'en': 'Login',
+      'ko': '로그인',
     },
     'xogc70w9': {
       'ru': 'Зарегистрироваться',
-      'ko': '',
+      'en': 'Register',
+      'ko': '등록하다',
     },
     '87yyv8xt': {
       'ru': 'Забыли пароль?',
-      'ko': '',
+      'en': 'Forgot your password?',
+      'ko': '비밀번호를 잊으셨나요?',
     },
     'aqgkxu3e': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
-  // HomePage
+  // HomePageOld
   {
     'bu8386f5': {
       'ru': '1',
-      'ko': '',
+      'en': '1',
+      'ko': '1',
     },
     '2wqzgu9f': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'j9xftzng': {
       'ru': 'Водка',
-      'ko': '',
+      'en': 'Vodka',
+      'ko': '보드카',
     },
     'irpqukru': {
       'ru': 'Вино',
-      'ko': '',
+      'en': 'Wine',
+      'ko': '와인',
     },
     'g0u21uy1': {
       'ru': 'Коньяк',
-      'ko': '',
+      'en': 'Cognac',
+      'ko': '코냑',
     },
     'gkrijmgd': {
       'ru': 'Напитки',
-      'ko': '',
+      'en': 'Drinks',
+      'ko': '음료수',
     },
     's28evzcp': {
       'ru': 'Соусы',
-      'ko': '',
+      'en': 'Sauces',
+      'ko': '소스',
     },
     '1bkq133i': {
       'ru': 'Консервы',
-      'ko': '',
+      'en': 'Canned goods',
+      'ko': '통조림',
     },
     'efe3s78c': {
       'ru': 'Бакалея',
-      'ko': '',
+      'en': 'Grocery',
+      'ko': '식료품점',
     },
     '69tp1l3v': {
       'ru': 'Сигареты',
-      'ko': '',
+      'en': 'Cigarettes',
+      'ko': '담배',
     },
     'yser9f9u': {
       'ru': 'Часто заказывают',
-      'ko': '',
+      'en': 'Frequently ordered',
+      'ko': '자주 주문됨',
     },
     'u7yhs1sf': {
       'ru': 'Поиск',
-      'ko': '',
+      'en': 'Search',
+      'ko': '찾다',
     },
     'dhat81dc': {
       'ru': 'Показать удаленые',
-      'ko': '',
+      'en': 'Show deleted',
+      'ko': '삭제된 프로그램 보기',
     },
     'onzurzzr': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // RegPage
   {
     'tc35e1lc': {
       'ru': 'Имя',
-      'ko': '',
+      'en': 'Name',
+      'ko': '이름',
     },
     'gvixap3l': {
       'ru': 'Email',
-      'ko': '',
+      'en': 'Email',
+      'ko': '이메일',
     },
     'y71u2dpg': {
       'ru': 'Телефон',
-      'ko': '',
+      'en': 'Telephone',
+      'ko': '전화',
     },
     'vf2lghsw': {
       'ru': 'Пароль',
-      'ko': '',
+      'en': 'Password',
+      'ko': '비밀번호',
     },
     'dtfegsp3': {
       'ru': 'Повторите пароль',
-      'ko': '',
+      'en': 'Repeat password',
+      'ko': '비밀번호를 반복하세요',
     },
     'wh2m7n2e': {
       'ru': 'Зарегистрироваться',
-      'ko': '',
+      'en': 'Register',
+      'ko': '등록하다',
     },
     'fbfqq7pl': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // FavoritPage
   {
     '2vnjcnbg': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'jodiglg3': {
       'ru': 'Избранное',
-      'ko': '',
+      'en': 'Featured',
+      'ko': '즐겨찾기',
     },
     'ps247s78': {
-      'ru': 'Home',
-      'ko': '',
+      'ru': 'Избранное',
+      'en': 'Favorite',
+      'ko': '가장 좋아하는',
     },
   },
   // CartPage
   {
     'v13zoxhq': {
       'ru': 'Корзина',
-      'ko': '',
+      'en': 'Basket',
+      'ko': '바구니',
     },
     '6pmu4v6v': {
       'ru': 'Сумма: ',
-      'ko': '',
+      'en': 'Sum:',
+      'ko': '합집합:',
     },
     'l0sj2axs': {
       'ru': 'Перейти к оформлению',
-      'ko': '',
+      'en': 'Proceed to checkout',
+      'ko': '결제로 이동',
     },
     '2o8xil44': {
       'ru': '1',
-      'ko': '',
+      'en': '1',
+      'ko': '1',
     },
     'xf38p9sp': {
-      'ru': 'Home',
-      'ko': '',
+      'ru': 'Корзина',
+      'en': 'Cart',
+      'ko': '카트',
     },
   },
   // OrderPage
   {
     'hbs8h33d': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     '2nu63wtu': {
       'ru': 'Оформление заказа',
-      'ko': '',
+      'en': 'Placing an order',
+      'ko': '주문하기',
     },
     '5m3tc28p': {
       'ru': 'Адрес доставки',
-      'ko': '',
+      'en': 'Delivery address',
+      'ko': '배송 주소',
     },
     'gdm7bdtg': {
       'ru': 'Дом',
-      'ko': '',
+      'en': 'House',
+      'ko': '집',
     },
     'oumzsela': {
       'ru': 'Квартира',
-      'ko': '',
+      'en': 'Apartment',
+      'ko': '아파트',
     },
     'jwk74gzw': {
       'ru': 'Телефон',
-      'ko': '',
+      'en': 'Telephone',
+      'ko': '전화',
     },
     '2iw62u2j': {
       'ru': 'Комментарий',
-      'ko': '',
+      'en': 'Comment',
+      'ko': '논평',
     },
     'iio8qo1v': {
       'ru': 'Комментарий',
-      'ko': '',
+      'en': 'Comment',
+      'ko': '논평',
     },
     'j1xsq23e': {
       'ru': 'Оплатить курьеру наличными',
-      'ko': '',
+      'en': 'Pay the courier in cash',
+      'ko': '택배기사에게 현금으로 지불',
     },
     'sbz01rip': {
       'ru': 'Оплатить курьеру картой',
-      'ko': '',
+      'en': 'Pay the courier by card',
+      'ko': '택배기사님 카드로 결제하세요',
     },
     'qkwapva1': {
       'ru': 'Ваш магазин не зарегистрирован',
-      'ko': '',
+      'en': 'Your store is not registered',
+      'ko': '귀하의 매장이 등록되지 않았습니다',
     },
     'tagjt7no': {
       'ru': 'Пройдите регистрацию',
-      'ko': '',
+      'en': 'Please register',
+      'ko': '등록해주세요',
     },
     'wso622qm': {
       'ru': 'Регистрация магазина',
-      'ko': '',
+      'en': 'Store registration',
+      'ko': '매장등록',
     },
     'knhrrnmi': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // UserOrderListPage
   {
     '7hec0wfl': {
       'ru': 'Мои заказы',
-      'ko': '',
+      'en': 'My orders',
+      'ko': '내 주문',
     },
     'cugi6x2m': {
-      'ru': 'Home',
-      'ko': '',
+      'ru': 'Заказы',
+      'en': 'Orders',
+      'ko': '명령',
     },
   },
   // OneOrderPage
   {
     's10yrhop': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'l0mvspnw': {
       'ru': 'Заказ',
-      'ko': '',
+      'en': 'Order',
+      'ko': '주문하다',
     },
     'penlq8th': {
       'ru': 'Сумма: ',
-      'ko': '',
+      'en': 'Sum:',
+      'ko': '합집합:',
     },
     '5z09tsmq': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // Profile
   {
     '0jhrezqb': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'aba41ubx': {
       'ru': 'Профиль',
-      'ko': '',
+      'en': 'Profile',
+      'ko': '윤곽',
     },
     'tfz46wt5': {
       'ru': 'Мой магазин',
-      'ko': '',
+      'en': 'My shop',
+      'ko': '내 가게',
     },
     '0rl63l99': {
       'ru': 'Адреса доставки',
-      'ko': '',
+      'en': 'Shipping addresses',
+      'ko': '배송 주소',
     },
     '5p69vk0g': {
       'ru': 'Мои заказы',
-      'ko': '',
+      'en': 'My orders',
+      'ko': '내 주문',
     },
     '7ln4bk0u': {
       'ru': 'Админ панель',
-      'ko': '',
+      'en': 'Admin panel',
+      'ko': '관리자 패널',
     },
     'oxvpk6gw': {
       'ru': 'Выйти из аккаунта',
-      'ko': '',
+      'en': 'Logout',
+      'ko': '계정에서 로그아웃하세요',
     },
     '3jcn9ln5': {
-      'ru': 'Home',
-      'ko': '',
+      'ru': 'Профиль',
+      'en': 'Profile',
+      'ko': '윤곽',
     },
   },
   // RestorePage
   {
     'b62nhru7': {
       'ru': 'Email',
-      'ko': '',
+      'en': 'Email',
+      'ko': '이메일',
     },
     'ktnme57q': {
       'ru': 'Востановить пароль',
-      'ko': '',
+      'en': 'Recover password',
+      'ko': '비밀번호 복구',
     },
     '0mf8gck8': {
       'ru': 'Вернуться назад',
-      'ko': '',
+      'en': 'Go back',
+      'ko': '돌아가기',
     },
     'pjel75cg': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // RestoreInfoPage
@@ -447,593 +515,1081 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'l6hf6k8e': {
       'ru':
           'На вашу почту было отправлено письмо с инструкциями по восстановлению доступа к акканту',
-      'ko': '',
+      'en':
+          'An email with instructions on how to restore access to your account has been sent to your email.',
+      'ko': '귀하의 계정에 대한 액세스를 복원하는 방법에 대한 지침이 포함된 이메일이 귀하의 이메일로 전송되었습니다.',
     },
     'rxjduhbi': {
       'ru': 'Ok',
-      'ko': '',
+      'en': 'Ok',
+      'ko': 'Ok',
     },
     '76102ltn': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // Addresses
   {
     'j9eagpc8': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'n6mmdoet': {
       'ru': 'Адреса',
-      'ko': '',
+      'en': 'Addresses',
+      'ko': '구애',
     },
     'uir58i35': {
       'ru': 'Добавить адрес',
-      'ko': '',
+      'en': 'Add address',
+      'ko': '주소 추가',
     },
     '2jdecvgu': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // AdminPanel
   {
     '09904rw0': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'gcyzj88v': {
       'ru': 'Админ панель',
-      'ko': '',
+      'en': 'Admin panel',
+      'ko': '관리자 패널',
     },
     'myojmyms': {
       'ru': 'Добавить новую акцию',
-      'ko': '',
+      'en': 'Add new promotion',
+      'ko': '새 프로모션 추가',
     },
     'qnesaa0d': {
       'ru': 'Добавить новую продукцию',
-      'ko': '',
+      'en': 'Add new products',
+      'ko': '새 제품 추가',
     },
     'wgylaao2': {
       'ru': 'Акции',
-      'ko': '',
+      'en': 'Stock',
+      'ko': '재고',
     },
     'kx5qukfe': {
       'ru': 'Продукты',
-      'ko': '',
+      'en': 'Products',
+      'ko': '제품',
     },
     'gzfkg8jt': {
       'ru': 'Новые заказы',
-      'ko': '',
+      'en': 'New orders',
+      'ko': '신규 주문',
     },
     'ceu54nx9': {
       'ru': 'История заказов',
-      'ko': '',
+      'en': 'Order history',
+      'ko': '주문 내역',
     },
     'k7xfxx5e': {
       'ru': 'Клиенты',
-      'ko': '',
+      'en': 'Clients',
+      'ko': '클라이언트',
     },
     '09ubqdzk': {
       'ru': 'Clear app states',
-      'ko': '',
+      'en': 'Clear app states',
+      'ko': '앱 상태 지우기',
     },
     'x41kfgda': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // PromotionsPage
   {
     'vyix0zm1': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'vizj4y05': {
       'ru': 'Список акций',
-      'ko': '',
+      'en': 'List of shares',
+      'ko': '주식 목록',
     },
     '28cgby1p': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // AddProduct
   {
     'zl8t8jdm': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'cd3uafk4': {
       'ru': 'загрузите',
-      'ko': '',
+      'en': 'download',
+      'ko': '다운로드',
     },
     'qosnuzvf': {
       'ru': 'фото акции',
-      'ko': '',
+      'en': 'stock photo',
+      'ko': '액션 사진',
     },
     'q3femplf': {
       'ru': 'Формат: JPG, PNG',
-      'ko': '',
+      'en': 'Format: JPG, PNG',
+      'ko': '형식: JPG, PNG',
     },
     'xwp045eu': {
       'ru': 'Изменить фото',
-      'ko': '',
+      'en': 'Edit photo',
+      'ko': '사진 변경',
     },
     'shs6uih9': {
       'ru': 'Цена',
-      'ko': '',
+      'en': 'Price',
+      'ko': '가격',
     },
     'wu6v0723': {
       'ru': 'Название',
-      'ko': '',
+      'en': 'Name',
+      'ko': '이름',
     },
     '1fs8jxc1': {
       'ru': 'Штрихкод',
-      'ko': '',
+      'en': 'Barcode',
+      'ko': '바코드',
     },
     'cn811g7x': {
       'ru': 'Ссылка на Товар',
-      'ko': '',
+      'en': 'Link to Product',
+      'ko': '제품 링크',
     },
     '4t9c3hi7': {
       'ru': 'Описание',
-      'ko': '',
+      'en': 'Description',
+      'ko': '설명',
     },
     'fzn7691g': {
       'ru': 'Напитки',
-      'ko': '',
+      'en': 'Drinks',
+      'ko': '음료수',
     },
     'p95kv2ce': {
       'ru': 'Соус',
-      'ko': '',
+      'en': 'Sauce',
+      'ko': '소스',
     },
     '6srt5tiy': {
       'ru': 'Водка',
-      'ko': '',
+      'en': 'Vodka',
+      'ko': '보드카',
     },
     '0rnfx85c': {
       'ru': 'Вино',
-      'ko': '',
+      'en': 'Wine',
+      'ko': '와인',
     },
     'dssbguf5': {
       'ru': 'Коньяк',
-      'ko': '',
+      'en': 'Cognac',
+      'ko': '코냑',
     },
     'hb0h7u0r': {
       'ru': 'Консервы/Маринады',
-      'ko': '',
+      'en': 'Canned goods/Marinades',
+      'ko': '통조림/마리네이드',
     },
     'pue1d4l0': {
       'ru': 'Бакалея',
-      'ko': '',
+      'en': 'Grocery',
+      'ko': '식료품점',
     },
     'j6gmjn44': {
       'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    '2negydpa': {
+      'ru': 'Море продукты',
+      'en': '',
+      'ko': '',
+    },
+    'hykr21gm': {
+      'ru': 'Мясо',
+      'en': '',
+      'ko': '',
+    },
+    'u1hzkkx9': {
+      'ru': 'Хоз товары',
+      'en': '',
+      'ko': '',
+    },
+    'bbp0gps2': {
+      'ru': 'Заморозка',
+      'en': '',
+      'ko': '',
+    },
+    '70xejb1x': {
+      'ru': 'Детское',
+      'en': '',
+      'ko': '',
+    },
+    'xencupqz': {
+      'ru': 'Десерт',
+      'en': '',
+      'ko': '',
+    },
+    'b2itwya3': {
+      'ru': 'Прочее',
+      'en': '',
       'ko': '',
     },
     '3gpgpbpt': {
       'ru': 'В наличии',
-      'ko': '',
+      'en': 'In stock',
+      'ko': '재고 있음',
     },
     'fmihrsfq': {
       'ru': 'Часто заказывают',
-      'ko': '',
+      'en': 'Frequently ordered',
+      'ko': '자주 주문됨',
     },
     '8khlxt74': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // ProductsPage
   {
     'nedjrypz': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'iul1iz1d': {
       'ru': 'Список продуктов',
-      'ko': '',
+      'en': 'List of products',
+      'ko': '제품 목록',
     },
     'tgicj5xh': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // ProductDeckPage
   {
     '8cyixmf0': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'tkskr7e3': {
       'ru': 'Редактировать',
-      'ko': '',
+      'en': 'Edit',
+      'ko': '편집하다',
     },
     '4ogbz3li': {
       'ru': 'Select Size',
-      'ko': '',
+      'en': 'Select Size',
+      'ko': '사이즈 선택',
     },
     '09ccqk6c': {
       'ru': 'S',
-      'ko': '',
+      'en': 'S',
+      'ko': '에스',
     },
     'yu9zox1h': {
       'ru': 'M',
-      'ko': '',
+      'en': 'M',
+      'ko': '중',
     },
     'oma2xj2l': {
       'ru': 'L',
-      'ko': '',
+      'en': 'L',
+      'ko': '엘',
     },
     'jcvzc53k': {
       'ru': 'XL',
-      'ko': '',
+      'en': 'XL',
+      'ko': '특대',
     },
     '4g67fyar': {
       'ru': 'Select Color',
-      'ko': '',
+      'en': 'Select Color',
+      'ko': '색상 선택',
     },
     'hswd8ivr': {
       'ru': 'Black',
-      'ko': '',
+      'en': 'Black',
+      'ko': '검은색',
     },
     'e2g07pl7': {
       'ru': 'White',
-      'ko': '',
+      'en': 'White',
+      'ko': '하얀색',
     },
     'qpnyj3et': {
       'ru': 'Red',
-      'ko': '',
+      'en': 'Red',
+      'ko': '빨간색',
     },
     'sq8t9rb8': {
       'ru': 'Blue',
-      'ko': '',
+      'en': 'Blue',
+      'ko': '파란색',
     },
     'u3qxtluf': {
       'ru': 'Продукт уже есть в вашей корзине',
-      'ko': '',
+      'en': 'The product is already in your cart.',
+      'ko': '제품이 이미 장바구니에 있습니다.',
     },
   },
   // ManagerOrderListPage
   {
     '1cefj9uw': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     's8tupd5o': {
       'ru': 'Новые',
-      'ko': '',
+      'en': 'New',
+      'ko': '새로운',
     },
     'n1my5uu0': {
       'ru': 'Принятые',
-      'ko': '',
+      'en': 'Accepted',
+      'ko': '수락됨',
     },
     '43sje0bl': {
       'ru': 'Готовые',
-      'ko': '',
+      'en': 'Ready',
+      'ko': '준비가 된',
     },
     'i7co77ew': {
       'ru': 'Отмена',
-      'ko': '',
+      'en': 'Cancel',
+      'ko': '취소',
     },
     '06ny3hd7': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // RegStorePage
   {
     'h20ucvrm': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'k0zdqdbm': {
       'ru': 'Имя магазина',
-      'ko': '',
+      'en': 'Store name',
+      'ko': '매장명',
     },
     'e3rxd788': {
       'ru': 'Телефон',
-      'ko': '',
+      'en': 'Telephone',
+      'ko': '전화',
     },
     '746a3s6z': {
       'ru': 'Адрес',
-      'ko': '',
+      'en': 'Address',
+      'ko': '주소',
     },
     '2c3nkl8s': {
       'ru': 'Квартира',
-      'ko': '',
+      'en': 'Apartment',
+      'ko': '아파트',
     },
     'jjzngdsn': {
       'ru': 'САОБЧА',
-      'ko': '',
+      'en': 'SAOBCHA',
+      'ko': '사오차',
     },
     'yuugvyux': {
       'ru': 'загрузите',
-      'ko': '',
+      'en': 'download',
+      'ko': '다운로드',
     },
     'k83lppxf': {
       'ru': 'фото акции',
-      'ko': '',
+      'en': 'stock photo',
+      'ko': '액션 사진',
     },
     'jcnrwec5': {
       'ru': 'Формат: JPG, PNG',
-      'ko': '',
+      'en': 'Format: JPG, PNG',
+      'ko': '형식: JPG, PNG',
     },
     '3ln56ul1': {
       'ru': 'Изменить фото',
-      'ko': '',
+      'en': 'Edit photo',
+      'ko': '사진 변경',
     },
     'b5e49uua': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // Stores
   {
     '6zdbteg8': {
       'ru': 'Мои магазины',
-      'ko': '',
+      'en': 'My shops',
+      'ko': '내 매장',
     },
     '57vi1d4p': {
       'ru': 'Добавить адрес',
-      'ko': '',
+      'en': 'Add address',
+      'ko': '주소 추가',
     },
     'jpd1e78n': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'kkvfnwlt': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // OneOrderPage2
   {
     'h5tz6tf9': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     '1w9buw09': {
       'ru': 'Заказ',
-      'ko': '',
+      'en': 'Order',
+      'ko': '주문하다',
     },
     'f3xx2rjt': {
       'ru': 'Сумма: ',
-      'ko': '',
+      'en': 'Sum:',
+      'ko': '합집합:',
     },
     '6xlo3m9v': {
       'ru': 'Отмена статуса',
-      'ko': '',
+      'en': 'Cancel status',
+      'ko': '취소 상태',
     },
     'qiboo5i9': {
       'ru': 'Удалить заказ',
-      'ko': '',
+      'en': 'Delete order',
+      'ko': '주문 삭제',
     },
     '636924qo': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // MyClients
   {
     'ts23ei51': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'r5s71a2f': {
       'ru': 'Мои клиенты',
-      'ko': '',
+      'en': 'My clients',
+      'ko': '내 고객',
     },
     'wv90639o': {
       'ru': 'All',
-      'ko': '',
+      'en': 'All',
+      'ko': '모두',
     },
     'jjdjqh5a': {
       'ru': 'Pending',
-      'ko': '',
+      'en': 'Pending',
+      'ko': '보류 중',
     },
     'njym9dxi': {
       'ru': 'In Progress',
-      'ko': '',
+      'en': 'In Progress',
+      'ko': '진행 중',
     },
     '2mk6oxj1': {
       'ru': 'Completed',
-      'ko': '',
+      'en': 'Completed',
+      'ko': '완전한',
     },
     'g2pslkwq': {
       'ru': 'All',
-      'ko': '',
+      'en': 'All',
+      'ko': '모두',
     },
     'buvxsjw7': {
       'ru': 'All',
-      'ko': '',
+      'en': 'All',
+      'ko': '모두',
     },
     'qr3mzzd4': {
       'ru': 'Имя',
-      'ko': '',
+      'en': 'Name',
+      'ko': '이름',
     },
     '1whnsafy': {
       'ru': 'Статус',
-      'ko': '',
+      'en': 'Status',
+      'ko': '상태',
     },
     'jqzrbeyk': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // HomePageWholeStore
   {
     '8knbeohg': {
       'ru': '1',
-      'ko': '',
+      'en': '1',
+      'ko': '1',
     },
     '0wqmy3zq': {
       'ru': '3',
-      'ko': '',
+      'en': '3',
+      'ko': '3',
     },
     'z06xs94n': {
       'ru': 'Поиск',
-      'ko': '',
+      'en': 'Search',
+      'ko': '찾다',
     },
     'nx3saamf': {
       'ru': 'Водка',
-      'ko': '',
+      'en': 'Vodka',
+      'ko': '보드카',
     },
     'nn9hfurq': {
       'ru': 'Вино',
-      'ko': '',
+      'en': 'Wine',
+      'ko': '와인',
     },
     '0l79ocsg': {
       'ru': 'Коньяк',
-      'ko': '',
+      'en': 'Cognac',
+      'ko': '코냑',
     },
     'eyyw2qrj': {
       'ru': 'Напитки',
-      'ko': '',
+      'en': 'Drinks',
+      'ko': '음료수',
     },
     '18bnz4uh': {
       'ru': 'Соусы',
-      'ko': '',
+      'en': 'Sauces',
+      'ko': '소스',
     },
     'tolgmnro': {
       'ru': 'Консервы',
-      'ko': '',
+      'en': 'Canned goods',
+      'ko': '통조림',
     },
     '1t2kahon': {
       'ru': 'Бакалея',
-      'ko': '',
+      'en': 'Grocery',
+      'ko': '식료품점',
     },
     '7xrqkjfp': {
+      'ru': 'еще...',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'o29hdbj7': {
+      'ru': 'Водка',
+      'en': 'Vodka',
+      'ko': '보드카',
+    },
+    'z1qjthac': {
+      'ru': 'Вино',
+      'en': 'Wine',
+      'ko': '와인',
+    },
+    '3iag5d4w': {
+      'ru': 'Коньяк',
+      'en': 'Cognac',
+      'ko': '코냑',
+    },
+    'br7nycn5': {
+      'ru': 'Напитки',
+      'en': 'Drinks',
+      'ko': '음료수',
+    },
+    '36y7wgin': {
+      'ru': 'Соусы',
+      'en': 'Sauces',
+      'ko': '소스',
+    },
+    'kfiwv1du': {
+      'ru': 'Консервы',
+      'en': 'Canned goods',
+      'ko': '통조림',
+    },
+    'xe0chby9': {
+      'ru': 'Бакалея',
+      'en': 'Grocery',
+      'ko': '식료품점',
+    },
+    'jza90tpc': {
       'ru': 'Сигареты',
-      'ko': '',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'isyt7u1t': {
+      'ru': 'Заморозка',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'zo6zbasr': {
+      'ru': 'Море прод.',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'ejp7vqnv': {
+      'ru': 'Детское',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'kxvtrlza': {
+      'ru': 'Мясо',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    '9lvogyn9': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'kfbkf7wk': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'dgqe4x78': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'el9st8aq': {
+      'ru': 'Десерты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'ozgbshbq': {
+      'ru': 'Сладкое',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    '4vq24xc5': {
+      'ru': 'Хоз товар',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'xpe3exwp': {
+      'ru': 'Другие',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    '9xcve7i4': {
+      'ru': 'скрыть...',
+      'en': 'Cigarettes',
+      'ko': '담배',
     },
     'k3ci3v2w': {
       'ru': 'Часто заказывают',
-      'ko': '',
+      'en': 'Frequently ordered',
+      'ko': '자주 주문됨',
     },
     'rz7o2sbd': {
       'ru': 'Показать удаленые',
-      'ko': '',
+      'en': 'Show deleted',
+      'ko': '삭제된 프로그램 보기',
     },
     'mc3n5gye': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // WholeStorePage
   {
     'asv7rqlm': {
       'ru': '1',
-      'ko': '',
+      'en': '1',
+      'ko': '1',
     },
-    't2s2flnj': {
+    'znrsu42u': {
       'ru': 'Водка',
-      'ko': '',
+      'en': 'Vodka',
+      'ko': '보드카',
     },
-    '1eagki9m': {
+    'lwactj7f': {
       'ru': 'Вино',
-      'ko': '',
+      'en': 'Wine',
+      'ko': '와인',
     },
-    'uhjxqeh7': {
+    '1p2480ae': {
       'ru': 'Коньяк',
-      'ko': '',
+      'en': 'Cognac',
+      'ko': '코냑',
     },
-    'y5cl5zvn': {
+    'k3av8op1': {
       'ru': 'Напитки',
-      'ko': '',
+      'en': 'Drinks',
+      'ko': '음료수',
     },
-    'zcaamoak': {
+    '26gbis1n': {
       'ru': 'Соусы',
-      'ko': '',
+      'en': 'Sauces',
+      'ko': '소스',
     },
-    '1e1ud9a3': {
+    '04e29wi0': {
       'ru': 'Консервы',
-      'ko': '',
+      'en': 'Canned goods',
+      'ko': '통조림',
     },
-    '2lu8hts2': {
+    '146l694s': {
       'ru': 'Бакалея',
-      'ko': '',
+      'en': 'Grocery',
+      'ko': '식료품점',
     },
-    'll5keqev': {
+    'f4mepmin': {
+      'ru': 'еще...',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'x7g6fhfr': {
+      'ru': 'Водка',
+      'en': 'Vodka',
+      'ko': '보드카',
+    },
+    'zc85q7sl': {
+      'ru': 'Вино',
+      'en': 'Wine',
+      'ko': '와인',
+    },
+    'nxs5jmbl': {
+      'ru': 'Коньяк',
+      'en': 'Cognac',
+      'ko': '코냑',
+    },
+    '4j2mf2ij': {
+      'ru': 'Напитки',
+      'en': 'Drinks',
+      'ko': '음료수',
+    },
+    'd8icrzso': {
+      'ru': 'Соусы',
+      'en': 'Sauces',
+      'ko': '소스',
+    },
+    'sb2f9c2k': {
+      'ru': 'Консервы',
+      'en': 'Canned goods',
+      'ko': '통조림',
+    },
+    'g8odwtjg': {
+      'ru': 'Бакалея',
+      'en': 'Grocery',
+      'ko': '식료품점',
+    },
+    '5d269i3h': {
       'ru': 'Сигареты',
-      'ko': '',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'wex06w3h': {
+      'ru': 'Заморозка',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    '1vo1vpft': {
+      'ru': 'Море прод.',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'epoqnmbt': {
+      'ru': 'Детское',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    '9j3bxod8': {
+      'ru': 'Мясо',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'nqi1kuay': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'stoplflp': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    '0rptgt09': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'w4rtxn3b': {
+      'ru': 'Десерты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    '8evzfba1': {
+      'ru': 'Сладкое',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'xahqcoel': {
+      'ru': 'Хоз товар',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    '6x83o58t': {
+      'ru': 'Другие',
+      'en': 'Cigarettes',
+      'ko': '담배',
+    },
+    'gueo7iai': {
+      'ru': 'скрыть...',
+      'en': 'Cigarettes',
+      'ko': '담배',
     },
     'lwnk6ozr': {
       'ru': 'Часто заказывают',
-      'ko': '',
+      'en': 'Frequently ordered',
+      'ko': '자주 주문됨',
     },
     'wkshynz5': {
       'ru': 'Поиск',
-      'ko': '',
+      'en': 'Search',
+      'ko': '찾다',
     },
     '9lccamso': {
       'ru': 'Показать удаленые',
-      'ko': '',
+      'en': 'Show deleted',
+      'ko': '삭제된 프로그램 보기',
     },
     '64vwyl00': {
       'ru': 'В корзине',
-      'ko': '',
+      'en': 'In the basket',
+      'ko': '장바구니에',
     },
     'v6iiokm5': {
       'ru': 'Home',
-      'ko': '',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // payment
   {
     'fohtynin': {
       'ru': 'Subscription / Payment',
-      'ko': '',
+      'en': 'Subscription / Payment',
+      'ko': '구독/결제',
     },
     'ixo7t97c': {
       'ru': 'Your Subscription',
-      'ko': '',
+      'en': 'Your Subscription',
+      'ko': '귀하의 구독',
     },
     'jva11say': {
       'ru': 'Monthly',
-      'ko': '',
+      'en': 'Monthly',
+      'ko': '월간 간행물',
     },
     'pp0pb58t': {
       'ru': '\$15.99/mo',
-      'ko': '',
+      'en': '\$15.99/mo',
+      'ko': '\$15.99/월',
     },
     '00bk6umn': {
       'ru': 'Gain unlimited access to all the content we have to offer! ',
-      'ko': '',
+      'en': 'Gain unlimited access to all the content we have to offer!',
+      'ko': '우리가 제공하는 모든 콘텐츠에 무제한으로 액세스하세요!',
     },
     'k5b8ia5r': {
       'ru': 'Other Offers',
-      'ko': '',
+      'en': 'Other Offers',
+      'ko': '기타 제안',
     },
     'wgpuv0cv': {
       'ru': 'Annual (save \$12)',
-      'ko': '',
+      'en': 'Annual (save \$12)',
+      'ko': '연간(\$12 절약)',
     },
     'm3ibs5ms': {
       'ru': '\$180/yr',
-      'ko': '',
+      'en': '\$180/yr',
+      'ko': '\$180/년',
     },
     'xxtkmyeu': {
       'ru': 'Gain unlimited access to all the content we have to offer! ',
-      'ko': '',
+      'en': 'Gain unlimited access to all the content we have to offer!',
+      'ko': '우리가 제공하는 모든 콘텐츠에 무제한으로 액세스하세요!',
     },
     'm3w3vp7s': {
       'ru': 'Free Limited Access',
-      'ko': '',
+      'en': 'Free Limited Access',
+      'ko': '무료 제한 액세스',
     },
     'ua5dne1y': {
       'ru':
           'Continue with limited access at no cost. Browse blogs and videos aimed to help you in your journey!',
-      'ko': '',
-    },
-    'iusaz50k': {
-      'ru': 'Change Plan',
-      'ko': '',
+      'en':
+          'Continue with limited access at no cost. Browse blogs and videos aimed to help you in your journey!',
+      'ko': '무료로 제한된 액세스를 계속하세요. 귀하의 여행에 도움이 되는 블로그와 비디오를 찾아보세요!',
     },
     '3pc56npp': {
       'ru': 'Home',
+      'en': 'Home',
+      'ko': '집',
+    },
+  },
+  // ProfileEdit
+  {
+    'm0fjc4jk': {
+      'ru': '',
+      'en': '',
+      'ko': '',
+    },
+    '3y1r54xz': {
+      'ru': 'Имя пользователя',
+      'en': '',
+      'ko': '',
+    },
+    'fnp5v0al': {
+      'ru': '',
+      'en': '',
+      'ko': '',
+    },
+    'aroi4a4s': {
+      'ru': 'Телефон',
+      'en': 'Telephone',
+      'ko': '전화',
+    },
+    'jeh8hueh': {
+      'ru': 'Сохранить',
+      'en': 'Register',
+      'ko': '등록하다',
+    },
+    '0fi39yba': {
+      'ru': 'Удалить профиль',
+      'en': '',
+      'ko': '',
+    },
+    'sus98qct': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+    },
+    'kh8c8mfs': {
+      'ru': 'Home',
+      'en': 'Home',
+      'ko': '집',
+    },
+  },
+  // deleteInstructionPage
+  {
+    'pqg2g2xp': {
+      'ru': 'Важное предупреждение',
+      'en': '',
+      'ko': '',
+    },
+    'g7b7dfni': {
+      'ru':
+          'Удаление аккаунта - необратимое действие. Вся информация будет утеряна без возможности восстановления.',
+      'en': '',
+      'ko': '',
+    },
+    'yb26x489': {
+      'ru': 'Перед удалением:',
+      'en': '',
+      'ko': '',
+    },
+    '4n5bvm3l': {
+      'ru': 'Сохраните важные данные и информацию, если они вам необходимы',
+      'en': '',
+      'ko': '',
+    },
+    'oui2s5jg': {
+      'ru': 'Завершите все активные транзакции и процессы',
+      'en': '',
+      'ko': '',
+    },
+    'tbggmd39': {
+      'ru': 'Убедитесь, что вы действительно хотите удалить аккаунт',
+      'en': '',
+      'ko': '',
+    },
+    'm0tzbbqm': {
+      'ru': 'Запрос на удаление:',
+      'en': '',
+      'ko': '',
+    },
+    'drky2ikr': {
+      'ru':
+          'Отправьте запрос на удаление аккаунта на еmail: wholekrsaler@gmail.com',
+      'en': '',
+      'ko': '',
+    },
+    'cwhh2c7c': {
+      'ru': 'Процесс удаления:',
+      'en': '',
+      'ko': '',
+    },
+    '8rd8nfsg': {
+      'ru': 'Перейдите в настройки профиля',
+      'en': '',
+      'ko': '',
+    },
+    'a6hpw10z': {
+      'ru': 'Найдите опцию \'Удалить аккаунт\'',
+      'en': '',
+      'ko': '',
+    },
+    'nlor1nw4': {
+      'ru': 'Подтвердите удаление',
+      'en': '',
+      'ko': '',
+    },
+    'hg164n15': {
+      'ru': 'После удаления:',
+      'en': '',
+      'ko': '',
+    },
+    'xioldf7d': {
+      'ru':
+          '• Все ваши данные будут удалены\n• Доступ к сервисам будет прекращен\n• Восстановление аккаунта будет невозможно',
+      'en': '',
       'ko': '',
     },
   },
@@ -1041,204 +1597,325 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'f8im7su4': {
       'ru': 'Будет позже',
-      'ko': '',
+      'en': 'Will come later',
+      'ko': '나중에 올 것이다',
     },
   },
   // deckriptionItem
   {
     'sqaxzhgu': {
       'ru': 'Редактировать',
-      'ko': '',
+      'en': 'Edit',
+      'ko': '편집하다',
     },
     'ihxjp0q9': {
       'ru': 'Маленькая',
-      'ko': '',
+      'en': 'Small',
+      'ko': '작은',
     },
     '57b66eyg': {
       'ru': 'Средняя',
-      'ko': '',
+      'en': 'Average',
+      'ko': '평균',
     },
     'pu204amo': {
       'ru': 'Большая',
-      'ko': '',
+      'en': 'Big',
+      'ko': '큰',
     },
     'a7i96tsd': {
       'ru': 'Традиционнае',
-      'ko': '',
+      'en': 'Traditional',
+      'ko': '전통적인',
     },
     'rl1c267q': {
       'ru': 'Тонкае',
-      'ko': '',
+      'en': 'Thin',
+      'ko': '희석제',
     },
     'gnuiny1r': {
       'ru': 'Добавить ингридиенты',
-      'ko': '',
+      'en': 'Add ingredients',
+      'ko': '재료 추가',
     },
     'dhgotvh4': {
       'ru': 'Ветчина из\nцыпленка',
-      'ko': '',
+      'en': 'Chicken Ham',
+      'ko': '햄\n닭',
     },
     '27muwlil': {
       'ru': '+ 350',
-      'ko': '',
+      'en': '+ 350',
+      'ko': '+ 350',
     },
     'j0wc25sy': {
       'ru': 'Моцарелла',
-      'ko': '',
+      'en': 'Mozzarella',
+      'ko': '모짜렐라',
     },
     'yd8mxwbh': {
       'ru': '+ 350',
-      'ko': '',
+      'en': '+ 350',
+      'ko': '+ 350',
     },
     'fpqgfbc7': {
       'ru': 'Шампиньоны',
-      'ko': '',
+      'en': 'Champignons',
+      'ko': '샴피뇽',
     },
     'ld0er7cp': {
       'ru': '+ 350',
-      'ko': '',
+      'en': '+ 350',
+      'ko': '+ 350',
     },
     'zld1njsc': {
       'ru': 'Ветчина из\nцыпленка',
-      'ko': '',
+      'en': 'Chicken Ham',
+      'ko': '햄\n닭',
     },
     'alnhzgtw': {
       'ru': '+ 350',
-      'ko': '',
+      'en': '+ 350',
+      'ko': '+ 350',
     },
     'jaga849t': {
       'ru': 'Ветчина из\nцыпленка',
-      'ko': '',
+      'en': 'Chicken Ham',
+      'ko': '햄\n닭',
     },
     'tll7niam': {
       'ru': '+ 350',
-      'ko': '',
+      'en': '+ 350',
+      'ko': '+ 350',
     },
     'ms7asp9f': {
       'ru': 'Ветчина из\nцыпленка',
-      'ko': '',
+      'en': 'Chicken Ham',
+      'ko': '햄\n닭',
     },
     '2pk53utc': {
       'ru': '+ 350',
-      'ko': '',
+      'en': '+ 350',
+      'ko': '+ 350',
     },
     'wfdq730d': {
       'ru': 'Продукт уже есть в вашей корзине',
-      'ko': '',
+      'en': 'The product is already in your cart.',
+      'ko': '제품이 이미 장바구니에 있습니다.',
     },
   },
   // CartItem
   {
     'nh73muzj': {
       'ru': '-',
-      'ko': '',
+      'en': '-',
+      'ko': '-',
     },
     '8uyyjytm': {
       'ru': '+',
-      'ko': '',
+      'en': '+',
+      'ko': '+',
     },
   },
   // bannerItem
   {
     '12tlsc2v': {
       'ru': 'Редактировать',
-      'ko': '',
+      'en': 'Edit',
+      'ko': '편집하다',
     },
   },
   // addressItem
   {
     'uyw3cn0r': {
       'ru': 'Изменить',
-      'ko': '',
+      'en': 'Change',
+      'ko': '변화',
     },
   },
   // addnewAddress
   {
     '8uheljgd': {
       'ru': 'Город',
-      'ko': '',
+      'en': 'City',
+      'ko': '도시',
     },
     'g9o1x37i': {
       'ru': 'Улица',
-      'ko': '',
+      'en': 'Street',
+      'ko': '거리',
     },
     '1pjur2y7': {
       'ru': 'Дом',
-      'ko': '',
+      'en': 'House',
+      'ko': '집',
     },
     'dio62pps': {
       'ru': 'Квартира',
-      'ko': '',
+      'en': 'Apartment',
+      'ko': '아파트',
     },
   },
   // promotion
   {
     'ypagnwf4': {
       'ru': 'Акция',
-      'ko': '',
+      'en': 'Promotion',
+      'ko': '홍보',
     },
     '46tkglqf': {
       'ru': 'загрузите',
-      'ko': '',
+      'en': 'download',
+      'ko': '다운로드',
     },
     'sf6dourv': {
       'ru': 'фото акции',
-      'ko': '',
+      'en': 'stock photo',
+      'ko': '액션 사진',
     },
     'e16q1cnr': {
       'ru': 'Формат: JPG, PNG',
-      'ko': '',
+      'en': 'Format: JPG, PNG',
+      'ko': '형식: JPG, PNG',
     },
     'dgkt7fme': {
       'ru': 'Изменить фото',
-      'ko': '',
+      'en': 'Edit photo',
+      'ko': '사진 변경',
     },
     'dzhnwley': {
       'ru': 'Удалить акцию',
-      'ko': '',
+      'en': 'Remove promotion',
+      'ko': '프로모션 삭제',
     },
   },
   // emptyCart
   {
     'u82bmd2l': {
       'ru': 'Перейти',
-      'ko': '',
+      'en': 'Go to',
+      'ko': '가다',
     },
   },
   // addnewStore
   {
     'ynhzuts8': {
       'ru': 'Город',
-      'ko': '',
+      'en': 'City',
+      'ko': '도시',
     },
     'u4ekfihf': {
       'ru': 'Улица',
-      'ko': '',
+      'en': 'Street',
+      'ko': '거리',
     },
     'er69ssub': {
       'ru': 'Дом',
-      'ko': '',
+      'en': 'House',
+      'ko': '집',
     },
     '4v60pgzd': {
       'ru': 'Квартира',
-      'ko': '',
+      'en': 'Apartment',
+      'ko': '아파트',
     },
   },
   // storeitem
   {
     'e99y4tff': {
       'ru': 'Изменить',
-      'ko': '',
+      'en': 'Change',
+      'ko': '변화',
     },
   },
   // CartItem2
   {
     'qgfd27np': {
       'ru': '-',
-      'ko': '',
+      'en': '-',
+      'ko': '-',
     },
     'hozg2w4j': {
       'ru': '+',
+      'en': '+',
+      'ko': '+',
+    },
+  },
+  // allCategories
+  {
+    'q3dzypk9': {
+      'ru': 'Food',
+      'en': '',
+      'ko': '',
+    },
+    'kdkopmvz': {
+      'ru': 'Beverages',
+      'en': '',
+      'ko': '',
+    },
+    '3u2j3goa': {
+      'ru': 'Groceries',
+      'en': '',
+      'ko': '',
+    },
+    'lukelg45': {
+      'ru': 'Household',
+      'en': '',
+      'ko': '',
+    },
+    'm2r3i84g': {
+      'ru': 'Pet Supplies',
+      'en': '',
+      'ko': '',
+    },
+    'xc37s1xf': {
+      'ru': 'Health',
+      'en': '',
+      'ko': '',
+    },
+    'cs7phpro': {
+      'ru': 'Beauty',
+      'en': '',
+      'ko': '',
+    },
+    'wglw301a': {
+      'ru': 'Food',
+      'en': '',
+      'ko': '',
+    },
+    '6xu8kl9z': {
+      'ru': 'Food',
+      'en': '',
+      'ko': '',
+    },
+    '69elaxup': {
+      'ru': 'Food',
+      'en': '',
+      'ko': '',
+    },
+    'wgim9bi1': {
+      'ru': 'Food',
+      'en': '',
+      'ko': '',
+    },
+    'j1kynct5': {
+      'ru': 'Food',
+      'en': '',
+      'ko': '',
+    },
+    'rtwt3vxc': {
+      'ru': 'Food',
+      'en': '',
+      'ko': '',
+    },
+    'k48bxpdr': {
+      'ru': 'Food',
+      'en': '',
+      'ko': '',
+    },
+    'utpby49i': {
+      'ru': 'Food',
+      'en': '',
       'ko': '',
     },
   },
@@ -1246,110 +1923,137 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'kggo67s0': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'puap9trx': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'nplkojh7': {
       'ru': '',
+      'en': 'Error: [error]',
       'ko': '',
     },
     '6hf86e56': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'gnzswnov': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     't2vyld2o': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'vu6l2ips': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     '1w1sxrco': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'w43e88ov': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'z207gbic': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'mo4ran1m': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'z1zja8zd': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'loxivoqm': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'g9442q5r': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'av6yiu8l': {
       'ru': '',
+      'en': 'Uploading file...',
       'ko': '',
     },
     'ivcbu61y': {
       'ru': '',
+      'en': 'Success!',
       'ko': '',
     },
     '64sgmfr4': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'xqq99fdb': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'b9jeci1i': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'b7v5qv22': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'xsaqnxxp': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     '1y2fapq7': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'ja2beswk': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     '7fp9qhq3': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'b8grdz77': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     '4piikevj': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
     'j6mdm3j3': {
       'ru': '',
+      'en': '',
       'ko': '',
     },
   },

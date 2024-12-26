@@ -22,6 +22,8 @@ class _AdminPanelWidgetState extends State<AdminPanelWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AdminPanelModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -295,7 +297,7 @@ class _AdminPanelWidgetState extends State<AdminPanelWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    context.pushNamed('HomePage');
+                    context.pushNamed('HomePageOld');
                   },
                   child: Container(
                     width: double.infinity,

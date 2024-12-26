@@ -63,6 +63,8 @@ class _WholeStoreItemWidgetState extends State<WholeStoreItemWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -75,7 +77,7 @@ class _WholeStoreItemWidgetState extends State<WholeStoreItemWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
       child: StreamBuilder<StoresRecord>(
         stream: StoresRecord.getDocument(widget.storeDoc!),
         builder: (context, snapshot) {

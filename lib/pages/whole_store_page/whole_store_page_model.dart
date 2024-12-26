@@ -13,8 +13,11 @@ class WholeStorePageModel extends FlutterFlowModel<WholeStorePageWidget> {
 
   bool isSearchDoing = false;
 
+  bool allCategorical = false;
+
   ///  State fields for stateful widgets in this page.
 
+  List<PizzaRecord> simpleSearchResults1 = [];
   // Models for oftenOrdered dynamic component.
   late FlutterFlowDynamicModels<OftenOrderedModel> oftenOrderedModels;
   // State field(s) for SearchTextField widget.
@@ -22,7 +25,7 @@ class WholeStorePageModel extends FlutterFlowModel<WholeStorePageWidget> {
   TextEditingController? searchTextFieldTextController;
   String? Function(BuildContext, String?)?
       searchTextFieldTextControllerValidator;
-  List<PizzaRecord> simpleSearchResults = [];
+  List<PizzaRecord> simpleSearchResults2 = [];
   // State field(s) for ShowDeletedCheckbox widget.
   bool? showDeletedCheckboxValue;
   // Models for PizzaItem dynamic component.

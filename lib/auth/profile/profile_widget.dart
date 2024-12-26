@@ -22,6 +22,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfileModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -106,91 +108,155 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             elevation: 0.0,
           ),
         ),
-        body: SafeArea(
-          top: true,
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-            child: ListView(
-              padding: EdgeInsets.zero,
-              scrollDirection: Axis.vertical,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      'aba41ubx' /* Профиль */,
-                    ),
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Outfit',
-                          fontSize: 32.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                  ),
-                ),
-                Builder(
-                  builder: (context) {
-                    if (currentUserPhoto != '') {
-                      return Container(
-                        width: 120.0,
-                        height: 120.0,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.network(
-                          currentUserPhoto,
-                          fit: BoxFit.cover,
-                        ),
-                      );
-                    } else {
-                      return Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Container(
-                          width: 120.0,
-                          height: 120.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).alternate,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Icon(
-                              Icons.photo_camera_outlined,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 36.0,
-                            ),
-                          ),
-                        ),
-                      );
-                    }
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 8.0),
-                  child: AuthUserStreamWidget(
-                    builder: (context) => Text(
-                      currentUserDisplayName,
-                      textAlign: TextAlign.center,
+        body: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            scrollDirection: Axis.vertical,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        'aba41ubx' /* Профиль */,
+                      ),
                       style:
-                          FlutterFlowTheme.of(context).headlineMedium.override(
+                          FlutterFlowTheme.of(context).headlineSmall.override(
                                 fontFamily: 'Outfit',
+                                fontSize: 32.0,
                                 letterSpacing: 0.0,
+                                fontWeight: FontWeight.w600,
                               ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
-                  child: Text(
-                    currentUserEmail,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed('ProfileEdit');
+                    },
+                    child: Container(
+                      width: 48.0,
+                      height: 48.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).primary,
+                        borderRadius: BorderRadius.circular(8.0),
+                        shape: BoxShape.rectangle,
+                      ),
+                      child: Icon(
+                        Icons.edit_note,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        size: 26.0,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Builder(
+                builder: (context) {
+                  if (currentUserPhoto != '') {
+                    return Container(
+                      width: 120.0,
+                      height: 120.0,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.network(
+                        currentUserPhoto,
+                        fit: BoxFit.cover,
+                      ),
+                    );
+                  } else {
+                    return Align(
+                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      child: Container(
+                        width: 120.0,
+                        height: 120.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Align(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: Icon(
+                            Icons.photo_camera_outlined,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 36.0,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                },
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 8.0),
+                child: AuthUserStreamWidget(
+                  builder: (context) => Text(
+                    currentUserDisplayName,
                     textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Readex Pro',
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Outfit',
                           letterSpacing: 0.0,
                         ),
                   ),
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                child: Text(
+                  currentUserEmail,
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('RegStorePage');
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 48.0,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF3F3F3),
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'tfz46wt5' /* Мой магазин */,
+                        ),
+                        textAlign: TextAlign.start,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              if (false)
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                   child: InkWell(
@@ -199,7 +265,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed('RegStorePage');
+                      context.pushNamed('Addresses');
                     },
                     child: Container(
                       width: double.infinity,
@@ -214,7 +280,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             0.0, 16.0, 0.0, 16.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
-                            'tfz46wt5' /* Мой магазин */,
+                            '0rl63l99' /* Адреса доставки */,
                           ),
                           textAlign: TextAlign.start,
                           style:
@@ -227,16 +293,53 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     ),
                   ),
                 ),
-                if (false)
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                    child: InkWell(
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('UserOrderListPage');
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 48.0,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF3F3F3),
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          '5p69vk0g' /* Мои заказы */,
+                        ),
+                        textAlign: TextAlign.start,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              if ((currentUserDocument?.userType == UserTypes.admin) ||
+                  (currentUserDocument?.userType == UserTypes.manager))
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                  child: AuthUserStreamWidget(
+                    builder: (context) => InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('Addresses');
+                        context.pushNamed('AdminPanel');
                       },
                       child: Container(
                         width: double.infinity,
@@ -251,7 +354,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               0.0, 16.0, 0.0, 16.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              '0rl63l99' /* Адреса доставки */,
+                              '7ln4bk0u' /* Админ панель */,
                             ),
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context)
@@ -265,113 +368,36 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       ),
                     ),
                   ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed('UserOrderListPage');
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 48.0,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF3F3F3),
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 16.0, 0.0, 16.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            '5p69vk0g' /* Мои заказы */,
-                          ),
-                          textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                      ),
-                    ),
-                  ),
                 ),
-                if ((currentUserDocument?.userType == UserTypes.admin) ||
-                    (currentUserDocument?.userType == UserTypes.manager))
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                    child: AuthUserStreamWidget(
-                      builder: (context) => InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed('AdminPanel');
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          height: 48.0,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFF3F3F3),
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 16.0, 0.0, 16.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                '7ln4bk0u' /* Админ панель */,
-                              ),
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      GoRouter.of(context).prepareAuthEvent();
-                      await authManager.signOut();
-                      GoRouter.of(context).clearRedirectLocation();
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    GoRouter.of(context).prepareAuthEvent();
+                    await authManager.signOut();
+                    GoRouter.of(context).clearRedirectLocation();
 
-                      context.goNamedAuth('AuthPage', context.mounted);
-                    },
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'oxvpk6gw' /* Выйти из аккаунта */,
-                      ),
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).primary,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w500,
-                          ),
+                    context.goNamedAuth('AuthPage', context.mounted);
+                  },
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      'oxvpk6gw' /* Выйти из аккаунта */,
                     ),
+                    textAlign: TextAlign.center,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          color: FlutterFlowTheme.of(context).primary,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w500,
+                        ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

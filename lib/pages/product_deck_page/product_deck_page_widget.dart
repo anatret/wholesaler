@@ -35,6 +35,8 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProductDeckPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -662,29 +664,6 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                       FFAppState().wholeSalerinCart =
                                           widget.documentProduct?.store;
                                       safeSetState(() {});
-                                      Navigator.pop(context);
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Товар добавлен в корзину',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                          duration:
-                                              const Duration(milliseconds: 2400),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
                                     } else if ((FFAppState().wholeSalerinCart !=
                                             null) &&
                                         (FFAppState().wholeSalerinCart ==
@@ -696,29 +675,6 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                         count: 1,
                                       ));
                                       safeSetState(() {});
-                                      Navigator.pop(context);
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Товар добавлен в корзину',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                          duration:
-                                              const Duration(milliseconds: 2400),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
                                     } else {
                                       var confirmDialogResponse =
                                           await showDialog<bool>(
@@ -743,7 +699,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                                                 alertDialogContext,
                                                                 true),
                                                         child: const Text(
-                                                            'Очистить и добавлить '),
+                                                            'Очистить и добавить '),
                                                       ),
                                                     ],
                                                   );
@@ -763,32 +719,32 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                         FFAppState().wholeSalerinCart =
                                             widget.documentProduct?.store;
                                         safeSetState(() {});
-                                        Navigator.pop(context);
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Товар добавлен в корзину',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .info,
-                                                    letterSpacing: 0.0,
-                                                  ),
-                                            ),
-                                            duration:
-                                                const Duration(milliseconds: 2400),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondary,
-                                          ),
-                                        );
+                                      } else {
+                                        return;
                                       }
                                     }
+
+                                    Navigator.pop(context);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Товар добавлен в корзину',
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        duration: const Duration(milliseconds: 2400),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                      ),
+                                    );
                                   },
                                   text:
                                       'Добавить в корзину за ${widget.documentProduct?.price.toString()} ₩',

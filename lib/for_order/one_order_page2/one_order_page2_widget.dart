@@ -9,7 +9,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'one_order_page2_model.dart';
 export 'one_order_page2_model.dart';
 
@@ -34,6 +33,8 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OneOrderPage2Model());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -295,30 +296,20 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                               ],
                             ),
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 4.0, 0.0),
-                                child: Icon(
-                                  Icons.phone_outlined,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 18.0,
+                          if (!isWeb)
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 4.0, 0.0),
+                                  child: Icon(
+                                    Icons.phone_outlined,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 18.0,
+                                  ),
                                 ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  await launchUrl(Uri(
-                                    scheme: 'tel',
-                                    path: oneOrderPage2OrderRecord.phone,
-                                  ));
-                                },
-                                child: Text(
+                                Text(
                                   valueOrDefault<String>(
                                     oneOrderPage2OrderRecord.phone,
                                     'телефон',
@@ -334,9 +325,8 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                                         decoration: TextDecoration.underline,
                                       ),
                                 ),
-                              ),
-                            ],
-                          ),
+                              ],
+                            ),
                         ].divide(const SizedBox(height: 6.0)),
                       );
                     },

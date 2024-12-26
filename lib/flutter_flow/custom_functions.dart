@@ -40,32 +40,11 @@ bool checkCart(
   return result;
 }
 
-DocumentReference getWholeUserRefCopy(DocumentReference wholeStore) {
-  // returne user reference from wholestore
-  return wholeStore.collection('users').doc('user_id');
-}
-
 int summFunction(
   int count,
   int price,
 ) {
   return count * price;
-}
-
-DocumentReference getWholeUserRef(StoresRecord wholeStore) {
-  return wholeStore.user as DocumentReference;
-}
-
-List<DocumentReference> getStoreListFromProductList(
-    List<PizzaRecord> pizzaList) {
-  // исправь функцию что бы работала и возвращает уникальные store
-  List<DocumentReference> storeList = [];
-  for (var pizza in pizzaList) {
-    if (pizza.store != null && !storeList.contains(pizza.store)) {
-      storeList.add(pizza.store as DocumentReference);
-    }
-  }
-  return storeList;
 }
 
 int getSizeOfCartList(List<CartStruct> cartList) {

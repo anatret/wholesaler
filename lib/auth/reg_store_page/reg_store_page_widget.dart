@@ -37,6 +37,8 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
     _model.roomStoreFocusNode ??= FocusNode();
 
     _model.saobchaFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -1078,7 +1080,7 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                                 context: context,
                                 builder: (alertDialogContext) {
                                   return AlertDialog(
-                                    title: const Text('Создавние магазина'),
+                                    title: const Text('Создание магазина'),
                                     content: const Text('Магазин создан'),
                                     actions: [
                                       TextButton(

@@ -3,10 +3,10 @@ import '/backend/schema/enums/enums.dart';
 import '/components/often_ordered/often_ordered_widget.dart';
 import '/components/pizza_item/pizza_item_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'home_page_widget.dart' show HomePageWidget;
+import 'home_page_old_widget.dart' show HomePageOldWidget;
 import 'package:flutter/material.dart';
 
-class HomePageModel extends FlutterFlowModel<HomePageWidget> {
+class HomePageOldModel extends FlutterFlowModel<HomePageOldWidget> {
   ///  Local state fields for this page.
 
   ProductType? tap;

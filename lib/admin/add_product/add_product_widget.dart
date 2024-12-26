@@ -68,6 +68,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
         widget.isEdit && (widget.pizzaDoc?.inStock == true);
     _model.oftenOrderedSwitchValue =
         widget.isEdit && (widget.pizzaDoc?.oftenOrdered == true);
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -936,6 +937,27 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                             ),
                             FFLocalizations.of(context).getText(
                               'j6gmjn44' /* Сигареты */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '2negydpa' /* Море продукты */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'hykr21gm' /* Мясо */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'u1hzkkx9' /* Хоз товары */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'bbp0gps2' /* Заморозка */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              '70xejb1x' /* Детское */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'xencupqz' /* Десерт */,
+                            ),
+                            FFLocalizations.of(context).getText(
+                              'b2itwya3' /* Прочее */,
                             )
                           ].toList(),
                           onChanged: (val) => safeSetState(() {}),
@@ -943,62 +965,91 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               FormFieldController<String>(() {
                             if (widget.isEdit &&
                                 (widget.pizzaDoc != null) &&
-                                (widget.pizzaDoc?.productType ==
-                                        ProductType.drinks
+                                (widget.pizzaDoc?.productType == ProductType.drinks
                                     ? true
                                     : false)) {
                               return 'Напитки';
                             } else if (widget.isEdit &&
                                 (widget.pizzaDoc != null) &&
-                                (widget.pizzaDoc?.productType ==
-                                        ProductType.sauce
+                                (widget.pizzaDoc?.productType == ProductType.sauce
                                     ? true
                                     : false)) {
                               return 'Соус';
                             } else if (widget.isEdit &&
                                 (widget.pizzaDoc != null) &&
-                                (widget.pizzaDoc?.productType ==
-                                        ProductType.vodka
+                                (widget.pizzaDoc?.productType == ProductType.vodka
                                     ? true
                                     : false)) {
                               return 'Водка';
                             } else if (widget.isEdit &&
                                 (widget.pizzaDoc != null) &&
-                                (widget.pizzaDoc?.productType ==
-                                        ProductType.vine
+                                (widget.pizzaDoc?.productType == ProductType.vine
                                     ? true
                                     : false)) {
                               return 'Вино';
                             } else if (widget.isEdit &&
                                 (widget.pizzaDoc != null) &&
-                                (widget.pizzaDoc?.productType ==
-                                        ProductType.cognac
+                                (widget.pizzaDoc?.productType == ProductType.cognac
                                     ? true
                                     : false)) {
                               return 'Коньяк';
                             } else if (widget.isEdit &&
                                 (widget.pizzaDoc != null) &&
-                                (widget.pizzaDoc?.productType ==
-                                        ProductType.cannedfood
+                                (widget.pizzaDoc?.productType == ProductType.cannedfood
                                     ? true
                                     : false)) {
                               return 'Консервы/Маринады';
                             } else if (widget.isEdit &&
                                 (widget.pizzaDoc != null) &&
-                                (widget.pizzaDoc?.productType ==
-                                        ProductType.cigarettes
+                                (widget.pizzaDoc?.productType == ProductType.cigarettes
                                     ? true
                                     : false)) {
                               return 'Сигареты';
                             } else if (widget.isEdit &&
                                 (widget.pizzaDoc != null) &&
-                                (widget.pizzaDoc?.productType ==
-                                        ProductType.grocery
+                                (widget.pizzaDoc?.productType == ProductType.grocery
                                     ? true
                                     : false)) {
                               return 'Бакалея';
+                            } else if (widget.isEdit &&
+                                (widget.pizzaDoc != null) &&
+                                (widget.pizzaDoc?.productType == ProductType.seafood
+                                    ? true
+                                    : false)) {
+                              return 'Море продукты';
+                            } else if (widget.isEdit &&
+                                (widget.pizzaDoc != null) &&
+                                (widget.pizzaDoc?.productType == ProductType.meat
+                                    ? true
+                                    : false)) {
+                              return 'Мясо';
+                            } else if (widget.isEdit &&
+                                (widget.pizzaDoc != null) &&
+                                (widget.pizzaDoc?.productType ==
+                                        ProductType.hardwarestore
+                                    ? true
+                                    : false)) {
+                              return 'Хоз товары';
+                            } else if (widget.isEdit &&
+                                (widget.pizzaDoc != null) &&
+                                (widget.pizzaDoc?.productType == ProductType.freezing
+                                    ? true
+                                    : false)) {
+                              return 'Заморозка';
+                            } else if (widget.isEdit &&
+                                (widget.pizzaDoc != null) &&
+                                (widget.pizzaDoc?.productType == ProductType.babyfood
+                                    ? true
+                                    : false)) {
+                              return 'Детское';
+                            } else if (widget.isEdit &&
+                                (widget.pizzaDoc != null) &&
+                                (widget.pizzaDoc?.productType == ProductType.dessert
+                                    ? true
+                                    : false)) {
+                              return 'Десерт';
                             } else {
-                              return 'Коньяк';
+                              return 'Прочее';
                             }
                           }()),
                           optionHeight: 32.0,
@@ -1119,6 +1170,12 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 img: _model.uploadedFileUrl != ''
                                     ? _model.uploadedFileUrl
                                     : widget.pizzaDoc?.img,
+                                inStock: _model.inStockSwitchValue,
+                                oftenOrdered: _model.oftenOrderedSwitchValue,
+                                price: int.tryParse(_model
+                                    .priceProductFieldTextController.text),
+                                linkToProduct: _model
+                                    .linckToProductFieldTextController.text,
                                 productType: () {
                                   if (_model.radioButtonValue == 'Коньяк') {
                                     return ProductType.cognac;
@@ -1140,16 +1197,31 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   } else if (_model.radioButtonValue ==
                                       'Сигареты') {
                                     return ProductType.cigarettes;
-                                  } else {
+                                  } else if (_model.radioButtonValue ==
+                                      'Море продукты') {
+                                    return ProductType.seafood;
+                                  } else if (_model.radioButtonValue ==
+                                      'Мясо') {
+                                    return ProductType.meat;
+                                  } else if (_model.radioButtonValue ==
+                                      'Хоз товары') {
+                                    return ProductType.hardwarestore;
+                                  } else if (_model.radioButtonValue ==
+                                      'Заморозка') {
+                                    return ProductType.freezing;
+                                  } else if (_model.radioButtonValue ==
+                                      'Детское') {
+                                    return ProductType.babyfood;
+                                  } else if (_model.radioButtonValue ==
+                                      'Десерт') {
+                                    return ProductType.dessert;
+                                  } else if (_model.radioButtonValue ==
+                                      'Соус') {
                                     return ProductType.sauce;
+                                  } else {
+                                    return ProductType.others;
                                   }
                                 }(),
-                                inStock: _model.inStockSwitchValue,
-                                oftenOrdered: _model.oftenOrderedSwitchValue,
-                                price: int.tryParse(_model
-                                    .priceProductFieldTextController.text),
-                                linkToProduct: _model
-                                    .linckToProductFieldTextController.text,
                               ));
                             } else {
                               await PizzaRecord.collection
@@ -1187,8 +1259,29 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                       } else if (_model.radioButtonValue ==
                                           'Сигареты') {
                                         return ProductType.cigarettes;
-                                      } else {
+                                      } else if (_model.radioButtonValue ==
+                                          'Море продукты') {
+                                        return ProductType.seafood;
+                                      } else if (_model.radioButtonValue ==
+                                          'Мясо') {
+                                        return ProductType.meat;
+                                      } else if (_model.radioButtonValue ==
+                                          'Хоз товары') {
+                                        return ProductType.hardwarestore;
+                                      } else if (_model.radioButtonValue ==
+                                          'Заморозка') {
+                                        return ProductType.freezing;
+                                      } else if (_model.radioButtonValue ==
+                                          'Детское') {
+                                        return ProductType.babyfood;
+                                      } else if (_model.radioButtonValue ==
+                                          'Десерт') {
+                                        return ProductType.dessert;
+                                      } else if (_model.radioButtonValue ==
+                                          'Соус') {
                                         return ProductType.sauce;
+                                      } else {
+                                        return ProductType.others;
                                       }
                                     }(),
                                     isDeleted: false,

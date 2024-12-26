@@ -18,6 +18,9 @@ void main() async {
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
 
+  final environmentValues = FFDevEnvironmentValues();
+  await environmentValues.initialize();
+
   await initFirebase();
 
   final appState = FFAppState(); // Initialize FFAppState
@@ -100,6 +103,7 @@ class _MyAppState extends State<MyApp> {
       locale: _locale,
       supportedLocales: const [
         Locale('ru'),
+        Locale('en'),
         Locale('ko'),
       ],
       theme: ThemeData(
@@ -176,7 +180,7 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              'ps247s78' /* Home */,
+              'ps247s78' /* Избранное */,
             ),
             tooltip: '',
           ),
@@ -186,7 +190,7 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              'cugi6x2m' /* Home */,
+              'cugi6x2m' /* Заказы */,
             ),
             tooltip: '',
           ),
@@ -196,7 +200,7 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              'xf38p9sp' /* Home */,
+              'xf38p9sp' /* Корзина */,
             ),
             tooltip: '',
           ),
@@ -206,7 +210,7 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              '3jcn9ln5' /* Home */,
+              '3jcn9ln5' /* Профиль */,
             ),
             tooltip: '',
           )

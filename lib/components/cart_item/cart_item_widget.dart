@@ -1,9 +1,11 @@
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'cart_item_model.dart';
 export 'cart_item_model.dart';
@@ -30,8 +32,11 @@ class CartItemWidget extends StatefulWidget {
   State<CartItemWidget> createState() => _CartItemWidgetState();
 }
 
-class _CartItemWidgetState extends State<CartItemWidget> {
+class _CartItemWidgetState extends State<CartItemWidget>
+    with TickerProviderStateMixin {
   late CartItemModel _model;
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -49,6 +54,30 @@ class _CartItemWidgetState extends State<CartItemWidget> {
       _model.value = widget.cartItem!.count;
       safeSetState(() {});
     });
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 70.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -63,7 +92,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
       child: Container(
         width: double.infinity,
         height: 180.0,
@@ -316,7 +345,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
             ),
           ],
         ),
-      ),
+      ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
     );
   }
 }

@@ -14,6 +14,8 @@ class HomePageWholeStoreModel
 
   bool isSearchDoing = false;
 
+  bool allCategorical = false;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for SearchTextField widget.

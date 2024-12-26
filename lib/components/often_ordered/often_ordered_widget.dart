@@ -33,6 +33,8 @@ class _OftenOrderedWidgetState extends State<OftenOrderedWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OftenOrderedModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

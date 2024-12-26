@@ -48,6 +48,8 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DeckriptionItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

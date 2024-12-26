@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -93,9 +94,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const AuthPageWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+          name: 'HomePageOld',
+          path: '/homePageOld',
+          builder: (context, params) => const HomePageOldWidget(),
         ),
         FFRoute(
           name: 'RegPage',
@@ -266,12 +267,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'searchText',
               ParamType.String,
             ),
+            productType: params.getParam<ProductType>(
+              'productType',
+              ParamType.Enum,
+            ),
           ),
         ),
         FFRoute(
           name: 'payment',
           path: '/payment',
           builder: (context, params) => const PaymentWidget(),
+        ),
+        FFRoute(
+          name: 'ProfileEdit',
+          path: '/profileEdit',
+          builder: (context, params) => const ProfileEditWidget(),
+        ),
+        FFRoute(
+          name: 'deleteInstructionPage',
+          path: '/deleteInstructionPage',
+          builder: (context, params) => const DeleteInstructionPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

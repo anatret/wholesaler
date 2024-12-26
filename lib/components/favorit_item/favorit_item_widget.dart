@@ -1,7 +1,9 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'favorit_item_model.dart';
 export 'favorit_item_model.dart';
@@ -26,8 +28,11 @@ class FavoritItemWidget extends StatefulWidget {
   State<FavoritItemWidget> createState() => _FavoritItemWidgetState();
 }
 
-class _FavoritItemWidgetState extends State<FavoritItemWidget> {
+class _FavoritItemWidgetState extends State<FavoritItemWidget>
+    with TickerProviderStateMixin {
   late FavoritItemModel _model;
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -39,6 +44,30 @@ class _FavoritItemWidgetState extends State<FavoritItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FavoritItemModel());
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 70.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -53,7 +82,7 @@ class _FavoritItemWidgetState extends State<FavoritItemWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
       child: Container(
         width: double.infinity,
         height: 160.0,
@@ -187,7 +216,7 @@ class _FavoritItemWidgetState extends State<FavoritItemWidget> {
             ),
           ],
         ),
-      ),
+      ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
     );
   }
 }

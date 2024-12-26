@@ -19,6 +19,7 @@
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>ru</string>
+		<string>en</string>
 		<string>ko</string>
 	</array>
 
