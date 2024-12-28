@@ -43,8 +43,6 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
 
     _model.commentFieldTextController ??= TextEditingController();
     _model.commentFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

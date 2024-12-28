@@ -21,8 +21,6 @@ class _RestoreInfoPageWidgetState extends State<RestoreInfoPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => RestoreInfoPageModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

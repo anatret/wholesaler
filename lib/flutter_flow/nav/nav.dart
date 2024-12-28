@@ -287,6 +287,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'deleteInstructionPage',
           path: '/deleteInstructionPage',
           builder: (context, params) => const DeleteInstructionPageWidget(),
+        ),
+        FFRoute(
+          name: 'SupportPage',
+          path: '/supportPage',
+          builder: (context, params) => const SupportPageWidget(),
+        ),
+        FFRoute(
+          name: 'PrivacyPolicy',
+          path: '/privacyPolicy',
+          builder: (context, params) => const PrivacyPolicyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -473,15 +483,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
-                    ),
+              ? Container(
+                  color: FlutterFlowTheme.of(context).primary,
+                  child: Image.asset(
+                    'assets/images/logo-color.png',
+                    fit: BoxFit.contain,
                   ),
                 )
               : PushNotificationsHandler(child: page);

@@ -37,8 +37,6 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
     _model.roomStoreFocusNode ??= FocusNode();
 
     _model.saobchaFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

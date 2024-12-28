@@ -9,6 +9,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'one_order_page2_model.dart';
 export 'one_order_page2_model.dart';
 
@@ -33,8 +34,6 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OneOrderPage2Model());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -208,15 +207,15 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                           ),
                         );
                       }
-                      List<StoresRecord> listViewStoresRecordList =
+                      List<StoresRecord> listViewClientStoreStoresRecordList =
                           snapshot.data!;
                       // Return an empty Container when the item does not exist.
                       if (snapshot.data!.isEmpty) {
                         return Container();
                       }
-                      final listViewStoresRecord =
-                          listViewStoresRecordList.isNotEmpty
-                              ? listViewStoresRecordList.first
+                      final listViewClientStoreStoresRecord =
+                          listViewClientStoreStoresRecordList.isNotEmpty
+                              ? listViewClientStoreStoresRecordList.first
                               : null;
 
                       return ListView(
@@ -239,7 +238,7 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                               ),
                               Text(
                                 valueOrDefault<String>(
-                                  listViewStoresRecord?.storeName,
+                                  listViewClientStoreStoresRecord?.storeName,
                                   'Магазин',
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -276,7 +275,7 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 10.0, 0.0),
                                   child: Text(
-                                    '${listViewStoresRecord?.address} ${listViewStoresRecord?.room}',
+                                    '${listViewClientStoreStoresRecord?.address} ${listViewClientStoreStoresRecord?.room}',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -296,36 +295,52 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                               ],
                             ),
                           ),
-                          if (!isWeb)
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 4.0, 0.0),
-                                  child: Icon(
-                                    Icons.phone_outlined,
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 18.0,
+                          if (responsiveVisibility(
+                            context: context,
+                            desktop: false,
+                          ))
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                await launchUrl(Uri(
+                                  scheme: 'tel',
+                                  path: oneOrderPage2OrderRecord.phone,
+                                ));
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 4.0, 0.0),
+                                    child: Icon(
+                                      Icons.phone_outlined,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 18.0,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  valueOrDefault<String>(
-                                    oneOrderPage2OrderRecord.phone,
-                                    'телефон',
+                                  Text(
+                                    valueOrDefault<String>(
+                                      oneOrderPage2OrderRecord.phone,
+                                      'телефон',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: FlutterFlowTheme.of(context)
+                                              .colorLink,
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                          decoration: TextDecoration.underline,
+                                        ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: FlutterFlowTheme.of(context)
-                                            .colorLink,
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                         ].divide(const SizedBox(height: 6.0)),
                       );

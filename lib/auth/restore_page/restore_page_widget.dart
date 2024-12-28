@@ -25,8 +25,6 @@ class _RestorePageWidgetState extends State<RestorePageWidget> {
 
     _model.emailFieldTextController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

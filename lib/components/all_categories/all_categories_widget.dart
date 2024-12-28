@@ -24,8 +24,6 @@ class _AllCategoriesWidgetState extends State<AllCategoriesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AllCategoriesModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

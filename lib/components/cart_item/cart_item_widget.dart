@@ -76,8 +76,6 @@ class _CartItemWidgetState extends State<CartItemWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

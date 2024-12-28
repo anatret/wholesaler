@@ -71,8 +71,6 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
 
     _model.searchTextFieldTextController ??= TextEditingController();
     _model.searchTextFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

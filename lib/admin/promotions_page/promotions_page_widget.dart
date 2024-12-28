@@ -23,8 +23,6 @@ class _PromotionsPageWidgetState extends State<PromotionsPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PromotionsPageModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

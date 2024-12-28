@@ -29,8 +29,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
 
     _model.passFieldTextController ??= TextEditingController();
     _model.passFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

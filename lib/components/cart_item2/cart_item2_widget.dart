@@ -50,8 +50,6 @@ class _CartItem2WidgetState extends State<CartItem2Widget> {
       _model.value = widget.cartItem!.count;
       safeSetState(() {});
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

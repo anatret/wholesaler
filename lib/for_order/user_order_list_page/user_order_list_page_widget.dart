@@ -25,8 +25,6 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => UserOrderListPageModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

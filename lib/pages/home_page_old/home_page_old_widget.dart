@@ -32,8 +32,6 @@ class _HomePageOldWidgetState extends State<HomePageOldWidget> {
 
     _model.searchTextFieldTextController ??= TextEditingController();
     _model.searchTextFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

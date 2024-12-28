@@ -52,8 +52,6 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
     _model.apartFieldTextController ??=
         TextEditingController(text: widget.data?.apart);
     _model.apartFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -33,7 +33,10 @@ export '/pages/home_page_whole_store/home_page_whole_store_widget.dart'
     show HomePageWholeStoreWidget;
 export '/pages/whole_store_page/whole_store_page_widget.dart'
     show WholeStorePageWidget;
-export '/payment/payment_widget.dart' show PaymentWidget;
+export '/payment/payment/payment_widget.dart' show PaymentWidget;
 export '/auth/profile_edit/profile_edit_widget.dart' show ProfileEditWidget;
-export '/delete_instruction_page/delete_instruction_page_widget.dart'
+export '/for_app/delete_instruction_page/delete_instruction_page_widget.dart'
     show DeleteInstructionPageWidget;
+export '/for_app/support_page/support_page_widget.dart' show SupportPageWidget;
+export '/for_app/privacy_policy/privacy_policy_widget.dart'
+    show PrivacyPolicyWidget;

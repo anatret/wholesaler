@@ -24,8 +24,6 @@ class _StoresWidgetState extends State<StoresWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => StoresModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

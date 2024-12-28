@@ -63,8 +63,6 @@ class _WholeStoreItemWidgetState extends State<WholeStoreItemWidget>
           !anim.applyInitialState),
       this,
     );
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -68,8 +68,6 @@ class _PizzaItemWidgetState extends State<PizzaItemWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -72,15 +72,11 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
 
   @override
   Widget build(BuildContext context) => _loading
-      ? Center(
-          child: SizedBox(
-            width: 50.0,
-            height: 50.0,
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                FlutterFlowTheme.of(context).primary,
-              ),
-            ),
+      ? Container(
+          color: FlutterFlowTheme.of(context).primary,
+          child: Image.asset(
+            'assets/images/logo-color.png',
+            fit: BoxFit.contain,
           ),
         )
       : widget.child;
@@ -159,6 +155,8 @@ final parametersBuilderMap =
   'payment': ParameterData.none(),
   'ProfileEdit': ParameterData.none(),
   'deleteInstructionPage': ParameterData.none(),
+  'SupportPage': ParameterData.none(),
+  'PrivacyPolicy': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {
