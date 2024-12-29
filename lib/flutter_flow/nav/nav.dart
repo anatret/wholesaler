@@ -96,6 +96,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'HomePageOld',
           path: '/homePageOld',
+          requireAuth: true,
           builder: (context, params) => const HomePageOldWidget(),
         ),
         FFRoute(
@@ -106,6 +107,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'FavoritPage',
           path: '/favoritPage',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'FavoritPage')
               : const FavoritPageWidget(),
@@ -113,6 +115,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'CartPage',
           path: '/cartPage',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'CartPage')
               : const CartPageWidget(),
@@ -120,11 +123,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'OrderPage',
           path: '/orderPage',
+          requireAuth: true,
           builder: (context, params) => const OrderPageWidget(),
         ),
         FFRoute(
           name: 'UserOrderListPage',
           path: '/userOrderListPage',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'UserOrderListPage')
               : const UserOrderListPageWidget(),
@@ -132,6 +137,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'OneOrderPage',
           path: '/oneOrderPage',
+          requireAuth: true,
           builder: (context, params) => OneOrderPageWidget(
             order: params.getParam(
               'order',
@@ -144,6 +150,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Profile',
           path: '/profile',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'Profile')
               : const ProfileWidget(),
@@ -151,31 +158,37 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'RestorePage',
           path: '/restorePage',
+          requireAuth: true,
           builder: (context, params) => const RestorePageWidget(),
         ),
         FFRoute(
           name: 'RestoreInfoPage',
           path: '/restoreInfoPage',
+          requireAuth: true,
           builder: (context, params) => const RestoreInfoPageWidget(),
         ),
         FFRoute(
           name: 'Addresses',
           path: '/addresses',
+          requireAuth: true,
           builder: (context, params) => const AddressesWidget(),
         ),
         FFRoute(
           name: 'AdminPanel',
           path: '/adminPanel',
+          requireAuth: true,
           builder: (context, params) => const AdminPanelWidget(),
         ),
         FFRoute(
           name: 'PromotionsPage',
           path: '/promotionsPage',
+          requireAuth: true,
           builder: (context, params) => const PromotionsPageWidget(),
         ),
         FFRoute(
           name: 'AddProduct',
           path: '/addProduct',
+          requireAuth: true,
           asyncParams: {
             'pizzaDoc': getDoc(['pizza'], PizzaRecord.fromSnapshot),
           },
@@ -199,11 +212,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ProductsPage',
           path: '/productsPage',
+          requireAuth: true,
           builder: (context, params) => const ProductsPageWidget(),
         ),
         FFRoute(
           name: 'ProductDeckPage',
           path: '/productDeckPage',
+          requireAuth: true,
           asyncParams: {
             'documentProduct': getDoc(['pizza'], PizzaRecord.fromSnapshot),
           },
@@ -217,21 +232,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ManagerOrderListPage',
           path: '/managerOrderListPage',
+          requireAuth: true,
           builder: (context, params) => const ManagerOrderListPageWidget(),
         ),
         FFRoute(
           name: 'RegStorePage',
           path: '/regStorePage',
+          requireAuth: true,
           builder: (context, params) => const RegStorePageWidget(),
         ),
         FFRoute(
           name: 'Stores',
           path: '/stores',
+          requireAuth: true,
           builder: (context, params) => const StoresWidget(),
         ),
         FFRoute(
           name: 'OneOrderPage2',
           path: '/oneOrderPage2',
+          requireAuth: true,
           builder: (context, params) => OneOrderPage2Widget(
             order: params.getParam(
               'order',
@@ -244,11 +263,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'MyClients',
           path: '/myClients',
+          requireAuth: true,
           builder: (context, params) => const MyClientsWidget(),
         ),
         FFRoute(
           name: 'HomePageWholeStore',
           path: '/homePageWholeStore',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'HomePageWholeStore')
               : const HomePageWholeStoreWidget(),
@@ -256,6 +277,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'WholeStorePage',
           path: '/wholeStorePage',
+          requireAuth: true,
           builder: (context, params) => WholeStorePageWidget(
             wholeStore: params.getParam(
               'wholeStore',
@@ -276,26 +298,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'payment',
           path: '/payment',
+          requireAuth: true,
           builder: (context, params) => const PaymentWidget(),
         ),
         FFRoute(
           name: 'ProfileEdit',
           path: '/profileEdit',
+          requireAuth: true,
           builder: (context, params) => const ProfileEditWidget(),
         ),
         FFRoute(
           name: 'deleteInstructionPage',
           path: '/deleteInstructionPage',
+          requireAuth: true,
           builder: (context, params) => const DeleteInstructionPageWidget(),
         ),
         FFRoute(
           name: 'SupportPage',
           path: '/supportPage',
+          requireAuth: true,
           builder: (context, params) => const SupportPageWidget(),
         ),
         FFRoute(
           name: 'PrivacyPolicy',
           path: '/privacyPolicy',
+          requireAuth: true,
           builder: (context, params) => const PrivacyPolicyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

@@ -295,7 +295,7 @@ class _AdminPanelWidgetState extends State<AdminPanelWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    context.pushNamed('HomePageOld');
+                    context.pushNamed('HomePageWholeStore');
                   },
                   child: Container(
                     width: double.infinity,
