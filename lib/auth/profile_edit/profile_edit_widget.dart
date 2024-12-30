@@ -677,6 +677,29 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                     ),
                   ),
                 ),
+                if (false)
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed('paywall');
+                      },
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'v0q4jezo' /* Подписка */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),

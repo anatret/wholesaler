@@ -157,6 +157,7 @@ final parametersBuilderMap =
   'deleteInstructionPage': ParameterData.none(),
   'SupportPage': ParameterData.none(),
   'PrivacyPolicy': ParameterData.none(),
+  'paywall': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

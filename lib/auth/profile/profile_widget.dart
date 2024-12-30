@@ -157,43 +157,50 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   ),
                 ],
               ),
-              Builder(
-                builder: (context) {
-                  if (currentUserPhoto != '') {
-                    return Container(
-                      width: 120.0,
-                      height: 120.0,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.network(
-                        currentUserPhoto,
-                        fit: BoxFit.cover,
-                      ),
-                    );
-                  } else {
-                    return Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: Container(
-                        width: 120.0,
-                        height: 120.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Icon(
-                            Icons.photo_camera_outlined,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 36.0,
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Builder(
+                    builder: (context) {
+                      if (currentUserPhoto != '') {
+                        return Container(
+                          width: 120.0,
+                          height: 120.0,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
                           ),
-                        ),
-                      ),
-                    );
-                  }
-                },
+                          child: Image.network(
+                            currentUserPhoto,
+                            fit: BoxFit.cover,
+                          ),
+                        );
+                      } else {
+                        return Align(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: Container(
+                            width: 120.0,
+                            height: 120.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).alternate,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Icon(
+                                Icons.photo_camera_outlined,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 36.0,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 8.0),

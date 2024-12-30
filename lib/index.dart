@@ -40,3 +40,4 @@ export '/for_app/delete_instruction_page/delete_instruction_page_widget.dart'
 export '/for_app/support_page/support_page_widget.dart' show SupportPageWidget;
 export '/for_app/privacy_policy/privacy_policy_widget.dart'
     show PrivacyPolicyWidget;
+export '/payment/paywall/paywall_widget.dart' show PaywallWidget;

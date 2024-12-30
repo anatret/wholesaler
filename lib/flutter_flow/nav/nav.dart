@@ -324,6 +324,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/privacyPolicy',
           requireAuth: true,
           builder: (context, params) => const PrivacyPolicyWidget(),
+        ),
+        FFRoute(
+          name: 'paywall',
+          path: '/paywall',
+          requireAuth: true,
+          builder: (context, params) => const PaywallWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
