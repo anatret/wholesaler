@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'paywall_widget.dart' show PaywallWidget;
+import 'time_widget.dart' show TimeWidget;
 import 'package:flutter/material.dart';
 
-class PaywallModel extends FlutterFlowModel<PaywallWidget> {
+class TimeModel extends FlutterFlowModel<TimeWidget> {
   @override
   void initState(BuildContext context) {}
 

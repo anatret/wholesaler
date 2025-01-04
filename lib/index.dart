@@ -41,3 +41,9 @@ export '/for_app/support_page/support_page_widget.dart' show SupportPageWidget;
 export '/for_app/privacy_policy/privacy_policy_widget.dart'
     show PrivacyPolicyWidget;
 export '/payment/paywall/paywall_widget.dart' show PaywallWidget;
+export '/payment/one_port_create_card/one_port_create_card_widget.dart'
+    show OnePortCreateCardWidget;
+export '/payment/paid_page/paid_page_widget.dart' show PaidPageWidget;
+export '/pages/sand_notice_page/sand_notice_page_widget.dart'
+    show SandNoticePageWidget;
+export '/time/time_widget.dart' show TimeWidget;

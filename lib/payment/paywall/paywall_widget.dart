@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
 import 'paywall_model.dart';
 export 'paywall_model.dart';
@@ -152,15 +151,9 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        '${valueOrDefault<String>(
-                                          revenue_cat
-                                              .offerings!
-                                              .current!
-                                              .monthly!
-                                              .storeProduct
-                                              .priceString,
-                                          '0',
-                                        )}/месяц',
+                                        FFLocalizations.of(context).getText(
+                                          'cs4iy02z' /*  */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .override(
@@ -248,45 +241,8 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                               ].divide(const SizedBox(height: 12.0)),
                             ),
                             FFButtonWidget(
-                              onPressed: () async {
-                                _model.didPurchase = await revenue_cat
-                                    .purchasePackage(revenue_cat.offerings!
-                                        .current!.monthly!.identifier);
-                                if (_model.didPurchase == true) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Success',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: const Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
-                                    ),
-                                  );
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Faled!',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: const Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
-                                    ),
-                                  );
-                                }
-
-                                safeSetState(() {});
+                              onPressed: () {
+                                print('Button pressed ...');
                               },
                               text: FFLocalizations.of(context).getText(
                                 'fu7mxt24' /* Select Basic Plan */,

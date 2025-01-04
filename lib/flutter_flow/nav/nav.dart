@@ -219,13 +219,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ProductDeckPage',
           path: '/productDeckPage',
           requireAuth: true,
-          asyncParams: {
-            'documentProduct': getDoc(['pizza'], PizzaRecord.fromSnapshot),
-          },
           builder: (context, params) => ProductDeckPageWidget(
-            documentProduct: params.getParam(
-              'documentProduct',
-              ParamType.Document,
+            productRef: params.getParam(
+              'productRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['pizza'],
             ),
           ),
         ),
@@ -330,6 +329,44 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/paywall',
           requireAuth: true,
           builder: (context, params) => const PaywallWidget(),
+        ),
+        FFRoute(
+          name: 'onePortCreateCard',
+          path: '/onePortCreateCard',
+          requireAuth: true,
+          builder: (context, params) => const OnePortCreateCardWidget(),
+        ),
+        FFRoute(
+          name: 'paidPage',
+          path: '/paidPage',
+          requireAuth: true,
+          builder: (context, params) => PaidPageWidget(
+            paymentRef: params.getParam(
+              'paymentRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['payments'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'SandNoticePage',
+          path: '/sandNoticePage',
+          requireAuth: true,
+          builder: (context, params) => SandNoticePageWidget(
+            productRef: params.getParam(
+              'productRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['pizza'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'time',
+          path: '/time',
+          requireAuth: true,
+          builder: (context, params) => const TimeWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

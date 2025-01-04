@@ -645,8 +645,8 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             shape: BoxShape.rectangle,
                           ),
                           child: Row(
@@ -687,11 +687,11 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('paywall');
+                        context.pushNamed('onePortCreateCard');
                       },
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'v0q4jezo' /* Подписка */,
+                          'v0q4jezo' /* оплата */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',

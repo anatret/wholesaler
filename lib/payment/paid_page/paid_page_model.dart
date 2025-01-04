@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'paywall_widget.dart' show PaywallWidget;
+import 'paid_page_widget.dart' show PaidPageWidget;
 import 'package:flutter/material.dart';
 
-class PaywallModel extends FlutterFlowModel<PaywallWidget> {
+class PaidPageModel extends FlutterFlowModel<PaidPageWidget> {
   @override
   void initState(BuildContext context) {}
 

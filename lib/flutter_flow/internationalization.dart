@@ -797,10 +797,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '3',
       'ko': '3',
     },
-    'tkskr7e3': {
+    'byfvioes': {
       'ru': 'Редактировать',
-      'en': 'Edit',
-      'ko': '편집하다',
+      'en': '',
+      'ko': '',
+    },
+    'sk7jpox0': {
+      'ru': 'Рассылка',
+      'en': '',
+      'ko': '',
     },
     '4ogbz3li': {
       'ru': 'Select Size',
@@ -1268,11 +1273,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Grocery',
       'ko': '식료품점',
     },
-    'f4mepmin': {
-      'ru': 'еще...',
-      'en': 'Cigarettes',
-      'ko': '담배',
-    },
     'x7g6fhfr': {
       'ru': 'Водка',
       'en': 'Vodka',
@@ -1354,7 +1354,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '담배',
     },
     '8evzfba1': {
-      'ru': 'Сладкое',
+      'ru': 'Сигареты',
       'en': 'Cigarettes',
       'ko': '담배',
     },
@@ -1365,11 +1365,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '6x83o58t': {
       'ru': 'Другие',
-      'en': 'Cigarettes',
-      'ko': '담배',
-    },
-    'gueo7iai': {
-      'ru': 'скрыть...',
       'en': 'Cigarettes',
       'ko': '담배',
     },
@@ -1497,7 +1492,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
     },
     'v0q4jezo': {
-      'ru': 'Подписка',
+      'ru': 'оплата',
       'en': '',
       'ko': '',
     },
@@ -1638,6 +1633,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ko': '',
     },
+    'cs4iy02z': {
+      'ru': '',
+      'en': '',
+      'ko': '',
+    },
     '89yismec': {
       'ru': 'Access to basic features',
       'en': '',
@@ -1716,6 +1716,243 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'o9s81i7i': {
       'ru': 'Contact Sales',
+      'en': '',
+      'ko': '',
+    },
+  },
+  // onePortCreateCard
+  {
+    'z7pdqfh7': {
+      'ru': '₩ 50 000 в мясяц',
+      'en': '',
+      'ko': '',
+    },
+    'a05hnmt8': {
+      'ru': 'Номер карты',
+      'en': '',
+      'ko': '',
+    },
+    'a96w4dff': {
+      'ru': 'Expiry Date(YYYY-MM)',
+      'en': '',
+      'ko': '',
+    },
+    'rh5j4eys': {
+      'ru': 'CVV',
+      'en': '',
+      'ko': '',
+    },
+    'ap16n660': {
+      'ru': 'Пароль от карты, первые2 цифры',
+      'en': '',
+      'ko': '',
+    },
+    'lvkq0coq': {
+      'ru': '2 цифры',
+      'en': '',
+      'ko': '',
+    },
+    'nqcl5764': {
+      'ru': 'Имя владельца карты',
+      'en': '',
+      'ko': '',
+    },
+    'iid1ck7t': {
+      'ru': 'Дата рождения (ГГММДД)',
+      'en': '',
+      'ko': '',
+    },
+    '8n3itgzd': {
+      'ru': 'ГГММДД',
+      'en': '',
+      'ko': '',
+    },
+    '42nipi53': {
+      'ru': 'Электронная почта',
+      'en': '',
+      'ko': '',
+    },
+    '4gm9k1lb': {
+      'ru': '',
+      'en': '',
+      'ko': '',
+    },
+    '3ai10vr4': {
+      'ru': '100',
+      'en': '',
+      'ko': '',
+    },
+    'cfayf97t': {
+      'ru': '',
+      'en': '',
+      'ko': '',
+    },
+    'rghe9j6g': {
+      'ru': 'WholeSaler Satore plan 1mon',
+      'en': '',
+      'ko': '',
+    },
+    'y7mb0hxy': {
+      'ru': 'Saved Cards',
+      'en': '',
+      'ko': '',
+    },
+    'pq73eo2o': {
+      'ru': '•••• •••• •••• 4567',
+      'en': '',
+      'ko': '',
+    },
+    '8stt67mm': {
+      'ru': 'Expires 12/24',
+      'en': '',
+      'ko': '',
+    },
+    'jnf7t89t': {
+      'ru': '•••• •••• •••• 8901',
+      'en': '',
+      'ko': '',
+    },
+    'tcshl1sy': {
+      'ru': 'Expires 09/25',
+      'en': '',
+      'ko': '',
+    },
+    'h20a58g1': {
+      'ru': 'Оплатить',
+      'en': '',
+      'ko': '',
+    },
+    '7bwrcrwf': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+    },
+  },
+  // paidPage
+  {
+    'buv38oj1': {
+      'ru': 'Оплата прошла!',
+      'en': '',
+      'ko': '',
+    },
+    'dw3qe12s': {
+      'ru': 'Платеж успешно выполнен. Благодарим за покупку!',
+      'en': '',
+      'ko': '',
+    },
+    '6p73f7df': {
+      'ru': 'Сумма платежа',
+      'en': '',
+      'ko': '',
+    },
+    's73kwhw4': {
+      'ru': 'ID транзакции',
+      'en': '',
+      'ko': '',
+    },
+    'xnpjcmci': {
+      'ru': 'Название карты',
+      'en': '',
+      'ko': '',
+    },
+    'sqqeye5c': {
+      'ru': 'Тарифный план',
+      'en': '',
+      'ko': '',
+    },
+    'p6fe8knk': {
+      'ru': 'Провайдер',
+      'en': '',
+      'ko': '',
+    },
+    '42gcy9qs': {
+      'ru': 'Номер карты',
+      'en': '',
+      'ko': '',
+    },
+    'xcnx6o25': {
+      'ru': 'ОК',
+      'en': '',
+      'ko': '',
+    },
+  },
+  // SandNoticePage
+  {
+    '18to02or': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+    },
+    'ji1kxumb': {
+      'ru': 'Рассылка',
+      'en': '',
+      'ko': '',
+    },
+    '0289q13e': {
+      'ru': 'Заголовок сообщения',
+      'en': '',
+      'ko': '',
+    },
+    'p0k7eix3': {
+      'ru': 'Текст сообщение',
+      'en': '',
+      'ko': '',
+    },
+    '4l7xph33': {
+      'ru': 'Отправить',
+      'en': '',
+      'ko': '',
+    },
+  },
+  // time
+  {
+    'za7zb3jz': {
+      'ru': 'Выбор даты и времени',
+      'en': '',
+      'ko': '',
+    },
+    't0943rjt': {
+      'ru': 'Выберите дату и время',
+      'en': '',
+      'ko': '',
+    },
+    '28rwpvx2': {
+      'ru': 'Дата и время',
+      'en': '',
+      'ko': '',
+    },
+    '8zkezh90': {
+      'ru': 'Выбрать',
+      'en': '',
+      'ko': '',
+    },
+    'xz9fdsvk': {
+      'ru': 'Выбранное время',
+      'en': '',
+      'ko': '',
+    },
+    'xmsslevv': {
+      'ru': 'Дата',
+      'en': '',
+      'ko': '',
+    },
+    'iyet2ch3': {
+      'ru': 'Не выбрано',
+      'en': '',
+      'ko': '',
+    },
+    '5m256s8k': {
+      'ru': 'Время',
+      'en': '',
+      'ko': '',
+    },
+    'q0l61vkw': {
+      'ru': 'Не выбрано',
+      'en': '',
+      'ko': '',
+    },
+    'ejk6p8mi': {
+      'ru': 'Подтвердить',
       'en': '',
       'ko': '',
     },

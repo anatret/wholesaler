@@ -974,14 +974,11 @@ class _HomePageOldWidgetState extends State<HomePageOldWidget> {
                               context.pushNamed(
                                 'ProductDeckPage',
                                 queryParameters: {
-                                  'documentProduct': serializeParam(
-                                    offenOrderedListItem,
-                                    ParamType.Document,
+                                  'productRef': serializeParam(
+                                    offenOrderedListItem.reference,
+                                    ParamType.DocumentReference,
                                   ),
                                 }.withoutNulls,
-                                extra: <String, dynamic>{
-                                  'documentProduct': offenOrderedListItem,
-                                },
                               );
                             },
                             child: wrapWithModel(
@@ -1309,14 +1306,11 @@ class _HomePageOldWidgetState extends State<HomePageOldWidget> {
                                       context.pushNamed(
                                         'ProductDeckPage',
                                         queryParameters: {
-                                          'documentProduct': serializeParam(
-                                            llistOfPizzaItem,
-                                            ParamType.Document,
+                                          'productRef': serializeParam(
+                                            llistOfPizzaItem.reference,
+                                            ParamType.DocumentReference,
                                           ),
                                         }.withoutNulls,
-                                        extra: <String, dynamic>{
-                                          'documentProduct': llistOfPizzaItem,
-                                        },
                                       );
                                     }
                                   },

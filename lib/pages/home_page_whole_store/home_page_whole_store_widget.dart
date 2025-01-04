@@ -3159,14 +3159,11 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                               context.pushNamed(
                                 'ProductDeckPage',
                                 queryParameters: {
-                                  'documentProduct': serializeParam(
-                                    offenOrderedListItem,
-                                    ParamType.Document,
+                                  'productRef': serializeParam(
+                                    offenOrderedListItem.reference,
+                                    ParamType.DocumentReference,
                                   ),
                                 }.withoutNulls,
-                                extra: <String, dynamic>{
-                                  'documentProduct': offenOrderedListItem,
-                                },
                               );
                             },
                             child: wrapWithModel(

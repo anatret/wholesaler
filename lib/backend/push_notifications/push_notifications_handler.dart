@@ -132,8 +132,7 @@ final parametersBuilderMap =
   'ProductsPage': ParameterData.none(),
   'ProductDeckPage': (data) async => ParameterData(
         allParams: {
-          'documentProduct': await getDocumentParameter<PizzaRecord>(
-              data, 'documentProduct', PizzaRecord.fromSnapshot),
+          'productRef': getParameter<DocumentReference>(data, 'productRef'),
         },
       ),
   'ManagerOrderListPage': ParameterData.none(),
@@ -158,6 +157,18 @@ final parametersBuilderMap =
   'SupportPage': ParameterData.none(),
   'PrivacyPolicy': ParameterData.none(),
   'paywall': ParameterData.none(),
+  'onePortCreateCard': ParameterData.none(),
+  'paidPage': (data) async => ParameterData(
+        allParams: {
+          'paymentRef': getParameter<DocumentReference>(data, 'paymentRef'),
+        },
+      ),
+  'SandNoticePage': (data) async => ParameterData(
+        allParams: {
+          'productRef': getParameter<DocumentReference>(data, 'productRef'),
+        },
+      ),
+  'time': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

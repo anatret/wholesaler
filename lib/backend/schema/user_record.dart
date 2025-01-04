@@ -61,6 +61,11 @@ class UserRecord extends FirestoreRecord {
   DocumentReference? get store => _store;
   bool hasStore() => _store != null;
 
+  // "expireDate" field.
+  DateTime? _expireDate;
+  DateTime? get expireDate => _expireDate;
+  bool hasExpireDate() => _expireDate != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -76,6 +81,7 @@ class UserRecord extends FirestoreRecord {
         ? snapshotData['userType']
         : deserializeEnum<UserTypes>(snapshotData['userType']);
     _store = snapshotData['store'] as DocumentReference?;
+    _expireDate = snapshotData['expireDate'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -120,6 +126,7 @@ Map<String, dynamic> createUserRecordData({
   String? phoneNumber,
   UserTypes? userType,
   DocumentReference? store,
+  DateTime? expireDate,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -131,6 +138,7 @@ Map<String, dynamic> createUserRecordData({
       'phone_number': phoneNumber,
       'userType': userType,
       'store': store,
+      'expireDate': expireDate,
     }.withoutNulls,
   );
 
@@ -151,7 +159,8 @@ class UserRecordDocumentEquality implements Equality<UserRecord> {
         e1?.phoneNumber == e2?.phoneNumber &&
         listEquality.equals(e1?.addresses, e2?.addresses) &&
         e1?.userType == e2?.userType &&
-        e1?.store == e2?.store;
+        e1?.store == e2?.store &&
+        e1?.expireDate == e2?.expireDate;
   }
 
   @override
@@ -164,7 +173,8 @@ class UserRecordDocumentEquality implements Equality<UserRecord> {
         e?.phoneNumber,
         e?.addresses,
         e?.userType,
-        e?.store
+        e?.store,
+        e?.expireDate
       ]);
 
   @override
