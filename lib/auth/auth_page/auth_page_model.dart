@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'auth_page_widget.dart' show AuthPageWidget;
 import 'package:flutter/material.dart';
@@ -14,6 +15,8 @@ class AuthPageModel extends FlutterFlowModel<AuthPageWidget> {
   TextEditingController? passFieldTextController;
   late bool passFieldVisibility;
   String? Function(BuildContext, String?)? passFieldTextControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  StoresRecord? usersStore;
 
   @override
   void initState(BuildContext context) {

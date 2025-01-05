@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'auth_page_model.dart';
 export 'auth_page_model.dart';
@@ -292,22 +293,52 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                       }
 
                                       if (currentUserEmailVerified == true) {
-                                        if (currentUserDocument?.store !=
-                                            null) {
-                                          context.pushNamedAuth(
-                                              'HomePageWholeStore',
-                                              context.mounted);
-                                        } else {
-                                          await StoresRecord.collection
-                                              .doc()
-                                              .set(createStoresRecordData(
-                                                user: currentUserReference,
-                                              ));
+                                        _model.usersStore =
+                                            await queryStoresRecordOnce(
+                                          queryBuilder: (storesRecord) =>
+                                              storesRecord.where(
+                                            'user',
+                                            isEqualTo: currentUserReference,
+                                          ),
+                                          singleRecord: true,
+                                        ).then((s) => s.firstOrNull);
+                                        if ((_model.usersStore != null) ==
+                                            true) {
+                                          FFAppState().userStore =
+                                              _model.usersStore?.reference;
+                                          safeSetState(() {});
 
                                           context.pushNamedAuth(
-                                              'RegStorePage', context.mounted);
+                                            'HomePageWholeStore',
+                                            context.mounted,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          context.goNamedAuth(
+                                            'RegNewStore',
+                                            context.mounted,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                              ),
+                                            },
+                                          );
                                         }
                                       } else {
+                                        await authManager
+                                            .sendEmailVerification();
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
@@ -327,28 +358,9 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             );
                                           },
                                         );
-                                        await authManager
-                                            .sendEmailVerification();
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: const Text(
-                                                  'Почта не подтверждена!'),
-                                              content: const Text(
-                                                  'На вашу электронную почту отправлено письмо с запросом подтверждения. Пожалуйста, проверьте свою почту и следуйте инструкциям для завершения процесса.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
                                       }
+
+                                      safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'gnvt3by0' /* Логин */,

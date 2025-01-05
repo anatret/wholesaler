@@ -1,10 +1,10 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'reg_store_page_widget.dart' show RegStorePageWidget;
+import 'reg_new_store_widget.dart' show RegNewStoreWidget;
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-class RegStorePageModel extends FlutterFlowModel<RegStorePageWidget> {
+class RegNewStoreModel extends FlutterFlowModel<RegNewStoreWidget> {
   ///  State fields for stateful widgets in this page.
 
   bool isDataUploading1 = false;

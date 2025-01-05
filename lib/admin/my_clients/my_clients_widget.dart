@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/my_client_item/my_client_item_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -342,173 +341,161 @@ class _MyClientsWidgetState extends State<MyClientsWidget> {
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
-                            child: AuthUserStreamWidget(
-                              builder: (context) =>
-                                  StreamBuilder<List<ClientsRecord>>(
-                                stream: queryClientsRecord(
-                                  queryBuilder: (clientsRecord) =>
-                                      clientsRecord.where(
-                                    'store',
-                                    isEqualTo: currentUserDocument?.store,
-                                  ),
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
+                            child: StreamBuilder<List<ClientsRecord>>(
+                              stream: queryClientsRecord(),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
                                         ),
                                       ),
-                                    );
-                                  }
-                                  List<ClientsRecord>
-                                      listViewClientsRecordList =
-                                      snapshot.data!;
-                                  if (listViewClientsRecordList.isEmpty) {
-                                    return Image.asset(
-                                      'assets/images/Group_110.png',
-                                      fit: BoxFit.contain,
-                                    );
-                                  }
-
-                                  return ListView.separated(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      0,
-                                      0.0,
-                                      0,
-                                      44.0,
                                     ),
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: listViewClientsRecordList.length,
-                                    separatorBuilder: (_, __) =>
-                                        const SizedBox(height: 1.0),
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewClientsRecord =
-                                          listViewClientsRecordList[
-                                              listViewIndex];
-                                      return StreamBuilder<StoresRecord>(
-                                        stream: StoresRecord.getDocument(
-                                            listViewClientsRecord.store!),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                  ),
+                                  );
+                                }
+                                List<ClientsRecord> listViewClientsRecordList =
+                                    snapshot.data!;
+                                if (listViewClientsRecordList.isEmpty) {
+                                  return Image.asset(
+                                    'assets/images/Group_110.png',
+                                    fit: BoxFit.contain,
+                                  );
+                                }
+
+                                return ListView.separated(
+                                  padding: const EdgeInsets.fromLTRB(
+                                    0,
+                                    0.0,
+                                    0,
+                                    44.0,
+                                  ),
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: listViewClientsRecordList.length,
+                                  separatorBuilder: (_, __) =>
+                                      const SizedBox(height: 1.0),
+                                  itemBuilder: (context, listViewIndex) {
+                                    final listViewClientsRecord =
+                                        listViewClientsRecordList[
+                                            listViewIndex];
+                                    return StreamBuilder<StoresRecord>(
+                                      stream: StoresRecord.getDocument(
+                                          listViewClientsRecord.store!),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
                                                 ),
                                               ),
-                                            );
-                                          }
+                                            ),
+                                          );
+                                        }
 
-                                          final listViewStoresRecord =
-                                              snapshot.data!;
+                                        final listViewStoresRecord =
+                                            snapshot.data!;
 
-                                          return ListView(
-                                            padding: EdgeInsets.zero,
-                                            primary: false,
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.vertical,
-                                            children: [
-                                              StreamBuilder<List<UserRecord>>(
-                                                stream: queryUserRecord(
-                                                  queryBuilder: (userRecord) =>
-                                                      userRecord.where(
-                                                    'uid',
-                                                    isEqualTo:
-                                                        listViewClientsRecord
-                                                            .client?.id,
-                                                  ),
-                                                  singleRecord: true,
+                                        return ListView(
+                                          padding: EdgeInsets.zero,
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          children: [
+                                            StreamBuilder<List<UserRecord>>(
+                                              stream: queryUserRecord(
+                                                queryBuilder: (userRecord) =>
+                                                    userRecord.where(
+                                                  'uid',
+                                                  isEqualTo:
+                                                      listViewClientsRecord
+                                                          .client?.id,
                                                 ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 50.0,
-                                                        height: 50.0,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          valueColor:
-                                                              AlwaysStoppedAnimation<
-                                                                  Color>(
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                          ),
+                                                singleRecord: true,
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
                                                         ),
                                                       ),
-                                                    );
-                                                  }
-                                                  List<UserRecord>
-                                                      myClientItemUserRecordList =
-                                                      snapshot.data!;
-                                                  // Return an empty Container when the item does not exist.
-                                                  if (snapshot.data!.isEmpty) {
-                                                    return Container();
-                                                  }
-                                                  final myClientItemUserRecord =
-                                                      myClientItemUserRecordList
-                                                              .isNotEmpty
-                                                          ? myClientItemUserRecordList
-                                                              .first
-                                                          : null;
-
-                                                  return wrapWithModel(
-                                                    model: _model
-                                                        .myClientItemModels
-                                                        .getModel(
-                                                      listViewIndex.toString(),
-                                                      listViewIndex,
-                                                    ),
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    child: MyClientItemWidget(
-                                                      key: Key(
-                                                        'Keyf0p_${listViewIndex.toString()}',
-                                                      ),
-                                                      clientname:
-                                                          myClientItemUserRecord!
-                                                              .displayName,
-                                                      storename:
-                                                          listViewStoresRecord
-                                                              .storeName,
-                                                      clientimage:
-                                                          myClientItemUserRecord
-                                                              .photoUrl,
-                                                      clientStatus:
-                                                          listViewClientsRecord
-                                                              .clientStatus!,
                                                     ),
                                                   );
-                                                },
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
+                                                }
+                                                List<UserRecord>
+                                                    myClientItemUserRecordList =
+                                                    snapshot.data!;
+                                                // Return an empty Container when the item does not exist.
+                                                if (snapshot.data!.isEmpty) {
+                                                  return Container();
+                                                }
+                                                final myClientItemUserRecord =
+                                                    myClientItemUserRecordList
+                                                            .isNotEmpty
+                                                        ? myClientItemUserRecordList
+                                                            .first
+                                                        : null;
+
+                                                return wrapWithModel(
+                                                  model: _model
+                                                      .myClientItemModels
+                                                      .getModel(
+                                                    listViewIndex.toString(),
+                                                    listViewIndex,
+                                                  ),
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: MyClientItemWidget(
+                                                    key: Key(
+                                                      'Keyf0p_${listViewIndex.toString()}',
+                                                    ),
+                                                    clientname:
+                                                        myClientItemUserRecord!
+                                                            .displayName,
+                                                    storename:
+                                                        listViewStoresRecord
+                                                            .storeName,
+                                                    clientimage:
+                                                        myClientItemUserRecord
+                                                            .photoUrl,
+                                                    clientStatus:
+                                                        listViewClientsRecord
+                                                            .clientStatus!,
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
+                                );
+                              },
                             ),
                           ),
                         ],

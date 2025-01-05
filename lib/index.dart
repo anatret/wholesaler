@@ -46,4 +46,4 @@ export '/payment/one_port_create_card/one_port_create_card_widget.dart'
 export '/payment/paid_page/paid_page_widget.dart' show PaidPageWidget;
 export '/pages/sand_notice_page/sand_notice_page_widget.dart'
     show SandNoticePageWidget;
-export '/time/time_widget.dart' show TimeWidget;
+export '/auth/reg_new_store/reg_new_store_widget.dart' show RegNewStoreWidget;

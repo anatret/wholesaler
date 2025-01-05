@@ -2,11 +2,9 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/backend/schema/enums/enums.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -33,9 +31,6 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
     _model = createModel(context, () => OrderPageModel());
 
     _model.addressFieldFocusNode ??= FocusNode();
-
-    _model.homeFieldTextController ??= TextEditingController();
-    _model.homeFieldFocusNode ??= FocusNode();
 
     _model.roomFieldFocusNode ??= FocusNode();
 
@@ -585,145 +580,6 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                   .asValidator(context),
                                             ),
                                           ),
-                                          if (false)
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 8.0),
-                                              child: TextFormField(
-                                                controller: _model
-                                                    .homeFieldTextController,
-                                                focusNode:
-                                                    _model.homeFieldFocusNode,
-                                                onChanged: (_) =>
-                                                    EasyDebounce.debounce(
-                                                  '_model.homeFieldTextController',
-                                                  const Duration(milliseconds: 2000),
-                                                  () => safeSetState(() {}),
-                                                ),
-                                                autofocus: true,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  labelText: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'gdm7bdtg' /* Дом */,
-                                                  ),
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                  hintStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .accent4,
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                  ),
-                                                  prefixIcon: Icon(
-                                                    Icons.other_houses_outlined,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    size: 16.0,
-                                                  ),
-                                                  suffixIcon: _model
-                                                          .homeFieldTextController!
-                                                          .text
-                                                          .isNotEmpty
-                                                      ? InkWell(
-                                                          onTap: () async {
-                                                            _model
-                                                                .homeFieldTextController
-                                                                ?.clear();
-                                                            safeSetState(() {});
-                                                          },
-                                                          child: Icon(
-                                                            Icons.clear,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 16.0,
-                                                          ),
-                                                        )
-                                                      : null,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                validator: _model
-                                                    .homeFieldTextControllerValidator
-                                                    .asValidator(context),
-                                              ),
-                                            ),
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
@@ -1138,61 +994,6 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                   .asValidator(context),
                                             ),
                                           ),
-                                          if (false)
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 40.0),
-                                              child: FlutterFlowRadioButton(
-                                                options: [
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'j1xsq23e' /* Оплатить курьеру наличными */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'sbz01rip' /* Оплатить курьеру картой */,
-                                                  )
-                                                ].toList(),
-                                                onChanged: (val) =>
-                                                    safeSetState(() {}),
-                                                controller: _model
-                                                        .radioButtonValueController ??=
-                                                    FormFieldController<String>(
-                                                        null),
-                                                optionHeight: 32.0,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                selectedTextStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                buttonPosition:
-                                                    RadioButtonPosition.left,
-                                                direction: Axis.vertical,
-                                                radioButtonColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                inactiveRadioButtonColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                toggleable: false,
-                                                horizontalAlignment:
-                                                    WrapAlignment.start,
-                                                verticalAlignment:
-                                                    WrapCrossAlignment.start,
-                                              ),
-                                            ),
                                           FFButtonWidget(
                                             onPressed: () async {
                                               var orderRecordReference =
@@ -1205,9 +1006,6 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                   address: _model
                                                       .addressFieldTextController
                                                       .text,
-                                                  home: _model
-                                                      .homeFieldTextController
-                                                      .text,
                                                   room: _model
                                                       .roomFieldTextController
                                                       .text,
@@ -1217,14 +1015,11 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                   comment: _model
                                                       .commentFieldTextController
                                                       .text,
-                                                  typePay:
-                                                      _model.radioButtonValue,
                                                   userOrder:
                                                       currentUserReference,
                                                   orderStatus:
                                                       OrderStatus.newOrder,
-                                                  store: orderPagePizzaRecord
-                                                      .store,
+                                                  store: FFAppState().userStore,
                                                   wholeStore:
                                                       listViewStoreWholeStoresRecord
                                                           .reference,
@@ -1249,9 +1044,6 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                   address: _model
                                                       .addressFieldTextController
                                                       .text,
-                                                  home: _model
-                                                      .homeFieldTextController
-                                                      .text,
                                                   room: _model
                                                       .roomFieldTextController
                                                       .text,
@@ -1261,14 +1053,11 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                   comment: _model
                                                       .commentFieldTextController
                                                       .text,
-                                                  typePay:
-                                                      _model.radioButtonValue,
                                                   userOrder:
                                                       currentUserReference,
                                                   orderStatus:
                                                       OrderStatus.newOrder,
-                                                  store: orderPagePizzaRecord
-                                                      .store,
+                                                  store: FFAppState().userStore,
                                                   wholeStore:
                                                       listViewStoreWholeStoresRecord
                                                           .reference,
@@ -1286,9 +1075,9 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                               }, orderRecordReference);
                                               triggerPushNotification(
                                                 notificationTitle:
-                                                    'Новый заказ',
+                                                    'Новый заказ от ${myStoreListViewStoresRecord?.storeName}',
                                                 notificationText:
-                                                    '${myStoreListViewStoresRecord?.storeName} заказал на сумму ${formatNumber(
+                                                    ' заказ на сумму ${formatNumber(
                                                   functions.summPizza(_model
                                                       .newOrder!.cart
                                                       .toList()),
@@ -1298,16 +1087,6 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                       DecimalType.automatic,
                                                   currency: '₩ ',
                                                 )}',
-                                                notificationImageUrl:
-                                                    myStoreListViewStoresRecord
-                                                                    ?.logoImg !=
-                                                                null &&
-                                                            myStoreListViewStoresRecord
-                                                                    ?.logoImg !=
-                                                                ''
-                                                        ? myStoreListViewStoresRecord
-                                                            ?.logoImg
-                                                        : '',
                                                 notificationSound: 'default',
                                                 userRefs: [
                                                   listViewStoreWholeStoresRecord
@@ -1317,13 +1096,31 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                     'ManagerOrderListPage',
                                                 parameterData: {},
                                               );
-                                              FFAppState().cart = [];
                                               FFAppState().wholeSalerinCart =
                                                   null;
-                                              safeSetState(() {});
+                                              FFAppState().cart = [];
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title:
+                                                        const Text('Заказ оформлен'),
+                                                    content: const Text(
+                                                        'Ожидайте подтверждения или звонка от поставщика. Спасибо за заказ!'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: const Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
 
-                                              context
-                                                  .goNamed('UserOrderListPage');
+                                              context.pushNamed(
+                                                  'HomePageWholeStore');
 
                                               safeSetState(() {});
                                             },

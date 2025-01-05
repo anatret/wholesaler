@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'manager_order_list_page_model.dart';
 export 'manager_order_list_page_model.dart';
 
@@ -37,6 +38,8 @@ class _ManagerOrderListPageWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -430,6 +433,10 @@ class _ManagerOrderListPageWidgetState
                         .where(
                           'orderStatus',
                           isEqualTo: _model.orderStatus?.serialize(),
+                        )
+                        .where(
+                          'wholeStore',
+                          isEqualTo: FFAppState().userStore,
                         )
                         .orderBy('createDate', descending: true),
                   ),

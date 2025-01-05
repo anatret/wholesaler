@@ -44,6 +44,9 @@ class FFAppState extends ChangeNotifier {
       _wholeSalerinCart =
           prefs.getString('ff_wholeSalerinCart')?.ref ?? _wholeSalerinCart;
     });
+    _safeInit(() {
+      _userStore = prefs.getString('ff_userStore')?.ref ?? _userStore;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -159,6 +162,15 @@ class FFAppState extends ChangeNotifier {
     value != null
         ? prefs.setString('ff_wholeSalerinCart', value.path)
         : prefs.remove('ff_wholeSalerinCart');
+  }
+
+  DocumentReference? _userStore;
+  DocumentReference? get userStore => _userStore;
+  set userStore(DocumentReference? value) {
+    _userStore = value;
+    value != null
+        ? prefs.setString('ff_userStore', value.path)
+        : prefs.remove('ff_userStore');
   }
 }
 

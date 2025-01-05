@@ -352,11 +352,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Delivery address',
       'ko': '배송 주소',
     },
-    'gdm7bdtg': {
-      'ru': 'Дом',
-      'en': 'House',
-      'ko': '집',
-    },
     'oumzsela': {
       'ru': 'Квартира',
       'en': 'Apartment',
@@ -376,16 +371,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Комментарий',
       'en': 'Comment',
       'ko': '논평',
-    },
-    'j1xsq23e': {
-      'ru': 'Оплатить курьеру наличными',
-      'en': 'Pay the courier in cash',
-      'ko': '택배기사에게 현금으로 지불',
-    },
-    'sbz01rip': {
-      'ru': 'Оплатить курьеру картой',
-      'en': 'Pay the courier by card',
-      'ko': '택배기사님 카드로 결제하세요',
     },
     'qkwapva1': {
       'ru': 'Ваш магазин не зарегистрирован',
@@ -1904,57 +1889,72 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
     },
   },
-  // time
+  // RegNewStore
   {
-    'za7zb3jz': {
-      'ru': 'Выбор даты и времени',
+    'd8v5hh9p': {
+      'ru': '3',
+      'en': '3',
+      'ko': '3',
+    },
+    '0khfppdb': {
+      'ru': 'Магазин на проверке',
       'en': '',
       'ko': '',
     },
-    't0943rjt': {
-      'ru': 'Выберите дату и время',
+    'rltxqab8': {
+      'ru': 'Имя магазина',
+      'en': 'Store name',
+      'ko': '매장명',
+    },
+    'ps8uu2y1': {
+      'ru': 'Телефон',
+      'en': 'Telephone',
+      'ko': '전화',
+    },
+    'fiz35r22': {
+      'ru': 'Адрес',
+      'en': 'Address',
+      'ko': '주소',
+    },
+    '38a2rkie': {
+      'ru': 'Квартира',
+      'en': 'Apartment',
+      'ko': '아파트',
+    },
+    'ygw4ntty': {
+      'ru': 'САОБЧА',
+      'en': 'SAOBCHA',
+      'ko': '사오차',
+    },
+    '1wsqpox5': {
+      'ru': 'загрузите',
+      'en': 'download',
+      'ko': '다운로드',
+    },
+    'vnr3l8nx': {
+      'ru': 'фото акции',
+      'en': 'stock photo',
+      'ko': '액션 사진',
+    },
+    's2hyume6': {
+      'ru': 'Формат: JPG, PNG',
+      'en': 'Format: JPG, PNG',
+      'ko': '형식: JPG, PNG',
+    },
+    '99bbn9i4': {
+      'ru': 'Изменить фото',
+      'en': 'Edit photo',
+      'ko': '사진 변경',
+    },
+    'djgyqsmw': {
+      'ru': 'Зарегистрироваться',
       'en': '',
       'ko': '',
     },
-    '28rwpvx2': {
-      'ru': 'Дата и время',
-      'en': '',
-      'ko': '',
-    },
-    '8zkezh90': {
-      'ru': 'Выбрать',
-      'en': '',
-      'ko': '',
-    },
-    'xz9fdsvk': {
-      'ru': 'Выбранное время',
-      'en': '',
-      'ko': '',
-    },
-    'xmsslevv': {
-      'ru': 'Дата',
-      'en': '',
-      'ko': '',
-    },
-    'iyet2ch3': {
-      'ru': 'Не выбрано',
-      'en': '',
-      'ko': '',
-    },
-    '5m256s8k': {
-      'ru': 'Время',
-      'en': '',
-      'ko': '',
-    },
-    'q0l61vkw': {
-      'ru': 'Не выбрано',
-      'en': '',
-      'ko': '',
-    },
-    'ejk6p8mi': {
-      'ru': 'Подтвердить',
-      'en': '',
-      'ko': '',
+    '0uoq2qyh': {
+      'ru': 'Home',
+      'en': 'Home',
+      'ko': '집',
     },
   },
   // PizzaItem

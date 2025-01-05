@@ -363,10 +363,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'time',
-          path: '/time',
+          name: 'RegNewStore',
+          path: '/regNewStore',
           requireAuth: true,
-          builder: (context, params) => const TimeWidget(),
+          builder: (context, params) => const RegNewStoreWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

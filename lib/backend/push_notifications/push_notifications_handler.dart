@@ -168,7 +168,7 @@ final parametersBuilderMap =
           'productRef': getParameter<DocumentReference>(data, 'productRef'),
         },
       ),
-  'time': ParameterData.none(),
+  'RegNewStore': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

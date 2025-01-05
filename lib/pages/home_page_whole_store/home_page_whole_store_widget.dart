@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'home_page_whole_store_model.dart';
 export 'home_page_whole_store_model.dart';
@@ -44,6 +45,8 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return AuthUserStreamWidget(
       builder: (context) => StreamBuilder<List<PizzaRecord>>(
         stream: queryPizzaRecord(
@@ -59,7 +62,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
               .where(
                 'store',
                 isEqualTo: currentUserDocument?.userType == UserTypes.manager
-                    ? currentUserDocument?.store
+                    ? FFAppState().userStore
                     : null,
               ),
         ),

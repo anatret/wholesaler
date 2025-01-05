@@ -23,6 +23,10 @@
           "order": "ASCENDING"
         },
         {
+          "fieldPath": "wholeStore",
+          "order": "ASCENDING"
+        },
+        {
           "fieldPath": "createDate",
           "order": "DESCENDING"
         }

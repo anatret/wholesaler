@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'home_page_old_model.dart';
 export 'home_page_old_model.dart';
@@ -43,6 +44,8 @@ class _HomePageOldWidgetState extends State<HomePageOldWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return AuthUserStreamWidget(
       builder: (context) => StreamBuilder<List<PizzaRecord>>(
         stream: queryPizzaRecord(
@@ -58,7 +61,7 @@ class _HomePageOldWidgetState extends State<HomePageOldWidget> {
               .where(
                 'store',
                 isEqualTo: currentUserDocument?.userType == UserTypes.manager
-                    ? currentUserDocument?.store
+                    ? FFAppState().userStore
                     : null,
               ),
         ),
@@ -1284,7 +1287,7 @@ class _HomePageOldWidgetState extends State<HomePageOldWidget> {
                                   } else if ((currentUserDocument?.userType ==
                                               UserTypes.manager) &&
                                           (llistOfPizzaItem.store ==
-                                              currentUserDocument?.store)
+                                              FFAppState().userStore)
                                       ? true
                                       : false) {
                                     return true;

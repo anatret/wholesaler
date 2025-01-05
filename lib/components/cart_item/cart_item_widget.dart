@@ -130,215 +130,232 @@ class _CartItemWidgetState extends State<CartItemWidget>
                     ),
                   ),
                   Flexible(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Stack(
                       children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 6.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              widget.name,
-                              'Название продукта',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 8.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              widget.deskription,
-                              'Описание продукта',
-                            ).maybeHandleOverflow(
-                              maxChars: 50,
-                              replacement: '…',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .labelSmall
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: const Color(0xFF5B5B5B),
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                        ),
-                        Row(
+                        Column(
                           mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 8.0, 0.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFFFF0E6),
-                                  borderRadius: BorderRadius.circular(16.0),
+                                  0.0, 0.0, 0.0, 6.0),
+                              child: Text(
+                                valueOrDefault<String>(
+                                  widget.name,
+                                  'Название продукта',
                                 ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        if (_model.value != 1) {
-                                          _model.value = _model.value + -1;
-                                          safeSetState(() {});
-                                          FFAppState().updateCartAtIndex(
-                                            widget.index!,
-                                            (e) => e
-                                              ..count = valueOrDefault<int>(
-                                                _model.value,
-                                                1,
-                                              ),
-                                          );
-                                          FFAppState().update(() {});
-                                        }
-                                      },
-                                      child: Container(
-                                        width: 48.0,
-                                        height: 48.0,
-                                        decoration: const BoxDecoration(),
-                                        alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'nh73muzj' /* - */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
+                                style: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 9.0, 0.0, 9.0),
-                                      child: Text(
-                                        '${formatNumber(
-                                          _model.value,
-                                          formatType: FormatType.decimal,
-                                          decimalType: DecimalType.automatic,
-                                        )} шт',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        _model.value = _model.value + 1;
-                                        safeSetState(() {});
-                                        FFAppState().updateCartAtIndex(
-                                          widget.index!,
-                                          (e) => e
-                                            ..count = valueOrDefault<int>(
-                                              _model.value,
-                                              1,
-                                            ),
-                                        );
-                                        FFAppState().update(() {});
-                                      },
-                                      child: Container(
-                                        width: 48.0,
-                                        height: 48.0,
-                                        decoration: const BoxDecoration(),
-                                        alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '8uyyjytm' /* + */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
                               ),
                             ),
-                            Container(
-                              height: 48.0,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFFFF0E6),
-                                borderRadius: BorderRadius.circular(16.0),
-                              ),
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    18.0, 9.0, 18.0, 9.0),
-                                child: Text(
-                                  formatNumber(
-                                    functions.summFunction(
-                                        _model.value, widget.price!),
-                                    formatType: FormatType.decimal,
-                                    decimalType: DecimalType.automatic,
-                                    currency: '₩',
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodySmall
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 8.0),
+                              child: Text(
+                                valueOrDefault<String>(
+                                  widget.deskription,
+                                  'Описание продукта',
+                                ).maybeHandleOverflow(
+                                  maxChars: 50,
+                                  replacement: '…',
                                 ),
+                                style: FlutterFlowTheme.of(context)
+                                    .labelSmall
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: const Color(0xFF5B5B5B),
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 8.0, 0.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFFFF0E6),
+                                      borderRadius: BorderRadius.circular(16.0),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (_model.value != 1) {
+                                              _model.value = _model.value + -1;
+                                              safeSetState(() {});
+                                              FFAppState().updateCartAtIndex(
+                                                widget.index!,
+                                                (e) => e
+                                                  ..count = valueOrDefault<int>(
+                                                    _model.value,
+                                                    1,
+                                                  ),
+                                              );
+                                              FFAppState().update(() {});
+                                            }
+                                          },
+                                          child: Container(
+                                            width: 48.0,
+                                            height: 48.0,
+                                            decoration: const BoxDecoration(),
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'nh73muzj' /* - */,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 9.0, 0.0, 9.0),
+                                          child: Text(
+                                            '${formatNumber(
+                                              _model.value,
+                                              formatType: FormatType.decimal,
+                                              decimalType:
+                                                  DecimalType.automatic,
+                                            )} шт',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodySmall
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            _model.value = _model.value + 1;
+                                            safeSetState(() {});
+                                            FFAppState().updateCartAtIndex(
+                                              widget.index!,
+                                              (e) => e
+                                                ..count = valueOrDefault<int>(
+                                                  _model.value,
+                                                  1,
+                                                ),
+                                            );
+                                            FFAppState().update(() {});
+                                          },
+                                          child: Container(
+                                            width: 48.0,
+                                            height: 48.0,
+                                            decoration: const BoxDecoration(),
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '8uyyjytm' /* + */,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: 48.0,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFFFF0E6),
+                                    borderRadius: BorderRadius.circular(16.0),
+                                  ),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        18.0, 9.0, 18.0, 9.0),
+                                    child: Text(
+                                      formatNumber(
+                                        functions.summFunction(
+                                            _model.value, widget.price!),
+                                        formatType: FormatType.decimal,
+                                        decimalType: DecimalType.automatic,
+                                        currency: '₩',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
+                        ),
+                        Align(
+                          alignment: const AlignmentDirectional(1.0, -1.0),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 8.0, 8.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                FFAppState().removeFromCart(widget.cartItem!);
+                                FFAppState().update(() {});
+                                if (!(FFAppState().cart.isNotEmpty)) {
+                                  FFAppState().wholeSalerinCart = null;
+                                  safeSetState(() {});
+                                }
+                              },
+                              child: Icon(
+                                Icons.close,
+                                color: FlutterFlowTheme.of(context).accent4,
+                                size: 30.0,
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 8.0, 0.0),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  FFAppState().removeFromCart(widget.cartItem!);
-                  FFAppState().update(() {});
-                  if (!(FFAppState().cart.isNotEmpty)) {
-                    FFAppState().wholeSalerinCart = null;
-                    safeSetState(() {});
-                  }
-                },
-                child: Icon(
-                  Icons.close,
-                  color: FlutterFlowTheme.of(context).accent4,
-                  size: 30.0,
-                ),
               ),
             ),
           ],
