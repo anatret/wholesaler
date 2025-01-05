@@ -309,18 +309,8 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                           safeSetState(() {});
 
                                           context.pushNamedAuth(
-                                            'HomePageWholeStore',
-                                            context.mounted,
-                                            extra: <String, dynamic>{
-                                              kTransitionInfoKey:
-                                                  const TransitionInfo(
-                                                hasTransition: true,
-                                                transitionType:
-                                                    PageTransitionType
-                                                        .rightToLeft,
-                                              ),
-                                            },
-                                          );
+                                              'HomePageWholeStore',
+                                              context.mounted);
                                         } else {
                                           context.goNamedAuth(
                                             'RegNewStore',

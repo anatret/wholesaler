@@ -24,6 +24,8 @@ class OrderPageModel extends FlutterFlowModel<OrderPageWidget> {
   String? Function(BuildContext, String?)? commentFieldTextControllerValidator;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   OrderRecord? newOrder;
+  // Stores action output result for [Backend Call - Read Document] action in Button widget.
+  StoresRecord? wholestore;
 
   @override
   void initState(BuildContext context) {}

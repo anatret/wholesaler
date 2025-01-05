@@ -172,6 +172,12 @@ class FFAppState extends ChangeNotifier {
         ? prefs.setString('ff_userStore', value.path)
         : prefs.remove('ff_userStore');
   }
+
+  int _daysUntilExpiryDay = 0;
+  int get daysUntilExpiryDay => _daysUntilExpiryDay;
+  set daysUntilExpiryDay(int value) {
+    _daysUntilExpiryDay = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

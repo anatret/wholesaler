@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'home_page_whole_store_model.dart';
@@ -31,6 +32,9 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageWholeStoreModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     _model.searchTextFieldTextController ??= TextEditingController();
     _model.searchTextFieldFocusNode ??= FocusNode();
