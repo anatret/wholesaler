@@ -779,7 +779,7 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'vnr3l8nx' /* фото акции */,
+                              'vnr3l8nx' /* фото саобча */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium

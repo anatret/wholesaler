@@ -919,7 +919,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '다운로드',
     },
     'k83lppxf': {
-      'ru': 'фото акции',
+      'ru': 'фото саобча',
       'en': 'stock photo',
       'ko': '액션 사진',
     },
@@ -1932,7 +1932,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '다운로드',
     },
     'vnr3l8nx': {
-      'ru': 'фото акции',
+      'ru': 'фото саобча',
       'en': 'stock photo',
       'ko': '액션 사진',
     },

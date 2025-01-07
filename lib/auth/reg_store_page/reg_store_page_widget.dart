@@ -870,7 +870,7 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'k83lppxf' /* фото акции */,
+                                  'k83lppxf' /* фото саобча */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
