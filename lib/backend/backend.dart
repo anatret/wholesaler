@@ -12,6 +12,7 @@ import 'schema/baners_record.dart';
 import 'schema/stores_record.dart';
 import 'schema/clients_record.dart';
 import 'schema/payments_record.dart';
+import 'schema/store_verifaed_massage_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -27,6 +28,7 @@ export 'schema/baners_record.dart';
 export 'schema/stores_record.dart';
 export 'schema/clients_record.dart';
 export 'schema/payments_record.dart';
+export 'schema/store_verifaed_massage_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
 Future<int> queryUserRecordCount({
@@ -282,6 +284,43 @@ Future<List<PaymentsRecord>> queryPaymentsRecordOnce({
     queryCollectionOnce(
       PaymentsRecord.collection,
       PaymentsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query StoreVerifaedMassageRecords (as a Stream and as a Future).
+Future<int> queryStoreVerifaedMassageRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      StoreVerifaedMassageRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<StoreVerifaedMassageRecord>> queryStoreVerifaedMassageRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      StoreVerifaedMassageRecord.collection,
+      StoreVerifaedMassageRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<StoreVerifaedMassageRecord>> queryStoreVerifaedMassageRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      StoreVerifaedMassageRecord.collection,
+      StoreVerifaedMassageRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/promotion/promotion_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -22,6 +24,8 @@ class _AdminPanelWidgetState extends State<AdminPanelWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AdminPanelModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -463,6 +467,77 @@ class _AdminPanelWidgetState extends State<AdminPanelWidget> {
                         color: Colors.transparent,
                       ),
                       borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
+                if (currentUserDocument?.userType == UserTypes.admin)
+                  AuthUserStreamWidget(
+                    builder: (context) => Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            'ksr0gpws' /* Супер Админ */,
+                          ),
+                          textAlign: TextAlign.start,
+                          style:
+                              FlutterFlowTheme.of(context).titleLarge.override(
+                                    fontFamily: 'Outfit',
+                                    letterSpacing: 0.0,
+                                  ),
+                        ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(
+                              'checkStoreList',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: const TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.scale,
+                                  alignment: Alignment.bottomCenter,
+                                ),
+                              },
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 48.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(16.0),
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
+                            ),
+                            child: Align(
+                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'xltywj6b' /* Заявки на проверку магазинов */,
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ].divide(const SizedBox(height: 6.0)),
                     ),
                   ),
               ].divide(const SizedBox(height: 8.0)),

@@ -38,6 +38,8 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
 
     _model.commentFieldTextController ??= TextEditingController();
     _model.commentFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -225,7 +227,10 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
-                                          containerPizzaRecord.img,
+                                          valueOrDefault<String>(
+                                            containerPizzaRecord.img,
+                                            'https://firebasestorage.googleapis.com/v0/b/f-f-pizza-7sui91.appspot.com/o/users%2FxTStZ2i0YXRPhMeUfHAa5l7U1W73%2Fuploads%2F1735104992906146.jpg?alt=media&token=ee7b07e9-1d04-485c-bbdd-06fcb3a1f355',
+                                          ),
                                           width: 110.0,
                                           height: 110.0,
                                           fit: BoxFit.contain,
@@ -982,38 +987,6 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                           fontFamily: 'Readex Pro',
                                           letterSpacing: 0.0,
                                         ),
-                                  ),
-                                  FFButtonWidget(
-                                    onPressed: () async {
-                                      context.pushNamed('RegStorePage');
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      'wso622qm' /* Регистрация магазина */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      width: double.infinity,
-                                      height: 48.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: Colors.white,
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
-                                      ),
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
                                   ),
                                 ].divide(const SizedBox(height: 10.0)),
                               );

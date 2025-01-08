@@ -66,6 +66,8 @@ class _FavoritItemWidgetState extends State<FavoritItemWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

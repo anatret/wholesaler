@@ -35,6 +35,8 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProductDeckPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

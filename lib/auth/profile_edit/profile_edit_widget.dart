@@ -37,6 +37,8 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
     _model.phoneFieldTextController ??=
         TextEditingController(text: currentPhoneNumber);
     _model.phoneFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

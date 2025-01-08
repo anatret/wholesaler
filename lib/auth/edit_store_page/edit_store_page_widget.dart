@@ -1,31 +1,38 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'reg_store_page_model.dart';
-export 'reg_store_page_model.dart';
+import 'edit_store_page_model.dart';
+export 'edit_store_page_model.dart';
 
-class RegStorePageWidget extends StatefulWidget {
-  const RegStorePageWidget({super.key});
+class EditStorePageWidget extends StatefulWidget {
+  const EditStorePageWidget({
+    super.key,
+    required this.storeRef,
+  });
+
+  final DocumentReference? storeRef;
 
   @override
-  State<RegStorePageWidget> createState() => _RegStorePageWidgetState();
+  State<EditStorePageWidget> createState() => _EditStorePageWidgetState();
 }
 
-class _RegStorePageWidgetState extends State<RegStorePageWidget> {
-  late RegStorePageModel _model;
+class _EditStorePageWidgetState extends State<EditStorePageWidget> {
+  late EditStorePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RegStorePageModel());
+    _model = createModel(context, () => EditStorePageModel());
 
     _model.nameFieldFocusNode ??= FocusNode();
 
@@ -36,6 +43,8 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
     _model.roomStoreFocusNode ??= FocusNode();
 
     _model.saobchaFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -60,33 +69,33 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
-            title: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+            title: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        decoration: const BoxDecoration(),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.safePop();
-                                },
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pop();
+                        },
+                        child: Container(
+                          decoration: const BoxDecoration(),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 5.0, 0.0),
                                 child: Icon(
                                   Icons.arrow_back,
                                   color:
@@ -94,52 +103,43 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                                   size: 24.0,
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                      Stack(
-                        alignment: const AlignmentDirectional(1.0, -1.0),
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 2.0, 5.0, 0.0),
-                            child: Icon(
-                              Icons.notifications_none,
-                              color: Color(0xFF3C3C3C),
-                              size: 24.0,
-                            ),
+                      badges.Badge(
+                        badgeContent: Text(
+                          FFLocalizations.of(context).getText(
+                            'mn2d1u35' /* 1 */,
                           ),
-                          Container(
-                            width: 16.0,
-                            height: 16.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primary,
-                              shape: BoxShape.circle,
-                            ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'h20ucvrm' /* 3 */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Readex Pro',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 9.0,
+                                    color: Colors.white,
+                                    fontSize: 12.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
                                   ),
-                            ),
-                          ),
-                        ],
+                        ),
+                        showBadge: true,
+                        shape: badges.BadgeShape.circle,
+                        badgeColor: FlutterFlowTheme.of(context).primary,
+                        elevation: 0.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                        position: badges.BadgePosition.topEnd(),
+                        animationType: badges.BadgeAnimationType.scale,
+                        toAnimate: true,
+                        child: Icon(
+                          Icons.notifications_outlined,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 26.0,
+                        ),
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             actions: const [],
             centerTitle: false,
@@ -151,14 +151,8 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
           top: true,
           child: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-            child: StreamBuilder<List<StoresRecord>>(
-              stream: queryStoresRecord(
-                queryBuilder: (storesRecord) => storesRecord.where(
-                  'user',
-                  isEqualTo: currentUserReference,
-                ),
-                singleRecord: true,
-              ),
+            child: StreamBuilder<StoresRecord>(
+              stream: StoresRecord.getDocument(widget.storeRef!),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
@@ -174,10 +168,8 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                     ),
                   );
                 }
-                List<StoresRecord> listViewStoresRecordList = snapshot.data!;
-                final listViewStoresRecord = listViewStoresRecordList.isNotEmpty
-                    ? listViewStoresRecordList.first
-                    : null;
+
+                final listViewStoresRecord = snapshot.data!;
 
                 return ListView(
                   padding: const EdgeInsets.fromLTRB(
@@ -197,16 +189,38 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            listViewStoresRecord!.storeIsVerified
-                                ? 'Проверка пройдена'
-                                : 'Магазин на проверке',
+                            () {
+                              if ((listViewStoresRecord.verifyStatus == null) ||
+                                  (listViewStoresRecord.verifyStatus ==
+                                      VerifyStatus.newApplication)) {
+                                return 'Магазин на проверке';
+                              } else if (listViewStoresRecord.verifyStatus ==
+                                  VerifyStatus.done) {
+                                return 'Проверка пройдена';
+                              } else {
+                                return 'Проверка не пройдена';
+                              }
+                            }(),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: listViewStoresRecord.storeIsVerified
-                                      ? FlutterFlowTheme.of(context).success
-                                      : FlutterFlowTheme.of(context).error,
+                                  color: () {
+                                    if ((listViewStoresRecord.verifyStatus ==
+                                            null) ||
+                                        (listViewStoresRecord.verifyStatus ==
+                                            VerifyStatus.newApplication)) {
+                                      return FlutterFlowTheme.of(context)
+                                          .primary;
+                                    } else if (listViewStoresRecord
+                                            .verifyStatus ==
+                                        VerifyStatus.done) {
+                                      return FlutterFlowTheme.of(context)
+                                          .success;
+                                    } else {
+                                      return FlutterFlowTheme.of(context).error;
+                                    }
+                                  }(),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
@@ -984,128 +998,96 @@ class _RegStorePageWidgetState extends State<RegStorePageWidget> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          if ((listViewStoresRecord != null) == true) {
-                            await listViewStoresRecord.reference
-                                .update(createStoresRecordData(
-                              storeName: _model.nameFieldTextController.text,
-                              address: _model.addressStoreTextController.text,
-                              phone: _model.phoneFieldTextController.text,
-                              room: _model.roomStoreTextController.text,
-                              saobcha: _model.saobchaTextController.text,
-                              logoImg: _model.uploadedFileUrl1 != ''
-                                  ? _model.uploadedFileUrl1
-                                  : listViewStoresRecord.logoImg,
-                              saobchaImg: _model.uploadedFileUrl2 != ''
-                                  ? _model.uploadedFileUrl2
-                                  : listViewStoresRecord.saobchaImg,
-                            ));
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: const Text('Изменение магазина'),
-                                  content: const Text('Изменения сохранены'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: const Text('Ok'),
+                    if (listViewStoresRecord.verifyStatus != VerifyStatus.done)
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            if ((listViewStoresRecord != null) == true) {
+                              await listViewStoresRecord.reference
+                                  .update(createStoresRecordData(
+                                storeName: _model.nameFieldTextController.text,
+                                address: _model.addressStoreTextController.text,
+                                phone: _model.phoneFieldTextController.text,
+                                room: _model.roomStoreTextController.text,
+                                saobcha: _model.saobchaTextController.text,
+                                logoImg: _model.uploadedFileUrl1 != ''
+                                    ? _model.uploadedFileUrl1
+                                    : listViewStoresRecord.logoImg,
+                                saobchaImg: _model.uploadedFileUrl2 != ''
+                                    ? _model.uploadedFileUrl2
+                                    : listViewStoresRecord.saobchaImg,
+                                verifyStatus:
+                                    listViewStoresRecord.verifyStatus ==
+                                            VerifyStatus.done
+                                        ? VerifyStatus.done
+                                        : VerifyStatus.newApplication,
+                              ));
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: const Text('Изменение магазина'),
+                                    content: const Text('Изменения сохранены'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: const Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              if (listViewStoresRecord.verifyStatus ==
+                                  VerifyStatus.done) {
+                                context.goNamed('Profile');
+                              } else {
+                                context.goNamed(
+                                  'AuthPage',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: const TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.scale,
+                                      alignment: Alignment.bottomCenter,
                                     ),
-                                  ],
+                                  },
                                 );
-                              },
-                            );
-                          } else {
-                            var storesRecordReference =
-                                StoresRecord.collection.doc();
-                            await storesRecordReference
-                                .set(createStoresRecordData(
-                              storeName: _model.nameFieldTextController.text,
-                              address: _model.addressStoreTextController.text,
-                              phone: _model.phoneFieldTextController.text,
-                              room: _model.roomStoreTextController.text,
-                              itsCoupang: false,
-                              saobcha: _model.saobchaTextController.text,
-                              logoImg: _model.uploadedFileUrl1,
-                              saobchaImg: _model.uploadedFileUrl2,
-                              storeIsVerified: false,
-                              user: currentUserReference,
-                            ));
-                            _model.newStoreID =
-                                StoresRecord.getDocumentFromData(
-                                    createStoresRecordData(
-                                      storeName:
-                                          _model.nameFieldTextController.text,
-                                      address: _model
-                                          .addressStoreTextController.text,
-                                      phone:
-                                          _model.phoneFieldTextController.text,
-                                      room: _model.roomStoreTextController.text,
-                                      itsCoupang: false,
-                                      saobcha:
-                                          _model.saobchaTextController.text,
-                                      logoImg: _model.uploadedFileUrl1,
-                                      saobchaImg: _model.uploadedFileUrl2,
-                                      storeIsVerified: false,
-                                      user: currentUserReference,
-                                    ),
-                                    storesRecordReference);
-                            FFAppState().userStore =
-                                _model.newStoreID?.reference;
-                            safeSetState(() {});
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: const Text('Создание магазина'),
-                                  content: const Text('Магазин создан'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: const Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          }
 
-                          context.goNamed('Profile');
-
-                          safeSetState(() {});
-                        },
-                        text: (listViewStoresRecord != null) == true
-                            ? 'Изменить'
-                            : 'Зарегистрироваться',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 48.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
+                                return;
+                              }
+                            } else {
+                              return;
+                            }
+                          },
+                          text: (listViewStoresRecord != null) == true
+                              ? 'Изменить'
+                              : 'Зарегистрироваться',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 48.0,
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                            borderSide: const BorderSide(
+                              color: Colors.transparent,
+                            ),
+                            borderRadius: BorderRadius.circular(30.0),
                           ),
-                          borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
-                    ),
                   ],
                 );
               },

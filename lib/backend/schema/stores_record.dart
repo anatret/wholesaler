@@ -5,6 +5,7 @@ import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -57,15 +58,15 @@ class StoresRecord extends FirestoreRecord {
   String get saobchaImg => _saobchaImg ?? '';
   bool hasSaobchaImg() => _saobchaImg != null;
 
-  // "storeIsVerified" field.
-  bool? _storeIsVerified;
-  bool get storeIsVerified => _storeIsVerified ?? false;
-  bool hasStoreIsVerified() => _storeIsVerified != null;
-
   // "logoImg" field.
   String? _logoImg;
   String get logoImg => _logoImg ?? '';
   bool hasLogoImg() => _logoImg != null;
+
+  // "verifyStatus" field.
+  VerifyStatus? _verifyStatus;
+  VerifyStatus? get verifyStatus => _verifyStatus;
+  bool hasVerifyStatus() => _verifyStatus != null;
 
   void _initializeFields() {
     _storeName = snapshotData['storeName'] as String?;
@@ -76,8 +77,10 @@ class StoresRecord extends FirestoreRecord {
     _itsCoupang = snapshotData['itsCoupang'] as bool?;
     _saobcha = snapshotData['saobcha'] as String?;
     _saobchaImg = snapshotData['saobchaImg'] as String?;
-    _storeIsVerified = snapshotData['storeIsVerified'] as bool?;
     _logoImg = snapshotData['logoImg'] as String?;
+    _verifyStatus = snapshotData['verifyStatus'] is VerifyStatus
+        ? snapshotData['verifyStatus']
+        : deserializeEnum<VerifyStatus>(snapshotData['verifyStatus']);
   }
 
   static CollectionReference get collection =>
@@ -115,8 +118,12 @@ class StoresRecord extends FirestoreRecord {
           'itsCoupang': snapshot.data['itsCoupang'],
           'saobcha': snapshot.data['saobcha'],
           'saobchaImg': snapshot.data['saobchaImg'],
-          'storeIsVerified': snapshot.data['storeIsVerified'],
           'logoImg': snapshot.data['logoImg'],
+          'verifyStatus': convertAlgoliaParam<VerifyStatus>(
+            snapshot.data['verifyStatus'],
+            ParamType.Enum,
+            false,
+          ),
         },
         StoresRecord.collection.doc(snapshot.objectID),
       );
@@ -161,8 +168,8 @@ Map<String, dynamic> createStoresRecordData({
   bool? itsCoupang,
   String? saobcha,
   String? saobchaImg,
-  bool? storeIsVerified,
   String? logoImg,
+  VerifyStatus? verifyStatus,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -174,8 +181,8 @@ Map<String, dynamic> createStoresRecordData({
       'itsCoupang': itsCoupang,
       'saobcha': saobcha,
       'saobchaImg': saobchaImg,
-      'storeIsVerified': storeIsVerified,
       'logoImg': logoImg,
+      'verifyStatus': verifyStatus,
     }.withoutNulls,
   );
 
@@ -195,8 +202,8 @@ class StoresRecordDocumentEquality implements Equality<StoresRecord> {
         e1?.itsCoupang == e2?.itsCoupang &&
         e1?.saobcha == e2?.saobcha &&
         e1?.saobchaImg == e2?.saobchaImg &&
-        e1?.storeIsVerified == e2?.storeIsVerified &&
-        e1?.logoImg == e2?.logoImg;
+        e1?.logoImg == e2?.logoImg &&
+        e1?.verifyStatus == e2?.verifyStatus;
   }
 
   @override
@@ -209,8 +216,8 @@ class StoresRecordDocumentEquality implements Equality<StoresRecord> {
         e?.itsCoupang,
         e?.saobcha,
         e?.saobchaImg,
-        e?.storeIsVerified,
-        e?.logoImg
+        e?.logoImg,
+        e?.verifyStatus
       ]);
 
   @override

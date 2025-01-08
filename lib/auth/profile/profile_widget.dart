@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -22,6 +23,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfileModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -228,37 +231,83 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    context.pushNamed('RegStorePage');
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 48.0,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF3F3F3),
-                      borderRadius: BorderRadius.circular(16.0),
+                child: StreamBuilder<List<StoresRecord>>(
+                  stream: queryStoresRecord(
+                    queryBuilder: (storesRecord) => storesRecord.where(
+                      'user',
+                      isEqualTo: currentUserReference,
                     ),
-                    alignment: const AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          'tfz46wt5' /* Мой магазин */,
-                        ),
-                        textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              letterSpacing: 0.0,
-                            ),
-                      ),
-                    ),
+                    singleRecord: true,
                   ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).primary,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    List<StoresRecord> containerStoresRecordList =
+                        snapshot.data!;
+                    // Return an empty Container when the item does not exist.
+                    if (snapshot.data!.isEmpty) {
+                      return Container();
+                    }
+                    final containerStoresRecord =
+                        containerStoresRecordList.isNotEmpty
+                            ? containerStoresRecordList.first
+                            : null;
+
+                    return InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          'EditStorePage',
+                          queryParameters: {
+                            'storeRef': serializeParam(
+                              containerStoresRecord?.reference,
+                              ParamType.DocumentReference,
+                            ),
+                          }.withoutNulls,
+                        );
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 48.0,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF3F3F3),
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 16.0, 0.0, 16.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'tfz46wt5' /* Мой магазин */,
+                            ),
+                            textAlign: TextAlign.start,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               if (false)

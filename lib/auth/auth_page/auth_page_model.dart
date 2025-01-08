@@ -17,6 +17,8 @@ class AuthPageModel extends FlutterFlowModel<AuthPageWidget> {
   String? Function(BuildContext, String?)? passFieldTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   StoresRecord? usersStore;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  StoreVerifaedMassageRecord? storeVerifaedMassage;
 
   @override
   void initState(BuildContext context) {

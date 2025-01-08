@@ -235,10 +235,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const ManagerOrderListPageWidget(),
         ),
         FFRoute(
-          name: 'RegStorePage',
-          path: '/regStorePage',
-          requireAuth: true,
-          builder: (context, params) => const RegStorePageWidget(),
+          name: 'EditStorePage',
+          path: '/editStorePage',
+          builder: (context, params) => EditStorePageWidget(
+            storeRef: params.getParam(
+              'storeRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['stores'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'Stores',
@@ -309,19 +315,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'deleteInstructionPage',
           path: '/deleteInstructionPage',
-          requireAuth: true,
           builder: (context, params) => const DeleteInstructionPageWidget(),
         ),
         FFRoute(
           name: 'SupportPage',
           path: '/supportPage',
-          requireAuth: true,
           builder: (context, params) => const SupportPageWidget(),
         ),
         FFRoute(
           name: 'PrivacyPolicy',
           path: '/privacyPolicy',
-          requireAuth: true,
           builder: (context, params) => const PrivacyPolicyWidget(),
         ),
         FFRoute(
@@ -367,6 +370,30 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/regNewStore',
           requireAuth: true,
           builder: (context, params) => const RegNewStoreWidget(),
+        ),
+        FFRoute(
+          name: 'SendEmail',
+          path: '/sendEmail',
+          builder: (context, params) => const SendEmailWidget(),
+        ),
+        FFRoute(
+          name: 'checkStoreList',
+          path: '/checkStoreList',
+          requireAuth: true,
+          builder: (context, params) => const CheckStoreListWidget(),
+        ),
+        FFRoute(
+          name: 'checkStorePageAdmin',
+          path: '/checkStorePageAdmin',
+          requireAuth: true,
+          builder: (context, params) => CheckStorePageAdminWidget(
+            storeRef: params.getParam(
+              'storeRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['stores'],
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -553,13 +580,15 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Container(
-                  color: FlutterFlowTheme.of(context).primary,
-                  child: Image.asset(
-                    'assets/images/logo-color.png',
-                    fit: BoxFit.contain,
-                  ),
-                )
+              ? isWeb
+                  ? Container()
+                  : Container(
+                      color: FlutterFlowTheme.of(context).primary,
+                      child: Image.asset(
+                        'assets/images/logo-color.png',
+                        fit: BoxFit.contain,
+                      ),
+                    )
               : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;

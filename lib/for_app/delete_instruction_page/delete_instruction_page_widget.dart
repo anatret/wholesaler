@@ -22,6 +22,8 @@ class _DeleteInstructionPageWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => DeleteInstructionPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

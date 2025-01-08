@@ -1,10 +1,9 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'reg_store_page_widget.dart' show RegStorePageWidget;
+import 'edit_store_page_widget.dart' show EditStorePageWidget;
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-class RegStorePageModel extends FlutterFlowModel<RegStorePageWidget> {
+class EditStorePageModel extends FlutterFlowModel<EditStorePageWidget> {
   ///  State fields for stateful widgets in this page.
 
   bool isDataUploading1 = false;
@@ -37,9 +36,6 @@ class RegStorePageModel extends FlutterFlowModel<RegStorePageWidget> {
   FFUploadedFile uploadedLocalFile2 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl2 = '';
-
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  StoresRecord? newStoreID;
 
   @override
   void initState(BuildContext context) {}

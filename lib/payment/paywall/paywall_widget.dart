@@ -22,6 +22,8 @@ class _PaywallWidgetState extends State<PaywallWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PaywallModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

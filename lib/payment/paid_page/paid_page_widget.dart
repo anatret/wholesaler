@@ -27,6 +27,8 @@ class _PaidPageWidgetState extends State<PaidPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PaidPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

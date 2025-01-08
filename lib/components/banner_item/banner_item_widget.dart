@@ -35,6 +35,8 @@ class _BannerItemWidgetState extends State<BannerItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BannerItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -1,10 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'reg_new_store_model.dart';
@@ -41,6 +43,8 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
 
     _model.saobchaTextController ??= TextEditingController();
     _model.saobchaFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -65,13 +69,13 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
-            title: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+            title: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,48 +107,39 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                           ],
                         ),
                       ),
-                      Stack(
-                        alignment: const AlignmentDirectional(1.0, -1.0),
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 2.0, 5.0, 0.0),
-                            child: Icon(
-                              Icons.notifications_none,
-                              color: Color(0xFF3C3C3C),
-                              size: 24.0,
-                            ),
+                      badges.Badge(
+                        badgeContent: Text(
+                          FFLocalizations.of(context).getText(
+                            'wqybv1d0' /* 1 */,
                           ),
-                          Container(
-                            width: 16.0,
-                            height: 16.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primary,
-                              shape: BoxShape.circle,
-                            ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'd8v5hh9p' /* 3 */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Readex Pro',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 9.0,
+                                    color: Colors.white,
+                                    fontSize: 12.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
                                   ),
-                            ),
-                          ),
-                        ],
+                        ),
+                        showBadge: true,
+                        shape: badges.BadgeShape.circle,
+                        badgeColor: FlutterFlowTheme.of(context).primary,
+                        elevation: 0.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                        position: badges.BadgePosition.topEnd(),
+                        animationType: badges.BadgeAnimationType.scale,
+                        toAnimate: true,
+                        child: Icon(
+                          Icons.notifications_outlined,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 26.0,
+                        ),
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             actions: const [],
             centerTitle: false,
@@ -670,7 +665,7 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: FFLocalizations.of(context).getText(
-                        'ygw4ntty' /* САОБЧА */,
+                        'ygw4ntty' /* Бизнес лицензия(саобча) */,
                       ),
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
@@ -903,8 +898,8 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                         saobcha: _model.saobchaTextController.text,
                         logoImg: _model.uploadedFileUrl1,
                         saobchaImg: _model.uploadedFileUrl2,
-                        storeIsVerified: false,
                         user: currentUserReference,
+                        verifyStatus: VerifyStatus.newApplication,
                       ));
                       _model.newStoreID = StoresRecord.getDocumentFromData(
                           createStoresRecordData(
@@ -916,8 +911,8 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                             saobcha: _model.saobchaTextController.text,
                             logoImg: _model.uploadedFileUrl1,
                             saobchaImg: _model.uploadedFileUrl2,
-                            storeIsVerified: false,
                             user: currentUserReference,
+                            verifyStatus: VerifyStatus.newApplication,
                           ),
                           storesRecordReference);
                       FFAppState().userStore = _model.newStoreID?.reference;
@@ -927,7 +922,8 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                         builder: (alertDialogContext) {
                           return AlertDialog(
                             title: const Text('Создание магазина'),
-                            content: const Text('Магазин создан'),
+                            content: const Text(
+                                'Магазин создан, ждите окончания проверки'),
                             actions: [
                               TextButton(
                                 onPressed: () =>
@@ -938,16 +934,11 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                           );
                         },
                       );
+                      GoRouter.of(context).prepareAuthEvent();
+                      await authManager.signOut();
+                      GoRouter.of(context).clearRedirectLocation();
 
-                      context.pushNamed(
-                        'Profile',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: const TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.rightToLeft,
-                          ),
-                        },
-                      );
+                      context.goNamedAuth('AuthPage', context.mounted);
 
                       safeSetState(() {});
                     },

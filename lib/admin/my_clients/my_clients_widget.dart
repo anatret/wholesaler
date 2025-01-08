@@ -24,6 +24,8 @@ class _MyClientsWidgetState extends State<MyClientsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MyClientsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -41,6 +41,8 @@ class _RegPageWidgetState extends State<RegPageWidget> {
 
     _model.confirmPassFieldTextController ??= TextEditingController();
     _model.confirmPassFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

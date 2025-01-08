@@ -23,6 +23,8 @@ void main() async {
 
   await initFirebase();
 
+  await FFLocalizations.initialize();
+
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
 
@@ -44,7 +46,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale? _locale;
+  Locale? _locale = FFLocalizations.getStoredLocale();
 
   ThemeMode _themeMode = ThemeMode.system;
 
@@ -68,7 +70,7 @@ class _MyAppState extends State<MyApp> {
       });
     jwtTokenStream.listen((_) {});
     Future.delayed(
-      const Duration(milliseconds: 1000),
+      Duration(milliseconds: isWeb ? 0 : 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
@@ -82,6 +84,7 @@ class _MyAppState extends State<MyApp> {
 
   void setLocale(String language) {
     safeSetState(() => _locale = createLocale(language));
+    FFLocalizations.storeLocale(language);
   }
 
   void setThemeMode(ThemeMode mode) => safeSetState(() {

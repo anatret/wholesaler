@@ -34,6 +34,8 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OneOrderPage2Model());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -245,71 +247,70 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Readex Pro',
+                                      fontSize: 18.0,
                                       letterSpacing: 0.0,
                                     ),
                               ),
                             ],
                           ),
-                          InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              await Clipboard.setData(ClipboardData(
-                                  text: oneOrderPage2OrderRecord.address));
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 4.0, 0.0),
-                                  child: Icon(
-                                    Icons.location_on_outlined,
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 18.0,
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 10.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                await Clipboard.setData(ClipboardData(
+                                    text: oneOrderPage2OrderRecord.address));
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 4.0, 0.0),
+                                    child: Icon(
+                                      Icons.location_on_outlined,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 18.0,
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 10.0, 0.0),
-                                  child: Text(
-                                    '${listViewClientStoreStoresRecord?.address} ${listViewClientStoreStoresRecord?.room}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .colorLink,
-                                          letterSpacing: 0.0,
-                                        ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 10.0, 0.0),
+                                    child: Text(
+                                      '${listViewClientStoreStoresRecord?.address} ${listViewClientStoreStoresRecord?.room}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .colorLink,
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
                                   ),
-                                ),
-                                Icon(
-                                  Icons.content_copy_rounded,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 16.0,
-                                ),
-                              ],
+                                  Icon(
+                                    Icons.content_copy_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 16.0,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           if (responsiveVisibility(
                             context: context,
                             desktop: false,
                           ))
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                await launchUrl(Uri(
-                                  scheme: 'tel',
-                                  path: oneOrderPage2OrderRecord.phone,
-                                ));
-                              },
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -323,21 +324,34 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                                       size: 18.0,
                                     ),
                                   ),
-                                  Text(
-                                    valueOrDefault<String>(
-                                      oneOrderPage2OrderRecord.phone,
-                                      'телефон',
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await launchUrl(Uri(
+                                        scheme: 'tel',
+                                        path: oneOrderPage2OrderRecord.phone,
+                                      ));
+                                    },
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        oneOrderPage2OrderRecord.phone,
+                                        'телефон',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .colorLink,
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                            decoration:
+                                                TextDecoration.underline,
+                                          ),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .colorLink,
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                          decoration: TextDecoration.underline,
-                                        ),
                                   ),
                                 ],
                               ),

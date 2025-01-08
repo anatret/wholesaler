@@ -18,6 +18,8 @@ class HomePageWholeStoreModel
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in HomePageWholeStore widget.
+  StoresRecord? usersStore;
   // State field(s) for SearchTextField widget.
   FocusNode? searchTextFieldFocusNode;
   TextEditingController? searchTextFieldTextController;

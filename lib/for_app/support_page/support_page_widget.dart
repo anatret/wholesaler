@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'support_page_model.dart';
 export 'support_page_model.dart';
@@ -20,6 +21,8 @@ class _SupportPageWidgetState extends State<SupportPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SupportPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -43,7 +46,7 @@ class _SupportPageWidgetState extends State<SupportPageWidget> {
           alignment: const AlignmentDirectional(0.0, -1.0),
           child: Container(
             constraints: const BoxConstraints(
-              maxWidth: 970.0,
+              maxWidth: 450.0,
             ),
             decoration: const BoxDecoration(),
             child: Padding(
@@ -114,6 +117,77 @@ class _SupportPageWidgetState extends State<SupportPageWidget> {
                                       color: const Color(0xFFFF6F00),
                                       letterSpacing: 0.0,
                                     ),
+                              ),
+                              if (false)
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    context.pushNamed('SendEmail');
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    '9c7ntt3a' /* Написать в тех поддержку */,
+                                  ),
+                                  icon: Icon(
+                                    Icons.email_outlined,
+                                    color: FlutterFlowTheme.of(context).info,
+                                    size: 20.0,
+                                  ),
+                                  options: FFButtonOptions(
+                                    width: double.infinity,
+                                    height: 40.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconAlignment: IconAlignment.end,
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    elevation: 0.0,
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 20.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        'fbss3r6o' /* Контактный номер */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        '9lsvb474' /* +821022795599 */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ].divide(const SizedBox(height: 12.0)),
                           ),

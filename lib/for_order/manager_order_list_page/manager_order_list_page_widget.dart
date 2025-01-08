@@ -27,6 +27,8 @@ class _ManagerOrderListPageWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ManagerOrderListPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

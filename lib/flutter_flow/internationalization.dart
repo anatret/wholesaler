@@ -382,11 +382,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Please register',
       'ko': '등록해주세요',
     },
-    'wso622qm': {
-      'ru': 'Регистрация магазина',
-      'en': 'Store registration',
-      'ko': '매장등록',
-    },
     'knhrrnmi': {
       'ru': 'Home',
       'en': 'Home',
@@ -590,6 +585,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Clear app states',
       'ko': '앱 상태 지우기',
     },
+    'ksr0gpws': {
+      'ru': 'Супер Админ',
+      'en': '',
+      'ko': '',
+    },
+    'xltywj6b': {
+      'ru': 'Заявки на проверку магазинов',
+      'en': 'Clients',
+      'ko': '클라이언트',
+    },
     'x41kfgda': {
       'ru': 'Home',
       'en': 'Home',
@@ -708,38 +713,38 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2negydpa': {
       'ru': 'Море продукты',
-      'en': '',
-      'ko': '',
+      'en': 'Seafood',
+      'ko': '바다 음식',
     },
     'hykr21gm': {
       'ru': 'Мясо',
-      'en': '',
-      'ko': '',
+      'en': 'Meat',
+      'ko': '고기',
     },
     'u1hzkkx9': {
       'ru': 'Хоз товары',
-      'en': '',
-      'ko': '',
+      'en': 'Household goods',
+      'ko': '가정 용품',
     },
     'bbp0gps2': {
       'ru': 'Заморозка',
-      'en': '',
-      'ko': '',
+      'en': 'Freezing',
+      'ko': '동결',
     },
     '70xejb1x': {
       'ru': 'Детское',
-      'en': '',
-      'ko': '',
+      'en': 'Children\'s',
+      'ko': '어린이',
     },
     'xencupqz': {
       'ru': 'Десерт',
-      'en': '',
-      'ko': '',
+      'en': 'Dessert',
+      'ko': '디저트',
     },
     'b2itwya3': {
       'ru': 'Прочее',
-      'en': '',
-      'ko': '',
+      'en': 'Other',
+      'ko': '다른',
     },
     '3gpgpbpt': {
       'ru': 'В наличии',
@@ -784,13 +789,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'byfvioes': {
       'ru': 'Редактировать',
-      'en': '',
-      'ko': '',
+      'en': 'Edit',
+      'ko': '편집하다',
     },
     'sk7jpox0': {
       'ru': 'Рассылка',
-      'en': '',
-      'ko': '',
+      'en': 'Newsletter',
+      'ko': '회람 신문',
     },
     '4ogbz3li': {
       'ru': 'Select Size',
@@ -881,13 +886,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '집',
     },
   },
-  // RegStorePage
+  // EditStorePage
   {
-    'h20ucvrm': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-    },
     'k0zdqdbm': {
       'ru': 'Имя магазина',
       'en': 'Store name',
@@ -920,8 +920,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'k83lppxf': {
       'ru': 'фото саобча',
-      'en': 'stock photo',
-      'ko': '액션 사진',
+      'en': 'photo saobcha',
+      'ko': '사진 사옵차',
     },
     'jcnrwec5': {
       'ru': 'Формат: JPG, PNG',
@@ -932,6 +932,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Изменить фото',
       'en': 'Edit photo',
       'ko': '사진 변경',
+    },
+    'mn2d1u35': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
     },
     'b5e49uua': {
       'ru': 'Home',
@@ -945,11 +950,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Мои магазины',
       'en': 'My shops',
       'ko': '내 매장',
-    },
-    '57vi1d4p': {
-      'ru': 'Добавить адрес',
-      'en': 'Add address',
-      'ko': '주소 추가',
     },
     'jpd1e78n': {
       'ru': '3',
@@ -1147,23 +1147,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'isyt7u1t': {
       'ru': 'Заморозка',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Freezing',
+      'ko': '동결',
     },
     'zo6zbasr': {
       'ru': 'Море прод.',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Sea cont.',
+      'ko': '바다 계속.',
     },
     'ejp7vqnv': {
       'ru': 'Детское',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Children\'s',
+      'ko': '어린이',
     },
     'kxvtrlza': {
       'ru': 'Мясо',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Meat',
+      'ko': '고기',
     },
     '9lvogyn9': {
       'ru': 'Сигареты',
@@ -1182,8 +1182,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'el9st8aq': {
       'ru': 'Десерты',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Desserts',
+      'ko': '디저트',
     },
     'ozgbshbq': {
       'ru': 'Сигареты',
@@ -1192,13 +1192,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4vq24xc5': {
       'ru': 'Хоз товар',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Household goods',
+      'ko': '가정 용품',
     },
     'xpe3exwp': {
       'ru': 'Другие',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Other',
+      'ko': '다른',
     },
     'k3ci3v2w': {
       'ru': 'Часто заказывают',
@@ -1300,23 +1300,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'wex06w3h': {
       'ru': 'Заморозка',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Freezing',
+      'ko': '동결',
     },
     '1vo1vpft': {
       'ru': 'Море прод.',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Sea cont.',
+      'ko': '바다 계속.',
     },
     'epoqnmbt': {
       'ru': 'Детское',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Children\'s',
+      'ko': '어린이',
     },
     '9j3bxod8': {
       'ru': 'Мясо',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Meat',
+      'ko': '고기',
     },
     'nqi1kuay': {
       'ru': 'Сигареты',
@@ -1335,8 +1335,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'w4rtxn3b': {
       'ru': 'Десерты',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Desserts',
+      'ko': '디저트',
     },
     '8evzfba1': {
       'ru': 'Сигареты',
@@ -1345,13 +1345,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'xahqcoel': {
       'ru': 'Хоз товар',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Household goods',
+      'ko': '가정 용품',
     },
     '6x83o58t': {
       'ru': 'Другие',
-      'en': 'Cigarettes',
-      'ko': '담배',
+      'en': 'Other',
+      'ko': '다른',
     },
     'lwnk6ozr': {
       'ru': 'Часто заказывают',
@@ -1453,8 +1453,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3y1r54xz': {
       'ru': 'Имя пользователя',
-      'en': '',
-      'ko': '',
+      'en': 'Username',
+      'ko': '사용자 이름',
     },
     'fnp5v0al': {
       'ru': '',
@@ -1473,13 +1473,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0fi39yba': {
       'ru': 'Удалить профиль',
-      'en': '',
-      'ko': '',
+      'en': 'Delete profile',
+      'ko': '프로필 삭제',
     },
     'v0q4jezo': {
       'ru': 'оплата',
-      'en': '',
-      'ko': '',
+      'en': 'payment',
+      'ko': '지불',
     },
     'sus98qct': {
       'ru': '1',
@@ -1496,127 +1496,149 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'pqg2g2xp': {
       'ru': 'Важное предупреждение',
-      'en': '',
-      'ko': '',
+      'en': 'Important Warning',
+      'ko': '중요한 경고',
     },
     'g7b7dfni': {
       'ru':
           'Удаление аккаунта - необратимое действие. Вся информация будет утеряна без возможности восстановления.',
-      'en': '',
-      'ko': '',
+      'en':
+          'Deleting an account is an irreversible action. All information will be lost without the possibility of recovery.',
+      'ko': '계정 삭제는 되돌릴 수 없는 작업입니다. 모든 정보는 복구 가능성 없이 손실됩니다.',
     },
     'yb26x489': {
       'ru': 'Перед удалением:',
-      'en': '',
-      'ko': '',
+      'en': 'Before deleting:',
+      'ko': '삭제하기 전:',
     },
     '4n5bvm3l': {
       'ru': 'Сохраните важные данные и информацию, если они вам необходимы',
-      'en': '',
-      'ko': '',
+      'en': 'Save important data and information if you need it.',
+      'ko': '필요할 때 중요한 데이터와 정보를 저장하세요.',
     },
     'oui2s5jg': {
       'ru': 'Завершите все активные транзакции и процессы',
-      'en': '',
-      'ko': '',
+      'en': 'Terminate all active transactions and processes',
+      'ko': '모든 활성 트랜잭션 및 프로세스 종료',
     },
     'tbggmd39': {
       'ru': 'Убедитесь, что вы действительно хотите удалить аккаунт',
-      'en': '',
-      'ko': '',
+      'en': 'Make sure you really want to delete your account.',
+      'ko': '정말로 계정을 삭제하고 싶은지 확인하세요',
     },
     'm0tzbbqm': {
       'ru': 'Запрос на удаление:',
-      'en': '',
-      'ko': '',
+      'en': 'Request for deletion:',
+      'ko': '제거 요청:',
     },
     'drky2ikr': {
       'ru':
           'Отправьте запрос на удаление аккаунта на еmail: wholekrsaler@gmail.com',
-      'en': '',
-      'ko': '',
+      'en':
+          'Send a request to delete your account to email: wholekrsaler@gmail.com',
+      'ko': '이메일(wholekrsaler@gmail.com)로 계정 삭제 요청을 보내세요.',
     },
     'cwhh2c7c': {
       'ru': 'Процесс удаления:',
-      'en': '',
-      'ko': '',
+      'en': 'Removal process:',
+      'ko': '제거 프로세스:',
     },
     '8rd8nfsg': {
       'ru': 'Перейдите в настройки профиля',
-      'en': '',
-      'ko': '',
+      'en': 'Go to profile settings',
+      'ko': '프로필 설정으로 이동',
     },
     'a6hpw10z': {
       'ru': 'Найдите опцию \'Удалить аккаунт\'',
-      'en': '',
-      'ko': '',
+      'en': 'Find the \'Delete Account\' option',
+      'ko': '\'계정 삭제\' 옵션 찾기',
     },
     'nlor1nw4': {
       'ru': 'Подтвердите удаление',
-      'en': '',
-      'ko': '',
+      'en': 'Confirm deletion',
+      'ko': '삭제 확인',
     },
     'hg164n15': {
       'ru': 'После удаления:',
-      'en': '',
-      'ko': '',
+      'en': 'After removal:',
+      'ko': '제거 후:',
     },
     'xioldf7d': {
       'ru':
           '• Все ваши данные будут удалены\n• Доступ к сервисам будет прекращен\n• Восстановление аккаунта будет невозможно',
-      'en': '',
-      'ko': '',
+      'en':
+          '• All your data will be deleted\n• Access to services will be terminated\n• Account recovery will be impossible',
+      'ko': '• 모든 데이터가 삭제됩니다.\n• 서비스 이용이 종료됩니다.\n• 계정 복구는 불가능합니다.',
     },
   },
   // SupportPage
   {
     '0k35hdbu': {
       'ru': 'Техническая поддержка',
-      'en': '',
-      'ko': '',
+      'en': 'Technical support',
+      'ko': '기술지원',
     },
     'm5rc1rqn': {
       'ru':
           'If you have a question regarding our application, a problem which you do not know how to resolve, or concrete inquiry - we are here for you. We will answer you via email as soon as possible.\n\n**wholekrsaler@gmail.com**\n\nPlease let us know if you have any trouble using application.\n\n\n\nЕсли у вас есть вопрос об использовании приложения, проблема, которую вы не знаете, как решить, или конкретный запрос - мы всегда рады вам помочь. Пожалуйста отправьте ваш запрос в виде электронного письма по адресу:\n\n**wholekrsaler@gmail.com**',
-      'en': '',
-      'ko': '',
+      'en':
+          'If you have a question regarding our application, a problem which you do not know how to resolve, or concrete inquiry - we are here for you. We will answer you via email as soon as possible.\n\n**wholekrsaler@gmail.com**\n\nPlease let us know if you have any trouble using the application.\n\nIf you have a question regarding the use of the application, a problem which you do not know how to resolve, or a specific request - we are always happy to help you. Please send your request as an email to:\n\n**wholekrsaler@gmail.com**',
+      'ko':
+          '신청서에 관한 질문이 있거나 해결 방법을 모르는 문제 또는 구체적인 문의사항이 있는 경우, 저희가 도와드리겠습니다. 최대한 빨리 이메일을 통해 답변해드리겠습니다.\n\n**wholekrsaler@gmail.com**\n\n응용 프로그램을 사용하는 데 문제가 있으면 알려주십시오.\n\n\n\n애플리케이션 사용에 대한 질문이 있거나 해결 방법을 모르는 문제 또는 특정 요청이 있는 경우 언제든지 기꺼이 도와드리겠습니다. 다음 주소로 이메일을 보내 요청을 보내주세요.\n\n**wholekrsaler@gmail.com**',
+    },
+    '9c7ntt3a': {
+      'ru': 'Написать в тех поддержку',
+      'en': 'Write to tech support',
+      'ko': '기술 지원에 쓰기',
+    },
+    'fbss3r6o': {
+      'ru': 'Контактный номер',
+      'en': 'Contact number',
+      'ko': '연락번호',
+    },
+    '9lsvb474': {
+      'ru': '+821022795599',
+      'en': '+821022795599',
+      'ko': '+821022795599',
     },
   },
   // PrivacyPolicy
   {
     'w3hp98gi': {
       'ru': 'WholeSaler Privacy\nPolicy\n',
-      'en': '',
-      'ko': '',
+      'en': 'WholeSaler Privacy\nPolicy',
+      'ko': 'WholeSaler 개인 정보 보호\n정책',
     },
     'mrzmhcic': {
       'ru':
           'This privacy policy applies to the WholeSaler app (hereby referred to as \"Application\") for mobile devices that was created by Kim Vadim Klimovich (hereby referred to as \"Service Provider\") as a Commercial service. This service is intended for use \"AS IS\".\n\n\nInformation Collection and Use\nThe Application collects information when you download and use it. This information may include information such as\n\nYour device\'s Internet Protocol address (e.g. IP address)\nThe pages of the Application that you visit, the time and date of your visit, the time spent on those pages\nThe time spent on the Application\nThe operating system you use on your mobile device\n\nThe Application does not gather precise information about the location of your mobile device.\n\n\nThe Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.\n\n\nFor a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information. The information that the Service Provider request will be retained by them and used as described in this privacy policy.\n\n\nThird Party Access\nOnly aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application and their service. The Service Provider may share your information with third parties in the ways that are described in this privacy statement.\n\n\n\nPlease note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:\n\nGoogle Play Services\nAdMob\nGoogle Analytics for Firebase\nFirebase Crashlytics\nFacebook\n\nThe Service Provider may disclose User Provided and Automatically Collected Information:\n\nas required by law, such as to comply with a subpoena, or similar legal process;\nwhen they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;\nwith their trusted services providers who work on their behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.\n\nOpt-Out Rights\nYou can stop all collection of information by the Application easily by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.\n\n\nData Retention Policy\nThe Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. If you\'d like them to delete User Provided Data that you have provided via the Application, please contact them at wholekrsaler@gmail.com and they will respond in a reasonable time.\n\n\nChildren\nThe Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.\n\n\nThe Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age. In the case the Service Provider discover that a child under 13 has provided personal information, the Service Provider will immediately delete this from their servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact the Service Provider (wholekrsaler@gmail.com) so that they will be able to take the necessary actions.\n\n\nSecurity\nThe Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains.\n\n\nChanges\nThis Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.\n\n\n\nThis privacy policy is effective as of 2024-12-16\n\n\nYour Consent\nBy using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by us.\n\n\nContact Us\nIf you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at wholekrsaler@gmail.com.',
-      'en': '',
-      'ko': '',
+      'en':
+          'This privacy policy applies to the WholeSaler app (hereby referred to as \"Application\") for mobile devices that was created by Kim Vadim Klimovich (hereby referred to as \"Service Provider\") as a Commercial service. This service is intended for use \"AS IS\".\n\n\nInformation Collection and Use\nThe Application collects information when you download and use it. This information may include information such as\n\nYour device\'s Internet Protocol address (e.g. IP address)\nThe pages of the Application that you visit, the time and date of your visit, the time spent on those pages\nThe time spent on the Application\nThe operating system you use on your mobile device\n\nThe Application does not gather precise information about the location of your mobile device.\n\n\nThe Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.\n\n\nFor a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information. The information that the Service Provider request will be retained by them and used as described in this privacy policy.\n\n\nThird Party Access\nOnly aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application and their service. The Service Provider may share your information with third parties in the ways that are described in this privacy statement.\n\n\n\nPlease note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:\n\nGoogle Play Services\nAdMob\nGoogle Analytics for Firebase\nFirebase Crashlytics\nFacebook\n\nThe Service Provider may disclose User Provided and Automatically Collected Information:\n\nas required by law, such as to comply with a subpoena, or similar legal process;\nwhen they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;\nwith their trusted services providers who work on their behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.\n\nOpt-Out Rights\nYou can stop all collection of information by the Application easily by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.\n\n\nData Retention Policy\nThe Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. If you\'d like them to delete User Provided Data that you have provided via the Application, please contact them at wholekrsaler@gmail.com and they will respond in a reasonable time.\n\n\nChildren\nThe Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.\n\n\nThe Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age. In the case the Service Provider discovers that a child under 13 has provided personal information, the Service Provider will immediately delete this from their servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact the Service Provider (wholekrsaler@gmail.com) so that they will be able to take the necessary actions.\n\n\nSecurity\nThe Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains.\n\n\nChanges\nThis Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.\n\n\n\nThis privacy policy is effective as of 2024-12-16\n\n\nYour Consent\nBy using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by us.\n\n\nContact Us\nIf you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at wholekrsaler@gmail.com.',
+      'ko':
+          '본 개인정보 보호정책은 Kim Vadim Klimovich(이하 \"서비스 제공자\")가 상업용 서비스로 제작한 모바일 장치용 WholeSaler 앱(이하 \"애플리케이션\")에 적용됩니다. 이 서비스는 \"있는 그대로\" 사용하기 위한 것입니다.\n\n\n정보 수집 및 사용\n애플리케이션은 귀하가 다운로드하여 사용할 때 정보를 수집합니다. 이 정보에는 다음과 같은 정보가 포함될 수 있습니다.\n\n장치의 인터넷 프로토콜 주소(예: IP 주소)\n귀하가 방문한 애플리케이션 페이지, 방문 시간 및 날짜, 해당 페이지에서 보낸 시간\n신청서 작성에 소요된 시간\n모바일 장치에서 사용하는 운영 체제\n\n애플리케이션은 귀하의 모바일 장치 위치에 대한 정확한 정보를 수집하지 않습니다.\n\n\n서비스 제공업체는 중요한 정보, 필수 공지 사항 및 마케팅 프로모션을 제공하기 위해 수시로 귀하에게 연락하기 위해 귀하가 제공한 정보를 사용할 수 있습니다.\n\n\n더 나은 경험을 위해 애플리케이션을 사용하는 동안 서비스 제공업체는 귀하에게 특정 개인 식별 정보를 제공하도록 요구할 수 있습니다. 서비스 제공자가 요청한 정보는 본 개인정보 보호정책에 설명된 대로 서비스 제공자가 보유하고 사용합니다.\n\n\n제3자 액세스\n서비스 제공업체가 애플리케이션과 해당 서비스를 개선하는 데 도움이 되도록 집계되고 익명화된 데이터만 주기적으로 외부 서비스로 전송됩니다. 서비스 제공업체는 본 개인정보 보호정책에 설명된 방식으로 귀하의 정보를 제3자와 공유할 수 있습니다.\n\n\n\n애플리케이션은 데이터 처리에 대한 자체 개인 정보 보호 정책이 있는 제3자 서비스를 활용한다는 점에 유의하십시오. 다음은 애플리케이션에서 사용하는 제3자 서비스 제공업체의 개인정보 보호정책에 대한 링크입니다.\n\n구글 플레이 서비스\nAdMob\nFirebase용 Google 애널리틱스\nFirebase Crashlytics\n페이스북\n\n서비스 제공자는 사용자가 제공하고 자동으로 수집된 정보를 공개할 수 있습니다.\n\n소환장 또는 유사한 법적 절차를 준수하기 위해 법률에서 요구하는 경우\n자신의 권리를 보호하고, 귀하 또는 타인의 안전을 보호하고, 사기를 조사하거나, 정부 요청에 응답하기 위해 공개가 필요하다고 선의로 믿는 경우\n신뢰할 수 있는 서비스 제공업체를 대신하여 당사가 공개하는 정보를 독립적으로 사용하지 않으며 본 개인정보 보호정책에 명시된 규칙을 준수하는 데 동의했습니다.\n\n옵트아웃 권리\n귀하는 애플리케이션을 제거함으로써 쉽게 애플리케이션에 의한 모든 정보 수집을 중지할 수 있습니다. 귀하는 귀하의 모바일 장치의 일부로 또는 모바일 애플리케이션 마켓플레이스나 네트워크를 통해 이용 가능한 표준 제거 프로세스를 사용할 수 있습니다.\n\n\n데이터 보존 정책\n서비스 제공업체는 귀하가 애플리케이션을 사용하는 동안과 그 이후에도 합당한 기간 동안 사용자 제공 데이터를 보관합니다. 귀하가 애플리케이션을 통해 제공한 사용자 제공 데이터를 삭제하기를 원하는 경우, Wholekrsaler@gmail.com으로 연락하시면 합당한 시간 내에 응답해 드리겠습니다.\n\n\n어린이들\n서비스 제공업체는 13세 미만의 어린이에게 고의로 데이터를 요청하거나 마케팅하기 위해 애플리케이션을 사용하지 않습니다.\n\n\n본 애플리케이션은 13세 미만의 사용자에게 적용되지 않습니다. 서비스 제공업체는 13세 미만의 어린이로부터 고의로 개인 식별 정보를 수집하지 않습니다. 서비스 제공자는 만 13세 미만 아동이 개인정보를 제공한 사실을 발견한 경우, 해당 정보를 즉시 서버에서 삭제합니다. 귀하가 부모 또는 보호자이고 귀하의 자녀가 당사에 개인정보를 제공한 사실을 알고 있는 경우 서비스 제공자(wholekrsaler@gmail.com)에게 연락하여 필요한 조치를 취할 수 있도록 하십시오.\n\n\n보안\n서비스 제공업체는 귀하의 정보의 기밀성을 보호하는 데 최선을 다하고 있습니다. 서비스 제공업체는 서비스 제공업체가 처리하고 유지 관리하는 정보를 보호하기 위해 물리적, 전자적, 절차적 보호 장치를 제공합니다.\n\n\n변경 사항\n본 개인정보 보호정책은 어떤 이유로든 수시로 업데이트될 수 있습니다. 서비스 제공업체는 이 페이지를 새로운 개인정보 보호정책으로 업데이트하여 개인정보 보호정책의 변경 사항을 귀하에게 통보할 것입니다. 지속적인 사용은 모든 변경 사항에 대한 승인으로 간주되므로 변경 사항이 있는 경우 정기적으로 이 개인 정보 보호 정책을 참조하는 것이 좋습니다.\n\n\n\n본 개인정보처리방침은 2024년 12월 16일부터 적용됩니다.\n\n\n귀하의 동의\n애플리케이션을 사용함으로써 귀하는 현재 본 개인정보 보호정책에 명시되어 있고 당사가 개정한 대로 귀하의 정보를 처리하는 데 동의하는 것입니다.\n\n\n문의하기\n애플리케이션을 사용하는 동안 개인 정보 보호에 관해 질문이 있거나 관행에 대해 질문이 있는 경우 이메일 Wholekrsaler@gmail.com을 통해 서비스 제공업체에 문의하세요.',
     },
   },
   // paywall
   {
     'sygwc5s3': {
       'ru': 'Choose Your Plan',
-      'en': '',
-      'ko': '',
+      'en': 'Choose Your Plan',
+      'ko': '계획을 선택하세요',
     },
     'dzmdyjyc': {
       'ru': 'Select the perfect plan for you',
-      'en': '',
-      'ko': '',
+      'en': 'Select the perfect plan for you',
+      'ko': '귀하에게 딱 맞는 플랜을 선택하세요',
     },
     'e1pq7rxq': {
       'ru': 'Basic Plan',
-      'en': '',
-      'ko': '',
+      'en': 'Basic Plan',
+      'ko': '기본 계획',
     },
     '5i668jpl': {
       'ru': 'Perfect for starters',
-      'en': '',
-      'ko': '',
+      'en': 'Perfect for starters',
+      'ko': '초보자에게 딱 맞습니다.',
     },
     'cs4iy02z': {
       'ru': '',
@@ -1625,137 +1647,138 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '89yismec': {
       'ru': 'Access to basic features',
-      'en': '',
-      'ko': '',
+      'en': 'Access to basic features',
+      'ko': '기본 기능에 대한 액세스',
     },
     'jki67gr1': {
       'ru': 'Up to 100 transactions/month',
-      'en': '',
-      'ko': '',
+      'en': 'Up to 100 transactions/month',
+      'ko': '월별 최대 100건의 거래',
     },
     'ejlzbj3c': {
       'ru': 'Email support',
-      'en': '',
-      'ko': '',
+      'en': 'Email support',
+      'ko': '이메일 지원',
     },
     'fu7mxt24': {
       'ru': 'Select Basic Plan',
-      'en': '',
-      'ko': '',
+      'en': 'Select Basic Plan',
+      'ko': '기본 플랜 선택',
     },
     'kevchjw9': {
       'ru': 'Premium Plan',
-      'en': '',
-      'ko': '',
+      'en': 'Premium Plan',
+      'ko': '프리미엄 플랜',
     },
     'cp796xl7': {
       'ru': 'For growing businesses',
-      'en': '',
-      'ko': '',
+      'en': 'For growing businesses',
+      'ko': '성장하는 기업을 위한',
     },
     '76v261vp': {
       'ru': '\$24.99/mo',
-      'en': '',
-      'ko': '',
+      'en': '\$24.99/mo',
+      'ko': '\$24.99/월',
     },
     'ph3vofn0': {
       'ru': 'All Basic features',
-      'en': '',
-      'ko': '',
+      'en': 'All Basic Features',
+      'ko': '모든 기본 기능',
     },
     'bsoe84qb': {
       'ru': 'Unlimited transactions',
-      'en': '',
-      'ko': '',
+      'en': 'Unlimited transactions',
+      'ko': '무제한 거래',
     },
     'qei0h1qp': {
       'ru': 'Priority support',
-      'en': '',
-      'ko': '',
+      'en': 'Priority support',
+      'ko': '우선 지원',
     },
     'zsqo5e9y': {
       'ru': 'Advanced analytics',
-      'en': '',
-      'ko': '',
+      'en': 'Advanced analytics',
+      'ko': '고급 분석',
     },
     'poqgqn5k': {
       'ru': 'Custom integrations',
-      'en': '',
-      'ko': '',
+      'en': 'Custom integrations',
+      'ko': '맞춤형 통합',
     },
     'sacwyxsw': {
       'ru': 'Select Premium Plan',
-      'en': '',
-      'ko': '',
+      'en': 'Select Premium Plan',
+      'ko': '프리미엄 플랜 선택',
     },
     'tiay8thm': {
       'ru': 'Need help choosing?',
-      'en': '',
-      'ko': '',
+      'en': 'Need help choosing?',
+      'ko': '선택하는 데 도움이 필요하십니까?',
     },
     'im405s9f': {
       'ru':
           'Contact our sales team for a personalized recommendation based on your specific needs.',
-      'en': '',
-      'ko': '',
+      'en':
+          'Contact our sales team for a personalized recommendation based on your specific needs.',
+      'ko': '특정 요구 사항에 따른 맞춤형 추천을 받으려면 당사 영업팀에 문의하세요.',
     },
     'o9s81i7i': {
       'ru': 'Contact Sales',
-      'en': '',
-      'ko': '',
+      'en': 'Contact Sales',
+      'ko': '영업팀에 문의',
     },
   },
   // onePortCreateCard
   {
     'z7pdqfh7': {
       'ru': '₩ 50 000 в мясяц',
-      'en': '',
-      'ko': '',
+      'en': '₩ 50,000 per month',
+      'ko': '₩ 50,000/월',
     },
     'a05hnmt8': {
       'ru': 'Номер карты',
-      'en': '',
-      'ko': '',
+      'en': 'Card number',
+      'ko': '카드번호',
     },
     'a96w4dff': {
       'ru': 'Expiry Date(YYYY-MM)',
-      'en': '',
-      'ko': '',
+      'en': 'Expiry Date(YYYY-MM)',
+      'ko': '유통기한(YYYY-MM)',
     },
     'rh5j4eys': {
       'ru': 'CVV',
-      'en': '',
-      'ko': '',
+      'en': 'CVV',
+      'ko': '이력서',
     },
     'ap16n660': {
       'ru': 'Пароль от карты, первые2 цифры',
-      'en': '',
-      'ko': '',
+      'en': 'Card password, first 2 digits',
+      'ko': '카드비밀번호 앞 2자리',
     },
     'lvkq0coq': {
       'ru': '2 цифры',
-      'en': '',
-      'ko': '',
+      'en': '2 digits',
+      'ko': '2자리',
     },
     'nqcl5764': {
       'ru': 'Имя владельца карты',
-      'en': '',
-      'ko': '',
+      'en': 'Cardholder name',
+      'ko': '카드 소지자 이름',
     },
     'iid1ck7t': {
       'ru': 'Дата рождения (ГГММДД)',
-      'en': '',
-      'ko': '',
+      'en': 'Date of birth (YYMMDD)',
+      'ko': '생년월일(YYMMDD)',
     },
     '8n3itgzd': {
       'ru': 'ГГММДД',
-      'en': '',
-      'ko': '',
+      'en': 'YYMMDD',
+      'ko': 'YYMMDD',
     },
     '42nipi53': {
       'ru': 'Электронная почта',
-      'en': '',
-      'ko': '',
+      'en': 'E-mail',
+      'ko': '이메일',
     },
     '4gm9k1lb': {
       'ru': '',
@@ -1764,8 +1787,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3ai10vr4': {
       'ru': '100',
-      'en': '',
-      'ko': '',
+      'en': '100',
+      'ko': '100',
     },
     'cfayf97t': {
       'ru': '',
@@ -1774,38 +1797,38 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rghe9j6g': {
       'ru': 'WholeSaler Satore plan 1mon',
-      'en': '',
-      'ko': '',
+      'en': 'WholeSaler Satore plan 1 month',
+      'ko': 'WholeSaler Satore 계획 1mon',
     },
     'y7mb0hxy': {
       'ru': 'Saved Cards',
-      'en': '',
-      'ko': '',
+      'en': 'Saved Cards',
+      'ko': '저장된 카드',
     },
     'pq73eo2o': {
       'ru': '•••• •••• •••• 4567',
-      'en': '',
-      'ko': '',
+      'en': '•••• •••• •••• 4567',
+      'ko': '•••• •••• •••• 4567',
     },
     '8stt67mm': {
       'ru': 'Expires 12/24',
-      'en': '',
-      'ko': '',
+      'en': 'Expires 12/24',
+      'ko': '12/24에 만료됨',
     },
     'jnf7t89t': {
       'ru': '•••• •••• •••• 8901',
-      'en': '',
-      'ko': '',
+      'en': '•••• •••• •••• 8901',
+      'ko': '•••• •••• •••• 8901',
     },
     'tcshl1sy': {
       'ru': 'Expires 09/25',
-      'en': '',
-      'ko': '',
+      'en': 'Expires 09/25',
+      'ko': '09/25에 만료됨',
     },
     'h20a58g1': {
       'ru': 'Оплатить',
-      'en': '',
-      'ko': '',
+      'en': 'Pay',
+      'ko': '지불하다',
     },
     '7bwrcrwf': {
       'ru': '1',
@@ -1817,48 +1840,48 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'buv38oj1': {
       'ru': 'Оплата прошла!',
-      'en': '',
-      'ko': '',
+      'en': 'Payment completed!',
+      'ko': '결제가 완료되었습니다!',
     },
     'dw3qe12s': {
       'ru': 'Платеж успешно выполнен. Благодарим за покупку!',
-      'en': '',
-      'ko': '',
+      'en': 'Payment completed successfully. Thank you for your purchase!',
+      'ko': '결제가 성공적으로 완료되었습니다. 구매해주셔서 감사합니다!',
     },
     '6p73f7df': {
       'ru': 'Сумма платежа',
-      'en': '',
-      'ko': '',
+      'en': 'Payment amount',
+      'ko': '결제금액',
     },
     's73kwhw4': {
       'ru': 'ID транзакции',
-      'en': '',
-      'ko': '',
+      'en': 'Transaction ID',
+      'ko': '거래 ID',
     },
     'xnpjcmci': {
       'ru': 'Название карты',
-      'en': '',
-      'ko': '',
+      'en': 'Map name',
+      'ko': '카드 이름',
     },
     'sqqeye5c': {
       'ru': 'Тарифный план',
-      'en': '',
-      'ko': '',
+      'en': 'Tariff plan',
+      'ko': '관세 계획',
     },
     'p6fe8knk': {
       'ru': 'Провайдер',
-      'en': '',
-      'ko': '',
+      'en': 'Provider',
+      'ko': '공급자',
     },
     '42gcy9qs': {
       'ru': 'Номер карты',
-      'en': '',
-      'ko': '',
+      'en': 'Card number',
+      'ko': '카드번호',
     },
     'xcnx6o25': {
       'ru': 'ОК',
-      'en': '',
-      'ko': '',
+      'en': 'OK',
+      'ko': '좋아요',
     },
   },
   // SandNoticePage
@@ -1870,36 +1893,31 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ji1kxumb': {
       'ru': 'Рассылка',
-      'en': '',
-      'ko': '',
+      'en': 'Newsletter',
+      'ko': '회람 신문',
     },
     '0289q13e': {
       'ru': 'Заголовок сообщения',
-      'en': '',
-      'ko': '',
+      'en': 'Message Title',
+      'ko': '메시지 제목',
     },
     'p0k7eix3': {
       'ru': 'Текст сообщение',
-      'en': '',
-      'ko': '',
+      'en': 'Text message',
+      'ko': '문자 메시지',
     },
     '4l7xph33': {
       'ru': 'Отправить',
-      'en': '',
-      'ko': '',
+      'en': 'Send',
+      'ko': '보내다',
     },
   },
   // RegNewStore
   {
-    'd8v5hh9p': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-    },
     '0khfppdb': {
       'ru': 'Магазин на проверке',
-      'en': '',
-      'ko': '',
+      'en': 'The store is under inspection',
+      'ko': '점검 중인 매장',
     },
     'rltxqab8': {
       'ru': 'Имя магазина',
@@ -1922,9 +1940,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '아파트',
     },
     'ygw4ntty': {
-      'ru': 'САОБЧА',
-      'en': 'SAOBCHA',
-      'ko': '사오차',
+      'ru': 'Бизнес лицензия(саобча)',
+      'en': 'Business license (saobcha)',
+      'ko': '사업자등록증(사옵차)',
     },
     '1wsqpox5': {
       'ru': 'загрузите',
@@ -1933,8 +1951,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'vnr3l8nx': {
       'ru': 'фото саобча',
-      'en': 'stock photo',
-      'ko': '액션 사진',
+      'en': 'photo saobcha',
+      'ko': '사진 사옵차',
     },
     's2hyume6': {
       'ru': 'Формат: JPG, PNG',
@@ -1948,10 +1966,149 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'djgyqsmw': {
       'ru': 'Зарегистрироваться',
+      'en': 'Register',
+      'ko': '등록하다',
+    },
+    'wqybv1d0': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+    },
+    '0uoq2qyh': {
+      'ru': 'Home',
+      'en': 'Home',
+      'ko': '집',
+    },
+  },
+  // SendEmail
+  {
+    'j7d5lnuy': {
+      'ru': 'Тех поддержка',
+      'en': 'Tech support',
+      'ko': '기술 지원',
+    },
+    'abrlth36': {
+      'ru': 'To',
+      'en': 'To',
+      'ko': '에게',
+    },
+    'zxjwqukw': {
+      'ru': 'wholekrsaler@gmail.com',
+      'en': 'wholekrsaler@gmail.com',
+      'ko': 'Wholekrsaler@gmail.com',
+    },
+    '0ithpwxx': {
+      'ru': 'Тема сообщения',
+      'en': 'Message Subject',
+      'ko': '메시지 제목',
+    },
+    'kmstbcl8': {
+      'ru': 'Текст сообщения',
+      'en': 'Message text',
+      'ko': '메시지 텍스트',
+    },
+    'qhv8xr41': {
+      'ru': 'Незабудьте указать контактные данные',
+      'en': 'Don\'t forget to include your contact information',
+      'ko': '연락처 정보를 제공하는 것을 잊지 마세요',
+    },
+    '3tdcbnde': {
+      'ru': 'Send',
+      'en': 'Send',
+      'ko': '보내다',
+    },
+    'v9g516kr': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+    },
+  },
+  // checkStoreList
+  {
+    'vi9vfnh6': {
+      'ru': 'Магазины на проверке',
       'en': '',
       'ko': '',
     },
-    '0uoq2qyh': {
+    'h6euseda': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+    },
+  },
+  // checkStorePageAdmin
+  {
+    'hutbvsoh': {
+      'ru': 'Имя магазина',
+      'en': 'Store name',
+      'ko': '매장명',
+    },
+    'dn0esv0v': {
+      'ru': 'Телефон',
+      'en': 'Telephone',
+      'ko': '전화',
+    },
+    'c6er9fk6': {
+      'ru': 'Адрес',
+      'en': 'Address',
+      'ko': '주소',
+    },
+    'fcz3w61a': {
+      'ru': 'Квартира',
+      'en': 'Apartment',
+      'ko': '아파트',
+    },
+    'usl8mapv': {
+      'ru': 'САОБЧА',
+      'en': 'SAOBCHA',
+      'ko': '사오차',
+    },
+    'ofmqxhae': {
+      'ru': 'загрузите',
+      'en': 'download',
+      'ko': '다운로드',
+    },
+    '8albb0te': {
+      'ru': 'фото саобча',
+      'en': 'photo saobcha',
+      'ko': '사진 사옵차',
+    },
+    'rwuehjhf': {
+      'ru': 'Формат: JPG, PNG',
+      'en': 'Format: JPG, PNG',
+      'ko': '형식: JPG, PNG',
+    },
+    'h24s8wm3': {
+      'ru': 'Изменить фото',
+      'en': 'Edit photo',
+      'ko': '사진 변경',
+    },
+    '4t03kmpc': {
+      'ru': 'Прошел',
+      'en': '',
+      'ko': '',
+    },
+    'cct6rnry': {
+      'ru': 'Не прошел',
+      'en': '',
+      'ko': '',
+    },
+    '3gxrwx6m': {
+      'ru': 'Причина отказа',
+      'en': '',
+      'ko': '',
+    },
+    'i5shjzkf': {
+      'ru': 'Сохранить отказ',
+      'en': '',
+      'ko': '',
+    },
+    'z3m57ebj': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+    },
+    'zvj1p7a8': {
       'ru': 'Home',
       'en': 'Home',
       'ko': '집',
@@ -2209,78 +2366,78 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'q3dzypk9': {
       'ru': 'Food',
-      'en': '',
-      'ko': '',
+      'en': 'Food',
+      'ko': '음식',
     },
     'kdkopmvz': {
       'ru': 'Beverages',
-      'en': '',
-      'ko': '',
+      'en': 'Beverages',
+      'ko': '음료수',
     },
     '3u2j3goa': {
       'ru': 'Groceries',
-      'en': '',
-      'ko': '',
+      'en': 'Grocery stores',
+      'ko': '식료 잡화류',
     },
     'lukelg45': {
       'ru': 'Household',
-      'en': '',
-      'ko': '',
+      'en': 'Household',
+      'ko': '가정',
     },
     'm2r3i84g': {
       'ru': 'Pet Supplies',
-      'en': '',
-      'ko': '',
+      'en': 'Pet Supplies',
+      'ko': '애완동물 용품',
     },
     'xc37s1xf': {
       'ru': 'Health',
-      'en': '',
-      'ko': '',
+      'en': 'Health',
+      'ko': '건강',
     },
     'cs7phpro': {
       'ru': 'Beauty',
-      'en': '',
-      'ko': '',
+      'en': 'Beauty',
+      'ko': '아름다움',
     },
     'wglw301a': {
       'ru': 'Food',
-      'en': '',
-      'ko': '',
+      'en': 'Food',
+      'ko': '음식',
     },
     '6xu8kl9z': {
       'ru': 'Food',
-      'en': '',
-      'ko': '',
+      'en': 'Food',
+      'ko': '음식',
     },
     '69elaxup': {
       'ru': 'Food',
-      'en': '',
-      'ko': '',
+      'en': 'Food',
+      'ko': '음식',
     },
     'wgim9bi1': {
       'ru': 'Food',
-      'en': '',
-      'ko': '',
+      'en': 'Food',
+      'ko': '음식',
     },
     'j1kynct5': {
       'ru': 'Food',
-      'en': '',
-      'ko': '',
+      'en': 'Food',
+      'ko': '음식',
     },
     'rtwt3vxc': {
       'ru': 'Food',
-      'en': '',
-      'ko': '',
+      'en': 'Food',
+      'ko': '음식',
     },
     'k48bxpdr': {
       'ru': 'Food',
-      'en': '',
-      'ko': '',
+      'en': 'Food',
+      'ko': '음식',
     },
     'utpby49i': {
       'ru': 'Food',
-      'en': '',
-      'ko': '',
+      'en': 'Food',
+      'ko': '음식',
     },
   },
   // Miscellaneous

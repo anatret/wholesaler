@@ -1,10 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'auth_page_model.dart';
 export 'auth_page_model.dart';
 
@@ -25,11 +27,22 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
     super.initState();
     _model = createModel(context, () => AuthPageModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      GoRouter.of(context).prepareAuthEvent();
+      await authManager.signOut();
+      GoRouter.of(context).clearRedirectLocation();
+
+      context.goNamedAuth('AuthPage', context.mounted);
+    });
+
     _model.emailFieldTextController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
 
     _model.passFieldTextController ??= TextEditingController();
     _model.passFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -280,6 +293,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       await authManager.refreshUser();
+                                      var shouldSetState = false;
                                       GoRouter.of(context).prepareAuthEvent();
 
                                       final user =
@@ -293,6 +307,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                       }
 
                                       if (currentUserEmailVerified == true) {
+                                        // checkStore
                                         _model.usersStore =
                                             await queryStoresRecordOnce(
                                           queryBuilder: (storesRecord) =>
@@ -302,15 +317,161 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                           ),
                                           singleRecord: true,
                                         ).then((s) => s.firstOrNull);
+                                        shouldSetState = true;
                                         if ((_model.usersStore != null) ==
                                             true) {
-                                          FFAppState().userStore =
-                                              _model.usersStore?.reference;
-                                          safeSetState(() {});
+                                          if ((_model.usersStore
+                                                      ?.verifyStatus ==
+                                                  null) ||
+                                              (_model.usersStore
+                                                      ?.verifyStatus ==
+                                                  VerifyStatus
+                                                      .newApplication)) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title:
+                                                      const Text('Проверка магазина'),
+                                                  content: const Text(
+                                                      'Ваш магазин проходит проверку. Ожидайте результатов. Если вы хотите изменить данные о магазине, сделайте это сейчас, так как после завершения проверки изменения будут невозможны.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            await authManager.signOut();
+                                            GoRouter.of(context)
+                                                .clearRedirectLocation();
 
-                                          context.pushNamedAuth(
+                                            context.pushNamedAuth(
+                                              'EditStorePage',
+                                              context.mounted,
+                                              queryParameters: {
+                                                'storeRef': serializeParam(
+                                                  _model.usersStore?.reference,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.scale,
+                                                  alignment:
+                                                      Alignment.bottomCenter,
+                                                ),
+                                              },
+                                            );
+
+                                            if (shouldSetState) {
+                                              safeSetState(() {});
+                                            }
+                                            return;
+                                          } else if (_model
+                                                  .usersStore?.verifyStatus ==
+                                              VerifyStatus.done) {
+                                            // upudateUserStore
+                                            FFAppState().userStore =
+                                                _model.usersStore?.reference;
+                                            safeSetState(() {});
+
+                                            context.pushNamedAuth(
                                               'HomePageWholeStore',
-                                              context.mounted);
+                                              context.mounted,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.scale,
+                                                  alignment:
+                                                      Alignment.bottomCenter,
+                                                ),
+                                              },
+                                            );
+                                          } else if (_model
+                                                  .usersStore?.verifyStatus ==
+                                              VerifyStatus.failure) {
+                                            _model.storeVerifaedMassage =
+                                                await queryStoreVerifaedMassageRecordOnce(
+                                              queryBuilder:
+                                                  (storeVerifaedMassageRecord) =>
+                                                      storeVerifaedMassageRecord
+                                                          .where(
+                                                'storeRef',
+                                                isEqualTo: _model
+                                                    .usersStore?.reference,
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            shouldSetState = true;
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text(
+                                                      'Магазин не прошел проверку'),
+                                                  content: Text(_model
+                                                      .storeVerifaedMassage!
+                                                      .message),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            await authManager.signOut();
+                                            GoRouter.of(context)
+                                                .clearRedirectLocation();
+
+                                            context.pushNamedAuth(
+                                              'EditStorePage',
+                                              context.mounted,
+                                              queryParameters: {
+                                                'storeRef': serializeParam(
+                                                  _model.usersStore?.reference,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.scale,
+                                                  alignment:
+                                                      Alignment.bottomCenter,
+                                                ),
+                                              },
+                                            );
+
+                                            if (shouldSetState) {
+                                              safeSetState(() {});
+                                            }
+                                            return;
+                                          } else {
+                                            if (shouldSetState) {
+                                              safeSetState(() {});
+                                            }
+                                            return;
+                                          }
                                         } else {
                                           context.goNamedAuth(
                                             'RegNewStore',
@@ -350,7 +511,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                         );
                                       }
 
-                                      safeSetState(() {});
+                                      if (shouldSetState) safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'gnvt3by0' /* Логин */,

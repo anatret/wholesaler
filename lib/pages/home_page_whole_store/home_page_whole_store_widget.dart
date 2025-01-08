@@ -7,6 +7,7 @@ import '/components/whole_store_item/whole_store_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -34,10 +35,40 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
     _model = createModel(context, () => HomePageWholeStoreModel());
 
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {});
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      Function() navigate = () {};
+      // checkStore
+      _model.usersStore = await queryStoresRecordOnce(
+        queryBuilder: (storesRecord) => storesRecord.where(
+          'user',
+          isEqualTo: currentUserReference,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      if (_model.usersStore != null) {
+        if (_model.usersStore?.verifyStatus == VerifyStatus.done) {
+        } else {
+          GoRouter.of(context).prepareAuthEvent();
+          await authManager.signOut();
+          GoRouter.of(context).clearRedirectLocation();
+
+          navigate = () => context.goNamedAuth('AuthPage', context.mounted);
+        }
+      } else {
+        GoRouter.of(context).prepareAuthEvent();
+        await authManager.signOut();
+        GoRouter.of(context).clearRedirectLocation();
+
+        navigate = () => context.goNamedAuth('AuthPage', context.mounted);
+      }
+
+      navigate();
+    });
 
     _model.searchTextFieldTextController ??= TextEditingController();
     _model.searchTextFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

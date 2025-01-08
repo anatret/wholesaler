@@ -68,6 +68,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
         widget.isEdit && (widget.pizzaDoc?.inStock == true);
     _model.oftenOrderedSwitchValue =
         widget.isEdit && (widget.pizzaDoc?.oftenOrdered == true);
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

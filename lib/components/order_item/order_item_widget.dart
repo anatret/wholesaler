@@ -37,6 +37,8 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OrderItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

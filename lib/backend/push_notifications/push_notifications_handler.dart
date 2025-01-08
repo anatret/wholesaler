@@ -72,13 +72,15 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
 
   @override
   Widget build(BuildContext context) => _loading
-      ? Container(
-          color: FlutterFlowTheme.of(context).primary,
-          child: Image.asset(
-            'assets/images/logo-color.png',
-            fit: BoxFit.contain,
-          ),
-        )
+      ? isWeb
+          ? Container()
+          : Container(
+              color: FlutterFlowTheme.of(context).primary,
+              child: Image.asset(
+                'assets/images/logo-color.png',
+                fit: BoxFit.contain,
+              ),
+            )
       : widget.child;
 }
 
@@ -136,7 +138,11 @@ final parametersBuilderMap =
         },
       ),
   'ManagerOrderListPage': ParameterData.none(),
-  'RegStorePage': ParameterData.none(),
+  'EditStorePage': (data) async => ParameterData(
+        allParams: {
+          'storeRef': getParameter<DocumentReference>(data, 'storeRef'),
+        },
+      ),
   'Stores': ParameterData.none(),
   'OneOrderPage2': (data) async => ParameterData(
         allParams: {
@@ -169,6 +175,13 @@ final parametersBuilderMap =
         },
       ),
   'RegNewStore': ParameterData.none(),
+  'SendEmail': ParameterData.none(),
+  'checkStoreList': ParameterData.none(),
+  'checkStorePageAdmin': (data) async => ParameterData(
+        allParams: {
+          'storeRef': getParameter<DocumentReference>(data, 'storeRef'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

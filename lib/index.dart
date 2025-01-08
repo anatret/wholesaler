@@ -23,8 +23,8 @@ export '/pages/product_deck_page/product_deck_page_widget.dart'
     show ProductDeckPageWidget;
 export '/for_order/manager_order_list_page/manager_order_list_page_widget.dart'
     show ManagerOrderListPageWidget;
-export '/auth/reg_store_page/reg_store_page_widget.dart'
-    show RegStorePageWidget;
+export '/auth/edit_store_page/edit_store_page_widget.dart'
+    show EditStorePageWidget;
 export '/pages/stores/stores_widget.dart' show StoresWidget;
 export '/for_order/one_order_page2/one_order_page2_widget.dart'
     show OneOrderPage2Widget;
@@ -47,3 +47,8 @@ export '/payment/paid_page/paid_page_widget.dart' show PaidPageWidget;
 export '/pages/sand_notice_page/sand_notice_page_widget.dart'
     show SandNoticePageWidget;
 export '/auth/reg_new_store/reg_new_store_widget.dart' show RegNewStoreWidget;
+export '/for_app/send_email/send_email_widget.dart' show SendEmailWidget;
+export '/admin/check_store_list/check_store_list_widget.dart'
+    show CheckStoreListWidget;
+export '/admin/check_store_page_admin/check_store_page_admin_widget.dart'
+    show CheckStorePageAdminWidget;

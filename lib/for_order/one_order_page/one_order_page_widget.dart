@@ -29,6 +29,8 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OneOrderPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
