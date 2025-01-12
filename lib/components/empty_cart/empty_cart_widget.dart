@@ -66,15 +66,40 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
           Text(
             () {
               if (widget.page == 'cart') {
-                return 'Ваша корзина пуста';
+                return FFLocalizations.of(context).getVariableText(
+                  ruText: 'Ваша корзина пуста',
+                  enText: 'Your cart is empty',
+                  koText: '장바구니가 비어있습니다',
+                  zh_HansText: '您的购物车是空的',
+                );
               } else if (widget.page == 'order') {
-                return 'Заказов нет';
+                return FFLocalizations.of(context).getVariableText(
+                  ruText: 'Заказов нет',
+                  enText: 'No orders',
+                  koText: '주문 없음',
+                  zh_HansText: '沒有訂單',
+                );
               } else if (widget.page == 'favorit') {
-                return 'Список избранных пуст';
+                return FFLocalizations.of(context).getVariableText(
+                  ruText: 'Список избранных пуст',
+                  enText: 'Favorites list is empty',
+                  koText: '즐겨찾기 목록이 비어 있습니다',
+                  zh_HansText: '收藏夹列表为空',
+                );
               } else if (widget.page == 'newOrder') {
-                return 'Новых заказов нет';
+                return FFLocalizations.of(context).getVariableText(
+                  ruText: 'Новых заказов нет',
+                  enText: 'There are no new orders',
+                  koText: '새로운 주문이 없습니다',
+                  zh_HansText: '没有新订单',
+                );
               } else {
-                return 'Пусто';
+                return FFLocalizations.of(context).getVariableText(
+                  ruText: 'Пусто',
+                  enText: 'Empty',
+                  koText: '비어 있는',
+                  zh_HansText: '空的',
+                );
               }
             }(),
             textAlign: TextAlign.center,

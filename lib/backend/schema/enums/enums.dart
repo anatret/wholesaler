@@ -56,6 +56,7 @@ enum VerifyStatus {
   newApplication,
   failure,
   done,
+  inPause,
 }
 
 extension FFEnumExtensions<T extends Enum> on T {

@@ -108,6 +108,7 @@ class _MyAppState extends State<MyApp> {
         Locale('ru'),
         Locale('en'),
         Locale('ko'),
+        Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       ],
       theme: ThemeData(
         brightness: Brightness.light,
@@ -173,7 +174,7 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              'mc3n5gye' /* Home */,
+              'mc3n5gye' /* Дом */,
             ),
             tooltip: '',
           ),

@@ -73,7 +73,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
-                    'fohtynin' /* Subscription / Payment */,
+                    'fohtynin' /* Подписка/Оплата */,
                   ),
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
@@ -85,7 +85,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
-                    'ixo7t97c' /* Your Subscription */,
+                    'ixo7t97c' /* Ваша подписка */,
                   ),
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         fontFamily: 'Readex Pro',
@@ -138,7 +138,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               },
                               title: Text(
                                 FFLocalizations.of(context).getText(
-                                  'jva11say' /* Monthly */,
+                                  'jva11say' /* Ежемесячно */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
@@ -149,7 +149,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               ),
                               subtitle: Text(
                                 FFLocalizations.of(context).getText(
-                                  'pp0pb58t' /* $15.99/mo */,
+                                  'pp0pb58t' /* $15.99/м */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .headlineMedium
@@ -174,7 +174,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               12.0, 0.0, 24.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              '00bk6umn' /* Gain unlimited access to all t... */,
+                              '00bk6umn' /* Получите неограниченный доступ... */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .labelMedium
@@ -193,7 +193,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
-                    'k5b8ia5r' /* Other Offers */,
+                    'k5b8ia5r' /* Другие предложения */,
                   ),
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         fontFamily: 'Readex Pro',
@@ -247,7 +247,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               },
                               title: Text(
                                 FFLocalizations.of(context).getText(
-                                  'wgpuv0cv' /* Annual (save $12) */,
+                                  'wgpuv0cv' /* Ежегодно (экономьте  $12) */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
@@ -258,7 +258,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               ),
                               subtitle: Text(
                                 FFLocalizations.of(context).getText(
-                                  'm3ibs5ms' /* $180/yr */,
+                                  'm3ibs5ms' /* $180/г */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .headlineMedium
@@ -283,7 +283,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               12.0, 0.0, 24.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'xxtkmyeu' /* Gain unlimited access to all t... */,
+                              'xxtkmyeu' /* Получите неограниченный доступ... */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .labelMedium
@@ -338,7 +338,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                           },
                           title: Text(
                             FFLocalizations.of(context).getText(
-                              'm3w3vp7s' /* Free Limited Access */,
+                              'm3w3vp7s' /* Бесплатный ограниченный доступ */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .headlineSmall
@@ -350,7 +350,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                           ),
                           subtitle: Text(
                             FFLocalizations.of(context).getText(
-                              'ua5dne1y' /* Continue with limited access a... */,
+                              'ua5dne1y' /* Продолжайте с ограниченным дос... */,
                             ),
                             style:
                                 FlutterFlowTheme.of(context).bodySmall.override(

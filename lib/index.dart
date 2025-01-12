@@ -52,3 +52,5 @@ export '/admin/check_store_list/check_store_list_widget.dart'
     show CheckStoreListWidget;
 export '/admin/check_store_page_admin/check_store_page_admin_widget.dart'
     show CheckStorePageAdminWidget;
+export '/auth/reg_new_store_pre/reg_new_store_pre_widget.dart'
+    show RegNewStorePreWidget;

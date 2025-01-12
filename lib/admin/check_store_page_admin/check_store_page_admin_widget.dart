@@ -702,7 +702,7 @@ class _CheckStorePageAdminWidgetState extends State<CheckStorePageAdminWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
-                              'usl8mapv' /* САОБЧА */,
+                              'usl8mapv' /* Бизнес лицензия(사옵차) */,
                             ),
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
@@ -867,7 +867,7 @@ class _CheckStorePageAdminWidgetState extends State<CheckStorePageAdminWidget> {
                                 ),
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    '8albb0te' /* фото саобча */,
+                                    '8albb0te' /* фото Бизнес лицензия  */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium

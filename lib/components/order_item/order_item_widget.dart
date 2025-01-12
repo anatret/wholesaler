@@ -116,7 +116,12 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                       child: Text(
-                        '${widget.pizzaValue?.toString()} шт.',
+                        '${widget.pizzaValue?.toString()}${FFLocalizations.of(context).getVariableText(
+                          ruText: 'шт.',
+                          enText: 'pcs.',
+                          koText: '개',
+                          zh_HansText: '件。',
+                        )}',
                         style: FlutterFlowTheme.of(context).bodySmall.override(
                               fontFamily: 'Readex Pro',
                               letterSpacing: 0.0,

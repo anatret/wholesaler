@@ -13,6 +13,7 @@ import 'schema/stores_record.dart';
 import 'schema/clients_record.dart';
 import 'schema/payments_record.dart';
 import 'schema/store_verifaed_massage_record.dart';
+import 'schema/appli_whole_sale_act_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -29,6 +30,7 @@ export 'schema/stores_record.dart';
 export 'schema/clients_record.dart';
 export 'schema/payments_record.dart';
 export 'schema/store_verifaed_massage_record.dart';
+export 'schema/appli_whole_sale_act_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
 Future<int> queryUserRecordCount({
@@ -321,6 +323,43 @@ Future<List<StoreVerifaedMassageRecord>> queryStoreVerifaedMassageRecordOnce({
     queryCollectionOnce(
       StoreVerifaedMassageRecord.collection,
       StoreVerifaedMassageRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query AppliWholeSaleActRecords (as a Stream and as a Future).
+Future<int> queryAppliWholeSaleActRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      AppliWholeSaleActRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<AppliWholeSaleActRecord>> queryAppliWholeSaleActRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      AppliWholeSaleActRecord.collection,
+      AppliWholeSaleActRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<AppliWholeSaleActRecord>> queryAppliWholeSaleActRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      AppliWholeSaleActRecord.collection,
+      AppliWholeSaleActRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

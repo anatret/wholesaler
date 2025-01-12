@@ -24,6 +24,11 @@ class ProfileEditModel extends FlutterFlowModel<ProfileEditWidget> {
   TextEditingController? phoneFieldTextController;
   final phoneFieldMask = MaskTextInputFormatter(mask: '###-####-####');
   String? Function(BuildContext, String?)? phoneFieldTextControllerValidator;
+  // State field(s) for TextSupportEmail widget.
+  FocusNode? textSupportEmailFocusNode;
+  TextEditingController? textSupportEmailTextController;
+  String? Function(BuildContext, String?)?
+      textSupportEmailTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -38,5 +43,8 @@ class ProfileEditModel extends FlutterFlowModel<ProfileEditWidget> {
 
     phoneFieldFocusNode?.dispose();
     phoneFieldTextController?.dispose();
+
+    textSupportEmailFocusNode?.dispose();
+    textSupportEmailTextController?.dispose();
   }
 }

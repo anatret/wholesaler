@@ -174,7 +174,11 @@ final parametersBuilderMap =
           'productRef': getParameter<DocumentReference>(data, 'productRef'),
         },
       ),
-  'RegNewStore': ParameterData.none(),
+  'RegNewStore': (data) async => ParameterData(
+        allParams: {
+          'isWholeStore': getParameter<bool>(data, 'isWholeStore'),
+        },
+      ),
   'SendEmail': ParameterData.none(),
   'checkStoreList': ParameterData.none(),
   'checkStorePageAdmin': (data) async => ParameterData(
@@ -182,6 +186,7 @@ final parametersBuilderMap =
           'storeRef': getParameter<DocumentReference>(data, 'storeRef'),
         },
       ),
+  'RegNewStorePre': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

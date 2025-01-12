@@ -20,8 +20,20 @@ class BanersRecord extends FirestoreRecord {
   String get url => _url ?? '';
   bool hasUrl() => _url != null;
 
+  // "storeRef" field.
+  DocumentReference? _storeRef;
+  DocumentReference? get storeRef => _storeRef;
+  bool hasStoreRef() => _storeRef != null;
+
+  // "userRef" field.
+  DocumentReference? _userRef;
+  DocumentReference? get userRef => _userRef;
+  bool hasUserRef() => _userRef != null;
+
   void _initializeFields() {
     _url = snapshotData['url'] as String?;
+    _storeRef = snapshotData['storeRef'] as DocumentReference?;
+    _userRef = snapshotData['userRef'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -59,10 +71,14 @@ class BanersRecord extends FirestoreRecord {
 
 Map<String, dynamic> createBanersRecordData({
   String? url,
+  DocumentReference? storeRef,
+  DocumentReference? userRef,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'url': url,
+      'storeRef': storeRef,
+      'userRef': userRef,
     }.withoutNulls,
   );
 
@@ -74,11 +90,14 @@ class BanersRecordDocumentEquality implements Equality<BanersRecord> {
 
   @override
   bool equals(BanersRecord? e1, BanersRecord? e2) {
-    return e1?.url == e2?.url;
+    return e1?.url == e2?.url &&
+        e1?.storeRef == e2?.storeRef &&
+        e1?.userRef == e2?.userRef;
   }
 
   @override
-  int hash(BanersRecord? e) => const ListEquality().hash([e?.url]);
+  int hash(BanersRecord? e) =>
+      const ListEquality().hash([e?.url, e?.storeRef, e?.userRef]);
 
   @override
   bool isValidKey(Object? o) => o is BanersRecord;

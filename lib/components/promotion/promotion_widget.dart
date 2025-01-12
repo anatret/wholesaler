@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'promotion_model.dart';
 export 'promotion_model.dart';
 
@@ -50,6 +52,8 @@ class _PromotionWidgetState extends State<PromotionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -303,6 +307,8 @@ class _PromotionWidgetState extends State<PromotionWidget> {
                           .doc()
                           .set(createBanersRecordData(
                             url: _model.uploadedFileUrl,
+                            storeRef: FFAppState().userStore,
+                            userRef: currentUserReference,
                           ));
                       Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -325,7 +331,19 @@ class _PromotionWidgetState extends State<PromotionWidget> {
 
                   Navigator.pop(context);
                 },
-                text: widget.isEdit ? 'Изменить акцию' : 'Добавить акцию',
+                text: widget.isEdit
+                    ? FFLocalizations.of(context).getVariableText(
+                        ruText: 'Изменить акцию',
+                        enText: 'Change promotion',
+                        koText: '프로모션 변경',
+                        zh_HansText: '改变促销',
+                      )
+                    : FFLocalizations.of(context).getVariableText(
+                        ruText: 'Добавить акцию',
+                        enText: 'Add promotion',
+                        koText: '프로모션 추가',
+                        zh_HansText: '添加促销',
+                      ),
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 48.0,

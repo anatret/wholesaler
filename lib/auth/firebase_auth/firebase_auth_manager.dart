@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../auth_manager.dart';
+import '../../flutter_flow/flutter_flow_util.dart';
 
 import '/backend/backend.dart';
 import 'anonymous_auth.dart';
@@ -71,9 +72,10 @@ class FirebaseAuthManager extends AuthManager
       if (e.code == 'requires-recent-login') {
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text(
-                  'Too long since most recent sign in. Sign in again before deleting your account.')),
+          SnackBar(
+              content: Text(FFLocalizations.of(context).getText(
+            'w43e88ov' /* Слишком много времени прошло с... */,
+          ))),
         );
       }
     }
@@ -95,9 +97,10 @@ class FirebaseAuthManager extends AuthManager
       if (e.code == 'requires-recent-login') {
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text(
-                  'Too long since most recent sign in. Sign in again before updating your email.')),
+          SnackBar(
+              content: Text(FFLocalizations.of(context).getText(
+            'z207gbic' /* Слишком много времени прошло с... */,
+          ))),
         );
       }
     }
@@ -118,7 +121,12 @@ class FirebaseAuthManager extends AuthManager
       if (e.code == 'requires-recent-login') {
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.message!}')),
+          SnackBar(
+              content: Text(FFLocalizations.of(context)
+                  .getText(
+                    'nplkojh7' /* Ошибка: [error] */,
+                  )
+                  .replaceAll('[error]', e.message!))),
         );
       }
     }
@@ -134,12 +142,20 @@ class FirebaseAuthManager extends AuthManager
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: ${e.message!}')),
+        SnackBar(
+            content: Text(FFLocalizations.of(context)
+                .getText(
+                  'nplkojh7' /* Ошибка: [error] */,
+                )
+                .replaceAll('[error]', e.message!))),
       );
       return null;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Password reset email sent')),
+      SnackBar(
+          content: Text(FFLocalizations.of(context).getText(
+        '6hf86e56' /* Письмо для сброса пароля отпра... */,
+      ))),
     );
   }
 
@@ -205,7 +221,11 @@ class FirebaseAuthManager extends AuthManager
       } else if (phoneAuthManager.phoneAuthError != null) {
         final e = phoneAuthManager.phoneAuthError!;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Error: ${e.message!}'),
+          content: Text(FFLocalizations.of(context)
+              .getText(
+                'nplkojh7' /* Ошибка: [error] */,
+              )
+              .replaceAll('[error]', e.message!)),
         ));
         phoneAuthManager.update(() => phoneAuthManager.phoneAuthError = null);
       }
@@ -311,11 +331,17 @@ class FirebaseAuthManager extends AuthManager
           : WholeSalerFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException catch (e) {
       final errorMsg = switch (e.code) {
-        'email-already-in-use' =>
-          'Error: The email is already in use by a different account',
-        'INVALID_LOGIN_CREDENTIALS' =>
-          'Error: The supplied auth credential is incorrect, malformed or has expired',
-        _ => 'Error: ${e.message!}',
+        'email-already-in-use' => FFLocalizations.of(context).getText(
+            'z1zja8zd' /* Адрес электронной почты уже ис... */,
+          ),
+        'INVALID_LOGIN_CREDENTIALS' => FFLocalizations.of(context).getText(
+            'loxivoqm' /* Указанные данные для входа нев... */,
+          ),
+        _ => FFLocalizations.of(context)
+            .getText(
+              'nplkojh7' /* Ошибка: [error] */,
+            )
+            .replaceAll('[error]', e.message!),
       };
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(

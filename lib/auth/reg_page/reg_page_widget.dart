@@ -570,9 +570,11 @@ class _RegPageWidgetState extends State<RegPageWidget> {
                       if (_model.passFieldTextController.text !=
                           _model.confirmPassFieldTextController.text) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: Text(
-                              'Passwords don\'t match!',
+                              FFLocalizations.of(context).getText(
+                                'vu6l2ips' /* Пароли не совпадают */,
+                              ),
                             ),
                           ),
                         );

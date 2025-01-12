@@ -1,1 +1,2 @@
-
+NSCameraUsageDescription = "To add photos or videos of products and business licenses, the application requires access to the camera. The business license is required for store verification and will not be shared with third parties. Product photos, on the contrary, will be available to potential buyers for ease of selection.";
+NSPhotoLibraryUsageDescription = "To upload data such as product photos and a business license, the app requires access to the photo library. The business license is required for store verification and will not be shared with third parties. Product photos, on the other hand, will be visible to potential buyers to facilitate the selection process.";

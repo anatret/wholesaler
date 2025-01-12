@@ -93,10 +93,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                   ),
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      'w3hp98gi' /* WholeSaler Privacy
-Policy
- */
-                                      ,
+                                      'w3hp98gi' /* Политика конфиденциальности Wh... */,
                                     ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
@@ -111,7 +108,7 @@ Policy
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'mrzmhcic' /* This privacy policy applies to... */,
+                                  'mrzmhcic' /* Настоящая политика конфиденциа... */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

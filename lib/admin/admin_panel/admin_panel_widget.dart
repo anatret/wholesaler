@@ -445,7 +445,7 @@ class _AdminPanelWidgetState extends State<AdminPanelWidget> {
                       print('Button pressed ...');
                     },
                     text: FFLocalizations.of(context).getText(
-                      '09ubqdzk' /* Clear app states */,
+                      '09ubqdzk' /* Очистить состояния приложения */,
                     ),
                     options: FFButtonOptions(
                       width: 140.0,

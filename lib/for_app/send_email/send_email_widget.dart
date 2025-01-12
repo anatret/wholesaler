@@ -189,7 +189,7 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
                                 decoration: InputDecoration(
                                   labelText:
                                       FFLocalizations.of(context).getText(
-                                    'abrlth36' /* To */,
+                                    'abrlth36' /* Кому */,
                                   ),
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -397,7 +397,7 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
                                               .join('&')));
                                     },
                                     text: FFLocalizations.of(context).getText(
-                                      '3tdcbnde' /* Send */,
+                                      '3tdcbnde' /* Отправить */,
                                     ),
                                     icon: Icon(
                                       Icons.send,

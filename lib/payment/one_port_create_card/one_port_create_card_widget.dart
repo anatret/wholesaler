@@ -63,7 +63,7 @@ class _OnePortCreateCardWidgetState extends State<OnePortCreateCardWidget> {
           );
           _model.textFieldPlanNameTextController?.text =
               FFLocalizations.of(context).getText(
-            'rghe9j6g' /* WholeSaler Satore plan 1mon */,
+            'rghe9j6g' /* План WholeSaler Satore на 1 ме... */,
           );
         }));
   }
@@ -993,7 +993,7 @@ class _OnePortCreateCardWidgetState extends State<OnePortCreateCardWidget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'y7mb0hxy' /* Saved Cards */,
+                                  'y7mb0hxy' /* Сохраненные карты */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .headlineSmall
@@ -1048,7 +1048,7 @@ class _OnePortCreateCardWidgetState extends State<OnePortCreateCardWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '8stt67mm' /* Expires 12/24 */,
+                                                  '8stt67mm' /* Истекает 12/24 */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1122,7 +1122,7 @@ class _OnePortCreateCardWidgetState extends State<OnePortCreateCardWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'tcshl1sy' /* Expires 09/25 */,
+                                                  'tcshl1sy' /* Истекает 25.09 */,
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)

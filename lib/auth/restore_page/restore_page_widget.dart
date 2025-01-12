@@ -155,9 +155,11 @@ class _RestorePageWidgetState extends State<RestorePageWidget> {
                           onPressed: () async {
                             if (_model.emailFieldTextController.text.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
+                                SnackBar(
                                   content: Text(
-                                    'Email required!',
+                                    FFLocalizations.of(context).getText(
+                                      'gnzswnov' /* Требуется указать адрес электр... */,
+                                    ),
                                   ),
                                 ),
                               );

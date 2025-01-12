@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'one_order_page_model.dart';
 export 'one_order_page_model.dart';
 
@@ -73,6 +74,28 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).info,
+            floatingActionButton: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 6.0, 6.0),
+              child: FloatingActionButton(
+                onPressed: () async {
+                  _model.wholestore = await StoresRecord.getDocumentOnce(
+                      oneOrderPageOrderRecord.wholeStore!);
+                  await launchUrl(Uri(
+                    scheme: 'tel',
+                    path: _model.wholestore!.phone,
+                  ));
+
+                  safeSetState(() {});
+                },
+                backgroundColor: FlutterFlowTheme.of(context).success,
+                elevation: 8.0,
+                child: Icon(
+                  Icons.call_outlined,
+                  color: FlutterFlowTheme.of(context).info,
+                  size: 24.0,
+                ),
+              ),
+            ),
             appBar: PreferredSize(
               preferredSize: const Size.fromHeight(58.0),
               child: AppBar(
@@ -362,31 +385,91 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 1.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).alternate,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
-                      child: Text(
-                        '${oneOrderPageOrderRecord.address} ${oneOrderPageOrderRecord.home} ${oneOrderPageOrderRecord.room}',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              letterSpacing: 0.0,
+                      child: StreamBuilder<StoresRecord>(
+                        stream: StoresRecord.getDocument(
+                            oneOrderPageOrderRecord.wholeStore!),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+
+                          final orderDetailsContainerStoresRecord =
+                              snapshot.data!;
+
+                          return Container(
+                            width: double.infinity,
+                            constraints: const BoxConstraints(
+                              minWidth: double.infinity,
                             ),
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Divider(
+                                  thickness: 2.0,
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                ),
+                                Text(
+                                  orderDetailsContainerStoresRecord.storeName,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                                Divider(
+                                  thickness: 2.0,
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 4.0),
+                                      child: Text(
+                                        '${oneOrderPageOrderRecord.address} ${oneOrderPageOrderRecord.home} ${oneOrderPageOrderRecord.room}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                    Text(
+                                      oneOrderPageOrderRecord.comment,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ].divide(const SizedBox(height: 6.0)),
+                            ),
+                          );
+                        },
                       ),
-                    ),
-                    Text(
-                      oneOrderPageOrderRecord.comment,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
                     ),
                   ],
                 ),

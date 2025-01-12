@@ -183,48 +183,60 @@ class _EditStorePageWidgetState extends State<EditStorePageWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
-                            () {
-                              if ((listViewStoresRecord.verifyStatus == null) ||
-                                  (listViewStoresRecord.verifyStatus ==
-                                      VerifyStatus.newApplication)) {
-                                return 'Магазин на проверке';
-                              } else if (listViewStoresRecord.verifyStatus ==
-                                  VerifyStatus.done) {
-                                return 'Проверка пройдена';
-                              } else {
-                                return 'Проверка не пройдена';
-                              }
-                            }(),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: () {
-                                    if ((listViewStoresRecord.verifyStatus ==
-                                            null) ||
-                                        (listViewStoresRecord.verifyStatus ==
-                                            VerifyStatus.newApplication)) {
-                                      return FlutterFlowTheme.of(context)
-                                          .primary;
-                                    } else if (listViewStoresRecord
-                                            .verifyStatus ==
-                                        VerifyStatus.done) {
-                                      return FlutterFlowTheme.of(context)
-                                          .success;
-                                    } else {
-                                      return FlutterFlowTheme.of(context).error;
-                                    }
-                                  }(),
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 20.0, 0.0, 0.0),
+                            child: Text(
+                              () {
+                                if ((listViewStoresRecord.verifyStatus ==
+                                        null) ||
+                                    (listViewStoresRecord.verifyStatus ==
+                                        VerifyStatus.newApplication)) {
+                                  return FFLocalizations.of(context)
+                                      .getVariableText(
+                                    ruText: 'Магазин на проверке',
+                                    enText: 'The store is under inspection',
+                                    koText: '매장이 점검 중입니다.',
+                                    zh_HansText: '该商店正在接受检查',
+                                  );
+                                } else if (listViewStoresRecord.verifyStatus ==
+                                    VerifyStatus.done) {
+                                  return 'Проверка пройдена';
+                                } else {
+                                  return 'Проверка не пройдена';
+                                }
+                              }(),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: () {
+                                      if ((listViewStoresRecord.verifyStatus ==
+                                              null) ||
+                                          (listViewStoresRecord.verifyStatus ==
+                                              VerifyStatus.newApplication)) {
+                                        return FlutterFlowTheme.of(context)
+                                            .primary;
+                                      } else if (listViewStoresRecord
+                                              .verifyStatus ==
+                                          VerifyStatus.done) {
+                                        return FlutterFlowTheme.of(context)
+                                            .success;
+                                      } else {
+                                        return FlutterFlowTheme.of(context)
+                                            .error;
+                                      }
+                                    }(),
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
@@ -771,7 +783,7 @@ class _EditStorePageWidgetState extends State<EditStorePageWidget> {
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
-                            'jjzngdsn' /* САОБЧА */,
+                            'jjzngdsn' /* Бизнес лицензия(사업자) */,
                           ),
                           labelStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
@@ -884,7 +896,7 @@ class _EditStorePageWidgetState extends State<EditStorePageWidget> {
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'k83lppxf' /* фото саобча */,
+                                  'k83lppxf' /* фото  лицензии(사업자) */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -1062,8 +1074,18 @@ class _EditStorePageWidgetState extends State<EditStorePageWidget> {
                             }
                           },
                           text: (listViewStoresRecord != null) == true
-                              ? 'Изменить'
-                              : 'Зарегистрироваться',
+                              ? FFLocalizations.of(context).getVariableText(
+                                  ruText: 'Изменить',
+                                  enText: 'Change',
+                                  koText: '변화',
+                                  zh_HansText: '改变',
+                                )
+                              : FFLocalizations.of(context).getVariableText(
+                                  ruText: 'Зарегистрироваться',
+                                  enText: 'Register',
+                                  koText: '등록하다',
+                                  zh_HansText: '登记',
+                                ),
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 48.0,

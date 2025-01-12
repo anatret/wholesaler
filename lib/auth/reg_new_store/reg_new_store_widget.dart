@@ -13,7 +13,12 @@ import 'reg_new_store_model.dart';
 export 'reg_new_store_model.dart';
 
 class RegNewStoreWidget extends StatefulWidget {
-  const RegNewStoreWidget({super.key});
+  const RegNewStoreWidget({
+    super.key,
+    required this.isWholeStore,
+  });
+
+  final bool? isWholeStore;
 
   @override
   State<RegNewStoreWidget> createState() => _RegNewStoreWidgetState();
@@ -165,8 +170,27 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Text(
+                        widget.isWholeStore!
+                            ? FFLocalizations.of(context).getVariableText(
+                                ruText: 'Оптовый магазин',
+                                enText: 'Wholesale store',
+                                koText: '도매점',
+                                zh_HansText: '批发商店',
+                              )
+                            : FFLocalizations.of(context).getVariableText(
+                                ruText: 'Закуп товара',
+                                enText: 'Purchase of goods',
+                                koText: '상품구매',
+                                zh_HansText: '购买商品',
+                              ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                      ),
                       Text(
                         FFLocalizations.of(context).getText(
                           '0khfppdb' /* Магазин на проверке */,
@@ -665,7 +689,7 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: FFLocalizations.of(context).getText(
-                        'ygw4ntty' /* Бизнес лицензия(саобча) */,
+                        'ygw4ntty' /* Бизнес лицензия(사옵차) */,
                       ),
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
@@ -774,7 +798,7 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'vnr3l8nx' /* фото саобча */,
+                              'vnr3l8nx' /* фото 사옵차 */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -900,6 +924,7 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                         saobchaImg: _model.uploadedFileUrl2,
                         user: currentUserReference,
                         verifyStatus: VerifyStatus.newApplication,
+                        isWholeStore: widget.isWholeStore,
                       ));
                       _model.newStoreID = StoresRecord.getDocumentFromData(
                           createStoresRecordData(
@@ -913,8 +938,14 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                             saobchaImg: _model.uploadedFileUrl2,
                             user: currentUserReference,
                             verifyStatus: VerifyStatus.newApplication,
+                            isWholeStore: widget.isWholeStore,
                           ),
                           storesRecordReference);
+                      if (widget.isWholeStore!) {
+                        await currentUserReference!.update(createUserRecordData(
+                          userType: UserTypes.manager,
+                        ));
+                      }
                       FFAppState().userStore = _model.newStoreID?.reference;
                       safeSetState(() {});
                       await showDialog(

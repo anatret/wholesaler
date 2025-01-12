@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/banner_item/banner_item_widget.dart';
+import '/components/empty_product_list_widget.dart';
 import '/components/often_ordered/often_ordered_widget.dart';
 import '/components/pizza_item/pizza_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -20,8 +21,8 @@ class WholeStorePageWidget extends StatefulWidget {
   const WholeStorePageWidget({
     super.key,
     this.wholeStore,
-    required this.searchText,
-    required this.productType,
+    this.searchText,
+    this.productType,
   });
 
   final DocumentReference? wholeStore;
@@ -2788,90 +2789,202 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                       ],
                     ),
                   ),
-                  StreamBuilder<List<BanersRecord>>(
-                    stream: queryBanersRecord(),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
-                              ),
-                            ),
-                          ),
-                        );
-                      }
-                      List<BanersRecord> rowBanersRecordList = snapshot.data!;
-
-                      return SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: List.generate(rowBanersRecordList.length,
-                                  (rowIndex) {
-                            final rowBanersRecord =
-                                rowBanersRecordList[rowIndex];
-                            return Builder(
-                              builder: (context) => InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (dialogContext) {
-                                      return Dialog(
-                                        elevation: 0,
-                                        insetPadding: EdgeInsets.zero,
-                                        backgroundColor: Colors.transparent,
-                                        alignment:
-                                            const AlignmentDirectional(0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        child: SizedBox(
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              1.0,
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  1.0,
-                                          child: BannerItemWidget(
-                                            url: rowBanersRecord.url,
-                                            baner: rowBanersRecord.reference,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                                child: Container(
-                                  width: 120.0,
-                                  height: 160.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    image: DecorationImage(
-                                      fit: BoxFit.contain,
-                                      image: Image.network(
-                                        rowBanersRecord.url,
-                                      ).image,
+                  Builder(
+                    builder: (context) {
+                      if (currentUserDocument?.userType != UserTypes.manager) {
+                        return StreamBuilder<List<BanersRecord>>(
+                          stream: queryBanersRecord(),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
                                     ),
-                                    borderRadius: BorderRadius.circular(16.0),
                                   ),
                                 ),
+                              );
+                            }
+                            List<BanersRecord> rowBanersRecordList =
+                                snapshot.data!;
+
+                            return SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: List.generate(
+                                        rowBanersRecordList.length, (rowIndex) {
+                                  final rowBanersRecord =
+                                      rowBanersRecordList[rowIndex];
+                                  return Builder(
+                                    builder: (context) => InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment:
+                                                  const AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              child: SizedBox(
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        1.0,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                child: BannerItemWidget(
+                                                  url: rowBanersRecord.url,
+                                                  baner:
+                                                      rowBanersRecord.reference,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                      child: Container(
+                                        width: 120.0,
+                                        height: 160.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          image: DecorationImage(
+                                            fit: BoxFit.contain,
+                                            image: Image.network(
+                                              rowBanersRecord.url,
+                                            ).image,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                })
+                                    .divide(const SizedBox(width: 8.0))
+                                    .addToStart(const SizedBox(width: 16.0))
+                                    .addToEnd(const SizedBox(width: 16.0)),
                               ),
                             );
-                          })
-                              .divide(const SizedBox(width: 8.0))
-                              .addToStart(const SizedBox(width: 16.0))
-                              .addToEnd(const SizedBox(width: 16.0)),
-                        ),
-                      );
+                          },
+                        );
+                      } else {
+                        return StreamBuilder<List<BanersRecord>>(
+                          stream: queryBanersRecord(
+                            queryBuilder: (banersRecord) => banersRecord.where(
+                              'storeRef',
+                              isEqualTo: FFAppState().userStore,
+                            ),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            List<BanersRecord> rowBanersRecordList =
+                                snapshot.data!;
+
+                            return SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: List.generate(
+                                        rowBanersRecordList.length, (rowIndex) {
+                                  final rowBanersRecord =
+                                      rowBanersRecordList[rowIndex];
+                                  return Builder(
+                                    builder: (context) => InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment:
+                                                  const AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              child: SizedBox(
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        1.0,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                child: BannerItemWidget(
+                                                  url: rowBanersRecord.url,
+                                                  baner:
+                                                      rowBanersRecord.reference,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                      child: Container(
+                                        width: 120.0,
+                                        height: 160.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          image: DecorationImage(
+                                            fit: BoxFit.contain,
+                                            image: Image.network(
+                                              rowBanersRecord.url,
+                                            ).image,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                })
+                                    .divide(const SizedBox(width: 8.0))
+                                    .addToStart(const SizedBox(width: 16.0))
+                                    .addToEnd(const SizedBox(width: 16.0)),
+                              ),
+                            );
+                          },
+                        );
+                      }
                     },
                   ),
                   Padding(
@@ -3218,6 +3331,9 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                     ? _model.simpleSearchResults2
                                     : wholeStorePagePizzaRecordList)
                                 .toList();
+                            if (llistOfPizza.isEmpty) {
+                              return const EmptyProductListWidget();
+                            }
 
                             return ListView.separated(
                               padding: const EdgeInsets.fromLTRB(

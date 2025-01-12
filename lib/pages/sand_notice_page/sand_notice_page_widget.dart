@@ -352,7 +352,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                               labelText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'p0k7eix3' /* Текст сообщение */,
+                                                'p0k7eix3' /* Текст сообщения */,
                                               ),
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
@@ -624,19 +624,25 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                 ),
                                               ),
                                               Text(
-                                                valueOrDefault<String>(
-                                                  _model.dateTimeSand != null
-                                                      ? dateTimeFormat(
-                                                          "MMMd y H:mm",
-                                                          _model.dateTimeSand,
-                                                          locale:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode,
-                                                        )
-                                                      : 'Отправить сразу',
-                                                  'Отправить сразу',
-                                                ),
+                                                _model.dateTimeSand != null
+                                                    ? dateTimeFormat(
+                                                        "MMMd y H:mm",
+                                                        _model.dateTimeSand,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      )
+                                                    : FFLocalizations.of(
+                                                            context)
+                                                        .getVariableText(
+                                                        ruText:
+                                                            'Отправить сразу',
+                                                        enText:
+                                                            'Send immediately',
+                                                        koText: '즉시 전송',
+                                                        zh_HansText: '立即发送',
+                                                      ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium

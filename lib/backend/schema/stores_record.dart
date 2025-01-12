@@ -68,6 +68,11 @@ class StoresRecord extends FirestoreRecord {
   VerifyStatus? get verifyStatus => _verifyStatus;
   bool hasVerifyStatus() => _verifyStatus != null;
 
+  // "isWholeStore" field.
+  bool? _isWholeStore;
+  bool get isWholeStore => _isWholeStore ?? false;
+  bool hasIsWholeStore() => _isWholeStore != null;
+
   void _initializeFields() {
     _storeName = snapshotData['storeName'] as String?;
     _user = snapshotData['user'] as DocumentReference?;
@@ -81,6 +86,7 @@ class StoresRecord extends FirestoreRecord {
     _verifyStatus = snapshotData['verifyStatus'] is VerifyStatus
         ? snapshotData['verifyStatus']
         : deserializeEnum<VerifyStatus>(snapshotData['verifyStatus']);
+    _isWholeStore = snapshotData['isWholeStore'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -124,6 +130,7 @@ class StoresRecord extends FirestoreRecord {
             ParamType.Enum,
             false,
           ),
+          'isWholeStore': snapshot.data['isWholeStore'],
         },
         StoresRecord.collection.doc(snapshot.objectID),
       );
@@ -170,6 +177,7 @@ Map<String, dynamic> createStoresRecordData({
   String? saobchaImg,
   String? logoImg,
   VerifyStatus? verifyStatus,
+  bool? isWholeStore,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -183,6 +191,7 @@ Map<String, dynamic> createStoresRecordData({
       'saobchaImg': saobchaImg,
       'logoImg': logoImg,
       'verifyStatus': verifyStatus,
+      'isWholeStore': isWholeStore,
     }.withoutNulls,
   );
 
@@ -203,7 +212,8 @@ class StoresRecordDocumentEquality implements Equality<StoresRecord> {
         e1?.saobcha == e2?.saobcha &&
         e1?.saobchaImg == e2?.saobchaImg &&
         e1?.logoImg == e2?.logoImg &&
-        e1?.verifyStatus == e2?.verifyStatus;
+        e1?.verifyStatus == e2?.verifyStatus &&
+        e1?.isWholeStore == e2?.isWholeStore;
   }
 
   @override
@@ -217,7 +227,8 @@ class StoresRecordDocumentEquality implements Equality<StoresRecord> {
         e?.saobcha,
         e?.saobchaImg,
         e?.logoImg,
-        e?.verifyStatus
+        e?.verifyStatus,
+        e?.isWholeStore
       ]);
 
   @override

@@ -1,12 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/flutter_flow/flutter_flow_language_selector.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'profile_edit_model.dart';
 export 'profile_edit_model.dart';
 
@@ -37,6 +39,9 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
     _model.phoneFieldTextController ??=
         TextEditingController(text: currentPhoneNumber);
     _model.phoneFieldFocusNode ??= FocusNode();
+
+    _model.textSupportEmailTextController ??= TextEditingController();
+    _model.textSupportEmailFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -150,7 +155,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                 0,
                 60.0,
                 0,
-                0,
+                35.0,
               ),
               scrollDirection: Axis.vertical,
               children: [
@@ -292,6 +297,30 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                         ),
                       ),
                     ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                  child: FlutterFlowLanguageSelector(
+                    width: double.infinity,
+                    height: 60.0,
+                    backgroundColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
+                    borderColor: FlutterFlowTheme.of(context).alternate,
+                    dropdownIconColor:
+                        FlutterFlowTheme.of(context).secondaryText,
+                    borderRadius: 20.0,
+                    textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          fontSize: 18.0,
+                          letterSpacing: 0.0,
+                        ),
+                    hideFlags: false,
+                    flagSize: 24.0,
+                    flagTextGap: 8.0,
+                    currentLanguage: FFLocalizations.of(context).languageCode,
+                    languages: FFLocalizations.languages(),
+                    onChanged: (lang) => setAppLanguage(context, lang),
                   ),
                 ),
                 Padding(
@@ -507,18 +536,30 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                             context: context,
                             builder: (alertDialogContext) {
                               return AlertDialog(
-                                title: const Text('Редактирование профиля'),
-                                content: const Text('Сохранить изменения'),
+                                title: Text(
+                                    FFLocalizations.of(context).getVariableText(
+                                  ruText: 'Редактирование',
+                                  enText: 'Edit',
+                                  koText: '편집 중',
+                                  zh_HansText: '編輯',
+                                )),
+                                content: Text(
+                                    FFLocalizations.of(context).getVariableText(
+                                  ruText: 'Сохранить изменения?',
+                                  enText: 'Save changes?',
+                                  koText: '변경 사항을 저장하시겠습니까?',
+                                  zh_HansText: '保存更改吗?',
+                                )),
                                 actions: [
                                   TextButton(
                                     onPressed: () => Navigator.pop(
                                         alertDialogContext, false),
-                                    child: const Text('Отмена'),
+                                    child: const Text('Cancel'),
                                   ),
                                   TextButton(
                                     onPressed: () =>
                                         Navigator.pop(alertDialogContext, true),
-                                    child: const Text('Да'),
+                                    child: const Text('Yes'),
                                   ),
                                 ],
                               );
@@ -537,8 +578,20 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                           context: context,
                           builder: (alertDialogContext) {
                             return AlertDialog(
-                              title: const Text('Редактирование профиля'),
-                              content: const Text('Изменения профиля сохранены'),
+                              title: Text(
+                                  FFLocalizations.of(context).getVariableText(
+                                ruText: 'Редактирование',
+                                enText: 'Edit',
+                                koText: '편집 중',
+                                zh_HansText: '編輯',
+                              )),
+                              content: Text(
+                                  FFLocalizations.of(context).getVariableText(
+                                ruText: 'Изменения сохранены',
+                                enText: 'Changes saved',
+                                koText: '변경 사항이 저장되었습니다',
+                                zh_HansText: '更改已保存',
+                              )),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
@@ -587,94 +640,250 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          var confirmDialogResponse = await showDialog<bool>(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: const Text('Удаление профиля'),
-                                    content: const Text(
-                                        'Профиль будет удален безвозвратно! Продолжить?'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, false),
-                                        child: const Text('Отмена'),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              var confirmDialogResponse =
+                                  await showDialog<bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: const Text('Удаление профиля'),
+                                            content: const Text(
+                                                'Профиль будет удален безвозвратно! Продолжить?'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: const Text('Отмена'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child: const Text('Удалить профиль!'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+                              if (confirmDialogResponse) {
+                                await currentUserReference!.delete();
+                                FFAppState().cart = [];
+                                FFAppState().favorits = [];
+                                FFAppState().orderForEdit = [];
+                                FFAppState().wholeSalerinCart = null;
+                                safeSetState(() {});
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: const Text('Удаление'),
+                                      content: const Text('Профиль удален'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: const Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                return;
+                              }
+
+                              context.goNamed('AuthPage');
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Icon(
+                                    Icons.delete_forever,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    size: 40.0,
+                                  ),
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      '0fi39yba' /* Удалить профиль */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
+                            child: Container(
+                              width: 250.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: SingleChildScrollView(
+                                primary: false,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        'a7t53t67' /* Внимание! Чтобы полностью удал... */,
                                       ),
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, true),
-                                        child: const Text('Удалить профиль!'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ) ??
-                              false;
-                          if (confirmDialogResponse) {
-                            await currentUserReference!.delete();
-                            FFAppState().cart = [];
-                            FFAppState().favorits = [];
-                            FFAppState().orderForEdit = [];
-                            FFAppState().wholeSalerinCart = null;
-                            safeSetState(() {});
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: const Text('Удаление'),
-                                  content: const Text('Профиль удален'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: const Text('Ok'),
+                                      textAlign: TextAlign.center,
+                                      maxLines: 5,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ],
-                                );
-                              },
-                            );
-                          } else {
-                            return;
-                          }
-
-                          context.goNamed('AuthPage');
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            shape: BoxShape.rectangle,
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.delete_forever,
-                                color: FlutterFlowTheme.of(context).error,
-                                size: 40.0,
-                              ),
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  '0fi39yba' /* Удалить профиль */,
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context).error,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 6.0, 0.0, 0.0),
+                                child: SizedBox(
+                                  width: 200.0,
+                                  child: TextFormField(
+                                    controller:
+                                        _model.textSupportEmailTextController,
+                                    focusNode: _model.textSupportEmailFocusNode,
+                                    autofocus: false,
+                                    readOnly: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      isDense: true,
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        '3lrqkd83' /* wholekrsaler@gmail.com */,
+                                      ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      filled: true,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                     ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    cursorColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    validator: _model
+                                        .textSupportEmailTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await Clipboard.setData(const ClipboardData(
+                                      text: 'wholekrsaler@gmail.com'));
+                                },
+                                child: Container(
+                                  decoration: const BoxDecoration(),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 6.0, 6.0, 6.0),
+                                    child: Icon(
+                                      Icons.content_copy,
+                                      color: FlutterFlowTheme.of(context)
+                                          .colorLink,
+                                      size: 18.0,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
@@ -693,7 +902,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                       },
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'v0q4jezo' /* оплата */,
+                          'v0q4jezo' /* Оплата */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',

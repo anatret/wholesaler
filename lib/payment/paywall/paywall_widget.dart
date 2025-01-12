@@ -60,7 +60,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'sygwc5s3' /* Choose Your Plan */,
+              'sygwc5s3' /* Выберите свой план */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
@@ -81,7 +81,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                 children: [
                   Text(
                     FFLocalizations.of(context).getText(
-                      'dzmdyjyc' /* Select the perfect plan for yo... */,
+                      'dzmdyjyc' /* Выберите идеальный для вас пла... */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyLarge.override(
                           fontFamily: 'Readex Pro',
@@ -117,7 +117,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'e1pq7rxq' /* Basic Plan */,
+                                        'e1pq7rxq' /* Базовый план */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
@@ -128,7 +128,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        '5i668jpl' /* Perfect for starters */,
+                                        '5i668jpl' /* Идеально для начала */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -185,7 +185,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        '89yismec' /* Access to basic features */,
+                                        '89yismec' /* Доступ к основным функциям */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -207,7 +207,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'jki67gr1' /* Up to 100 transactions/month */,
+                                        'jki67gr1' /* До 100 транзакций/месяц */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -229,7 +229,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'ejlzbj3c' /* Email support */,
+                                        'ejlzbj3c' /* Поддержка по электронной почте */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -247,7 +247,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                 print('Button pressed ...');
                               },
                               text: FFLocalizations.of(context).getText(
-                                'fu7mxt24' /* Select Basic Plan */,
+                                'fu7mxt24' /* Выбрать базовый план */,
                               ),
                               options: FFButtonOptions(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
@@ -301,7 +301,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'kevchjw9' /* Premium Plan */,
+                                        'kevchjw9' /* Премиум план */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
@@ -312,7 +312,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'cp796xl7' /* For growing businesses */,
+                                        'cp796xl7' /* Для растущего бизнеса */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -338,7 +338,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '76v261vp' /* $24.99/mo */,
+                                          '76v261vp' /* $24.99/м */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
@@ -369,7 +369,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'ph3vofn0' /* All Basic features */,
+                                        'ph3vofn0' /* Все основные функции */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -391,7 +391,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'bsoe84qb' /* Unlimited transactions */,
+                                        'bsoe84qb' /* Неограниченные транзакции */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -413,7 +413,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'qei0h1qp' /* Priority support */,
+                                        'qei0h1qp' /* Приоритетная поддержка */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -435,7 +435,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'zsqo5e9y' /* Advanced analytics */,
+                                        'zsqo5e9y' /* Расширенная аналитика */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -457,7 +457,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'poqgqn5k' /* Custom integrations */,
+                                        'poqgqn5k' /* Индивидуальные интеграции */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -475,7 +475,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                 print('Button pressed ...');
                               },
                               text: FFLocalizations.of(context).getText(
-                                'sacwyxsw' /* Select Premium Plan */,
+                                'sacwyxsw' /* Выбрать Премиум-план */,
                               ),
                               options: FFButtonOptions(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
@@ -515,7 +515,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                         children: [
                           Text(
                             FFLocalizations.of(context).getText(
-                              'tiay8thm' /* Need help choosing? */,
+                              'tiay8thm' /* Нужна помощь с выбором? */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .headlineSmall
@@ -526,7 +526,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'im405s9f' /* Contact our sales team for a p... */,
+                              'im405s9f' /* Обратитесь в наш отдел продаж,... */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -542,7 +542,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                               print('Button pressed ...');
                             },
                             text: FFLocalizations.of(context).getText(
-                              'o9s81i7i' /* Contact Sales */,
+                              'o9s81i7i' /* Связаться с отделом продаж */,
                             ),
                             options: FFButtonOptions(
                               width: MediaQuery.sizeOf(context).width * 1.0,

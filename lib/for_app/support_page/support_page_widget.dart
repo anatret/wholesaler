@@ -108,7 +108,7 @@ class _SupportPageWidgetState extends State<SupportPageWidget> {
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'm5rc1rqn' /* If you have a question regardi... */,
+                                  'm5rc1rqn' /* Если у вас есть вопрос об испо... */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

@@ -371,8 +371,18 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                           },
                           child: Text(
                             widget.pizzaDoc!.isDeleted
-                                ? 'Восстановить продукт'
-                                : 'Удалить продукт',
+                                ? FFLocalizations.of(context).getVariableText(
+                                    ruText: 'Восстановить продукт',
+                                    enText: 'Restore product',
+                                    koText: '제품 복구',
+                                    zh_HansText: '恢复产品',
+                                  )
+                                : FFLocalizations.of(context).getVariableText(
+                                    ruText: 'Удалить продукт',
+                                    enText: 'Remove product',
+                                    koText: '제품 제거',
+                                    zh_HansText: '删除产品',
+                                  ),
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .titleMedium
@@ -388,8 +398,18 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                       ),
                     Text(
                       widget.isEdit
-                          ? 'Редактирование продукта'
-                          : 'Добавление продукта',
+                          ? FFLocalizations.of(context).getVariableText(
+                              ruText: 'Редактирование продукта',
+                              enText: 'Editing a product',
+                              koText: '제품 편집',
+                              zh_HansText: '编辑产品',
+                            )
+                          : FFLocalizations.of(context).getVariableText(
+                              ruText: 'Добавление продукта',
+                              enText: 'Adding a product',
+                              koText: '제품 추가',
+                              zh_HansText: '添加产品',
+                            ),
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(
                                 fontFamily: 'Outfit',
@@ -1306,8 +1326,18 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                           }
                         },
                         text: widget.isEdit
-                            ? 'Изменить продукт'
-                            : 'Добавить продукт',
+                            ? FFLocalizations.of(context).getVariableText(
+                                ruText: 'Изменить продукт',
+                                enText: 'Edit product',
+                                koText: '제품 변경',
+                                zh_HansText: '更改产品',
+                              )
+                            : FFLocalizations.of(context).getVariableText(
+                                ruText: 'Добавить продукт',
+                                enText: 'Add product',
+                                koText: '제품 추가',
+                                zh_HansText: '添加产品',
+                              ),
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 48.0,

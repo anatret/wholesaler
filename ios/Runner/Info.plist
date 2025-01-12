@@ -21,6 +21,7 @@
 		<string>ru</string>
 		<string>en</string>
 		<string>ko</string>
+		<string>zh_Hans</string>
 	</array>
 
 	<key>CFBundleShortVersionString</key>
@@ -60,9 +61,9 @@
 	<true/>
 
 	<key>NSCameraUsageDescription</key>
-    <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+    <string>Для добавления фотографий или видео товаров и бизнес-лицензий приложению требуется доступ к камере. Бизнес-лицензия необходима для проверки магазина и не будет передаваться третьим лицам. Фотографии товаров, напротив, будут доступны потенциальным покупателям для удобства выбора.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>In order to upload data, this app requires permission to access the photo library.</string>
+    <string>Для загрузки данных, таких как фотографии товаров и бизнес-лицензия, приложению требуется доступ к библиотеке фотографий. Бизнес-лицензия необходима для проверки магазина и не будет передаваться третьим лицам. Фотографии товаров, напротив, будут видны потенциальным покупателям, чтобы облегчить процесс выбора.</string>
 
     <key>UIBackgroundModes</key>
     <array>

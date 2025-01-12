@@ -369,7 +369,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'RegNewStore',
           path: '/regNewStore',
           requireAuth: true,
-          builder: (context, params) => const RegNewStoreWidget(),
+          builder: (context, params) => RegNewStoreWidget(
+            isWholeStore: params.getParam(
+              'isWholeStore',
+              ParamType.bool,
+            ),
+          ),
         ),
         FFRoute(
           name: 'SendEmail',
@@ -394,6 +399,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['stores'],
             ),
           ),
+        ),
+        FFRoute(
+          name: 'RegNewStorePre',
+          path: '/regNewStorePre',
+          builder: (context, params) => const RegNewStorePreWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
