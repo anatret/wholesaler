@@ -364,6 +364,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '1',
       'zh_Hans': '1',
     },
+    'os3sweqk': {
+      'ru': 'Оформить заказ',
+      'en': 'Place an order',
+      'ko': '주문하기',
+      'zh_Hans': '下订单',
+    },
     'xf38p9sp': {
       'ru': 'Корзина',
       'en': 'Cart',
@@ -1238,7 +1244,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'tolgmnro': {
       'ru': 'Консервы',
-      'en': 'Canned goods',
+      'en': 'Canned',
       'ko': '통조림',
       'zh_Hans': '罐头食品',
     },
@@ -1280,7 +1286,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'kfiwv1du': {
       'ru': 'Консервы',
-      'en': 'Canned goods',
+      'en': 'Canned',
       'ko': '통조림',
       'zh_Hans': '罐头食品',
     },
@@ -1352,7 +1358,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4vq24xc5': {
       'ru': 'Хоз товар',
-      'en': 'Household goods',
+      'en': 'Homeware',
       'ko': '가정 용품',
       'zh_Hans': '家居用品',
     },
@@ -1421,7 +1427,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '04e29wi0': {
       'ru': 'Консервы',
-      'en': 'Canned goods',
+      'en': 'Canned',
       'ko': '통조림',
       'zh_Hans': '罐头食品',
     },
@@ -1463,7 +1469,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'sb2f9c2k': {
       'ru': 'Консервы',
-      'en': 'Canned goods',
+      'en': 'Canned',
       'ko': '통조림',
       'zh_Hans': '罐头食品',
     },
@@ -1535,7 +1541,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'xahqcoel': {
       'ru': 'Хоз товар',
-      'en': 'Household goods',
+      'en': 'Homeware',
       'ko': '가정 용품',
       'zh_Hans': '家居用品',
     },
@@ -2820,6 +2826,39 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ko': '',
       'zh_Hans': '',
+    },
+  },
+  // FAB
+  {
+    'kzxdwwjv': {
+      'ru': 'Hello World',
+      'en': 'Hello World',
+      'ko': '안녕하세요 세계',
+      'zh_Hans': '你好世界',
+    },
+    'dpfy09vs': {
+      'ru': 'FILES',
+      'en': 'FILES',
+      'ko': '파일',
+      'zh_Hans': '文件',
+    },
+    'sryoxnxh': {
+      'ru': 'RECORD',
+      'en': 'RECORD',
+      'ko': '기록',
+      'zh_Hans': '记录',
+    },
+    'c79hf27i': {
+      'ru': 'LOCATION',
+      'en': 'LOCATION',
+      'ko': '위치',
+      'zh_Hans': '地点',
+    },
+    'r7enoqmt': {
+      'ru': 'PAY',
+      'en': 'PAY',
+      'ko': '지불하다',
+      'zh_Hans': '支付',
     },
   },
   // Miscellaneous

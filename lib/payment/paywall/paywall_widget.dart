@@ -1,3 +1,4 @@
+import '/components/fab/fab_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -570,6 +571,16 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                         ].divide(const SizedBox(height: 16.0)),
                       ),
                     ),
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      wrapWithModel(
+                        model: _model.fabModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: const FabWidget(),
+                      ),
+                    ],
                   ),
                 ].divide(const SizedBox(height: 24.0)),
               ),

@@ -2,16 +2,17 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/banner_item/banner_item_widget.dart';
-import '/components/empty_product_list_widget.dart';
 import '/components/often_ordered/often_ordered_widget.dart';
-import '/components/pizza_item/pizza_item_widget.dart';
+import '/components/prod_grid_card/prod_grid_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:badges/badges.dart' as badges;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'whole_store_page_model.dart';
@@ -126,6 +127,50 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          floatingActionButton: FloatingActionButton(
+            onPressed: () async {
+              context.pushNamed(
+                'CartPage',
+                extra: <String, dynamic>{
+                  kTransitionInfoKey: const TransitionInfo(
+                    hasTransition: true,
+                    transitionType: PageTransitionType.scale,
+                    alignment: Alignment.bottomCenter,
+                  ),
+                },
+              );
+            },
+            backgroundColor: FlutterFlowTheme.of(context).primary,
+            elevation: 8.0,
+            child: Stack(
+              alignment: const AlignmentDirectional(0.0, 0.0),
+              children: [
+                Icon(
+                  Icons.shopping_cart_outlined,
+                  color: FlutterFlowTheme.of(context).info,
+                  size: 24.0,
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(0.6, -0.6),
+                  child: Text(
+                    valueOrDefault<String>(
+                      functions
+                          .getSizeOfCartList(FFAppState().cart.toList())
+                          .toString(),
+                      '1',
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+          ),
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(58.0),
             child: AppBar(
@@ -299,11 +344,13 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                              Text(
+                                              AutoSizeText(
                                                 FFLocalizations.of(context)
                                                     .getText(
                                                   'znrsu42u' /* Водка */,
                                                 ),
+                                                maxLines: 2,
+                                                minFontSize: 2.0,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -386,11 +433,13 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                              Text(
+                                              AutoSizeText(
                                                 FFLocalizations.of(context)
                                                     .getText(
                                                   'lwactj7f' /* Вино */,
                                                 ),
+                                                maxLines: 2,
+                                                minFontSize: 2.0,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -711,35 +760,18 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   6.0, 6.0, 10.0, 6.0),
-                                          child: Row(
+                                          child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
                                             children: [
-                                              if (false)
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 4.0, 0.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            0.0),
-                                                    child: Image.asset(
-                                                      'assets/images/pizzaicon.png',
-                                                      width: 16.0,
-                                                      height: 16.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                              Text(
+                                              AutoSizeText(
                                                 FFLocalizations.of(context)
                                                     .getText(
                                                   '04e29wi0' /* Консервы */,
                                                 ),
+                                                maxLines: 2,
+                                                minFontSize: 10.0,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -3323,36 +3355,35 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                           ),
                         ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 16.0, 16.0, 0.0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 0.0),
                         child: Builder(
                           builder: (context) {
-                            final llistOfPizza = (_model.isSearchDoing
+                            final llistOfPizza2 = (_model.isSearchDoing
                                     ? _model.simpleSearchResults2
                                     : wholeStorePagePizzaRecordList)
                                 .toList();
-                            if (llistOfPizza.isEmpty) {
-                              return const EmptyProductListWidget();
-                            }
 
-                            return ListView.separated(
+                            return MasonryGridView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate:
+                                  const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                              ),
+                              crossAxisSpacing: 4.0,
+                              itemCount: llistOfPizza2.length,
                               padding: const EdgeInsets.fromLTRB(
                                 0,
-                                0,
+                                8.0,
                                 0,
                                 50.0,
                               ),
-                              primary: false,
                               shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: llistOfPizza.length,
-                              separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 2.0),
-                              itemBuilder: (context, llistOfPizzaIndex) {
-                                final llistOfPizzaItem =
-                                    llistOfPizza[llistOfPizzaIndex];
+                              itemBuilder: (context, llistOfPizza2Index) {
+                                final llistOfPizza2Item =
+                                    llistOfPizza2[llistOfPizza2Index];
                                 return Visibility(
-                                  visible: llistOfPizzaItem.store ==
+                                  visible: llistOfPizza2Item.store ==
                                       widget.wholeStore,
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -3360,7 +3391,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if ((llistOfPizzaItem.inStock == true) ||
+                                      if ((llistOfPizza2Item.inStock == true) ||
                                           ((currentUserDocument?.userType ==
                                                   UserTypes.manager) ||
                                               (currentUserDocument?.userType ==
@@ -3369,30 +3400,40 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                           'ProductDeckPage',
                                           queryParameters: {
                                             'productRef': serializeParam(
-                                              llistOfPizzaItem.reference,
+                                              llistOfPizza2Item.reference,
                                               ParamType.DocumentReference,
                                             ),
                                           }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.scale,
+                                              alignment: Alignment.bottomCenter,
+                                            ),
+                                          },
                                         );
                                       }
                                     },
                                     child: wrapWithModel(
-                                      model: _model.pizzaItemModels.getModel(
-                                        llistOfPizzaIndex.toString(),
-                                        llistOfPizzaIndex,
+                                      model: _model.prodGridCardModels.getModel(
+                                        llistOfPizza2Index.toString(),
+                                        llistOfPizza2Index,
                                       ),
                                       updateCallback: () => safeSetState(() {}),
-                                      child: PizzaItemWidget(
-                                        key: Key(
-                                          'Keyu2o_${llistOfPizzaIndex.toString()}',
+                                      child: Hero(
+                                        tag: 'gridHeroPoductList',
+                                        transitionOnUserGestures: true,
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          child: ProdGridCardWidget(
+                                            key: Key(
+                                              'Key37c_${llistOfPizza2Index.toString()}',
+                                            ),
+                                            productRef:
+                                                llistOfPizza2Item.reference,
+                                          ),
                                         ),
-                                        name: llistOfPizzaItem.name,
-                                        deskription:
-                                            llistOfPizzaItem.description,
-                                        price: llistOfPizzaItem.price,
-                                        image: llistOfPizzaItem.img,
-                                        instock: llistOfPizzaItem.inStock,
-                                        refproduct: llistOfPizzaItem.reference,
                                       ),
                                     ),
                                   ),
@@ -3406,7 +3447,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                   ),
                 ],
               ),
-              if (FFAppState().cart.isNotEmpty)
+              if (false)
                 Align(
                   alignment: const AlignmentDirectional(0.0, 1.0),
                   child: InkWell(

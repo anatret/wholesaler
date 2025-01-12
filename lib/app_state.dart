@@ -47,6 +47,10 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _userStore = prefs.getString('ff_userStore')?.ref ?? _userStore;
     });
+    _safeInit(() {
+      _isFabExpdProdPag =
+          prefs.getBool('ff_isFabExpdProdPag') ?? _isFabExpdProdPag;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -177,6 +181,13 @@ class FFAppState extends ChangeNotifier {
   int get daysUntilExpiryDay => _daysUntilExpiryDay;
   set daysUntilExpiryDay(int value) {
     _daysUntilExpiryDay = value;
+  }
+
+  bool _isFabExpdProdPag = false;
+  bool get isFabExpdProdPag => _isFabExpdProdPag;
+  set isFabExpdProdPag(bool value) {
+    _isFabExpdProdPag = value;
+    prefs.setBool('ff_isFabExpdProdPag', value);
   }
 }
 

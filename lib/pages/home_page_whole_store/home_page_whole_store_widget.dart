@@ -2,7 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/banner_item/banner_item_widget.dart';
-import '/components/empty_product_list_widget.dart';
+import '/components/empty_product_list/empty_product_list_widget.dart';
 import '/components/often_ordered/often_ordered_widget.dart';
 import '/components/whole_store_item/whole_store_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
