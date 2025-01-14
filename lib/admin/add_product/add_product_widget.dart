@@ -1319,11 +1319,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                             ),
                           );
                           Navigator.pop(context);
-                          if (widget.isEdit) {
-                            context.goNamed('HomePageWholeStore');
-                          } else {
-                            context.goNamed('AddProduct');
-                          }
                         },
                         text: widget.isEdit
                             ? FFLocalizations.of(context).getVariableText(

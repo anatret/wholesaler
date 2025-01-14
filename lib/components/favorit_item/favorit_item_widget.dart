@@ -145,6 +145,7 @@ class _FavoritItemWidgetState extends State<FavoritItemWidget>
                         maxChars: 50,
                         replacement: '…',
                       ),
+                      maxLines: 3,
                       style: FlutterFlowTheme.of(context).labelSmall.override(
                             fontFamily: 'Readex Pro',
                             color: const Color(0xFF5B5B5B),

@@ -2828,6 +2828,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
     },
   },
+  // prodGridCard
+  {
+    '61mxcz00': {
+      'ru': 'Будет позже',
+      'en': 'Will come later',
+      'ko': '나중에 올 것이다',
+      'zh_Hans': '稍后会来',
+    },
+  },
   // FAB
   {
     'kzxdwwjv': {

@@ -167,6 +167,7 @@ class _CartItemWidgetState extends State<CartItemWidget>
                                   maxChars: 50,
                                   replacement: '…',
                                 ),
+                                maxLines: 3,
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
                                     .override(

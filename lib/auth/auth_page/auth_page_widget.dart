@@ -364,11 +364,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                                 );
                                               },
                                             );
-                                            GoRouter.of(context)
-                                                .prepareAuthEvent();
-                                            await authManager.signOut();
-                                            GoRouter.of(context)
-                                                .clearRedirectLocation();
 
                                             context.pushNamedAuth(
                                               'EditStorePage',
@@ -463,11 +458,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                                 );
                                               },
                                             );
-                                            GoRouter.of(context)
-                                                .prepareAuthEvent();
-                                            await authManager.signOut();
-                                            GoRouter.of(context)
-                                                .clearRedirectLocation();
 
                                             context.pushNamedAuth(
                                               'EditStorePage',

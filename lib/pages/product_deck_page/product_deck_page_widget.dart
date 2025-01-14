@@ -179,20 +179,19 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        if ((currentUserDocument?.userType ==
-                                UserTypes.manager) ||
-                            (currentUserDocument?.userType == UserTypes.admin))
-                          Align(
-                            alignment: const AlignmentDirectional(0.0, -1.0),
-                            child: AuthUserStreamWidget(
-                              builder: (context) => FFButtonWidget(
+                  if ((currentUserDocument?.userType == UserTypes.manager) ||
+                      (currentUserDocument?.userType == UserTypes.admin))
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Align(
+                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              child: FFButtonWidget(
                                 onPressed: () async {
                                   context.pushNamed(
                                     'AddProduct',
@@ -239,12 +238,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                 ),
                               ),
                             ),
-                          ),
-                        if ((currentUserDocument?.userType ==
-                                UserTypes.manager) ||
-                            (currentUserDocument?.userType == UserTypes.admin))
-                          AuthUserStreamWidget(
-                            builder: (context) => FFButtonWidget(
+                            FFButtonWidget(
                               onPressed: () async {
                                 context.pushNamed(
                                   'SandNoticePage',
@@ -285,10 +279,10 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
-                          ),
-                      ],
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
                   SizedBox(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: 300.0,
@@ -704,177 +698,196 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                 ),
                               ),
                             ),
-                          Builder(
-                            builder: (context) {
-                              if (!functions.checkCart(
-                                  FFAppState()
-                                      .cart
-                                      .map((e) => e.pizza)
-                                      .withoutNulls
-                                      .toList(),
-                                  widget.productRef!)) {
-                                return Visibility(
-                                  visible:
-                                      !productDeckPagePizzaRecord.itsCoupang,
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 0.0, 0.0),
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        if (FFAppState().wholeSalerinCart ==
-                                            null) {
-                                          FFAppState().addToCart(CartStruct(
-                                            pizza: widget.productRef,
-                                            price: productDeckPagePizzaRecord
-                                                .price,
-                                            count: 1,
-                                          ));
-                                          FFAppState().wholeSalerinCart =
-                                              productDeckPagePizzaRecord.store;
-                                          safeSetState(() {});
-                                        } else if ((FFAppState()
-                                                    .wholeSalerinCart !=
-                                                null) &&
-                                            (FFAppState().wholeSalerinCart ==
-                                                productDeckPagePizzaRecord
-                                                    .store)) {
-                                          FFAppState().addToCart(CartStruct(
-                                            pizza: widget.productRef,
-                                            price: productDeckPagePizzaRecord
-                                                .price,
-                                            count: 1,
-                                          ));
-                                          safeSetState(() {});
-                                        } else {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: const Text(
-                                                            'Ошибка добавления'),
-                                                        content: const Text(
-                                                            'В корзине уже находятся товары от другого поставщика. Пожалуйста, завершите оформление текущего заказа или очистите корзину, чтобы добавить новый товар.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child:
-                                                                const Text('Отмена'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child: const Text(
-                                                                'Очистить и добавить '),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (confirmDialogResponse) {
-                                            FFAppState().cart = [];
-                                            FFAppState().wholeSalerinCart =
-                                                null;
-                                            safeSetState(() {});
-                                            FFAppState().addToCart(CartStruct(
-                                              pizza: widget.productRef,
-                                              price: productDeckPagePizzaRecord
-                                                  .price,
-                                              count: 1,
-                                            ));
-                                            FFAppState().wholeSalerinCart =
-                                                productDeckPagePizzaRecord
-                                                    .store;
-                                            safeSetState(() {});
-                                          } else {
-                                            return;
-                                          }
-                                        }
-
-                                        Navigator.pop(context);
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Товар добавлен в корзину',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .info,
-                                                    letterSpacing: 0.0,
-                                                  ),
-                                            ),
-                                            duration:
-                                                const Duration(milliseconds: 1500),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                          ),
-                                        );
-                                      },
-                                      text:
-                                          'Добавить в корзину за ${productDeckPagePizzaRecord.price.toString()} ₩',
-                                      options: FFButtonOptions(
-                                        width: double.infinity,
-                                        height: 48.0,
+                          if ((currentUserDocument?.userType ==
+                                  UserTypes.user) ||
+                              (currentUserDocument?.userType ==
+                                  UserTypes.admin))
+                            AuthUserStreamWidget(
+                              builder: (context) => Builder(
+                                builder: (context) {
+                                  if (!functions.checkCart(
+                                      FFAppState()
+                                          .cart
+                                          .map((e) => e.pizza)
+                                          .withoutNulls
+                                          .toList(),
+                                      widget.productRef!)) {
+                                    return Visibility(
+                                      visible: !productDeckPagePizzaRecord
+                                          .itsCoupang,
+                                      child: Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
+                                            0.0, 8.0, 0.0, 0.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            if (FFAppState().wholeSalerinCart ==
+                                                null) {
+                                              FFAppState().addToCart(CartStruct(
+                                                pizza: widget.productRef,
+                                                price:
+                                                    productDeckPagePizzaRecord
+                                                        .price,
+                                                count: 1,
+                                              ));
+                                              FFAppState().wholeSalerinCart =
+                                                  productDeckPagePizzaRecord
+                                                      .store;
+                                              safeSetState(() {});
+                                            } else if ((FFAppState()
+                                                        .wholeSalerinCart !=
+                                                    null) &&
+                                                (FFAppState()
+                                                        .wholeSalerinCart ==
+                                                    productDeckPagePizzaRecord
+                                                        .store)) {
+                                              FFAppState().addToCart(CartStruct(
+                                                pizza: widget.productRef,
+                                                price:
+                                                    productDeckPagePizzaRecord
+                                                        .price,
+                                                count: 1,
+                                              ));
+                                              safeSetState(() {});
+                                            } else {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: const Text(
+                                                                'Ошибка добавления'),
+                                                            content: const Text(
+                                                                'В корзине уже находятся товары от другого поставщика. Пожалуйста, завершите оформление текущего заказа или очистите корзину, чтобы добавить новый товар.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: const Text(
+                                                                    'Отмена'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: const Text(
+                                                                    'Очистить и добавить '),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                FFAppState().cart = [];
+                                                FFAppState().wholeSalerinCart =
+                                                    null;
+                                                safeSetState(() {});
+                                                FFAppState()
+                                                    .addToCart(CartStruct(
+                                                  pizza: widget.productRef,
+                                                  price:
+                                                      productDeckPagePizzaRecord
+                                                          .price,
+                                                  count: 1,
+                                                ));
+                                                FFAppState().wholeSalerinCart =
+                                                    productDeckPagePizzaRecord
+                                                        .store;
+                                                safeSetState(() {});
+                                              } else {
+                                                return;
+                                              }
+                                            }
+
+                                            Navigator.pop(context);
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Товар добавлен в корзину',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                                duration: const Duration(
+                                                    milliseconds: 1500),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                            );
+                                          },
+                                          text:
+                                              'Добавить в корзину за ${productDeckPagePizzaRecord.price.toString()} ₩',
+                                          options: FFButtonOptions(
+                                            width: double.infinity,
+                                            height: 48.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: Colors.white,
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                            borderSide: const BorderSide(
+                                              color: Colors.transparent,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(30.0),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  } else {
+                                    return Align(
+                                      alignment:
+                                          const AlignmentDirectional(0.0, -1.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'u3qxtluf' /* Продукт уже есть в вашей корзи... */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              color: Colors.white,
-                                              fontSize: 14.0,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
                                             ),
-                                        borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
                                       ),
-                                    ),
-                                  ),
-                                );
-                              } else {
-                                return Align(
-                                  alignment: const AlignmentDirectional(0.0, -1.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'u3qxtluf' /* Продукт уже есть в вашей корзи... */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                  ),
-                                );
-                              }
-                            },
-                          ),
+                                    );
+                                  }
+                                },
+                              ),
+                            ),
                         ].divide(const SizedBox(height: 20.0)),
                       ),
                     ),
