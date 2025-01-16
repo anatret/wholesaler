@@ -1,9 +1,10 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'add_product_widget.dart' show AddProductWidget;
+import 'edit_copy_delet_product_widget.dart' show EditCopyDeletProductWidget;
 import 'package:flutter/material.dart';
 
-class AddProductModel extends FlutterFlowModel<AddProductWidget> {
+class EditCopyDeletProductModel
+    extends FlutterFlowModel<EditCopyDeletProductWidget> {
   ///  Local state fields for this page.
 
   List<String> ingList = [];
@@ -49,10 +50,10 @@ class AddProductModel extends FlutterFlowModel<AddProductWidget> {
       discriptionProductFieldTextControllerValidator;
   // State field(s) for RadioButton widget.
   FormFieldController<String>? radioButtonValueController;
-  // State field(s) for inStockSwitch2 widget.
-  bool? inStockSwitch2Value;
-  // State field(s) for Switch widget.
-  bool? switchValue;
+  // State field(s) for inStockSwitch widget.
+  bool? inStockSwitchValue;
+  // State field(s) for oftenOrderedSwitch widget.
+  bool? oftenOrderedSwitchValue;
 
   @override
   void initState(BuildContext context) {}

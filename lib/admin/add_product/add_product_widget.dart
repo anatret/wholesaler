@@ -9,20 +9,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'add_product_model.dart';
 export 'add_product_model.dart';
 
 class AddProductWidget extends StatefulWidget {
-  const AddProductWidget({
-    super.key,
-    bool? isEdit,
-    this.productRef,
-    this.pizzaDoc,
-  }) : isEdit = isEdit ?? false;
-
-  final bool isEdit;
-  final DocumentReference? productRef;
-  final PizzaRecord? pizzaDoc;
+  const AddProductWidget({super.key});
 
   @override
   State<AddProductWidget> createState() => _AddProductWidgetState();
@@ -38,36 +30,23 @@ class _AddProductWidgetState extends State<AddProductWidget> {
     super.initState();
     _model = createModel(context, () => AddProductModel());
 
-    _model.priceProductFieldTextController ??= TextEditingController(
-        text: widget.isEdit
-            ? formatNumber(
-                widget.pizzaDoc?.price,
-                formatType: FormatType.decimal,
-                decimalType: DecimalType.automatic,
-              )
-            : null);
+    _model.priceProductFieldTextController ??= TextEditingController();
     _model.priceProductFieldFocusNode ??= FocusNode();
 
-    _model.nameProductFieldTextController ??= TextEditingController(
-        text: widget.isEdit ? widget.pizzaDoc?.name : null);
+    _model.nameProductFieldTextController ??= TextEditingController();
     _model.nameProductFieldFocusNode ??= FocusNode();
 
-    _model.barcodeProductFieldTextController ??= TextEditingController(
-        text: widget.isEdit ? widget.pizzaDoc?.barcode : null);
+    _model.barcodeProductFieldTextController ??= TextEditingController();
     _model.barcodeProductFieldFocusNode ??= FocusNode();
 
-    _model.linckToProductFieldTextController ??= TextEditingController(
-        text: widget.isEdit ? widget.pizzaDoc?.linkToProduct : null);
+    _model.linckToProductFieldTextController ??= TextEditingController();
     _model.linckToProductFieldFocusNode ??= FocusNode();
 
-    _model.discriptionProductFieldTextController ??= TextEditingController(
-        text: widget.isEdit ? widget.pizzaDoc?.description : null);
+    _model.discriptionProductFieldTextController ??= TextEditingController();
     _model.discriptionProductFieldFocusNode ??= FocusNode();
 
-    _model.inStockSwitchValue =
-        widget.isEdit && (widget.pizzaDoc?.inStock == true);
-    _model.oftenOrderedSwitchValue =
-        widget.isEdit && (widget.pizzaDoc?.oftenOrdered == true);
+    _model.inStockSwitch2Value = true;
+    _model.switchValue = false;
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -80,6 +59,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<List<StoresRecord>>(
       stream: queryStoresRecord(
         queryBuilder: (storesRecord) => storesRecord.where(
@@ -190,7 +171,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'zl8t8jdm' /* 3 */,
+                                    'd975ub3p' /* 3 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -230,186 +211,10 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                   ),
                   scrollDirection: Axis.vertical,
                   children: [
-                    if (widget.isEdit)
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 10.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            if (widget.pizzaDoc?.isDeleted == true) {
-                              // deleteProductAction
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title:
-                                                const Text('Восстановление продукта'),
-                                            content: const Text(
-                                                'Вы уверенны что хотите восстановить продукт'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: const Text('Отмена'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: const Text('Восстановит'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                              if (confirmDialogResponse) {
-                                await widget.productRef!
-                                    .update(createPizzaRecordData(
-                                  isDeleted: false,
-                                ));
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Продукт восстановлен',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).error,
-                                  ),
-                                );
-                                Navigator.pop(context);
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Удаление отмененно',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).error,
-                                  ),
-                                );
-                                Navigator.pop(context);
-                              }
-                            } else {
-                              // deleteProductAction
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: const Text('Удаление продукта'),
-                                            content: const Text(
-                                                'Вы уверенны что хотите удалить'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: const Text('Отмена'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: const Text('Удать'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                              if (confirmDialogResponse) {
-                                await widget.productRef!
-                                    .update(createPizzaRecordData(
-                                  isDeleted: true,
-                                ));
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Продукт удален',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).error,
-                                  ),
-                                );
-                                Navigator.pop(context);
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Удаление отмененно',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).error,
-                                  ),
-                                );
-                                Navigator.pop(context);
-                              }
-                            }
-                          },
-                          child: Text(
-                            widget.pizzaDoc!.isDeleted
-                                ? FFLocalizations.of(context).getVariableText(
-                                    ruText: 'Восстановить продукт',
-                                    enText: 'Restore product',
-                                    koText: '제품 복구',
-                                    zh_HansText: '恢复产品',
-                                  )
-                                : FFLocalizations.of(context).getVariableText(
-                                    ruText: 'Удалить продукт',
-                                    enText: 'Remove product',
-                                    koText: '제품 제거',
-                                    zh_HansText: '删除产品',
-                                  ),
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context).error,
-                                  fontSize: 18.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                        ),
-                      ),
                     Text(
-                      widget.isEdit
-                          ? FFLocalizations.of(context).getVariableText(
-                              ruText: 'Редактирование продукта',
-                              enText: 'Editing a product',
-                              koText: '제품 편집',
-                              zh_HansText: '编辑产品',
-                            )
-                          : FFLocalizations.of(context).getVariableText(
-                              ruText: 'Добавление продукта',
-                              enText: 'Adding a product',
-                              koText: '제품 추가',
-                              zh_HansText: '添加产品',
-                            ),
+                      FFLocalizations.of(context).getText(
+                        '7bhysy77' /* Добавление продукта */,
+                      ),
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(
                                 fontFamily: 'Outfit',
@@ -430,15 +235,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: Image.network(
-                                  () {
-                                    if (_model.uploadedFileUrl != '') {
-                                      return _model.uploadedFileUrl;
-                                    } else if (widget.isEdit) {
-                                      return widget.pizzaDoc!.img;
-                                    } else {
-                                      return _model.uploadedFileUrl;
-                                    }
-                                  }(),
+                                  _model.uploadedFileUrl,
                                 ).image,
                               ),
                               borderRadius: BorderRadius.circular(16.0),
@@ -450,7 +247,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'cd3uafk4' /* загрузите */,
+                                'o2zxillf' /* загрузите */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -461,7 +258,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                             ),
                             Text(
                               FFLocalizations.of(context).getText(
-                                'qosnuzvf' /* фото акции */,
+                                '7xeaw434' /* фото акции */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -472,7 +269,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                             ),
                             Text(
                               FFLocalizations.of(context).getText(
-                                'q3femplf' /* Формат: JPG, PNG */,
+                                's1oq10d7' /* Формат: JPG, PNG */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -486,8 +283,8 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                             FFButtonWidget(
                               onPressed: () async {
                                 final selectedMedia = await selectMedia(
-                                  maxWidth: 512.00,
-                                  maxHeight: 512.00,
+                                  maxWidth: 450.00,
+                                  maxHeight: 450.00,
                                   imageQuality: 100,
                                   mediaSource: MediaSource.photoGallery,
                                   multiImage: false,
@@ -543,7 +340,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                 }
                               },
                               text: FFLocalizations.of(context).getText(
-                                'xwp045eu' /* Изменить фото */,
+                                'dlqc89rv' /* Изменить фото */,
                               ),
                               options: FFButtonOptions(
                                 width: 140.0,
@@ -582,7 +379,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                         decoration: InputDecoration(
                           isDense: true,
                           labelText: FFLocalizations.of(context).getText(
-                            'shs6uih9' /* Цена */,
+                            'emf2w9kn' /* Цена */,
                           ),
                           labelStyle: FlutterFlowTheme.of(context)
                               .labelMedium
@@ -652,7 +449,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                         decoration: InputDecoration(
                           isDense: true,
                           labelText: FFLocalizations.of(context).getText(
-                            'wu6v0723' /* Название */,
+                            'htj8ns0a' /* Название */,
                           ),
                           labelStyle: FlutterFlowTheme.of(context)
                               .labelMedium
@@ -721,7 +518,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                           decoration: InputDecoration(
                             isDense: true,
                             labelText: FFLocalizations.of(context).getText(
-                              '1fs8jxc1' /* Штрихкод */,
+                              'immojnlt' /* Штрихкод */,
                             ),
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
@@ -792,7 +589,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                           decoration: InputDecoration(
                             isDense: true,
                             labelText: FFLocalizations.of(context).getText(
-                              'cn811g7x' /* Ссылка на Товар */,
+                              'fnb53ewy' /* Ссылка на Товар */,
                             ),
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
@@ -863,7 +660,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                         decoration: InputDecoration(
                           isDense: true,
                           labelText: FFLocalizations.of(context).getText(
-                            '4t9c3hi7' /* Описание */,
+                            'lkj7exld' /* Описание */,
                           ),
                           labelStyle: FlutterFlowTheme.of(context)
                               .labelMedium
@@ -923,172 +720,104 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                             .asValidator(context),
                       ),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                      child: FlutterFlowRadioButton(
-                        options: [
-                          FFLocalizations.of(context).getText(
-                            'fzn7691g' /* Напитки */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            'p95kv2ce' /* Соус */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            '6srt5tiy' /* Водка */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            '0rnfx85c' /* Вино */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            'dssbguf5' /* Коньяк */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            'hb0h7u0r' /* Консервы/Маринады */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            'pue1d4l0' /* Бакалея */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            'j6gmjn44' /* Сигареты */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            '2negydpa' /* Море продукты */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            'hykr21gm' /* Мясо */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            'u1hzkkx9' /* Хоз товары */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            'bbp0gps2' /* Заморозка */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            '70xejb1x' /* Детское */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            'xencupqz' /* Десерт */,
-                          ),
-                          FFLocalizations.of(context).getText(
-                            'b2itwya3' /* Прочее */,
-                          )
-                        ].toList(),
-                        onChanged: (val) => safeSetState(() {}),
-                        controller: _model.radioButtonValueController ??=
-                            FormFieldController<String>(() {
-                          if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType == ProductType.drinks
-                                  ? true
-                                  : false)) {
-                            return 'Напитки';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType == ProductType.sauce
-                                  ? true
-                                  : false)) {
-                            return 'Соус';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType == ProductType.vodka
-                                  ? true
-                                  : false)) {
-                            return 'Водка';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType == ProductType.vine
-                                  ? true
-                                  : false)) {
-                            return 'Вино';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType == ProductType.cognac
-                                  ? true
-                                  : false)) {
-                            return 'Коньяк';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType ==
-                                      ProductType.cannedfood
-                                  ? true
-                                  : false)) {
-                            return 'Консервы/Маринады';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType ==
-                                      ProductType.cigarettes
-                                  ? true
-                                  : false)) {
-                            return 'Сигареты';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType == ProductType.grocery
-                                  ? true
-                                  : false)) {
-                            return 'Бакалея';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType == ProductType.seafood
-                                  ? true
-                                  : false)) {
-                            return 'Море продукты';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType == ProductType.meat
-                                  ? true
-                                  : false)) {
-                            return 'Мясо';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType ==
-                                      ProductType.hardwarestore
-                                  ? true
-                                  : false)) {
-                            return 'Хоз товары';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType == ProductType.freezing
-                                  ? true
-                                  : false)) {
-                            return 'Заморозка';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType ==
-                                      ProductType.babyfood
-                                  ? true
-                                  : false)) {
-                            return 'Детское';
-                          } else if (widget.isEdit &&
-                              (widget.pizzaDoc != null) &&
-                              (widget.pizzaDoc?.productType == ProductType.dessert
-                                  ? true
-                                  : false)) {
-                            return 'Десерт';
-                          } else {
-                            return 'Прочее';
-                          }
-                        }()),
-                        optionHeight: 32.0,
-                        textStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                        selectedTextStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                        buttonPosition: RadioButtonPosition.left,
+                    Container(
+                      constraints: const BoxConstraints(
+                        maxHeight: 280.0,
+                      ),
+                      decoration: const BoxDecoration(),
+                      child: Wrap(
+                        spacing: 0.0,
+                        runSpacing: 0.0,
+                        alignment: WrapAlignment.start,
+                        crossAxisAlignment: WrapCrossAlignment.start,
                         direction: Axis.vertical,
-                        radioButtonColor: FlutterFlowTheme.of(context).primary,
-                        inactiveRadioButtonColor:
-                            FlutterFlowTheme.of(context).secondaryText,
-                        toggleable: false,
-                        horizontalAlignment: WrapAlignment.start,
-                        verticalAlignment: WrapCrossAlignment.start,
+                        runAlignment: WrapAlignment.center,
+                        verticalDirection: VerticalDirection.down,
+                        clipBehavior: Clip.none,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 8.0),
+                            child: FlutterFlowRadioButton(
+                              options: [
+                                FFLocalizations.of(context).getText(
+                                  '91zyilxh' /* Напитки */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  '5eq61397' /* Соус */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'ijg4y718' /* Водка */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'ggu3ajhk' /* Вино */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'tit87awq' /* Коньяк */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  '831wm72w' /* Консервы/Маринады */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'egpt8b5f' /* Бакалея */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'rroqewyg' /* Сигареты */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'jrfrm6i0' /* Море продукты */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'vngnbz8p' /* Мясо */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'nfzn2fxv' /* Хоз товары */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'nv5ze3dz' /* Заморозка */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  '7rxtrsu6' /* Детское */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  '68kq672t' /* Десерт */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'xi3p5got' /* Прочее */,
+                                )
+                              ].toList(),
+                              onChanged: (val) => safeSetState(() {}),
+                              controller: _model.radioButtonValueController ??=
+                                  FormFieldController<String>(
+                                      FFLocalizations.of(context).getText(
+                                'x86jifgh' /* Прочее */,
+                              )),
+                              optionHeight: 32.0,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                              selectedTextStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                              buttonPosition: RadioButtonPosition.left,
+                              direction: Axis.vertical,
+                              radioButtonColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              inactiveRadioButtonColor:
+                                  FlutterFlowTheme.of(context).secondaryText,
+                              toggleable: false,
+                              horizontalAlignment: WrapAlignment.start,
+                              verticalAlignment: WrapCrossAlignment.start,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     ListView(
@@ -1104,10 +833,10 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 9.0, 0.0),
                               child: Switch.adaptive(
-                                value: _model.inStockSwitchValue!,
+                                value: _model.inStockSwitch2Value!,
                                 onChanged: (newValue) async {
                                   safeSetState(() =>
-                                      _model.inStockSwitchValue = newValue);
+                                      _model.inStockSwitch2Value = newValue);
                                 },
                                 activeColor: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -1121,7 +850,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                             ),
                             Text(
                               FFLocalizations.of(context).getText(
-                                '3gpgpbpt' /* В наличии */,
+                                'xbuy82lu' /* В наличии */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -1139,10 +868,10 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 9.0, 0.0),
                               child: Switch.adaptive(
-                                value: _model.oftenOrderedSwitchValue!,
+                                value: _model.switchValue!,
                                 onChanged: (newValue) async {
-                                  safeSetState(() => _model
-                                      .oftenOrderedSwitchValue = newValue);
+                                  safeSetState(
+                                      () => _model.switchValue = newValue);
                                 },
                                 activeColor: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -1156,7 +885,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                             ),
                             Text(
                               FFLocalizations.of(context).getText(
-                                'fmihrsfq' /* Часто заказывают */,
+                                '7241ehs7' /* Часто заказывают */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -1174,141 +903,76 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                           const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 36.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          if (widget.isEdit) {
-                            await widget.productRef!
-                                .update(createPizzaRecordData(
-                              name: _model.nameProductFieldTextController.text,
-                              description: _model
-                                  .discriptionProductFieldTextController.text,
-                              img: _model.uploadedFileUrl != ''
-                                  ? _model.uploadedFileUrl
-                                  : widget.pizzaDoc?.img,
-                              inStock: _model.inStockSwitchValue,
-                              oftenOrdered: _model.oftenOrderedSwitchValue,
-                              price: int.tryParse(
-                                  _model.priceProductFieldTextController.text),
-                              linkToProduct:
-                                  _model.linckToProductFieldTextController.text,
-                              productType: () {
-                                if (_model.radioButtonValue == 'Коньяк') {
-                                  return ProductType.cognac;
-                                } else if (_model.radioButtonValue == 'Вино') {
-                                  return ProductType.vine;
-                                } else if (_model.radioButtonValue ==
-                                    'Консервы/Маринады') {
-                                  return ProductType.cannedfood;
-                                } else if (_model.radioButtonValue ==
-                                    'Напитки') {
-                                  return ProductType.drinks;
-                                } else if (_model.radioButtonValue == 'Водка') {
-                                  return ProductType.vodka;
-                                } else if (_model.radioButtonValue ==
-                                    'Бакалея') {
-                                  return ProductType.grocery;
-                                } else if (_model.radioButtonValue ==
-                                    'Сигареты') {
-                                  return ProductType.cigarettes;
-                                } else if (_model.radioButtonValue ==
-                                    'Море продукты') {
-                                  return ProductType.seafood;
-                                } else if (_model.radioButtonValue == 'Мясо') {
-                                  return ProductType.meat;
-                                } else if (_model.radioButtonValue ==
-                                    'Хоз товары') {
-                                  return ProductType.hardwarestore;
-                                } else if (_model.radioButtonValue ==
-                                    'Заморозка') {
-                                  return ProductType.freezing;
-                                } else if (_model.radioButtonValue ==
-                                    'Детское') {
-                                  return ProductType.babyfood;
-                                } else if (_model.radioButtonValue ==
-                                    'Десерт') {
-                                  return ProductType.dessert;
-                                } else if (_model.radioButtonValue == 'Соус') {
-                                  return ProductType.sauce;
-                                } else {
-                                  return ProductType.others;
-                                }
-                              }(),
-                            ));
-                          } else {
-                            await PizzaRecord.collection
-                                .doc()
-                                .set(createPizzaRecordData(
-                                  name: _model
-                                      .nameProductFieldTextController.text,
-                                  description: _model
-                                      .discriptionProductFieldTextController
-                                      .text,
-                                  img: _model.uploadedFileUrl,
-                                  inStock: _model.inStockSwitchValue,
-                                  oftenOrdered: _model.oftenOrderedSwitchValue,
-                                  price: int.tryParse(_model
-                                      .priceProductFieldTextController.text),
-                                  productType: () {
-                                    if (_model.radioButtonValue == 'Коньяк') {
-                                      return ProductType.cognac;
-                                    } else if (_model.radioButtonValue ==
-                                        'Вино') {
-                                      return ProductType.vine;
-                                    } else if (_model.radioButtonValue ==
-                                        'Консервы/Маринады') {
-                                      return ProductType.cannedfood;
-                                    } else if (_model.radioButtonValue ==
-                                        'Напитки') {
-                                      return ProductType.drinks;
-                                    } else if (_model.radioButtonValue ==
-                                        'Водка') {
-                                      return ProductType.vodka;
-                                    } else if (_model.radioButtonValue ==
-                                        'Бакалея') {
-                                      return ProductType.grocery;
-                                    } else if (_model.radioButtonValue ==
-                                        'Сигареты') {
-                                      return ProductType.cigarettes;
-                                    } else if (_model.radioButtonValue ==
-                                        'Море продукты') {
-                                      return ProductType.seafood;
-                                    } else if (_model.radioButtonValue ==
-                                        'Мясо') {
-                                      return ProductType.meat;
-                                    } else if (_model.radioButtonValue ==
-                                        'Хоз товары') {
-                                      return ProductType.hardwarestore;
-                                    } else if (_model.radioButtonValue ==
-                                        'Заморозка') {
-                                      return ProductType.freezing;
-                                    } else if (_model.radioButtonValue ==
-                                        'Детское') {
-                                      return ProductType.babyfood;
-                                    } else if (_model.radioButtonValue ==
-                                        'Десерт') {
-                                      return ProductType.dessert;
-                                    } else if (_model.radioButtonValue ==
-                                        'Соус') {
-                                      return ProductType.sauce;
-                                    } else {
-                                      return ProductType.others;
-                                    }
-                                  }(),
-                                  isDeleted: false,
-                                  store: addProductStoresRecord.reference,
-                                  barcode: _model
-                                      .barcodeProductFieldTextController.text,
-                                  itsCoupang:
-                                      addProductStoresRecord.itsCoupang,
-                                  linkToProduct: _model
-                                      .linckToProductFieldTextController.text,
-                                ));
-                          }
-
+                          await PizzaRecord.collection
+                              .doc()
+                              .set(createPizzaRecordData(
+                                name:
+                                    _model.nameProductFieldTextController.text,
+                                description: _model
+                                    .discriptionProductFieldTextController.text,
+                                img: _model.uploadedFileUrl,
+                                inStock: _model.inStockSwitch2Value,
+                                oftenOrdered: _model.switchValue,
+                                price: int.tryParse(_model
+                                    .priceProductFieldTextController.text),
+                                productType: () {
+                                  if (_model.radioButtonValue == 'Коньяк') {
+                                    return ProductType.cognac;
+                                  } else if (_model.radioButtonValue ==
+                                      'Вино') {
+                                    return ProductType.vine;
+                                  } else if (_model.radioButtonValue ==
+                                      'Консервы/Маринады') {
+                                    return ProductType.cannedfood;
+                                  } else if (_model.radioButtonValue ==
+                                      'Напитки') {
+                                    return ProductType.drinks;
+                                  } else if (_model.radioButtonValue ==
+                                      'Водка') {
+                                    return ProductType.vodka;
+                                  } else if (_model.radioButtonValue ==
+                                      'Бакалея') {
+                                    return ProductType.grocery;
+                                  } else if (_model.radioButtonValue ==
+                                      'Сигареты') {
+                                    return ProductType.cigarettes;
+                                  } else if (_model.radioButtonValue ==
+                                      'Море продукты') {
+                                    return ProductType.seafood;
+                                  } else if (_model.radioButtonValue ==
+                                      'Мясо') {
+                                    return ProductType.meat;
+                                  } else if (_model.radioButtonValue ==
+                                      'Хоз товары') {
+                                    return ProductType.hardwarestore;
+                                  } else if (_model.radioButtonValue ==
+                                      'Заморозка') {
+                                    return ProductType.freezing;
+                                  } else if (_model.radioButtonValue ==
+                                      'Детское') {
+                                    return ProductType.babyfood;
+                                  } else if (_model.radioButtonValue ==
+                                      'Десерт') {
+                                    return ProductType.dessert;
+                                  } else if (_model.radioButtonValue ==
+                                      'Соус') {
+                                    return ProductType.sauce;
+                                  } else {
+                                    return ProductType.others;
+                                  }
+                                }(),
+                                isDeleted: false,
+                                store: FFAppState().userStore,
+                                barcode: _model
+                                    .barcodeProductFieldTextController.text,
+                                itsCoupang: addProductStoresRecord.itsCoupang,
+                                linkToProduct: _model
+                                    .linckToProductFieldTextController.text,
+                              ));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                widget.isEdit
-                                    ? 'Продукт изменен'
-                                    : 'Продукт добавлен',
+                                'Продукт добавлен',
                                 style: TextStyle(
                                   color: FlutterFlowTheme.of(context).alternate,
                                 ),
@@ -1320,19 +984,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                           );
                           Navigator.pop(context);
                         },
-                        text: widget.isEdit
-                            ? FFLocalizations.of(context).getVariableText(
-                                ruText: 'Изменить продукт',
-                                enText: 'Edit product',
-                                koText: '제품 변경',
-                                zh_HansText: '更改产品',
-                              )
-                            : FFLocalizations.of(context).getVariableText(
-                                ruText: 'Добавить продукт',
-                                enText: 'Add product',
-                                koText: '제품 추가',
-                                zh_HansText: '添加产品',
-                              ),
+                        text: FFLocalizations.of(context).getText(
+                          '3fv4zfw3' /* Добавить продукт */,
+                        ),
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 48.0,

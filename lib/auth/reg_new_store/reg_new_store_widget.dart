@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -964,6 +965,23 @@ class _RegNewStoreWidgetState extends State<RegNewStoreWidget> {
                             ],
                           );
                         },
+                      );
+                      _model.adminRefList = await queryUserRecordOnce(
+                        queryBuilder: (userRecord) => userRecord.where(
+                          'userType',
+                          isEqualTo: UserTypes.admin.serialize(),
+                        ),
+                      );
+                      triggerPushNotification(
+                        notificationTitle: 'Номый магазин',
+                        notificationText:
+                            'Нужна проверка магазина ${_model.newStoreID?.storeName}',
+                        notificationSound: 'default',
+                        userRefs: _model.adminRefList!
+                            .map((e) => e.reference)
+                            .toList(),
+                        initialPageName: 'checkStoreList',
+                        parameterData: {},
                       );
                       GoRouter.of(context).prepareAuthEvent();
                       await authManager.signOut();

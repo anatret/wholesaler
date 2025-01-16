@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/schema/enums/enums.dart';
 
 import '/auth/base_auth_user_provider.dart';
@@ -186,13 +187,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const PromotionsPageWidget(),
         ),
         FFRoute(
-          name: 'AddProduct',
-          path: '/addProduct',
+          name: 'EditCopyDeletProduct',
+          path: '/editCopyDeletProduct',
           requireAuth: true,
-          asyncParams: {
-            'pizzaDoc': getDoc(['pizza'], PizzaRecord.fromSnapshot),
-          },
-          builder: (context, params) => AddProductWidget(
+          builder: (context, params) => EditCopyDeletProductWidget(
             isEdit: params.getParam(
               'isEdit',
               ParamType.bool,
@@ -203,9 +201,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               collectionNamePath: ['pizza'],
             ),
-            pizzaDoc: params.getParam(
-              'pizzaDoc',
-              ParamType.Document,
+            itCopy: params.getParam(
+              'itCopy',
+              ParamType.bool,
             ),
           ),
         ),
@@ -404,6 +402,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'RegNewStorePre',
           path: '/regNewStorePre',
           builder: (context, params) => const RegNewStorePreWidget(),
+        ),
+        FFRoute(
+          name: 'AddProduct',
+          path: '/addProduct',
+          requireAuth: true,
+          builder: (context, params) => const AddProductWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

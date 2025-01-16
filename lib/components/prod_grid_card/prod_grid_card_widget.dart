@@ -80,6 +80,25 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
           ),
         ],
       ),
+      'containerOnPageLoadAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 1.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -469,6 +488,68 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
+                        ),
+                      ),
+                    if (currentUserDocument?.userType == UserTypes.manager)
+                      Align(
+                        alignment: const AlignmentDirectional(1.0, 1.0),
+                        child: AuthUserStreamWidget(
+                          builder: (context) => Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 4.0, 4.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'EditCopyDeletProduct',
+                                      queryParameters: {
+                                        'itCopy': serializeParam(
+                                          true,
+                                          ParamType.bool,
+                                        ),
+                                        'productRef': serializeParam(
+                                          widget.productRef,
+                                          ParamType.DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.scale,
+                                          alignment: Alignment.bottomCenter,
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: const BoxDecoration(),
+                                    child: Visibility(
+                                      visible: !stackStoresRecord.itsCoupang,
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            4.0, 4.0, 0.0, 0.0),
+                                        child: Icon(
+                                          Icons.content_copy_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .colorLink,
+                                          size: 18.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'containerOnPageLoadAnimation3']!),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                   ],

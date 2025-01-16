@@ -40,6 +40,8 @@ class RegNewStoreModel extends FlutterFlowModel<RegNewStoreWidget> {
 
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   StoresRecord? newStoreID;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  List<UserRecord>? adminRefList;
 
   @override
   void initState(BuildContext context) {}

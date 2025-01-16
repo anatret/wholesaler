@@ -1009,7 +1009,7 @@ class _CheckStorePageAdminWidgetState extends State<CheckStorePageAdminWidget> {
                                     parameterData: {},
                                   );
 
-                                  context.pushNamed(
+                                  context.goNamed(
                                     'checkStoreList',
                                     extra: <String, dynamic>{
                                       kTransitionInfoKey: const TransitionInfo(
@@ -1204,7 +1204,7 @@ class _CheckStorePageAdminWidgetState extends State<CheckStorePageAdminWidget> {
                                   },
                                 );
 
-                                context.pushNamed('checkStoreList');
+                                context.goNamed('checkStoreList');
                               } else {
                                 await showDialog(
                                   context: context,

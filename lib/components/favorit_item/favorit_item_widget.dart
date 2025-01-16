@@ -130,8 +130,9 @@ class _FavoritItemWidgetState extends State<FavoritItemWidget>
                       ),
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Readex Pro',
+                            fontSize: 14.0,
                             letterSpacing: 0.0,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                           ),
                     ),
                   ),

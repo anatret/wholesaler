@@ -899,7 +899,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                         )}',
                                         notificationSound: 'default',
                                         userRefs: [_model.wholestore!.user!],
-                                        initialPageName: 'ManagerOrderListPage',
+                                        initialPageName: 'UserOrderListPage',
                                         parameterData: {},
                                       );
                                       FFAppState().wholeSalerinCart = null;

@@ -202,15 +202,20 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                         },
                       );
                     },
-                    child: Stack(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      children: [
-                        Icon(
-                          Icons.add,
-                          color: FlutterFlowTheme.of(context).info,
-                          size: 24.0,
-                        ),
-                      ],
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      decoration: const BoxDecoration(),
+                      child: Stack(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: FlutterFlowTheme.of(context).info,
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 }

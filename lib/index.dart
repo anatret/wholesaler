@@ -17,7 +17,8 @@ export '/pages/addresses/addresses_widget.dart' show AddressesWidget;
 export '/admin/admin_panel/admin_panel_widget.dart' show AdminPanelWidget;
 export '/admin/promotions_page/promotions_page_widget.dart'
     show PromotionsPageWidget;
-export '/admin/add_product/add_product_widget.dart' show AddProductWidget;
+export '/admin/edit_copy_delet_product/edit_copy_delet_product_widget.dart'
+    show EditCopyDeletProductWidget;
 export '/admin/products_page/products_page_widget.dart' show ProductsPageWidget;
 export '/pages/product_deck_page/product_deck_page_widget.dart'
     show ProductDeckPageWidget;
@@ -54,3 +55,4 @@ export '/admin/check_store_page_admin/check_store_page_admin_widget.dart'
     show CheckStorePageAdminWidget;
 export '/auth/reg_new_store_pre/reg_new_store_pre_widget.dart'
     show RegNewStorePreWidget;
+export '/admin/add_product/add_product_widget.dart' show AddProductWidget;

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'serialization_util.dart';
-import '../backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -123,12 +122,11 @@ final parametersBuilderMap =
   'Addresses': ParameterData.none(),
   'AdminPanel': ParameterData.none(),
   'PromotionsPage': ParameterData.none(),
-  'AddProduct': (data) async => ParameterData(
+  'EditCopyDeletProduct': (data) async => ParameterData(
         allParams: {
           'isEdit': getParameter<bool>(data, 'isEdit'),
           'productRef': getParameter<DocumentReference>(data, 'productRef'),
-          'pizzaDoc': await getDocumentParameter<PizzaRecord>(
-              data, 'pizzaDoc', PizzaRecord.fromSnapshot),
+          'itCopy': getParameter<bool>(data, 'itCopy'),
         },
       ),
   'ProductsPage': ParameterData.none(),
@@ -187,6 +185,7 @@ final parametersBuilderMap =
         },
       ),
   'RegNewStorePre': ParameterData.none(),
+  'AddProduct': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

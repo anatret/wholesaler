@@ -32,10 +32,8 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
     super.initState();
     _model = createModel(context, () => SandNoticePageModel());
 
-    _model.textFieldCardNumTextController1 ??= TextEditingController();
     _model.textFieldCardNumFocusNode1 ??= FocusNode();
 
-    _model.textFieldCardNumTextController2 ??= TextEditingController();
     _model.textFieldCardNumFocusNode2 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -256,7 +254,10 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                           ),
                                           TextFormField(
                                             controller: _model
-                                                .textFieldCardNumTextController1,
+                                                    .textFieldCardNumTextController1 ??=
+                                                TextEditingController(
+                                              text: containerPizzaRecord.name,
+                                            ),
                                             focusNode: _model
                                                 .textFieldCardNumFocusNode1,
                                             autofocus: false,
@@ -339,7 +340,11 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                           ),
                                           TextFormField(
                                             controller: _model
-                                                .textFieldCardNumTextController2,
+                                                    .textFieldCardNumTextController2 ??=
+                                                TextEditingController(
+                                              text: containerPizzaRecord
+                                                  .description,
+                                            ),
                                             focusNode: _model
                                                 .textFieldCardNumFocusNode2,
                                             autofocus: false,
@@ -765,7 +770,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                   },
                                                 );
 
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'ProductDeckPage',
                                                   queryParameters: {
                                                     'productRef':
@@ -775,6 +780,17 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                           .DocumentReference,
                                                     ),
                                                   }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        const TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .scale,
+                                                      alignment: Alignment
+                                                          .bottomCenter,
+                                                    ),
+                                                  },
                                                 );
                                               },
                                               text: FFLocalizations.of(context)

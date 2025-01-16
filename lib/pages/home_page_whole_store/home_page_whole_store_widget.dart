@@ -7,6 +7,7 @@ import '/components/often_ordered/often_ordered_widget.dart';
 import '/components/whole_store_item/whole_store_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:badges/badges.dart' as badges;
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -125,6 +126,102 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
           return Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                print('FloatingActionButton pressed ...');
+              },
+              backgroundColor: FlutterFlowTheme.of(context).primary,
+              elevation: 8.0,
+              child: Builder(
+                builder: (context) {
+                  if (currentUserDocument?.userType != UserTypes.manager) {
+                    return InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          'CartPage',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: const TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.scale,
+                              alignment: Alignment.bottomCenter,
+                            ),
+                          },
+                        );
+                      },
+                      child: Stack(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        children: [
+                          Icon(
+                            Icons.shopping_cart_outlined,
+                            color: FlutterFlowTheme.of(context).info,
+                            size: 24.0,
+                          ),
+                          Align(
+                            alignment: const AlignmentDirectional(0.6, -0.6),
+                            child: Text(
+                              valueOrDefault<String>(
+                                functions
+                                    .getSizeOfCartList(
+                                        FFAppState().cart.toList())
+                                    .toString(),
+                                '1',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    return InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          'AddProduct',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: const TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.scale,
+                              alignment: Alignment.bottomCenter,
+                            ),
+                          },
+                        );
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        decoration: const BoxDecoration(),
+                        child: Stack(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          children: [
+                            Icon(
+                              Icons.add,
+                              color: FlutterFlowTheme.of(context).info,
+                              size: 24.0,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
+                },
+              ),
+            ),
             appBar: PreferredSize(
               preferredSize: const Size.fromHeight(58.0),
               child: AppBar(

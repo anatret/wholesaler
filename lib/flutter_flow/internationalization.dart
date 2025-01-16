@@ -448,6 +448,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '내 주문',
       'zh_Hans': '我的订单',
     },
+    'pv9jebvs': {
+      'ru': 'Новые',
+      'en': 'New',
+      'ko': '새로운',
+      'zh_Hans': '新的',
+    },
+    'wan6pets': {
+      'ru': 'Принятые',
+      'en': 'Accepted',
+      'ko': '수락됨',
+      'zh_Hans': '公认',
+    },
+    '9cnk3jue': {
+      'ru': 'Готовые',
+      'en': 'Ready',
+      'ko': '준비가 된',
+      'zh_Hans': '准备好',
+    },
+    '72d6q67q': {
+      'ru': 'Отмена',
+      'en': 'Cancel',
+      'ko': '취소',
+      'zh_Hans': '取消',
+    },
     'cugi6x2m': {
       'ru': 'Заказы',
       'en': 'Orders',
@@ -503,7 +527,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '我的商店',
     },
     '0rl63l99': {
-      'ru': 'Адреса доставки',
+      'ru': 'Управление заказами',
       'en': 'Shipping addresses',
       'ko': '배송 주소',
       'zh_Hans': '送货地址',
@@ -712,7 +736,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '家',
     },
   },
-  // AddProduct
+  // EditCopyDeletProduct
   {
     'zl8t8jdm': {
       'ru': '3',
@@ -720,157 +744,157 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '3',
       'zh_Hans': '3',
     },
-    'cd3uafk4': {
+    '1502kfsw': {
       'ru': 'загрузите',
       'en': 'download',
       'ko': '다운로드',
       'zh_Hans': '下载',
     },
-    'qosnuzvf': {
+    'qwcdjvlt': {
       'ru': 'фото акции',
       'en': 'stock photo',
       'ko': '액션 사진',
       'zh_Hans': '行动照片',
     },
-    'q3femplf': {
+    'k5gzkxps': {
       'ru': 'Формат: JPG, PNG',
       'en': 'Format: JPG, PNG',
       'ko': '형식: JPG, PNG',
       'zh_Hans': '格式：JPG、PNG',
     },
-    'xwp045eu': {
+    'oam0jpkm': {
       'ru': 'Изменить фото',
       'en': 'Edit photo',
       'ko': '사진 변경',
       'zh_Hans': '更改照片',
     },
-    'shs6uih9': {
+    'ga548q79': {
       'ru': 'Цена',
       'en': 'Price',
       'ko': '가격',
       'zh_Hans': '价格',
     },
-    'wu6v0723': {
+    'h0li3m5s': {
       'ru': 'Название',
       'en': 'Name',
       'ko': '이름',
       'zh_Hans': '姓名',
     },
-    '1fs8jxc1': {
+    'hzqf8jkh': {
       'ru': 'Штрихкод',
       'en': 'Barcode',
       'ko': '바코드',
       'zh_Hans': '条码',
     },
-    'cn811g7x': {
+    'ba7w7ldk': {
       'ru': 'Ссылка на Товар',
       'en': 'Link to Product',
       'ko': '제품 링크',
       'zh_Hans': '产品链接',
     },
-    '4t9c3hi7': {
+    'rolpnxwi': {
       'ru': 'Описание',
       'en': 'Description',
       'ko': '설명',
       'zh_Hans': '描述',
     },
-    'fzn7691g': {
+    '4vknz1kj': {
       'ru': 'Напитки',
       'en': 'Drinks',
       'ko': '음료수',
       'zh_Hans': '饮料',
     },
-    'p95kv2ce': {
+    'iroawih2': {
       'ru': 'Соус',
       'en': 'Sauce',
       'ko': '소스',
       'zh_Hans': '酱',
     },
-    '6srt5tiy': {
+    'ifn90g3o': {
       'ru': 'Водка',
       'en': 'Vodka',
       'ko': '보드카',
       'zh_Hans': '伏特加酒',
     },
-    '0rnfx85c': {
+    '9hre8s1t': {
       'ru': 'Вино',
       'en': 'Wine',
       'ko': '와인',
       'zh_Hans': '葡萄酒',
     },
-    'dssbguf5': {
+    '4hhx8yae': {
       'ru': 'Коньяк',
       'en': 'Cognac',
       'ko': '코냑',
       'zh_Hans': '科涅克白兰地',
     },
-    'hb0h7u0r': {
+    '6ggw86a7': {
       'ru': 'Консервы/Маринады',
       'en': 'Canned goods/Marinades',
       'ko': '통조림/마리네이드',
       'zh_Hans': '罐头食品/腌料',
     },
-    'pue1d4l0': {
+    '2ufka7yv': {
       'ru': 'Бакалея',
       'en': 'Grocery',
       'ko': '식료품점',
       'zh_Hans': '杂货店',
     },
-    'j6gmjn44': {
+    '8w88t5dz': {
       'ru': 'Сигареты',
       'en': 'Cigarettes',
       'ko': '담배',
       'zh_Hans': '香烟',
     },
-    '2negydpa': {
+    'bn3mnwqw': {
       'ru': 'Море продукты',
       'en': 'Seafood',
       'ko': '바다 음식',
       'zh_Hans': '海鲜',
     },
-    'hykr21gm': {
+    'jwm0qlk6': {
       'ru': 'Мясо',
       'en': 'Meat',
       'ko': '고기',
       'zh_Hans': '肉',
     },
-    'u1hzkkx9': {
+    'm3h62uq5': {
       'ru': 'Хоз товары',
       'en': 'Household goods',
       'ko': '가정 용품',
       'zh_Hans': '家居用品',
     },
-    'bbp0gps2': {
+    'c9kco6z4': {
       'ru': 'Заморозка',
       'en': 'Freezing',
       'ko': '동결',
       'zh_Hans': '冷冻',
     },
-    '70xejb1x': {
+    'btd8gp33': {
       'ru': 'Детское',
       'en': 'Children\'s',
       'ko': '어린이',
       'zh_Hans': '孩子们的',
     },
-    'xencupqz': {
+    'xwfa0thu': {
       'ru': 'Десерт',
       'en': 'Dessert',
       'ko': '디저트',
       'zh_Hans': '甜点',
     },
-    'b2itwya3': {
+    'pyxerq7z': {
       'ru': 'Прочее',
       'en': 'Other',
       'ko': '다른',
       'zh_Hans': '其他',
     },
-    '3gpgpbpt': {
+    'ivnisruo': {
       'ru': 'В наличии',
       'en': 'In stock',
       'ko': '재고 있음',
       'zh_Hans': '有存货',
     },
-    'fmihrsfq': {
+    '4q33hi2b': {
       'ru': 'Часто заказывают',
       'en': 'Frequently ordered',
       'ko': '자주 주문됨',
@@ -2522,6 +2546,195 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '为您的企业采购商品',
     },
   },
+  // AddProduct
+  {
+    'd975ub3p': {
+      'ru': '3',
+      'en': '3',
+      'ko': '3',
+      'zh_Hans': '3',
+    },
+    '7bhysy77': {
+      'ru': 'Добавление продукта',
+      'en': 'Adding a product',
+      'ko': '제품 추가',
+      'zh_Hans': '添加产品',
+    },
+    'o2zxillf': {
+      'ru': 'загрузите',
+      'en': 'download',
+      'ko': '다운로드',
+      'zh_Hans': '下载',
+    },
+    '7xeaw434': {
+      'ru': 'фото акции',
+      'en': 'stock photo',
+      'ko': '액션 사진',
+      'zh_Hans': '行动照片',
+    },
+    's1oq10d7': {
+      'ru': 'Формат: JPG, PNG',
+      'en': 'Format: JPG, PNG',
+      'ko': '형식: JPG, PNG',
+      'zh_Hans': '格式：JPG、PNG',
+    },
+    'dlqc89rv': {
+      'ru': 'Изменить фото',
+      'en': 'Edit photo',
+      'ko': '사진 변경',
+      'zh_Hans': '更改照片',
+    },
+    'emf2w9kn': {
+      'ru': 'Цена',
+      'en': 'Price',
+      'ko': '가격',
+      'zh_Hans': '价格',
+    },
+    'htj8ns0a': {
+      'ru': 'Название',
+      'en': 'Name',
+      'ko': '이름',
+      'zh_Hans': '姓名',
+    },
+    'immojnlt': {
+      'ru': 'Штрихкод',
+      'en': 'Barcode',
+      'ko': '바코드',
+      'zh_Hans': '条码',
+    },
+    'fnb53ewy': {
+      'ru': 'Ссылка на Товар',
+      'en': 'Link to Product',
+      'ko': '제품 링크',
+      'zh_Hans': '产品链接',
+    },
+    'lkj7exld': {
+      'ru': 'Описание',
+      'en': 'Description',
+      'ko': '설명',
+      'zh_Hans': '描述',
+    },
+    'x86jifgh': {
+      'ru': 'Прочее',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '91zyilxh': {
+      'ru': 'Напитки',
+      'en': 'Drinks',
+      'ko': '음료수',
+      'zh_Hans': '饮料',
+    },
+    '5eq61397': {
+      'ru': 'Соус',
+      'en': 'Sauce',
+      'ko': '소스',
+      'zh_Hans': '酱',
+    },
+    'ijg4y718': {
+      'ru': 'Водка',
+      'en': 'Vodka',
+      'ko': '보드카',
+      'zh_Hans': '伏特加酒',
+    },
+    'ggu3ajhk': {
+      'ru': 'Вино',
+      'en': 'Wine',
+      'ko': '와인',
+      'zh_Hans': '葡萄酒',
+    },
+    'tit87awq': {
+      'ru': 'Коньяк',
+      'en': 'Cognac',
+      'ko': '코냑',
+      'zh_Hans': '科涅克白兰地',
+    },
+    '831wm72w': {
+      'ru': 'Консервы/Маринады',
+      'en': 'Canned goods/Marinades',
+      'ko': '통조림/마리네이드',
+      'zh_Hans': '罐头食品/腌料',
+    },
+    'egpt8b5f': {
+      'ru': 'Бакалея',
+      'en': 'Grocery',
+      'ko': '식료품점',
+      'zh_Hans': '杂货店',
+    },
+    'rroqewyg': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+      'zh_Hans': '香烟',
+    },
+    'jrfrm6i0': {
+      'ru': 'Море продукты',
+      'en': 'Seafood',
+      'ko': '바다 음식',
+      'zh_Hans': '海鲜',
+    },
+    'vngnbz8p': {
+      'ru': 'Мясо',
+      'en': 'Meat',
+      'ko': '고기',
+      'zh_Hans': '肉',
+    },
+    'nfzn2fxv': {
+      'ru': 'Хоз товары',
+      'en': 'Household goods',
+      'ko': '가정 용품',
+      'zh_Hans': '家居用品',
+    },
+    'nv5ze3dz': {
+      'ru': 'Заморозка',
+      'en': 'Freezing',
+      'ko': '동결',
+      'zh_Hans': '冷冻',
+    },
+    '7rxtrsu6': {
+      'ru': 'Детское',
+      'en': 'Children\'s',
+      'ko': '어린이',
+      'zh_Hans': '孩子们的',
+    },
+    '68kq672t': {
+      'ru': 'Десерт',
+      'en': 'Dessert',
+      'ko': '디저트',
+      'zh_Hans': '甜点',
+    },
+    'xi3p5got': {
+      'ru': 'Прочее',
+      'en': 'Other',
+      'ko': '다른',
+      'zh_Hans': '其他',
+    },
+    'xbuy82lu': {
+      'ru': 'В наличии',
+      'en': 'In stock',
+      'ko': '재고 있음',
+      'zh_Hans': '有存货',
+    },
+    '7241ehs7': {
+      'ru': 'Часто заказывают',
+      'en': 'Frequently ordered',
+      'ko': '자주 주문됨',
+      'zh_Hans': '经常订购',
+    },
+    '3fv4zfw3': {
+      'ru': 'Добавить продукт',
+      'en': 'Add product',
+      'ko': '제품 추가',
+      'zh_Hans': '添加产品',
+    },
+    '9uqseb6e': {
+      'ru': 'Дои',
+      'en': 'Home',
+      'ko': '집',
+      'zh_Hans': '家',
+    },
+  },
   // PizzaItem
   {
     'f8im7su4': {
@@ -2868,6 +3081,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'PAY',
       'ko': '지불하다',
       'zh_Hans': '支付',
+    },
+  },
+  // EmptyMyOrderList
+  {
+    's36b4hu6': {
+      'ru': 'У вас пока нет заказов',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'a1cbpxbs': {
+      'ru': 'Здесь будут отображаться ваши заказы после их оформления',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
     },
   },
   // Miscellaneous

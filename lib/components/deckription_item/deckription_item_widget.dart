@@ -97,70 +97,40 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 20.0),
                           child: AuthUserStreamWidget(
-                            builder: (context) => StreamBuilder<PizzaRecord>(
-                              stream: PizzaRecord.getDocument(widget.ref!),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
-                                      ),
+                            builder: (context) => InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(
+                                  'EditCopyDeletProduct',
+                                  queryParameters: {
+                                    'isEdit': serializeParam(
+                                      true,
+                                      ParamType.bool,
                                     ),
-                                  );
-                                }
-
-                                final textPizzaRecord = snapshot.data!;
-
-                                return InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed(
-                                      'AddProduct',
-                                      queryParameters: {
-                                        'isEdit': serializeParam(
-                                          true,
-                                          ParamType.bool,
-                                        ),
-                                        'productRef': serializeParam(
-                                          widget.ref,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'pizzaDoc': serializeParam(
-                                          textPizzaRecord,
-                                          ParamType.Document,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'pizzaDoc': textPizzaRecord,
-                                      },
-                                    );
-                                  },
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'sqaxzhgu' /* Редактировать */,
+                                    'productRef': serializeParam(
+                                      widget.ref,
+                                      ParamType.DocumentReference,
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
+                                  }.withoutNulls,
                                 );
                               },
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'sqaxzhgu' /* Редактировать */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
                             ),
                           ),
                         ),
@@ -176,7 +146,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                             widget.image!,
                             width: 208.0,
                             height: 208.0,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
