@@ -923,7 +923,17 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                         },
                                       );
 
-                                      context.pushNamed('HomePageWholeStore');
+                                      context.pushNamed(
+                                        'HomePageWholeStore',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.scale,
+                                            alignment: Alignment.bottomCenter,
+                                          ),
+                                        },
+                                      );
 
                                       safeSetState(() {});
                                     },

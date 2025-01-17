@@ -102,7 +102,8 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
             .where(
               'store',
               isEqualTo: widget.wholeStore,
-            ),
+            )
+            .orderBy('name'),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.

@@ -1010,106 +1010,103 @@ class _EditStorePageWidgetState extends State<EditStorePageWidget> {
                         ],
                       ),
                     ),
-                    if (listViewStoresRecord.verifyStatus != VerifyStatus.done)
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            if ((listViewStoresRecord != null) == true) {
-                              await listViewStoresRecord.reference
-                                  .update(createStoresRecordData(
-                                storeName: _model.nameFieldTextController.text,
-                                address: _model.addressStoreTextController.text,
-                                phone: _model.phoneFieldTextController.text,
-                                room: _model.roomStoreTextController.text,
-                                saobcha: _model.saobchaTextController.text,
-                                logoImg: _model.uploadedFileUrl1 != ''
-                                    ? _model.uploadedFileUrl1
-                                    : listViewStoresRecord.logoImg,
-                                saobchaImg: _model.uploadedFileUrl2 != ''
-                                    ? _model.uploadedFileUrl2
-                                    : listViewStoresRecord.saobchaImg,
-                                verifyStatus:
-                                    listViewStoresRecord.verifyStatus ==
-                                            VerifyStatus.done
-                                        ? VerifyStatus.done
-                                        : VerifyStatus.newApplication,
-                              ));
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: const Text('Изменение магазина'),
-                                    content: const Text('Изменения сохранены'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: const Text('Ok'),
-                                      ),
-                                    ],
-                                  );
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          if ((listViewStoresRecord != null) == true) {
+                            await listViewStoresRecord.reference
+                                .update(createStoresRecordData(
+                              storeName: _model.nameFieldTextController.text,
+                              address: _model.addressStoreTextController.text,
+                              phone: _model.phoneFieldTextController.text,
+                              room: _model.roomStoreTextController.text,
+                              saobcha: _model.saobchaTextController.text,
+                              logoImg: _model.uploadedFileUrl1 != ''
+                                  ? _model.uploadedFileUrl1
+                                  : listViewStoresRecord.logoImg,
+                              saobchaImg: _model.uploadedFileUrl2 != ''
+                                  ? _model.uploadedFileUrl2
+                                  : listViewStoresRecord.saobchaImg,
+                              verifyStatus: listViewStoresRecord.verifyStatus ==
+                                      VerifyStatus.done
+                                  ? VerifyStatus.done
+                                  : VerifyStatus.newApplication,
+                            ));
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: const Text('Изменение магазина'),
+                                  content: const Text('Изменения сохранены'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: const Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            if (listViewStoresRecord.verifyStatus ==
+                                VerifyStatus.done) {
+                              context.goNamed('Profile');
+                            } else {
+                              context.goNamed(
+                                'AuthPage',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: const TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.scale,
+                                    alignment: Alignment.bottomCenter,
+                                  ),
                                 },
                               );
-                              if (listViewStoresRecord.verifyStatus ==
-                                  VerifyStatus.done) {
-                                context.goNamed('Profile');
-                              } else {
-                                context.goNamed(
-                                  'AuthPage',
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType: PageTransitionType.scale,
-                                      alignment: Alignment.bottomCenter,
-                                    ),
-                                  },
-                                );
 
-                                return;
-                              }
-                            } else {
                               return;
                             }
-                          },
-                          text: (listViewStoresRecord != null) == true
-                              ? FFLocalizations.of(context).getVariableText(
-                                  ruText: 'Изменить',
-                                  enText: 'Change',
-                                  koText: '변화',
-                                  zh_HansText: '改变',
-                                )
-                              : FFLocalizations.of(context).getVariableText(
-                                  ruText: 'Зарегистрироваться',
-                                  enText: 'Register',
-                                  koText: '등록하다',
-                                  zh_HansText: '登记',
-                                ),
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 48.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Colors.white,
-                                  fontSize: 14.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                            borderSide: const BorderSide(
-                              color: Colors.transparent,
-                            ),
-                            borderRadius: BorderRadius.circular(30.0),
+                          } else {
+                            return;
+                          }
+                        },
+                        text: (listViewStoresRecord != null) == true
+                            ? FFLocalizations.of(context).getVariableText(
+                                ruText: 'Изменить',
+                                enText: 'Change',
+                                koText: '변화',
+                                zh_HansText: '改变',
+                              )
+                            : FFLocalizations.of(context).getVariableText(
+                                ruText: 'Зарегистрироваться',
+                                enText: 'Register',
+                                koText: '등록하다',
+                                zh_HansText: '登记',
+                              ),
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 48.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.white,
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
                           ),
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
+                    ),
                   ],
                 );
               },

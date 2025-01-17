@@ -161,16 +161,16 @@ class _WholeStoreItemWidgetState extends State<WholeStoreItemWidget>
                               ),
                               child: Image.network(
                                 carDetailsStoresRecord.logoImg,
-                                width: 160.0,
+                                width: 100.0,
                                 height: 100.0,
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                               ),
                             );
                           } else {
                             return Icon(
                               Icons.photo_camera,
                               color: FlutterFlowTheme.of(context).alternate,
-                              size: 96.0,
+                              size: 100.0,
                             );
                           }
                         },
