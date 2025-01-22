@@ -288,10 +288,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               collectionNamePath: ['stores'],
             ),
-            searchText: params.getParam(
-              'searchText',
-              ParamType.String,
-            ),
             productType: params.getParam<ProductType>(
               'productType',
               ParamType.Enum,
@@ -408,6 +404,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/addProduct',
           requireAuth: true,
           builder: (context, params) => const AddProductWidget(),
+        ),
+        FFRoute(
+          name: 'SearchPage',
+          path: '/searchPage',
+          requireAuth: true,
+          builder: (context, params) => const SearchPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

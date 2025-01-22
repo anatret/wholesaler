@@ -19,6 +19,7 @@ enum ProductType {
   meat,
   hardwarestore,
   others,
+  dairy,
 }
 
 enum UserTypes {

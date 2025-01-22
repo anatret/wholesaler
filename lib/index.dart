@@ -56,3 +56,4 @@ export '/admin/check_store_page_admin/check_store_page_admin_widget.dart'
 export '/auth/reg_new_store_pre/reg_new_store_pre_widget.dart'
     show RegNewStorePreWidget;
 export '/admin/add_product/add_product_widget.dart' show AddProductWidget;
+export '/pages/search_page/search_page_widget.dart' show SearchPageWidget;

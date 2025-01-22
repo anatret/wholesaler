@@ -1086,7 +1086,10 @@ class _EditCopyDeletProductWidgetState
                                         'xwfa0thu' /* Десерт */,
                                       ),
                                       FFLocalizations.of(context).getText(
-                                        'pyxerq7z' /* Прочее */,
+                                        'pyxerq7z' /* Молочка */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        '5wbucmxe' /* Прочее */,
                                       )
                                     ].toList(),
                                     onChanged: (val) => safeSetState(() {}),
@@ -1163,6 +1166,8 @@ class _EditCopyDeletProductWidgetState
                                         return 'Детское';
                                       } else if ((widget.isEdit || widget.itCopy) && (containerPizzaRecord != null) && (containerPizzaRecord.productType == ProductType.dessert ? true : false)) {
                                         return 'Десерт';
+                                      } else if ((widget.isEdit || widget.itCopy) && (containerPizzaRecord != null) && (containerPizzaRecord.productType == ProductType.dairy ? true : false)) {
+                                        return 'Молочка';
                                       } else {
                                         return 'Прочее';
                                       }
@@ -1352,6 +1357,9 @@ class _EditCopyDeletProductWidgetState
                                       } else if (_model.radioButtonValue ==
                                           'Соус') {
                                         return ProductType.sauce;
+                                      } else if (_model.radioButtonValue ==
+                                          'Молочка') {
+                                        return ProductType.dairy;
                                       } else {
                                         return ProductType.others;
                                       }
@@ -1419,6 +1427,9 @@ class _EditCopyDeletProductWidgetState
                                           } else if (_model.radioButtonValue ==
                                               'Соус') {
                                             return ProductType.sauce;
+                                          } else if (_model.radioButtonValue ==
+                                              'Молочка') {
+                                            return ProductType.dairy;
                                           } else {
                                             return ProductType.others;
                                           }

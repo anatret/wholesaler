@@ -319,17 +319,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // FavoritPage
   {
-    '2vnjcnbg': {
-      'ru': '3',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'jodiglg3': {
+    'v72404gv': {
       'ru': 'Избранное',
       'en': 'Featured',
       'ko': '즐겨찾기',
       'zh_Hans': '收藏夹',
+    },
+    '3j6kfelg': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+      'zh_Hans': '1',
     },
     'ps247s78': {
       'ru': 'Избранное',
@@ -340,12 +340,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CartPage
   {
-    'v13zoxhq': {
-      'ru': 'Корзина',
-      'en': 'Cart',
-      'ko': '카트',
-      'zh_Hans': '大车',
-    },
     '6pmu4v6v': {
       'ru': 'Сумма: ',
       'en': 'Sum:',
@@ -358,17 +352,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '결제로 이동',
       'zh_Hans': '前往结帐处',
     },
-    '2o8xil44': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'os3sweqk': {
       'ru': 'Оформить заказ',
       'en': 'Place an order',
       'ko': '주문하기',
       'zh_Hans': '下订单',
+    },
+    'xxfbssnu': {
+      'ru': 'Корзина',
+      'en': 'Cart',
+      'ko': '바구니',
+      'zh_Hans': '篮子',
+    },
+    'kgz6qjxl': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+      'zh_Hans': '1',
     },
     'xf38p9sp': {
       'ru': 'Корзина',
@@ -442,12 +442,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // UserOrderListPage
   {
-    '7hec0wfl': {
-      'ru': 'Мои заказы',
-      'en': 'My orders',
-      'ko': '내 주문',
-      'zh_Hans': '我的订单',
-    },
     'pv9jebvs': {
       'ru': 'Новые',
       'en': 'New',
@@ -471,6 +465,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Cancel',
       'ko': '취소',
       'zh_Hans': '取消',
+    },
+    'wc6e7dip': {
+      'ru': 'Заказы',
+      'en': 'Orders',
+      'ko': '명령',
+      'zh_Hans': '订单',
+    },
+    'f1fe1a17': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+      'zh_Hans': '1',
     },
     'cugi6x2m': {
       'ru': 'Заказы',
@@ -508,18 +514,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Profile
   {
-    '0jhrezqb': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
-    'aba41ubx': {
-      'ru': 'Профиль',
-      'en': 'Profile',
-      'ko': '윤곽',
-      'zh_Hans': '轮廓',
-    },
     'tfz46wt5': {
       'ru': 'Мой магазин',
       'en': 'My shop',
@@ -549,6 +543,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Logout',
       'ko': '계정에서 로그아웃하세요',
       'zh_Hans': '退出您的帐户',
+    },
+    'v8839slr': {
+      'ru': 'Профиль',
+      'en': 'Profile',
+      'ko': '윤곽',
+      'zh_Hans': '轮廓',
+    },
+    'f34qcecm': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+      'zh_Hans': '1',
     },
     '3jcn9ln5': {
       'ru': 'Профиль',
@@ -883,6 +889,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '甜点',
     },
     'pyxerq7z': {
+      'ru': 'Молочка',
+      'en': 'Dairy',
+      'ko': '우유',
+      'zh_Hans': '牛奶',
+    },
+    '5wbucmxe': {
       'ru': 'Прочее',
       'en': 'Other',
       'ko': '다른',
@@ -1218,179 +1230,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // HomePageWholeStore
   {
+    'qgqv4sff': {
+      'ru': 'WholeSaler',
+      'en': 'WholeSaler',
+      'ko': 'WholeSaler',
+      'zh_Hans': 'WholeSaler',
+    },
     '8knbeohg': {
       'ru': '1',
       'en': '1',
       'ko': '1',
       'zh_Hans': '1',
-    },
-    '0wqmy3zq': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
-    'z06xs94n': {
-      'ru': 'Поиск',
-      'en': 'Search',
-      'ko': '찾다',
-      'zh_Hans': '搜索',
-    },
-    'nx3saamf': {
-      'ru': 'Водка',
-      'en': 'Vodka',
-      'ko': '보드카',
-      'zh_Hans': '伏特加酒',
-    },
-    'nn9hfurq': {
-      'ru': 'Вино',
-      'en': 'Wine',
-      'ko': '와인',
-      'zh_Hans': '葡萄酒',
-    },
-    '0l79ocsg': {
-      'ru': 'Коньяк',
-      'en': 'Cognac',
-      'ko': '코냑',
-      'zh_Hans': '科涅克白兰地',
-    },
-    'eyyw2qrj': {
-      'ru': 'Напитки',
-      'en': 'Drinks',
-      'ko': '음료수',
-      'zh_Hans': '饮料',
-    },
-    '18bnz4uh': {
-      'ru': 'Соусы',
-      'en': 'Sauces',
-      'ko': '소스',
-      'zh_Hans': '酱汁',
-    },
-    'tolgmnro': {
-      'ru': 'Консервы',
-      'en': 'Canned',
-      'ko': '통조림',
-      'zh_Hans': '罐头食品',
-    },
-    '1t2kahon': {
-      'ru': 'Бакалея',
-      'en': 'Grocery',
-      'ko': '식료품점',
-      'zh_Hans': '杂货店',
-    },
-    'o29hdbj7': {
-      'ru': 'Водка',
-      'en': 'Vodka',
-      'ko': '보드카',
-      'zh_Hans': '伏特加酒',
-    },
-    'z1qjthac': {
-      'ru': 'Вино',
-      'en': 'Wine',
-      'ko': '와인',
-      'zh_Hans': '葡萄酒',
-    },
-    '3iag5d4w': {
-      'ru': 'Коньяк',
-      'en': 'Cognac',
-      'ko': '코냑',
-      'zh_Hans': '科涅克白兰地',
-    },
-    'br7nycn5': {
-      'ru': 'Напитки',
-      'en': 'Drinks',
-      'ko': '음료수',
-      'zh_Hans': '饮料',
-    },
-    '36y7wgin': {
-      'ru': 'Соусы',
-      'en': 'Sauces',
-      'ko': '소스',
-      'zh_Hans': '酱汁',
-    },
-    'kfiwv1du': {
-      'ru': 'Консервы',
-      'en': 'Canned',
-      'ko': '통조림',
-      'zh_Hans': '罐头食品',
-    },
-    'xe0chby9': {
-      'ru': 'Бакалея',
-      'en': 'Grocery',
-      'ko': '식료품점',
-      'zh_Hans': '杂货店',
-    },
-    'jza90tpc': {
-      'ru': 'Сигареты',
-      'en': 'Cigarettes',
-      'ko': '담배',
-      'zh_Hans': '香烟',
-    },
-    'isyt7u1t': {
-      'ru': 'Заморозка',
-      'en': 'Freezing',
-      'ko': '동결',
-      'zh_Hans': '冷冻',
-    },
-    'zo6zbasr': {
-      'ru': 'Море прод.',
-      'en': 'Sea cont.',
-      'ko': '바다 계속.',
-      'zh_Hans': '海续',
-    },
-    'ejp7vqnv': {
-      'ru': 'Детское',
-      'en': 'Children\'s',
-      'ko': '어린이',
-      'zh_Hans': '孩子们的',
-    },
-    'kxvtrlza': {
-      'ru': 'Мясо',
-      'en': 'Meat',
-      'ko': '고기',
-      'zh_Hans': '肉',
-    },
-    '9lvogyn9': {
-      'ru': 'Сигареты',
-      'en': 'Cigarettes',
-      'ko': '담배',
-      'zh_Hans': '香烟',
-    },
-    'kfbkf7wk': {
-      'ru': 'Сигареты',
-      'en': 'Cigarettes',
-      'ko': '담배',
-      'zh_Hans': '香烟',
-    },
-    'dgqe4x78': {
-      'ru': 'Сигареты',
-      'en': 'Cigarettes',
-      'ko': '담배',
-      'zh_Hans': '香烟',
-    },
-    'el9st8aq': {
-      'ru': 'Десерты',
-      'en': 'Desserts',
-      'ko': '디저트',
-      'zh_Hans': '甜点',
-    },
-    'ozgbshbq': {
-      'ru': 'Сигареты',
-      'en': 'Cigarettes',
-      'ko': '담배',
-      'zh_Hans': '香烟',
-    },
-    '4vq24xc5': {
-      'ru': 'Хоз товар',
-      'en': 'Homeware',
-      'ko': '가정 용품',
-      'zh_Hans': '家居用品',
-    },
-    'xpe3exwp': {
-      'ru': 'Другие',
-      'en': 'Other',
-      'ko': '다른',
-      'zh_Hans': '其他',
     },
     'k3ci3v2w': {
       'ru': 'Часто заказывают',
@@ -1534,10 +1384,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '肉',
     },
     'nqi1kuay': {
-      'ru': 'Сигареты',
-      'en': 'Cigarettes',
-      'ko': '담배',
-      'zh_Hans': '香烟',
+      'ru': 'Молочка',
+      'en': 'Dairy',
+      'ko': '우유',
+      'zh_Hans': '牛奶',
     },
     'stoplflp': {
       'ru': 'Сигареты',
@@ -2616,9 +2466,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'x86jifgh': {
       'ru': 'Прочее',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
+      'en': 'Other',
+      'ko': '다른',
+      'zh_Hans': '其他',
     },
     '91zyilxh': {
       'ru': 'Напитки',
@@ -2705,6 +2555,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '甜点',
     },
     'xi3p5got': {
+      'ru': 'Молочка',
+      'en': 'Dairy',
+      'ko': '우유',
+      'zh_Hans': '牛奶',
+    },
+    'nodbfg50': {
       'ru': 'Прочее',
       'en': 'Other',
       'ko': '다른',
@@ -2730,6 +2586,183 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9uqseb6e': {
       'ru': 'Дои',
+      'en': 'Home',
+      'ko': '집',
+      'zh_Hans': '家',
+    },
+  },
+  // SearchPage
+  {
+    'rawujk8u': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+      'zh_Hans': '1',
+    },
+    'j5izztn9': {
+      'ru': 'Поиск',
+      'en': 'Search',
+      'ko': '찾다',
+      'zh_Hans': '搜索',
+    },
+    'u3evau4k': {
+      'ru': 'Водка',
+      'en': 'Vodka',
+      'ko': '보드카',
+      'zh_Hans': '伏特加酒',
+    },
+    '4rui4ylb': {
+      'ru': 'Вино',
+      'en': 'Wine',
+      'ko': '와인',
+      'zh_Hans': '葡萄酒',
+    },
+    'mylzwmdy': {
+      'ru': 'Коньяк',
+      'en': 'Cognac',
+      'ko': '코냑',
+      'zh_Hans': '科涅克白兰地',
+    },
+    'ndzikv1m': {
+      'ru': 'Напитки',
+      'en': 'Drinks',
+      'ko': '음료수',
+      'zh_Hans': '饮料',
+    },
+    'aek085j7': {
+      'ru': 'Соусы',
+      'en': 'Sauces',
+      'ko': '소스',
+      'zh_Hans': '酱汁',
+    },
+    'fzahbfrh': {
+      'ru': 'Консервы',
+      'en': 'Canned',
+      'ko': '통조림',
+      'zh_Hans': '罐头食品',
+    },
+    'akmt9sbp': {
+      'ru': 'Бакалея',
+      'en': 'Grocery',
+      'ko': '식료품점',
+      'zh_Hans': '杂货店',
+    },
+    'sgcpzlbv': {
+      'ru': 'Водка',
+      'en': 'Vodka',
+      'ko': '보드카',
+      'zh_Hans': '伏特加酒',
+    },
+    'wszi2z7p': {
+      'ru': 'Вино',
+      'en': 'Wine',
+      'ko': '와인',
+      'zh_Hans': '葡萄酒',
+    },
+    'nx7trb0h': {
+      'ru': 'Коньяк',
+      'en': 'Cognac',
+      'ko': '코냑',
+      'zh_Hans': '科涅克白兰地',
+    },
+    'zqjrmweh': {
+      'ru': 'Напитки',
+      'en': 'Drinks',
+      'ko': '음료수',
+      'zh_Hans': '饮料',
+    },
+    'c1y6bdwr': {
+      'ru': 'Соусы',
+      'en': 'Sauces',
+      'ko': '소스',
+      'zh_Hans': '酱汁',
+    },
+    'hvpbuxzt': {
+      'ru': 'Консервы',
+      'en': 'Canned',
+      'ko': '통조림',
+      'zh_Hans': '罐头食品',
+    },
+    '9d6q4mwg': {
+      'ru': 'Бакалея',
+      'en': 'Grocery',
+      'ko': '식료품점',
+      'zh_Hans': '杂货店',
+    },
+    't2h1jte8': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+      'zh_Hans': '香烟',
+    },
+    '4b9mzebo': {
+      'ru': 'Заморозка',
+      'en': 'Freezing',
+      'ko': '동결',
+      'zh_Hans': '冷冻',
+    },
+    '7p0urz5s': {
+      'ru': 'Море прод.',
+      'en': 'Sea cont.',
+      'ko': '바다 계속.',
+      'zh_Hans': '海续',
+    },
+    'sx7x0vuo': {
+      'ru': 'Детское',
+      'en': 'Children\'s',
+      'ko': '어린이',
+      'zh_Hans': '孩子们的',
+    },
+    '1jfkvgly': {
+      'ru': 'Мясо',
+      'en': 'Meat',
+      'ko': '고기',
+      'zh_Hans': '肉',
+    },
+    'rg0dchhm': {
+      'ru': 'Молочка',
+      'en': 'Dairy',
+      'ko': '우유',
+      'zh_Hans': '牛奶',
+    },
+    '7q3qq8mp': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+      'zh_Hans': '香烟',
+    },
+    'p0ue1ehw': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+      'zh_Hans': '香烟',
+    },
+    'ko4xhkx3': {
+      'ru': 'Десерты',
+      'en': 'Desserts',
+      'ko': '디저트',
+      'zh_Hans': '甜点',
+    },
+    'ml2hq84j': {
+      'ru': 'Сигареты',
+      'en': 'Cigarettes',
+      'ko': '담배',
+      'zh_Hans': '香烟',
+    },
+    'ztufnmde': {
+      'ru': 'Хоз товар',
+      'en': 'Homeware',
+      'ko': '가정 용품',
+      'zh_Hans': '家居用品',
+    },
+    'np29h8tp': {
+      'ru': 'Другие',
+      'en': 'Other',
+      'ko': '다른',
+      'zh_Hans': '其他',
+    },
+    'ph17nc1c': {
+      'ru': 'Дом',
       'en': 'Home',
       'ko': '집',
       'zh_Hans': '家',
@@ -3096,6 +3129,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ko': '',
       'zh_Hans': '',
+    },
+  },
+  // SearchEmpty
+  {
+    'ita9oj69': {
+      'ru': 'Ничего не найдено',
+      'en': 'Nothing found',
+      'ko': '아무것도 발견되지 않았습니다',
+      'zh_Hans': '没有找到任何内容',
+    },
+    '68r58ats': {
+      'ru': 'Попробуйте изменить запрос или проверить написание.',
+      'en': 'Try changing your query or checking your spelling.',
+      'ko': '검색어를 변경하거나 철자를 확인해보세요.',
+      'zh_Hans': '尝试更改您的查询或检查您的拼写。',
     },
   },
   // Miscellaneous

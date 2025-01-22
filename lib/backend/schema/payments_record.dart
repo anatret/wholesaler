@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -134,6 +136,57 @@ class PaymentsRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       PaymentsRecord._(reference, mapFromFirestore(data));
+
+  static PaymentsRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      PaymentsRecord.getDocumentFromData(
+        {
+          'userref': convertAlgoliaParam(
+            snapshot.data['userref'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'amount': convertAlgoliaParam(
+            snapshot.data['amount'],
+            ParamType.int,
+            false,
+          ),
+          'card_number': snapshot.data['card_number'],
+          'buyer_email': snapshot.data['buyer_email'],
+          'tarifPlan': snapshot.data['tarifPlan'],
+          'merchantUID': snapshot.data['merchantUID'],
+          'message': snapshot.data['message'],
+          'imp_uid': snapshot.data['imp_uid'],
+          'pay_method': snapshot.data['pay_method'],
+          'receipt_url': snapshot.data['receipt_url'],
+          'responceCode': snapshot.data['responceCode'],
+          'cancel_receipt_urls': safeGet(
+            () => snapshot.data['cancel_receipt_urls'].toList(),
+          ),
+          'pg_tid': snapshot.data['pg_tid'],
+          'pg_id': snapshot.data['pg_id'],
+          'pg_provider': snapshot.data['pg_provider'],
+          'card_name': snapshot.data['card_name'],
+        },
+        PaymentsRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<PaymentsRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'payments',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>

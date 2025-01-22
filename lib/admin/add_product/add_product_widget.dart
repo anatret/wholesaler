@@ -783,7 +783,10 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   '68kq672t' /* Десерт */,
                                 ),
                                 FFLocalizations.of(context).getText(
-                                  'xi3p5got' /* Прочее */,
+                                  'xi3p5got' /* Молочка */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'nodbfg50' /* Прочее */,
                                 )
                               ].toList(),
                               onChanged: (val) => safeSetState(() {}),
@@ -957,6 +960,9 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                   } else if (_model.radioButtonValue ==
                                       'Соус') {
                                     return ProductType.sauce;
+                                  } else if (_model.radioButtonValue ==
+                                      'Молочка') {
+                                    return ProductType.dairy;
                                   } else {
                                     return ProductType.others;
                                   }

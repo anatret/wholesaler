@@ -116,73 +116,75 @@ class _CartPageWidgetState extends State<CartPageWidget> {
             automaticallyImplyLeading: false,
             title: Column(
               mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        decoration: const BoxDecoration(),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.safePop();
-                                },
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 24.0,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.safePop();
+                      },
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 26.0,
                       ),
-                      badges.Badge(
-                        badgeContent: Text(
-                          FFLocalizations.of(context).getText(
-                            '2o8xil44' /* 1 */,
+                    ),
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        'xxfbssnu' /* Корзина */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            fontFamily: 'Readex Pro',
+                            color: FlutterFlowTheme.of(context).primary,
+                            fontSize: 20.0,
+                            letterSpacing: 0.0,
                           ),
-                          textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                    fontSize: 12.0,
-                                    letterSpacing: 0.0,
-                                  ),
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        badges.Badge(
+                          badgeContent: Text(
+                            FFLocalizations.of(context).getText(
+                              'kgz6qjxl' /* 1 */,
+                            ),
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize: 12.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          showBadge: true,
+                          shape: badges.BadgeShape.circle,
+                          badgeColor: FlutterFlowTheme.of(context).primary,
+                          elevation: 0.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              8.0, 8.0, 8.0, 8.0),
+                          position: badges.BadgePosition.topEnd(),
+                          animationType: badges.BadgeAnimationType.scale,
+                          toAnimate: true,
+                          child: Icon(
+                            Icons.notifications_outlined,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 26.0,
+                          ),
                         ),
-                        showBadge: true,
-                        shape: badges.BadgeShape.circle,
-                        badgeColor: FlutterFlowTheme.of(context).primary,
-                        elevation: 0.0,
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                        position: badges.BadgePosition.topEnd(),
-                        animationType: badges.BadgeAnimationType.scale,
-                        toAnimate: true,
-                        child: Icon(
-                          Icons.notifications_outlined,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 26.0,
-                        ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -212,20 +214,6 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                   ),
                   scrollDirection: Axis.vertical,
                   children: [
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          16.0, 24.0, 16.0, 16.0),
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          'v13zoxhq' /* Корзина */,
-                        ),
-                        style:
-                            FlutterFlowTheme.of(context).headlineLarge.override(
-                                  fontFamily: 'Outfit',
-                                  letterSpacing: 0.0,
-                                ),
-                      ),
-                    ),
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),

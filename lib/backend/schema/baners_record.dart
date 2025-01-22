@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -55,6 +57,42 @@ class BanersRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       BanersRecord._(reference, mapFromFirestore(data));
+
+  static BanersRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      BanersRecord.getDocumentFromData(
+        {
+          'url': snapshot.data['url'],
+          'storeRef': convertAlgoliaParam(
+            snapshot.data['storeRef'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'userRef': convertAlgoliaParam(
+            snapshot.data['userRef'],
+            ParamType.DocumentReference,
+            false,
+          ),
+        },
+        BanersRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<BanersRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'baners',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>

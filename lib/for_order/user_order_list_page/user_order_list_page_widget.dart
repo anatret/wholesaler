@@ -6,6 +6,7 @@ import '/components/empty_my_order_list/empty_my_order_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'user_order_list_page_model.dart';
@@ -51,13 +52,76 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).info,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          automaticallyImplyLeading: false,
-          actions: const [],
-          centerTitle: false,
-          toolbarHeight: 58.0,
-          elevation: 0.0,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(58.0),
+          child: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            automaticallyImplyLeading: false,
+            title: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        'wc6e7dip' /* Заказы */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            fontFamily: 'Readex Pro',
+                            color: FlutterFlowTheme.of(context).primary,
+                            fontSize: 20.0,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        badges.Badge(
+                          badgeContent: Text(
+                            FFLocalizations.of(context).getText(
+                              'f1fe1a17' /* 1 */,
+                            ),
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize: 12.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          showBadge: true,
+                          shape: badges.BadgeShape.circle,
+                          badgeColor: FlutterFlowTheme.of(context).primary,
+                          elevation: 0.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              8.0, 8.0, 8.0, 8.0),
+                          position: badges.BadgePosition.topEnd(),
+                          animationType: badges.BadgeAnimationType.scale,
+                          toAnimate: true,
+                          child: Icon(
+                            Icons.notifications_outlined,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 26.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            actions: const [],
+            centerTitle: false,
+            toolbarHeight: 58.0,
+            elevation: 0.0,
+          ),
         ),
         body: SafeArea(
           top: true,
@@ -76,24 +140,6 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 24.0, 0.0, 16.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            '7hec0wfl' /* Мои заказы */,
-                          ),
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                fontFamily: 'Outfit',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 32.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                              ),
-                        ),
-                      ),
                       StreamBuilder<List<OrderRecord>>(
                         stream: queryOrderRecord(
                           queryBuilder: (orderRecord) => orderRecord
@@ -194,9 +240,31 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
+                                                color: () {
+                                                  if (listViewOrderRecord
+                                                          .orderStatus ==
+                                                      OrderStatus.newOrder) {
+                                                    return FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary;
+                                                  } else if (listViewOrderRecord
+                                                          .orderStatus ==
+                                                      OrderStatus.confirmed) {
+                                                    return FlutterFlowTheme.of(
+                                                            context)
+                                                        .warning;
+                                                  } else if (listViewOrderRecord
+                                                          .orderStatus ==
+                                                      OrderStatus.completed) {
+                                                    return FlutterFlowTheme.of(
+                                                            context)
+                                                        .success;
+                                                  } else {
+                                                    return FlutterFlowTheme.of(
+                                                            context)
+                                                        .error;
+                                                  }
+                                                }(),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -212,6 +280,31 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
+                                                color: () {
+                                                  if (listViewOrderRecord
+                                                          .orderStatus ==
+                                                      OrderStatus.newOrder) {
+                                                    return FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary;
+                                                  } else if (listViewOrderRecord
+                                                          .orderStatus ==
+                                                      OrderStatus.confirmed) {
+                                                    return FlutterFlowTheme.of(
+                                                            context)
+                                                        .warning;
+                                                  } else if (listViewOrderRecord
+                                                          .orderStatus ==
+                                                      OrderStatus.completed) {
+                                                    return FlutterFlowTheme.of(
+                                                            context)
+                                                        .success;
+                                                  } else {
+                                                    return FlutterFlowTheme.of(
+                                                            context)
+                                                        .error;
+                                                  }
+                                                }(),
                                                 fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                               ),
@@ -364,6 +457,33 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .accent4,
+                                        border: Border.all(
+                                          color: () {
+                                            if (listViewOrderRecord
+                                                    .orderStatus ==
+                                                OrderStatus.newOrder) {
+                                              return FlutterFlowTheme.of(
+                                                      context)
+                                                  .primary;
+                                            } else if (listViewOrderRecord
+                                                    .orderStatus ==
+                                                OrderStatus.confirmed) {
+                                              return FlutterFlowTheme.of(
+                                                      context)
+                                                  .warning;
+                                            } else if (listViewOrderRecord
+                                                    .orderStatus ==
+                                                OrderStatus.completed) {
+                                              return FlutterFlowTheme.of(
+                                                      context)
+                                                  .success;
+                                            } else {
+                                              return FlutterFlowTheme.of(
+                                                      context)
+                                                  .error;
+                                            }
+                                          }(),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -388,16 +508,16 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                     ),
                     scrollDirection: Axis.vertical,
                     children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              InkWell(
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 6.0),
+                              child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
@@ -426,7 +546,7 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        6.0, 6.0, 10.0, 6.0),
+                                        6.0, 6.0, 6.0, 6.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -460,7 +580,11 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                   ),
                                 ),
                               ),
-                              InkWell(
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 6.0),
+                              child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
@@ -489,7 +613,7 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        6.0, 6.0, 10.0, 6.0),
+                                        6.0, 6.0, 6.0, 6.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -523,7 +647,11 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                   ),
                                 ),
                               ),
-                              InkWell(
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 6.0),
+                              child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
@@ -552,7 +680,7 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        6.0, 6.0, 10.0, 6.0),
+                                        6.0, 6.0, 6.0, 6.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -586,7 +714,11 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                   ),
                                 ),
                               ),
-                              InkWell(
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 6.0),
+                              child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
@@ -615,7 +747,7 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        6.0, 6.0, 10.0, 6.0),
+                                        6.0, 6.0, 6.0, 6.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -649,8 +781,8 @@ class _UserOrderListPageWidgetState extends State<UserOrderListPageWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(width: 4.0)),
-                          ),
+                            ),
+                          ].divide(const SizedBox(width: 4.0)),
                         ),
                       ),
                       Padding(

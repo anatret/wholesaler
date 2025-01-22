@@ -20,12 +20,6 @@ class HomePageWholeStoreModel
 
   // Stores action output result for [Firestore Query - Query a collection] action in HomePageWholeStore widget.
   StoresRecord? usersStore;
-  // State field(s) for SearchTextField widget.
-  FocusNode? searchTextFieldFocusNode;
-  TextEditingController? searchTextFieldTextController;
-  String? Function(BuildContext, String?)?
-      searchTextFieldTextControllerValidator;
-  List<PizzaRecord> simpleSearchResults = [];
   // Models for oftenOrdered dynamic component.
   late FlutterFlowDynamicModels<OftenOrderedModel> oftenOrderedModels;
   // State field(s) for ShowDeletedCheckbox widget.
@@ -42,9 +36,6 @@ class HomePageWholeStoreModel
 
   @override
   void dispose() {
-    searchTextFieldFocusNode?.dispose();
-    searchTextFieldTextController?.dispose();
-
     oftenOrderedModels.dispose();
     wholeStoreItemModels.dispose();
   }

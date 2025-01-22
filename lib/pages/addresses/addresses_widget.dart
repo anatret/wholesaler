@@ -146,69 +146,67 @@ class _AddressesWidgetState extends State<AddressesWidget> {
                               (currentUserDocument?.addresses.toList() ?? [])
                                   .toList();
 
-                          return SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: List.generate(addresses.length,
-                                  (addressesIndex) {
-                                final addressesItem = addresses[addressesIndex];
-                                return InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    await showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
-                                      context: context,
-                                      builder: (context) {
-                                        return GestureDetector(
-                                          onTap: () {
-                                            FocusScope.of(context).unfocus();
-                                            FocusManager.instance.primaryFocus
-                                                ?.unfocus();
-                                          },
-                                          child: Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: SizedBox(
-                                              height: MediaQuery.sizeOf(context)
-                                                      .height *
-                                                  0.8,
-                                              child: AddnewAddressWidget(
-                                                data: addressesItem,
-                                                edit: true,
-                                                indexoflist: addressesIndex,
-                                              ),
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: addresses.length,
+                            itemBuilder: (context, addressesIndex) {
+                              final addressesItem = addresses[addressesIndex];
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    context: context,
+                                    builder: (context) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          FocusScope.of(context).unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: SizedBox(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.8,
+                                            child: AddnewAddressWidget(
+                                              data: addressesItem,
+                                              edit: true,
+                                              indexoflist: addressesIndex,
                                             ),
                                           ),
-                                        );
-                                      },
-                                    ).then((value) => safeSetState(() {}));
-                                  },
-                                  child: wrapWithModel(
-                                    model: _model.addressItemModels.getModel(
-                                      addressesIndex.toString(),
-                                      addressesIndex,
-                                    ),
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: AddressItemWidget(
-                                      key: Key(
-                                        'Key7w8_${addressesIndex.toString()}',
-                                      ),
-                                      city: addressesItem.city,
-                                      street: addressesItem.street,
-                                      building: addressesItem.building,
-                                      apart: addressesItem.apart,
-                                      isedit: true,
-                                    ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                },
+                                child: wrapWithModel(
+                                  model: _model.addressItemModels.getModel(
+                                    addressesIndex.toString(),
+                                    addressesIndex,
                                   ),
-                                );
-                              }).divide(const SizedBox(height: 8.0)),
-                            ),
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: AddressItemWidget(
+                                    key: Key(
+                                      'Key7w8_${addressesIndex.toString()}',
+                                    ),
+                                    city: addressesItem.city,
+                                    street: addressesItem.street,
+                                    building: addressesItem.building,
+                                    apart: addressesItem.apart,
+                                    isedit: true,
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         },
                       ),

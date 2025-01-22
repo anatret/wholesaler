@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -58,6 +60,43 @@ class StoreVerifaedMassageRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       StoreVerifaedMassageRecord._(reference, mapFromFirestore(data));
+
+  static StoreVerifaedMassageRecord fromAlgolia(
+          AlgoliaObjectSnapshot snapshot) =>
+      StoreVerifaedMassageRecord.getDocumentFromData(
+        {
+          'storeRef': convertAlgoliaParam(
+            snapshot.data['storeRef'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'message': snapshot.data['message'],
+          'datetimeanswer': convertAlgoliaParam(
+            snapshot.data['datetimeanswer'],
+            ParamType.DateTime,
+            false,
+          ),
+        },
+        StoreVerifaedMassageRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<StoreVerifaedMassageRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'storeVerifaedMassage',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>
