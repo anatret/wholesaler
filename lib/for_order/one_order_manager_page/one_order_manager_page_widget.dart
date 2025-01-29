@@ -10,11 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'one_order_page2_model.dart';
-export 'one_order_page2_model.dart';
+import 'one_order_manager_page_model.dart';
+export 'one_order_manager_page_model.dart';
 
-class OneOrderPage2Widget extends StatefulWidget {
-  const OneOrderPage2Widget({
+class OneOrderManagerPageWidget extends StatefulWidget {
+  const OneOrderManagerPageWidget({
     super.key,
     required this.order,
   });
@@ -22,18 +22,19 @@ class OneOrderPage2Widget extends StatefulWidget {
   final DocumentReference? order;
 
   @override
-  State<OneOrderPage2Widget> createState() => _OneOrderPage2WidgetState();
+  State<OneOrderManagerPageWidget> createState() =>
+      _OneOrderManagerPageWidgetState();
 }
 
-class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
-  late OneOrderPage2Model _model;
+class _OneOrderManagerPageWidgetState extends State<OneOrderManagerPageWidget> {
+  late OneOrderManagerPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => OneOrderPage2Model());
+    _model = createModel(context, () => OneOrderManagerPageModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -70,7 +71,7 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
           );
         }
 
-        final oneOrderPage2OrderRecord = snapshot.data!;
+        final oneOrderManagerPageOrderRecord = snapshot.data!;
 
         return GestureDetector(
           onTap: () {
@@ -190,7 +191,7 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                     stream: queryStoresRecord(
                       queryBuilder: (storesRecord) => storesRecord.where(
                         'user',
-                        isEqualTo: oneOrderPage2OrderRecord.userOrder,
+                        isEqualTo: oneOrderManagerPageOrderRecord.userOrder,
                       ),
                       singleRecord: true,
                     ),
@@ -263,7 +264,8 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 await Clipboard.setData(ClipboardData(
-                                    text: oneOrderPage2OrderRecord.address));
+                                    text: oneOrderManagerPageOrderRecord
+                                        .address));
                               },
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -332,12 +334,13 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                                     onTap: () async {
                                       await launchUrl(Uri(
                                         scheme: 'tel',
-                                        path: oneOrderPage2OrderRecord.phone,
+                                        path: oneOrderManagerPageOrderRecord
+                                            .phone,
                                       ));
                                     },
                                     child: Text(
                                       valueOrDefault<String>(
-                                        oneOrderPage2OrderRecord.phone,
+                                        oneOrderManagerPageOrderRecord.phone,
                                         'телефон',
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -390,13 +393,15 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                             0.0, 24.0, 0.0, 16.0),
                         child: Text(
                           () {
-                            if (oneOrderPage2OrderRecord.orderStatus ==
+                            if (oneOrderManagerPageOrderRecord.orderStatus ==
                                 OrderStatus.newOrder) {
                               return 'Новый';
-                            } else if (oneOrderPage2OrderRecord.orderStatus ==
+                            } else if (oneOrderManagerPageOrderRecord
+                                    .orderStatus ==
                                 OrderStatus.confirmed) {
                               return 'Принят';
-                            } else if (oneOrderPage2OrderRecord.orderStatus ==
+                            } else if (oneOrderManagerPageOrderRecord
+                                    .orderStatus ==
                                 OrderStatus.completed) {
                               return 'Выполнен';
                             } else {
@@ -408,14 +413,15 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                               .override(
                                 fontFamily: 'Readex Pro',
                                 color: () {
-                                  if (oneOrderPage2OrderRecord.orderStatus ==
+                                  if (oneOrderManagerPageOrderRecord
+                                          .orderStatus ==
                                       OrderStatus.newOrder) {
                                     return FlutterFlowTheme.of(context).primary;
-                                  } else if (oneOrderPage2OrderRecord
+                                  } else if (oneOrderManagerPageOrderRecord
                                           .orderStatus ==
                                       OrderStatus.confirmed) {
                                     return FlutterFlowTheme.of(context).warning;
-                                  } else if (oneOrderPage2OrderRecord
+                                  } else if (oneOrderManagerPageOrderRecord
                                           .orderStatus ==
                                       OrderStatus.completed) {
                                     return FlutterFlowTheme.of(context).success;
@@ -436,7 +442,7 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                     builder: (context) {
                       final products = (FFAppState().orderForEdit.isNotEmpty
                               ? FFAppState().orderForEdit
-                              : oneOrderPage2OrderRecord.cart)
+                              : oneOrderManagerPageOrderRecord.cart)
                           .toList();
                       if (products.isEmpty) {
                         return const Center(
@@ -526,7 +532,7 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                           functions.summPizza(
                               (FFAppState().orderForEdit.isNotEmpty
                                       ? FFAppState().orderForEdit
-                                      : oneOrderPage2OrderRecord.cart)
+                                      : oneOrderManagerPageOrderRecord.cart)
                                   .toList()),
                           formatType: FormatType.decimal,
                           decimalType: DecimalType.automatic,
@@ -544,9 +550,9 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                   ),
                 ),
                 if (valueOrDefault<bool>(
-                  (oneOrderPage2OrderRecord.orderStatus ==
+                  (oneOrderManagerPageOrderRecord.orderStatus ==
                           OrderStatus.newOrder) ||
-                      (oneOrderPage2OrderRecord.orderStatus ==
+                      (oneOrderManagerPageOrderRecord.orderStatus ==
                           OrderStatus.confirmed),
                   false,
                 ))
@@ -555,7 +561,7 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                         const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        await oneOrderPage2OrderRecord.reference.update({
+                        await oneOrderManagerPageOrderRecord.reference.update({
                           ...mapToFirestore(
                             {
                               'cart': FieldValue.delete(),
@@ -563,7 +569,8 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                           ),
                         });
                         if (FFAppState().orderForEdit.isNotEmpty) {
-                          await oneOrderPage2OrderRecord.reference.update({
+                          await oneOrderManagerPageOrderRecord.reference
+                              .update({
                             ...mapToFirestore(
                               {
                                 'cart': getCartListFirestoreData(
@@ -573,13 +580,14 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                             ),
                           });
                         } else {
-                          FFAppState().orderForEdit = oneOrderPage2OrderRecord
-                              .cart
-                              .toList()
-                              .cast<CartStruct>();
+                          FFAppState().orderForEdit =
+                              oneOrderManagerPageOrderRecord.cart
+                                  .toList()
+                                  .cast<CartStruct>();
                           safeSetState(() {});
 
-                          await oneOrderPage2OrderRecord.reference.update({
+                          await oneOrderManagerPageOrderRecord.reference
+                              .update({
                             ...mapToFirestore(
                               {
                                 'cart': getCartListFirestoreData(
@@ -590,15 +598,15 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                           });
                         }
 
-                        if (oneOrderPage2OrderRecord.orderStatus ==
+                        if (oneOrderManagerPageOrderRecord.orderStatus ==
                             OrderStatus.newOrder) {
-                          await oneOrderPage2OrderRecord.reference
+                          await oneOrderManagerPageOrderRecord.reference
                               .update(createOrderRecordData(
                             orderStatus: OrderStatus.confirmed,
                           ));
-                        } else if (oneOrderPage2OrderRecord.orderStatus ==
+                        } else if (oneOrderManagerPageOrderRecord.orderStatus ==
                             OrderStatus.confirmed) {
-                          await oneOrderPage2OrderRecord.reference
+                          await oneOrderManagerPageOrderRecord.reference
                               .update(createOrderRecordData(
                             orderStatus: OrderStatus.completed,
                           ));
@@ -609,7 +617,8 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                             content: Text(
                               'Заказ обработан',
                               style: TextStyle(
-                                color: FlutterFlowTheme.of(context).primaryText,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                               ),
                             ),
                             duration: const Duration(milliseconds: 2000),
@@ -618,13 +627,22 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                           ),
                         );
 
-                        context.goNamed('ManagerOrderListPage');
+                        context.goNamed(
+                          'UserOrderListPage',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: const TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.scale,
+                              alignment: Alignment.bottomCenter,
+                            ),
+                          },
+                        );
                       },
                       text: () {
-                        if (oneOrderPage2OrderRecord.orderStatus ==
+                        if (oneOrderManagerPageOrderRecord.orderStatus ==
                             OrderStatus.newOrder) {
                           return 'Принять заказ';
-                        } else if (oneOrderPage2OrderRecord.orderStatus ==
+                        } else if (oneOrderManagerPageOrderRecord.orderStatus ==
                             OrderStatus.confirmed) {
                           return 'Заказ обработан';
                         } else {
@@ -658,9 +676,9 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     if (valueOrDefault<bool>(
-                      (oneOrderPage2OrderRecord.orderStatus ==
+                      (oneOrderManagerPageOrderRecord.orderStatus ==
                               OrderStatus.confirmed) ||
-                          (oneOrderPage2OrderRecord.orderStatus ==
+                          (oneOrderManagerPageOrderRecord.orderStatus ==
                               OrderStatus.canceled),
                       false,
                     ))
@@ -766,9 +784,9 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                         ),
                       ),
                     if (valueOrDefault<bool>(
-                      (oneOrderPage2OrderRecord.orderStatus ==
+                      (oneOrderManagerPageOrderRecord.orderStatus ==
                               OrderStatus.newOrder) ||
-                          (oneOrderPage2OrderRecord.orderStatus ==
+                          (oneOrderManagerPageOrderRecord.orderStatus ==
                               OrderStatus.confirmed),
                       false,
                     ))
@@ -778,7 +796,7 @@ class _OneOrderPage2WidgetState extends State<OneOrderPage2Widget> {
                               16.0, 16.0, 16.0, 16.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              if (oneOrderPage2OrderRecord.orderStatus !=
+                              if (oneOrderManagerPageOrderRecord.orderStatus !=
                                   OrderStatus.canceled) {
                                 // deletingOrderAction
                                 var confirmDialogResponse =

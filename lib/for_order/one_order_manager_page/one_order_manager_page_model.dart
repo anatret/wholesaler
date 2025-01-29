@@ -1,9 +1,10 @@
 import '/components/cart_item2/cart_item2_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'one_order_page2_widget.dart' show OneOrderPage2Widget;
+import 'one_order_manager_page_widget.dart' show OneOrderManagerPageWidget;
 import 'package:flutter/material.dart';
 
-class OneOrderPage2Model extends FlutterFlowModel<OneOrderPage2Widget> {
+class OneOrderManagerPageModel
+    extends FlutterFlowModel<OneOrderManagerPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   // Models for CartItem2 dynamic component.

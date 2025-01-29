@@ -7,8 +7,8 @@ export '/pages/cart_page/cart_page_widget.dart' show CartPageWidget;
 export '/for_order/order_page/order_page_widget.dart' show OrderPageWidget;
 export '/for_order/user_order_list_page/user_order_list_page_widget.dart'
     show UserOrderListPageWidget;
-export '/for_order/one_order_page/one_order_page_widget.dart'
-    show OneOrderPageWidget;
+export '/for_order/one_order_user_page/one_order_user_page_widget.dart'
+    show OneOrderUserPageWidget;
 export '/auth/profile/profile_widget.dart' show ProfileWidget;
 export '/auth/restore_page/restore_page_widget.dart' show RestorePageWidget;
 export '/auth/restore_info_page/restore_info_page_widget.dart'
@@ -27,8 +27,8 @@ export '/for_order/manager_order_list_page/manager_order_list_page_widget.dart'
 export '/auth/edit_store_page/edit_store_page_widget.dart'
     show EditStorePageWidget;
 export '/pages/stores/stores_widget.dart' show StoresWidget;
-export '/for_order/one_order_page2/one_order_page2_widget.dart'
-    show OneOrderPage2Widget;
+export '/for_order/one_order_manager_page/one_order_manager_page_widget.dart'
+    show OneOrderManagerPageWidget;
 export '/admin/my_clients/my_clients_widget.dart' show MyClientsWidget;
 export '/pages/home_page_whole_store/home_page_whole_store_widget.dart'
     show HomePageWholeStoreWidget;
@@ -57,3 +57,9 @@ export '/auth/reg_new_store_pre/reg_new_store_pre_widget.dart'
     show RegNewStorePreWidget;
 export '/admin/add_product/add_product_widget.dart' show AddProductWidget;
 export '/pages/search_page/search_page_widget.dart' show SearchPageWidget;
+export '/pages/news/news_widget.dart' show NewsWidget;
+export '/admin/admin_order_list_page/admin_order_list_page_widget.dart'
+    show AdminOrderListPageWidget;
+export '/test_page/test_page_widget.dart' show TestPageWidget;
+export '/admin/user_page_info/user_page_info_widget.dart'
+    show UserPageInfoWidget;

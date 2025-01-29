@@ -762,8 +762,9 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                             kTransitionInfoKey: const TransitionInfo(
                                               hasTransition: true,
                                               transitionType:
-                                                  PageTransitionType.scale,
-                                              alignment: Alignment.bottomCenter,
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
                                             ),
                                           },
                                         );

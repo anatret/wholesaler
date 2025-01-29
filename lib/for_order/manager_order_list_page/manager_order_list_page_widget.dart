@@ -606,7 +606,7 @@ class _ManagerOrderListPageWidgetState
                                 safeSetState(() {});
 
                                 context.pushNamed(
-                                  'OneOrderPage2',
+                                  'OneOrderManagerPage',
                                   queryParameters: {
                                     'order': serializeParam(
                                       listViewOrderRecord.reference,

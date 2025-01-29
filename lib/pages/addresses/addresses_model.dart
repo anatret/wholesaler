@@ -8,6 +8,8 @@ class AddressesModel extends FlutterFlowModel<AddressesWidget> {
 
   // Models for addressItem dynamic component.
   late FlutterFlowDynamicModels<AddressItemModel> addressItemModels;
+  // State field(s) for CountController widget.
+  int? countControllerValue;
 
   @override
   void initState(BuildContext context) {

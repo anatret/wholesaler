@@ -136,10 +136,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const UserOrderListPageWidget(),
         ),
         FFRoute(
-          name: 'OneOrderPage',
-          path: '/oneOrderPage',
+          name: 'OneOrderUserPage',
+          path: '/oneOrderUserPage',
           requireAuth: true,
-          builder: (context, params) => OneOrderPageWidget(
+          builder: (context, params) => OneOrderUserPageWidget(
             order: params.getParam(
               'order',
               ParamType.DocumentReference,
@@ -159,7 +159,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'RestorePage',
           path: '/restorePage',
-          requireAuth: true,
           builder: (context, params) => const RestorePageWidget(),
         ),
         FFRoute(
@@ -251,10 +250,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const StoresWidget(),
         ),
         FFRoute(
-          name: 'OneOrderPage2',
-          path: '/oneOrderPage2',
+          name: 'OneOrderManagerPage',
+          path: '/oneOrderManagerPage',
           requireAuth: true,
-          builder: (context, params) => OneOrderPage2Widget(
+          builder: (context, params) => OneOrderManagerPageWidget(
             order: params.getParam(
               'order',
               ParamType.DocumentReference,
@@ -410,6 +409,37 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/searchPage',
           requireAuth: true,
           builder: (context, params) => const SearchPageWidget(),
+        ),
+        FFRoute(
+          name: 'News',
+          path: '/news',
+          requireAuth: true,
+          builder: (context, params) => const NewsWidget(),
+        ),
+        FFRoute(
+          name: 'AdminOrderListPage',
+          path: '/adminOrderListPage',
+          requireAuth: true,
+          builder: (context, params) => const AdminOrderListPageWidget(),
+        ),
+        FFRoute(
+          name: 'testPage',
+          path: '/testPage',
+          requireAuth: true,
+          builder: (context, params) => const TestPageWidget(),
+        ),
+        FFRoute(
+          name: 'UserPageInfo',
+          path: '/userPageInfo',
+          requireAuth: true,
+          builder: (context, params) => UserPageInfoWidget(
+            userRef: params.getParam(
+              'userRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['user'],
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

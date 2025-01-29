@@ -364,7 +364,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('UserOrderListPage');
+                        context.pushNamed(
+                          'UserOrderListPage',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: const TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.scale,
+                              alignment: Alignment.bottomCenter,
+                            ),
+                          },
+                        );
                       },
                       child: Container(
                         width: double.infinity,

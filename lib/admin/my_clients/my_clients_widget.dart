@@ -1,8 +1,12 @@
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/my_client_item/my_client_item_widget.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'my_clients_model.dart';
 export 'my_clients_model.dart';
 
@@ -137,289 +141,141 @@ class _MyClientsWidgetState extends State<MyClientsWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
-                  child: Container(
-                    width: double.infinity,
-                    constraints: const BoxConstraints(
-                      maxWidth: 970.0,
-                    ),
-                    decoration: const BoxDecoration(),
-                    child: SingleChildScrollView(
-                      primary: false,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'r5s71a2f' /* Мои клиенты */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineSmall
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                FlutterFlowRadioButton(
+                  options: UserTypes.values.map((e) => e.name).toList(),
+                  onChanged: (val) async {
+                    safeSetState(() {});
+                    _model.userTypeSearch = () {
+                      if (_model.radioButtonValue == UserTypes.user.name) {
+                        return UserTypes.user;
+                      } else if (_model.radioButtonValue ==
+                          UserTypes.manager.name) {
+                        return UserTypes.manager;
+                      } else {
+                        return UserTypes.admin;
+                      }
+                    }();
+                    safeSetState(() {});
+                  },
+                  controller: _model.radioButtonValueController ??=
+                      FormFieldController<String>(_model.userTypeSearch!.name),
+                  optionHeight: 32.0,
+                  textStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                  selectedTextStyle:
+                      FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
                           ),
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 12.0, 16.0, 16.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [],
-                            ),
+                  buttonPosition: RadioButtonPosition.left,
+                  direction: Axis.horizontal,
+                  radioButtonColor: FlutterFlowTheme.of(context).primary,
+                  inactiveRadioButtonColor:
+                      FlutterFlowTheme.of(context).secondaryText,
+                  toggleable: false,
+                  horizontalAlignment: WrapAlignment.start,
+                  verticalAlignment: WrapCrossAlignment.start,
+                ),
+                PagedListView<DocumentSnapshot<Object?>?, UserRecord>.separated(
+                  pagingController: _model.setListViewController(
+                    UserRecord.collection
+                        .where(
+                          'userType',
+                          isEqualTo: _model.userTypeSearch?.serialize(),
+                        )
+                        .orderBy('created_time', descending: true),
+                  ),
+                  padding: const EdgeInsets.fromLTRB(
+                    0,
+                    0,
+                    0,
+                    44.0,
+                  ),
+                  primary: false,
+                  shrinkWrap: true,
+                  reverse: false,
+                  scrollDirection: Axis.vertical,
+                  separatorBuilder: (_, __) => const SizedBox(height: 1.0),
+                  builderDelegate: PagedChildBuilderDelegate<UserRecord>(
+                    // Customize what your widget looks like when it's loading the first page.
+                    firstPageProgressIndicatorBuilder: (_) => Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).primary,
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            child: Container(
-                              width: double.infinity,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 0.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Expanded(
-                                      flex: 4,
-                                      child: Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'qr3mzzd4' /* Имя */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelSmall
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 2,
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            4.0, 0.0, 16.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  1.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '1whnsafy' /* Статус */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            child: StreamBuilder<List<ClientsRecord>>(
-                              stream: queryClientsRecord(),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<ClientsRecord> listViewClientsRecordList =
-                                    snapshot.data!;
-                                if (listViewClientsRecordList.isEmpty) {
-                                  return Image.asset(
-                                    'assets/images/Group_110.png',
-                                    fit: BoxFit.contain,
-                                  );
-                                }
-
-                                return ListView.separated(
-                                  padding: const EdgeInsets.fromLTRB(
-                                    0,
-                                    0.0,
-                                    0,
-                                    44.0,
-                                  ),
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: listViewClientsRecordList.length,
-                                  separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 1.0),
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewClientsRecord =
-                                        listViewClientsRecordList[
-                                            listViewIndex];
-                                    return StreamBuilder<StoresRecord>(
-                                      stream: StoresRecord.getDocument(
-                                          listViewClientsRecord.store!),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-
-                                        final listViewStoresRecord =
-                                            snapshot.data!;
-
-                                        return ListView(
-                                          padding: EdgeInsets.zero,
-                                          primary: false,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          children: [
-                                            StreamBuilder<List<UserRecord>>(
-                                              stream: queryUserRecord(
-                                                queryBuilder: (userRecord) =>
-                                                    userRecord.where(
-                                                  'uid',
-                                                  isEqualTo:
-                                                      listViewClientsRecord
-                                                          .client?.id,
-                                                ),
-                                                singleRecord: true,
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        valueColor:
-                                                            AlwaysStoppedAnimation<
-                                                                Color>(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<UserRecord>
-                                                    myClientItemUserRecordList =
-                                                    snapshot.data!;
-                                                // Return an empty Container when the item does not exist.
-                                                if (snapshot.data!.isEmpty) {
-                                                  return Container();
-                                                }
-                                                final myClientItemUserRecord =
-                                                    myClientItemUserRecordList
-                                                            .isNotEmpty
-                                                        ? myClientItemUserRecordList
-                                                            .first
-                                                        : null;
-
-                                                return wrapWithModel(
-                                                  model: _model
-                                                      .myClientItemModels
-                                                      .getModel(
-                                                    listViewIndex.toString(),
-                                                    listViewIndex,
-                                                  ),
-                                                  updateCallback: () =>
-                                                      safeSetState(() {}),
-                                                  child: MyClientItemWidget(
-                                                    key: Key(
-                                                      'Keyf0p_${listViewIndex.toString()}',
-                                                    ),
-                                                    clientname:
-                                                        myClientItemUserRecord!
-                                                            .displayName,
-                                                    storename:
-                                                        listViewStoresRecord
-                                                            .storeName,
-                                                    clientimage:
-                                                        myClientItemUserRecord
-                                                            .photoUrl,
-                                                    clientStatus:
-                                                        listViewClientsRecord
-                                                            .clientStatus!,
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
+                    // Customize what your widget looks like when it's loading another page.
+                    newPageProgressIndicatorBuilder: (_) => Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).primary,
+                          ),
+                        ),
+                      ),
+                    ),
+                    noItemsFoundIndicatorBuilder: (_) => Image.asset(
+                      'assets/images/Group_110.png',
+                      fit: BoxFit.contain,
+                    ),
+                    itemBuilder: (context, _, listViewIndex) {
+                      final listViewUserRecord = _model
+                          .listViewPagingController!.itemList![listViewIndex];
+                      return InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(
+                            'UserPageInfo',
+                            queryParameters: {
+                              'userRef': serializeParam(
+                                listViewUserRecord.reference,
+                                ParamType.DocumentReference,
+                              ),
+                            }.withoutNulls,
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: const TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.scale,
+                                alignment: Alignment.bottomCenter,
+                              ),
+                            },
+                          );
+                        },
+                        child: wrapWithModel(
+                          model: _model.myClientItemModels.getModel(
+                            listViewIndex.toString(),
+                            listViewIndex,
+                          ),
+                          updateCallback: () => safeSetState(() {}),
+                          child: MyClientItemWidget(
+                            key: Key(
+                              'Keyf0p_${listViewIndex.toString()}',
+                            ),
+                            userRef: listViewUserRecord.reference,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -442,6 +442,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // UserOrderListPage
   {
+    'xrzu0l4m': {
+      'ru': 'Новые',
+      'en': 'New',
+      'ko': '새로운',
+      'zh_Hans': '新的',
+    },
+    'eew8z2hi': {
+      'ru': 'Принятые',
+      'en': 'Accepted',
+      'ko': '수락됨',
+      'zh_Hans': '公认',
+    },
+    '0bsf2382': {
+      'ru': 'Готовые',
+      'en': 'Ready',
+      'ko': '준비가 된',
+      'zh_Hans': '准备好',
+    },
+    '68wveg3v': {
+      'ru': 'Отмена',
+      'en': 'Cancel',
+      'ko': '취소',
+      'zh_Hans': '取消',
+    },
     'pv9jebvs': {
       'ru': 'Новые',
       'en': 'New',
@@ -485,7 +509,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '订单',
     },
   },
-  // OneOrderPage
+  // OneOrderUserPage
   {
     's10yrhop': {
       'ru': '3',
@@ -633,6 +657,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '주소 추가',
       'zh_Hans': '添加地址',
     },
+    'iyzaqn1o': {
+      'ru': 'Delete',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'cs6y0j8b': {
+      'ru': 'Title',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'tyo1oa05': {
+      'ru': 'Subtitle',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
     '2jdecvgu': {
       'ru': 'Дом',
       'en': 'Home',
@@ -691,28 +733,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '订单历史',
     },
     'k7xfxx5e': {
-      'ru': 'Клиенты',
+      'ru': 'Пользователи',
       'en': 'Clients',
       'ko': '클라이언트',
       'zh_Hans': '客户',
-    },
-    '09ubqdzk': {
-      'ru': 'Очистить состояния приложения',
-      'en': 'Clear app states',
-      'ko': '앱 상태 지우기',
-      'zh_Hans': '清除应用程序状态',
-    },
-    'ksr0gpws': {
-      'ru': 'Супер Админ',
-      'en': 'Super Admin',
-      'ko': '최고 관리자',
-      'zh_Hans': '超级管理员',
     },
     'xltywj6b': {
       'ru': 'Заявки на проверку магазинов',
       'en': 'Applications for store inspection',
       'ko': '매장 점검 신청',
       'zh_Hans': '商店检查申请',
+    },
+    '09ubqdzk': {
+      'ru': 'Очистить состояния приложения',
+      'en': 'Clear app states',
+      'ko': '앱 상태 지우기',
+      'zh_Hans': '清除应用程序状态',
     },
     'x41kfgda': {
       'ru': 'Дом',
@@ -942,23 +978,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ProductDeckPage
   {
-    '8cyixmf0': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
-    'byfvioes': {
-      'ru': 'Редактировать',
-      'en': 'Edit',
-      'ko': '편집하다',
-      'zh_Hans': '编辑',
-    },
-    'sk7jpox0': {
-      'ru': 'Рассылка',
-      'en': 'Newsletter',
-      'ko': '회람 신문',
-      'zh_Hans': '通讯',
+    'nz8x346p': {
+      'ru': '1',
+      'en': '1',
+      'ko': '1',
+      'zh_Hans': '1',
     },
     '4ogbz3li': {
       'ru': 'Select Size',
@@ -1080,6 +1104,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '전화',
       'zh_Hans': '电话',
     },
+    'yzzapdkd': {
+      'ru': 'Название магазина обязательно',
+      'en': 'Store name is required',
+      'ko': '매장 이름이 필요합니다.',
+      'zh_Hans': '店铺名称必填',
+    },
+    '6nccqnzr': {
+      'ru': 'Please choose an option from the dropdown',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'wvbzqy00': {
+      'ru': 'Номер телефона обязательно',
+      'en': 'Phone number is required',
+      'ko': '전화번호는 필수 항목입니다.',
+      'zh_Hans': '电话号码为必填项',
+    },
+    'qdgppzyl': {
+      'ru': 'Please choose an option from the dropdown',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
     '746a3s6z': {
       'ru': 'Адрес',
       'en': 'Address',
@@ -1156,7 +1204,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '家',
     },
   },
-  // OneOrderPage2
+  // OneOrderManagerPage
   {
     'h5tz6tf9': {
       'ru': '3',
@@ -1203,23 +1251,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '3',
       'zh_Hans': '3',
     },
-    'r5s71a2f': {
-      'ru': 'Мои клиенты',
-      'en': 'My clients',
-      'ko': '내 고객',
-      'zh_Hans': '我的客户',
+    'vw4cam08': {
+      'ru': 'Option 1',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
     },
-    'qr3mzzd4': {
-      'ru': 'Имя',
-      'en': 'Name',
-      'ko': '이름',
-      'zh_Hans': '姓名',
+    '0hdg7drk': {
+      'ru': 'Option 2',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
     },
-    '1whnsafy': {
-      'ru': 'Статус',
-      'en': 'Status',
-      'ko': '상태',
-      'zh_Hans': '地位',
+    'rchq49ld': {
+      'ru': 'Option 3',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
     },
     'jqzrbeyk': {
       'ru': 'Дом',
@@ -1442,12 +1490,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Show deleted',
       'ko': '삭제된 프로그램 보기',
       'zh_Hans': '显示已删除',
-    },
-    '64vwyl00': {
-      'ru': 'В корзине',
-      'en': 'In the basket',
-      'ko': '장바구니에',
-      'zh_Hans': '在购物车中',
     },
     'v6iiokm5': {
       'ru': 'Дом',
@@ -2185,6 +2227,36 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '등록하다',
       'zh_Hans': '登记',
     },
+    '725lx7p9': {
+      'ru': 'Имя магазина обязательно',
+      'en': 'Store name is required',
+      'ko': '매장 이름은 필수 항목입니다.',
+      'zh_Hans': '店铺名称为必填项',
+    },
+    '0n7uysi2': {
+      'ru': 'Please choose an option from the dropdown',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'etrgck0y': {
+      'ru': 'Номер телефона обязательно',
+      'en': 'Phone number is required',
+      'ko': '전화번호는 필수 항목입니다.',
+      'zh_Hans': '电话号码为必填项',
+    },
+    'zxw7jhp1': {
+      'ru': 'Неправильно',
+      'en': 'Incorrect',
+      'ko': '잘못된',
+      'zh_Hans': '错误的',
+    },
+    '7ei98lk3': {
+      'ru': 'Please choose an option from the dropdown',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
     'wqybv1d0': {
       'ru': '1',
       'en': '1',
@@ -2768,6 +2840,261 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '家',
     },
   },
+  // News
+  {
+    'rsf3b9n9': {
+      'ru': '3',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'd73geix4': {
+      'ru': 'Новости',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'ibdyfbsg': {
+      'ru': 'Новая пицца в меню!',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'idigltrj': {
+      'ru': '15 июня 2023',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'runzqmy6': {
+      'ru':
+          'Встречайте нашу новую пиццу \'Маргарита Делюкс\' с особым соусом и свежей моцареллой. Попробуйте первыми со скидкой 20%!',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '09n4iybu': {
+      'ru': 'Перейти к пицце',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '98wpar8c': {
+      'ru': 'Акция: 1+1=3',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'fergxz22': {
+      'ru': '10 июня 2023',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '96w9x2r5': {
+      'ru':
+          'При заказе двух больших пицц третья в подарок! Акция действует до конца месяца.',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'h6xdxkmu': {
+      'ru': 'Подробнее об акции',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'qjotita5': {
+      'ru': 'Бесплатная доставка',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'pqrg63hz': {
+      'ru': '5 июня 2023',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'y4mgsryk': {
+      'ru':
+          'Весь июнь бесплатная доставка при заказе от 2000 рублей! Время доставки всего 60 минут или пицца бесплатно.',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    's64z69n4': {
+      'ru': 'Условия акции',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+  },
+  // AdminOrderListPage
+  {
+    '7lkllle7': {
+      'ru': '3',
+      'en': '3',
+      'ko': '3',
+      'zh_Hans': '3',
+    },
+    'tb55yeod': {
+      'ru': 'Новые',
+      'en': 'New',
+      'ko': '새로운',
+      'zh_Hans': '新的',
+    },
+    'r4nvk3m5': {
+      'ru': 'Принятые',
+      'en': 'Accepted',
+      'ko': '수락됨',
+      'zh_Hans': '公认',
+    },
+    'k0nq4e6j': {
+      'ru': 'Готовые',
+      'en': 'Ready',
+      'ko': '준비가 된',
+      'zh_Hans': '准备好',
+    },
+    '0it2emjm': {
+      'ru': 'Отмена',
+      'en': 'Cancel',
+      'ko': '취소',
+      'zh_Hans': '取消',
+    },
+    '6dcm0kk9': {
+      'ru': 'Дом',
+      'en': 'Home',
+      'ko': '집',
+      'zh_Hans': '家',
+    },
+  },
+  // testPage
+  {
+    'pl0dokme': {
+      'ru': 'Page Title',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'f58wd4zq': {
+      'ru': 'Hello World',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'td82motw': {
+      'ru': 'Home',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+  },
+  // UserPageInfo
+  {
+    'gs0ogyho': {
+      'ru': 'Личные данные',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'bas923ti': {
+      'ru': 'Магазин',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    's1nez2su': {
+      'ru': 'История заказов',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'a5ghhol0': {
+      'ru': 'Заказ #1234',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '91hk3jtd': {
+      'ru': '15 июня 2023',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    't3b5syxr': {
+      'ru': '2 пиццы • 1500₽',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'llf0qo2a': {
+      'ru': 'Доставлен',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'p7m70gl9': {
+      'ru': 'Заказ #1233',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'qa7qmnsy': {
+      'ru': '10 июня 2023',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'h5xfkzqc': {
+      'ru': '1 пицца • 800₽',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '8lgjkya8': {
+      'ru': 'Доставлен',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'zl64vk2y': {
+      'ru': 'Магазина нет',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'd1jh0dtq': {
+      'ru': 'Адреса доставки',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'phf6izih': {
+      'ru': 'Дом',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'zo5upg4v': {
+      'ru': 'ул. Ленина, 123, кв. 45',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'f51xx9x3': {
+      'ru': 'Работа',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'jpzr9qqe': {
+      'ru': 'ул. Пушкина, 10, офис 301',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+  },
   // PizzaItem
   {
     'f8im7su4': {
@@ -3059,6 +3386,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '+',
     },
   },
+  // MyClientItem
+  {
+    'i4f3zs1t': {
+      'ru': 'exp. date',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+  },
   // emptyProductList
   {
     'op8hx0ue': {
@@ -3110,10 +3446,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '地点',
     },
     'r7enoqmt': {
-      'ru': 'PAY',
+      'ru': 'Pay',
       'en': 'PAY',
       'ko': '지불하다',
       'zh_Hans': '支付',
+    },
+    '0uinxmo8': {
+      'ru': 'Edit',
+      'en': 'Edit',
+      'ko': '편집하다',
+      'zh_Hans': '编辑',
     },
   },
   // EmptyMyOrderList
@@ -3144,6 +3486,51 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Try changing your query or checking your spelling.',
       'ko': '검색어를 변경하거나 철자를 확인해보세요.',
       'zh_Hans': '尝试更改您的查询或检查您的拼写。',
+    },
+  },
+  // itemOrderUser
+  {
+    '4fr08629': {
+      'ru': 'Дата заказа',
+      'en': 'Order Date',
+      'ko': '주문 날짜',
+      'zh_Hans': '订购日期',
+    },
+    'ziinv5nu': {
+      'ru': 'Сумма заказа',
+      'en': 'Total Amount',
+      'ko': '총액',
+      'zh_Hans': '总金额',
+    },
+  },
+  // itemOrderManager
+  {
+    'al36b3io': {
+      'ru': 'Дата заказа',
+      'en': 'Order Date',
+      'ko': '주문 날짜',
+      'zh_Hans': '订购日期',
+    },
+    '228fs80k': {
+      'ru': 'Сумма заказа',
+      'en': 'Total Amount',
+      'ko': '총액',
+      'zh_Hans': '总金额',
+    },
+  },
+  // FABProdEditForAdmin
+  {
+    'msofcenn': {
+      'ru': 'Изменить',
+      'en': 'Edit',
+      'ko': '편집하다',
+      'zh_Hans': '编辑',
+    },
+    'afz9wf8c': {
+      'ru': 'Сообщение',
+      'en': 'Notification',
+      'ko': '공고',
+      'zh_Hans': '通知',
     },
   },
   // Miscellaneous

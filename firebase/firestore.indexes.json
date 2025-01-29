@@ -9,6 +9,10 @@
           "order": "ASCENDING"
         },
         {
+          "fieldPath": "orderStatus",
+          "order": "ASCENDING"
+        },
+        {
           "fieldPath": "createDate",
           "order": "DESCENDING"
         }
@@ -33,6 +37,20 @@
       ]
     },
     {
+      "collectionGroup": "user",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userType",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "pizza",
       "queryScope": "COLLECTION",
       "fields": [
@@ -51,6 +69,20 @@
         {
           "fieldPath": "name",
           "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "order",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "orderStatus",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createDate",
+          "order": "DESCENDING"
         }
       ]
     }

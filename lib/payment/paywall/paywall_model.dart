@@ -1,4 +1,4 @@
-import '/components/fab/fab_widget.dart';
+import '/components/fab/fab/fab_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'paywall_widget.dart' show PaywallWidget;
 import 'package:flutter/material.dart';

@@ -1,10 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/components/addnew_address/addnew_address_widget.dart';
 import '/components/address_item/address_item_widget.dart';
+import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'addresses_model.dart';
 export 'addresses_model.dart';
 
@@ -264,6 +266,93 @@ class _AddressesWidgetState extends State<AddressesWidget> {
                     ),
                     borderRadius: BorderRadius.circular(30.0),
                   ),
+                ),
+              ),
+              Slidable(
+                endActionPane: ActionPane(
+                  motion: const ScrollMotion(),
+                  extentRatio: 0.25,
+                  children: [
+                    SlidableAction(
+                      label: FFLocalizations.of(context).getText(
+                        'iyzaqn1o' /* Delete */,
+                      ),
+                      backgroundColor: FlutterFlowTheme.of(context).error,
+                      icon: Icons.delete_outline_rounded,
+                      onPressed: (_) {
+                        print('SlidableActionWidget pressed ...');
+                      },
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: ListTile(
+                    title: Text(
+                      FFLocalizations.of(context).getText(
+                        'cs6y0j8b' /* Title */,
+                      ),
+                      style: FlutterFlowTheme.of(context).titleLarge.override(
+                            fontFamily: 'Outfit',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                    subtitle: Text(
+                      FFLocalizations.of(context).getText(
+                        'tyo1oa05' /* Subtitle */,
+                      ),
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                    tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    dense: false,
+                    contentPadding:
+                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                width: 120.0,
+                height: 40.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  borderRadius: BorderRadius.circular(8.0),
+                  shape: BoxShape.rectangle,
+                ),
+                child: FlutterFlowCountController(
+                  decrementIconBuilder: (enabled) => Icon(
+                    Icons.remove_rounded,
+                    color: enabled
+                        ? FlutterFlowTheme.of(context).secondaryText
+                        : FlutterFlowTheme.of(context).alternate,
+                    size: 24.0,
+                  ),
+                  incrementIconBuilder: (enabled) => Icon(
+                    Icons.add_rounded,
+                    color: enabled
+                        ? FlutterFlowTheme.of(context).primary
+                        : FlutterFlowTheme.of(context).alternate,
+                    size: 24.0,
+                  ),
+                  countBuilder: (count) => Text(
+                    count.toString(),
+                    style: FlutterFlowTheme.of(context).titleLarge.override(
+                          fontFamily: 'Outfit',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                  count: _model.countControllerValue ??= 0,
+                  updateCount: (count) =>
+                      safeSetState(() => _model.countControllerValue = count),
+                  stepSize: 1,
+                  minimum: 0,
+                  contentPadding:
+                      const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                 ),
               ),
             ],

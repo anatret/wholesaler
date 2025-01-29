@@ -390,195 +390,218 @@ class _EditStorePageWidgetState extends State<EditStorePageWidget> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                      child: TextFormField(
-                        controller: _model.nameFieldTextController ??=
-                            TextEditingController(
-                          text: (listViewStoresRecord != null) == true
-                              ? listViewStoresRecord.storeName
-                              : null,
-                        ),
-                        focusNode: _model.nameFieldFocusNode,
-                        onChanged: (_) => EasyDebounce.debounce(
-                          '_model.nameFieldTextController',
-                          const Duration(milliseconds: 2000),
-                          () => safeSetState(() {}),
-                        ),
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: FFLocalizations.of(context).getText(
-                            'k0zdqdbm' /* Имя магазина */,
-                          ),
-                          labelStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: FlutterFlowTheme.of(context).accent4,
-                                    fontSize: 18.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.storefront_sharp,
-                            color: FlutterFlowTheme.of(context).primary,
-                            size: 16.0,
-                          ),
-                          suffixIcon:
-                              _model.nameFieldTextController!.text.isNotEmpty
-                                  ? InkWell(
-                                      onTap: () async {
-                                        _model.nameFieldTextController?.clear();
-                                        safeSetState(() {});
-                                      },
-                                      child: const Icon(
-                                        Icons.clear,
-                                        color: Color(0xFF757575),
-                                        size: 16.0,
-                                      ),
-                                    )
-                                  : null,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              fontSize: 18.0,
-                              letterSpacing: 0.0,
-                            ),
-                        maxLength: 50,
-                        validator: _model.nameFieldTextControllerValidator
-                            .asValidator(context),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                      child: AuthUserStreamWidget(
-                        builder: (context) => TextFormField(
-                          controller: _model.phoneFieldTextController ??=
-                              TextEditingController(
-                            text: (listViewStoresRecord != null) == true
-                                ? listViewStoresRecord.phone
-                                : currentPhoneNumber,
-                          ),
-                          focusNode: _model.phoneFieldFocusNode,
-                          onChanged: (_) => EasyDebounce.debounce(
-                            '_model.phoneFieldTextController',
-                            const Duration(milliseconds: 2000),
-                            () => safeSetState(() {}),
-                          ),
-                          autofocus: true,
-                          textCapitalization: TextCapitalization.none,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: FFLocalizations.of(context).getText(
-                              'e3rxd788' /* Телефон */,
-                            ),
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
+                    Form(
+                      key: _model.formKey,
+                      autovalidateMode: AutovalidateMode.always,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 8.0),
+                            child: TextFormField(
+                              controller: _model.nameFieldTextController ??=
+                                  TextEditingController(
+                                text: (listViewStoresRecord != null) == true
+                                    ? listViewStoresRecord.storeName
+                                    : null,
+                              ),
+                              focusNode: _model.nameFieldFocusNode,
+                              onChanged: (_) => EasyDebounce.debounce(
+                                '_model.nameFieldTextController',
+                                const Duration(milliseconds: 2000),
+                                () => safeSetState(() {}),
+                              ),
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: FFLocalizations.of(context).getText(
+                                  'k0zdqdbm' /* Имя магазина */,
                                 ),
-                            hintStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context).accent4,
-                                  fontSize: 18.0,
-                                  letterSpacing: 0.0,
-                                ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            prefixIcon: Icon(
-                              Icons.local_phone_outlined,
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 16.0,
-                            ),
-                            suffixIcon: _model
-                                    .phoneFieldTextController!.text.isNotEmpty
-                                ? InkWell(
-                                    onTap: () async {
-                                      _model.phoneFieldTextController?.clear();
-                                      safeSetState(() {});
-                                    },
-                                    child: const Icon(
-                                      Icons.clear,
-                                      color: Color(0xFF757575),
-                                      size: 16.0,
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
                                     ),
-                                  )
-                                : null,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
+                                    ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.storefront_sharp,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 16.0,
+                                ),
+                                suffixIcon: _model.nameFieldTextController!.text
+                                        .isNotEmpty
+                                    ? InkWell(
+                                        onTap: () async {
+                                          _model.nameFieldTextController
+                                              ?.clear();
+                                          safeSetState(() {});
+                                        },
+                                        child: const Icon(
+                                          Icons.clear,
+                                          color: Color(0xFF757575),
+                                          size: 16.0,
+                                        ),
+                                      )
+                                    : null,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                   ),
-                          keyboardType: TextInputType.phone,
-                          validator: _model.phoneFieldTextControllerValidator
-                              .asValidator(context),
-                          inputFormatters: [_model.phoneFieldMask],
-                        ),
+                              maxLength: 50,
+                              validator: _model.nameFieldTextControllerValidator
+                                  .asValidator(context),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 8.0),
+                            child: AuthUserStreamWidget(
+                              builder: (context) => TextFormField(
+                                controller: _model.phoneFieldTextController ??=
+                                    TextEditingController(
+                                  text: (listViewStoresRecord != null) == true
+                                      ? listViewStoresRecord.phone
+                                      : currentPhoneNumber,
+                                ),
+                                focusNode: _model.phoneFieldFocusNode,
+                                onChanged: (_) => EasyDebounce.debounce(
+                                  '_model.phoneFieldTextController',
+                                  const Duration(milliseconds: 2000),
+                                  () => safeSetState(() {}),
+                                ),
+                                autofocus: true,
+                                textCapitalization: TextCapitalization.none,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText:
+                                      FFLocalizations.of(context).getText(
+                                    'e3rxd788' /* Телефон */,
+                                  ),
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                        fontSize: 18.0,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  prefixIcon: Icon(
+                                    Icons.local_phone_outlined,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 16.0,
+                                  ),
+                                  suffixIcon: _model.phoneFieldTextController!
+                                          .text.isNotEmpty
+                                      ? InkWell(
+                                          onTap: () async {
+                                            _model.phoneFieldTextController
+                                                ?.clear();
+                                            safeSetState(() {});
+                                          },
+                                          child: const Icon(
+                                            Icons.clear,
+                                            color: Color(0xFF757575),
+                                            size: 16.0,
+                                          ),
+                                        )
+                                      : null,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
+                                    ),
+                                keyboardType: TextInputType.phone,
+                                validator: _model
+                                    .phoneFieldTextControllerValidator
+                                    .asValidator(context),
+                                inputFormatters: [_model.phoneFieldMask],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Padding(

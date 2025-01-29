@@ -132,10 +132,15 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                       onTap: () async {
                         context.safePop();
                       },
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 26.0,
+                      child: Container(
+                        width: 36.0,
+                        height: 36.0,
+                        decoration: const BoxDecoration(),
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 26.0,
+                        ),
                       ),
                     ),
                     Text(

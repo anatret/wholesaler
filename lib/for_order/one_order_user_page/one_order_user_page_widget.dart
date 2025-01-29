@@ -6,11 +6,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'one_order_page_model.dart';
-export 'one_order_page_model.dart';
+import 'one_order_user_page_model.dart';
+export 'one_order_user_page_model.dart';
 
-class OneOrderPageWidget extends StatefulWidget {
-  const OneOrderPageWidget({
+class OneOrderUserPageWidget extends StatefulWidget {
+  const OneOrderUserPageWidget({
     super.key,
     required this.order,
   });
@@ -18,18 +18,18 @@ class OneOrderPageWidget extends StatefulWidget {
   final DocumentReference? order;
 
   @override
-  State<OneOrderPageWidget> createState() => _OneOrderPageWidgetState();
+  State<OneOrderUserPageWidget> createState() => _OneOrderUserPageWidgetState();
 }
 
-class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
-  late OneOrderPageModel _model;
+class _OneOrderUserPageWidgetState extends State<OneOrderUserPageWidget> {
+  late OneOrderUserPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => OneOrderPageModel());
+    _model = createModel(context, () => OneOrderUserPageModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -64,7 +64,7 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
           );
         }
 
-        final oneOrderPageOrderRecord = snapshot.data!;
+        final oneOrderUserPageOrderRecord = snapshot.data!;
 
         return GestureDetector(
           onTap: () {
@@ -79,7 +79,7 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
               child: FloatingActionButton(
                 onPressed: () async {
                   _model.wholestore = await StoresRecord.getDocumentOnce(
-                      oneOrderPageOrderRecord.wholeStore!);
+                      oneOrderUserPageOrderRecord.wholeStore!);
                   await launchUrl(Uri(
                     scheme: 'tel',
                     path: _model.wholestore!.phone,
@@ -119,22 +119,27 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 5.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.safePop();
-                                    },
-                                    child: Icon(
-                                      Icons.arrow_back,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 24.0,
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.safePop();
+                                  },
+                                  child: Container(
+                                    width: 48.0,
+                                    height: 48.0,
+                                    decoration: const BoxDecoration(),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 5.0, 0.0),
+                                      child: Icon(
+                                        Icons.arrow_back,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 24.0,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -230,13 +235,15 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
                               0.0, 24.0, 0.0, 16.0),
                           child: Text(
                             () {
-                              if (oneOrderPageOrderRecord.orderStatus ==
+                              if (oneOrderUserPageOrderRecord.orderStatus ==
                                   OrderStatus.newOrder) {
                                 return 'Новый';
-                              } else if (oneOrderPageOrderRecord.orderStatus ==
+                              } else if (oneOrderUserPageOrderRecord
+                                      .orderStatus ==
                                   OrderStatus.confirmed) {
                                 return 'Принят';
-                              } else if (oneOrderPageOrderRecord.orderStatus ==
+                              } else if (oneOrderUserPageOrderRecord
+                                      .orderStatus ==
                                   OrderStatus.completed) {
                                 return 'Выполнен';
                               } else {
@@ -248,16 +255,17 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   color: () {
-                                    if (oneOrderPageOrderRecord.orderStatus ==
+                                    if (oneOrderUserPageOrderRecord
+                                            .orderStatus ==
                                         OrderStatus.newOrder) {
                                       return FlutterFlowTheme.of(context)
                                           .primary;
-                                    } else if (oneOrderPageOrderRecord
+                                    } else if (oneOrderUserPageOrderRecord
                                             .orderStatus ==
                                         OrderStatus.confirmed) {
                                       return FlutterFlowTheme.of(context)
                                           .warning;
-                                    } else if (oneOrderPageOrderRecord
+                                    } else if (oneOrderUserPageOrderRecord
                                             .orderStatus ==
                                         OrderStatus.completed) {
                                       return FlutterFlowTheme.of(context)
@@ -276,9 +284,9 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Text(
-                        '№  ${oneOrderPageOrderRecord.numOrder.toString()} от ${dateTimeFormat(
+                        '№  ${oneOrderUserPageOrderRecord.numOrder.toString()} от ${dateTimeFormat(
                           "yMMMd",
-                          oneOrderPageOrderRecord.createDate,
+                          oneOrderUserPageOrderRecord.createDate,
                           locale: FFLocalizations.of(context).languageCode,
                         )}',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -289,7 +297,8 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
                     ),
                     Builder(
                       builder: (context) {
-                        final pizzas = oneOrderPageOrderRecord.cart.toList();
+                        final pizzas =
+                            oneOrderUserPageOrderRecord.cart.toList();
 
                         return Column(
                           mainAxisSize: MainAxisSize.min,
@@ -364,7 +373,7 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
                           Text(
                             formatNumber(
                               functions.summPizza(
-                                  oneOrderPageOrderRecord.cart.toList()),
+                                  oneOrderUserPageOrderRecord.cart.toList()),
                               formatType: FormatType.decimal,
                               decimalType: DecimalType.automatic,
                               currency: '₩ ',
@@ -387,7 +396,7 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                       child: StreamBuilder<StoresRecord>(
                         stream: StoresRecord.getDocument(
-                            oneOrderPageOrderRecord.wholeStore!),
+                            oneOrderUserPageOrderRecord.wholeStore!),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -445,7 +454,7 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 4.0),
                                       child: Text(
-                                        '${oneOrderPageOrderRecord.address} ${oneOrderPageOrderRecord.home} ${oneOrderPageOrderRecord.room}',
+                                        '${oneOrderUserPageOrderRecord.address} ${oneOrderUserPageOrderRecord.home} ${oneOrderUserPageOrderRecord.room}',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -455,7 +464,7 @@ class _OneOrderPageWidgetState extends State<OneOrderPageWidget> {
                                       ),
                                     ),
                                     Text(
-                                      oneOrderPageOrderRecord.comment,
+                                      oneOrderUserPageOrderRecord.comment,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

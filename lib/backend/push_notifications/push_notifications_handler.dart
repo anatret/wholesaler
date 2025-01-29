@@ -111,7 +111,7 @@ final parametersBuilderMap =
   'CartPage': ParameterData.none(),
   'OrderPage': ParameterData.none(),
   'UserOrderListPage': ParameterData.none(),
-  'OneOrderPage': (data) async => ParameterData(
+  'OneOrderUserPage': (data) async => ParameterData(
         allParams: {
           'order': getParameter<DocumentReference>(data, 'order'),
         },
@@ -142,7 +142,7 @@ final parametersBuilderMap =
         },
       ),
   'Stores': ParameterData.none(),
-  'OneOrderPage2': (data) async => ParameterData(
+  'OneOrderManagerPage': (data) async => ParameterData(
         allParams: {
           'order': getParameter<DocumentReference>(data, 'order'),
         },
@@ -186,6 +186,14 @@ final parametersBuilderMap =
   'RegNewStorePre': ParameterData.none(),
   'AddProduct': ParameterData.none(),
   'SearchPage': ParameterData.none(),
+  'News': ParameterData.none(),
+  'AdminOrderListPage': ParameterData.none(),
+  'testPage': ParameterData.none(),
+  'UserPageInfo': (data) async => ParameterData(
+        allParams: {
+          'userRef': getParameter<DocumentReference>(data, 'userRef'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

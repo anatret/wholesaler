@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/fab/f_a_b_whole_store_page/f_a_b_whole_store_page_widget.dart';
 import '/components/often_ordered/often_ordered_widget.dart';
 import '/components/prod_grid_card/prod_grid_card_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -29,11 +30,15 @@ class WholeStorePageModel extends FlutterFlowModel<WholeStorePageWidget> {
   bool? showDeletedCheckboxValue;
   // Models for prodGridCard dynamic component.
   late FlutterFlowDynamicModels<ProdGridCardModel> prodGridCardModels;
+  // Model for FABWholeStorePage component.
+  late FABWholeStorePageModel fABWholeStorePageModel;
 
   @override
   void initState(BuildContext context) {
     oftenOrderedModels = FlutterFlowDynamicModels(() => OftenOrderedModel());
     prodGridCardModels = FlutterFlowDynamicModels(() => ProdGridCardModel());
+    fABWholeStorePageModel =
+        createModel(context, () => FABWholeStorePageModel());
   }
 
   @override
@@ -43,5 +48,6 @@ class WholeStorePageModel extends FlutterFlowModel<WholeStorePageWidget> {
     searchTextFieldTextController?.dispose();
 
     prodGridCardModels.dispose();
+    fABWholeStorePageModel.dispose();
   }
 }

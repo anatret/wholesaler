@@ -292,7 +292,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                       0.0, 8.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      await authManager.refreshUser();
                                       var shouldSetState = false;
                                       GoRouter.of(context).prepareAuthEvent();
 
@@ -306,242 +305,187 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                         return;
                                       }
 
-                                      if (currentUserEmailVerified == true) {
-                                        // checkStore
-                                        _model.usersStore =
-                                            await queryStoresRecordOnce(
-                                          queryBuilder: (storesRecord) =>
-                                              storesRecord.where(
-                                            'user',
-                                            isEqualTo: currentUserReference,
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        shouldSetState = true;
-                                        if ((_model.usersStore != null) ==
-                                            true) {
-                                          if ((_model.usersStore
-                                                      ?.verifyStatus ==
-                                                  null) ||
-                                              (_model.usersStore
-                                                      ?.verifyStatus ==
-                                                  VerifyStatus
-                                                      .newApplication)) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getVariableText(
-                                                    ruText: 'Проверка магазина',
-                                                    enText: 'Store check',
-                                                    koText: '매장 확인 중',
-                                                    zh_HansText: '检查商店',
-                                                  )),
-                                                  content: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getVariableText(
-                                                    ruText:
-                                                        'Ваш магазин проходит проверку. Ожидайте результатов. Если вы хотите изменить данные о магазине, сделайте это сейчас, так как после завершения проверки изменения будут невозможны.',
-                                                    enText:
-                                                        'Your store is being verified. Please wait for the results. If you want to change your store details, do so now, as changes will not be possible after the verification is complete.',
-                                                    koText:
-                                                        '귀하의 매장을 검증 중입니다. 결과를 기다리세요. 매장 정보를 변경하고 싶다면 지금 당장 변경하세요. 검증이 완료된 후에는 변경할 수 없습니다.',
-                                                    zh_HansText:
-                                                        '您的商店正在验证。等待结果。如果您想更改商店详细信息，请立即进行，因为验证完成后将无法进行更改。',
-                                                  )),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: const Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
+                                      // checkStore
+                                      _model.usersStore =
+                                          await queryStoresRecordOnce(
+                                        queryBuilder: (storesRecord) =>
+                                            storesRecord.where(
+                                          'user',
+                                          isEqualTo: currentUserReference,
+                                        ),
+                                        singleRecord: true,
+                                      ).then((s) => s.firstOrNull);
+                                      shouldSetState = true;
+                                      if ((_model.usersStore != null) == true) {
+                                        if ((_model.usersStore?.verifyStatus ==
+                                                null) ||
+                                            (_model.usersStore?.verifyStatus ==
+                                                VerifyStatus.newApplication)) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  ruText: 'Проверка магазина',
+                                                  enText: 'Store check',
+                                                  koText: '매장 확인 중',
+                                                  zh_HansText: '检查商店',
+                                                )),
+                                                content: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  ruText:
+                                                      'Ваш магазин проходит проверку. Ожидайте результатов. Если вы хотите изменить данные о магазине, сделайте это сейчас, так как после завершения проверки изменения будут невозможны.',
+                                                  enText:
+                                                      'Your store is being verified. Please wait for the results. If you want to change your store details, do so now, as changes will not be possible after the verification is complete.',
+                                                  koText:
+                                                      '귀하의 매장을 검증 중입니다. 결과를 기다리세요. 매장 정보를 변경하고 싶다면 지금 당장 변경하세요. 검증이 완료된 후에는 변경할 수 없습니다.',
+                                                  zh_HansText:
+                                                      '您的商店正在验证。等待结果。如果您想更改商店详细信息，请立即进行，因为验证完成后将无法进行更改。',
+                                                )),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
 
-                                            context.pushNamedAuth(
-                                              'EditStorePage',
-                                              context.mounted,
-                                              queryParameters: {
-                                                'storeRef': serializeParam(
-                                                  _model.usersStore?.reference,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    const TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.scale,
-                                                  alignment:
-                                                      Alignment.bottomCenter,
-                                                ),
-                                              },
-                                            );
-
-                                            if (shouldSetState) {
-                                              safeSetState(() {});
-                                            }
-                                            return;
-                                          } else if (_model
-                                                  .usersStore?.verifyStatus ==
-                                              VerifyStatus.done) {
-                                            // upudateUserStore
-                                            FFAppState().userStore =
-                                                _model.usersStore?.reference;
-                                            safeSetState(() {});
-
-                                            context.pushNamedAuth(
-                                              'HomePageWholeStore',
-                                              context.mounted,
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    const TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.scale,
-                                                  alignment:
-                                                      Alignment.bottomCenter,
-                                                ),
-                                              },
-                                            );
-                                          } else if (_model
-                                                  .usersStore?.verifyStatus ==
-                                              VerifyStatus.failure) {
-                                            _model.storeVerifaedMassage =
-                                                await queryStoreVerifaedMassageRecordOnce(
-                                              queryBuilder:
-                                                  (storeVerifaedMassageRecord) =>
-                                                      storeVerifaedMassageRecord
-                                                          .where(
-                                                'storeRef',
-                                                isEqualTo: _model
-                                                    .usersStore?.reference,
+                                          context.pushNamedAuth(
+                                            'EditStorePage',
+                                            context.mounted,
+                                            queryParameters: {
+                                              'storeRef': serializeParam(
+                                                _model.usersStore?.reference,
+                                                ParamType.DocumentReference,
                                               ),
-                                              singleRecord: true,
-                                            ).then((s) => s.firstOrNull);
-                                            shouldSetState = true;
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getVariableText(
-                                                    ruText:
-                                                        'Магазин не прошел проверку',
-                                                    enText:
-                                                        'The store has not passed verification',
-                                                    koText:
-                                                        '해당 매장은 검증을 통과하지 못했습니다.',
-                                                    zh_HansText: '店铺尚未通过验证',
-                                                  )),
-                                                  content: Text(_model
-                                                      .storeVerifaedMassage!
-                                                      .message),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: const Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.scale,
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                              ),
+                                            },
+                                          );
 
-                                            context.pushNamedAuth(
-                                              'EditStorePage',
-                                              context.mounted,
-                                              queryParameters: {
-                                                'storeRef': serializeParam(
-                                                  _model.usersStore?.reference,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    const TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.scale,
-                                                  alignment:
-                                                      Alignment.bottomCenter,
-                                                ),
-                                              },
-                                            );
-
-                                            if (shouldSetState) {
-                                              safeSetState(() {});
-                                            }
-                                            return;
-                                          } else {
-                                            if (shouldSetState) {
-                                              safeSetState(() {});
-                                            }
-                                            return;
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
                                           }
-                                        } else {
-                                          context.goNamedAuth(
-                                            'RegNewStorePre',
+                                          return;
+                                        } else if (_model
+                                                .usersStore?.verifyStatus ==
+                                            VerifyStatus.done) {
+                                          // upudateUserStore
+                                          FFAppState().userStore =
+                                              _model.usersStore?.reference;
+                                          safeSetState(() {});
+
+                                          context.pushNamedAuth(
+                                            'HomePageWholeStore',
                                             context.mounted,
                                             extra: <String, dynamic>{
                                               kTransitionInfoKey:
                                                   const TransitionInfo(
                                                 hasTransition: true,
                                                 transitionType:
-                                                    PageTransitionType
-                                                        .rightToLeft,
+                                                    PageTransitionType.scale,
+                                                alignment:
+                                                    Alignment.bottomCenter,
                                               ),
                                             },
                                           );
+                                        } else if (_model
+                                                .usersStore?.verifyStatus ==
+                                            VerifyStatus.failure) {
+                                          _model.storeVerifaedMassage =
+                                              await queryStoreVerifaedMassageRecordOnce(
+                                            queryBuilder:
+                                                (storeVerifaedMassageRecord) =>
+                                                    storeVerifaedMassageRecord
+                                                        .where(
+                                              'storeRef',
+                                              isEqualTo:
+                                                  _model.usersStore?.reference,
+                                            ),
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          shouldSetState = true;
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  ruText:
+                                                      'Магазин не прошел проверку',
+                                                  enText:
+                                                      'The store has not passed verification',
+                                                  koText:
+                                                      '해당 매장은 검증을 통과하지 못했습니다.',
+                                                  zh_HansText: '店铺尚未通过验证',
+                                                )),
+                                                content: Text(_model
+                                                    .storeVerifaedMassage!
+                                                    .message),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+
+                                          context.pushNamedAuth(
+                                            'EditStorePage',
+                                            context.mounted,
+                                            queryParameters: {
+                                              'storeRef': serializeParam(
+                                                _model.usersStore?.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.scale,
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                              ),
+                                            },
+                                          );
+
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
+                                          return;
                                         }
                                       } else {
-                                        await authManager
-                                            .sendEmailVerification();
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getVariableText(
-                                                ruText:
-                                                    'Подтверждение электронной почты',
-                                                enText: 'Email confirmation',
-                                                koText: '이메일 확인',
-                                                zh_HansText: '电子邮件确认',
-                                              )),
-                                              content: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getVariableText(
-                                                ruText:
-                                                    'На вашу электронную почту отправлено письмо с запросом подтверждения. Пожалуйста, проверьте свою почту и следуйте инструкциям для завершения процесса.',
-                                                enText:
-                                                    'A confirmation email has been sent to your email address. Please check your email and follow the instructions to complete the process.',
-                                                koText:
-                                                    '귀하의 이메일 주소로 확인 이메일이 전송되었습니다. 이메일을 확인하고 지시에 따라 절차를 완료하세요.',
-                                                zh_HansText:
-                                                    '确认电子邮件已发送至您的电子邮件地址。请查看您的电子邮件并按照说明完成该过程。',
-                                              )),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
-                                            );
+                                        context.goNamedAuth(
+                                          'RegNewStorePre',
+                                          context.mounted,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: const TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
+                                            ),
                                           },
                                         );
                                       }
