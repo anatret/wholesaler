@@ -81,7 +81,7 @@ class _CartItem2WidgetState extends State<CartItem2Widget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.network(
@@ -100,7 +100,7 @@ class _CartItem2WidgetState extends State<CartItem2Widget> {
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
                         child: Text(
                           valueOrDefault<String>(
                             widget.name,
@@ -116,7 +116,7 @@ class _CartItem2WidgetState extends State<CartItem2Widget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                         child: Text(
                           valueOrDefault<String>(
                             widget.deskription,
@@ -128,7 +128,7 @@ class _CartItem2WidgetState extends State<CartItem2Widget> {
                           style:
                               FlutterFlowTheme.of(context).labelSmall.override(
                                     fontFamily: 'Readex Pro',
-                                    color: const Color(0xFF5B5B5B),
+                                    color: Color(0xFF5B5B5B),
                                     letterSpacing: 0.0,
                                   ),
                         ),
@@ -137,11 +137,11 @@ class _CartItem2WidgetState extends State<CartItem2Widget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 8.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFFF0E6),
+                                color: Color(0xFFFFF0E6),
                                 borderRadius: BorderRadius.circular(16.0),
                               ),
                               child: Row(
@@ -186,8 +186,8 @@ class _CartItem2WidgetState extends State<CartItem2Widget> {
                                     child: Container(
                                       width: 48.0,
                                       height: 48.0,
-                                      decoration: const BoxDecoration(),
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      decoration: BoxDecoration(),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           'qgfd27np' /* - */,
@@ -202,7 +202,7 @@ class _CartItem2WidgetState extends State<CartItem2Widget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 8.0),
                                     child: Text(
                                       '${formatNumber(
@@ -251,8 +251,8 @@ class _CartItem2WidgetState extends State<CartItem2Widget> {
                                     child: Container(
                                       width: 48.0,
                                       height: 48.0,
-                                      decoration: const BoxDecoration(),
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      decoration: BoxDecoration(),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           'hozg2w4j' /* + */,
@@ -273,12 +273,12 @@ class _CartItem2WidgetState extends State<CartItem2Widget> {
                           Container(
                             height: 48.0,
                             decoration: BoxDecoration(
-                              color: const Color(0xFFFFF0E6),
+                              color: Color(0xFFFFF0E6),
                               borderRadius: BorderRadius.circular(16.0),
                             ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 8.0, 8.0, 8.0),
                               child: Text(
                                 formatNumber(

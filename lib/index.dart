@@ -57,9 +57,13 @@ export '/auth/reg_new_store_pre/reg_new_store_pre_widget.dart'
     show RegNewStorePreWidget;
 export '/admin/add_product/add_product_widget.dart' show AddProductWidget;
 export '/pages/search_page/search_page_widget.dart' show SearchPageWidget;
-export '/pages/news/news_widget.dart' show NewsWidget;
+export '/promotion/news/news_widget.dart' show NewsWidget;
 export '/admin/admin_order_list_page/admin_order_list_page_widget.dart'
     show AdminOrderListPageWidget;
 export '/test_page/test_page_widget.dart' show TestPageWidget;
 export '/admin/user_page_info/user_page_info_widget.dart'
     show UserPageInfoWidget;
+export '/promotion/add_promotion1/add_promotion1_widget.dart'
+    show AddPromotion1Widget;
+export '/promotion/add_promotion2/add_promotion2_widget.dart'
+    show AddPromotion2Widget;

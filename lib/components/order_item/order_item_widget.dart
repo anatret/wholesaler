@@ -60,7 +60,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.network(
@@ -78,7 +78,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
                   child: Text(
                     valueOrDefault<String>(
                       widget.name,
@@ -92,7 +92,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                   child: Text(
                     valueOrDefault<String>(
                       widget.deskription,
@@ -103,7 +103,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                     ),
                     style: FlutterFlowTheme.of(context).labelSmall.override(
                           fontFamily: 'Readex Pro',
-                          color: const Color(0xFF5B5B5B),
+                          color: Color(0xFF5B5B5B),
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -114,7 +114,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                       child: Text(
                         '${widget.pizzaValue?.toString()}${FFLocalizations.of(context).getVariableText(
                           ruText: 'шт.',
@@ -130,11 +130,11 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFFF0E6),
+                        color: Color(0xFFFFF0E6),
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             18.0, 9.0, 18.0, 9.0),
                         child: Text(
                           formatNumber(

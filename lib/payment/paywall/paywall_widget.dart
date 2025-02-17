@@ -68,14 +68,14 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+            padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -103,7 +103,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 24.0, 24.0, 24.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -143,7 +143,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                   ],
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 16.0, 8.0, 16.0),
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -152,7 +152,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                       borderRadius: BorderRadius.circular(20.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: EdgeInsets.all(8.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           'cs4iy02z' /*  */,
@@ -195,7 +195,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(width: 12.0)),
+                                  ].divide(SizedBox(width: 12.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -217,7 +217,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(width: 12.0)),
+                                  ].divide(SizedBox(width: 12.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -239,9 +239,9 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(width: 12.0)),
+                                  ].divide(SizedBox(width: 12.0)),
                                 ),
-                              ].divide(const SizedBox(height: 12.0)),
+                              ].divide(SizedBox(height: 12.0)),
                             ),
                             FFButtonWidget(
                               onPressed: () {
@@ -253,9 +253,9 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                               options: FFButtonOptions(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 50.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -269,7 +269,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
@@ -287,7 +287,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 24.0, 24.0, 24.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -327,7 +327,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                   ],
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 16.0, 8.0, 16.0),
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -336,7 +336,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                       borderRadius: BorderRadius.circular(20.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: EdgeInsets.all(8.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           '76v261vp' /* $24.99/м */,
@@ -379,7 +379,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(width: 12.0)),
+                                  ].divide(SizedBox(width: 12.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -401,7 +401,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(width: 12.0)),
+                                  ].divide(SizedBox(width: 12.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -423,7 +423,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(width: 12.0)),
+                                  ].divide(SizedBox(width: 12.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -445,7 +445,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(width: 12.0)),
+                                  ].divide(SizedBox(width: 12.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -467,9 +467,9 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(width: 12.0)),
+                                  ].divide(SizedBox(width: 12.0)),
                                 ),
-                              ].divide(const SizedBox(height: 12.0)),
+                              ].divide(SizedBox(height: 12.0)),
                             ),
                             FFButtonWidget(
                               onPressed: () {
@@ -481,9 +481,9 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                               options: FFButtonOptions(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 50.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -497,7 +497,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
@@ -509,7 +509,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                       borderRadius: BorderRadius.circular(16.0),
                     ),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           24.0, 24.0, 24.0, 24.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -548,11 +548,11 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                             options: FFButtonOptions(
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: const Color(0x00FFFFFF),
+                              color: Color(0x00FFFFFF),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -568,7 +568,7 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                           ),
-                        ].divide(const SizedBox(height: 16.0)),
+                        ].divide(SizedBox(height: 16.0)),
                       ),
                     ),
                   ),
@@ -578,11 +578,11 @@ class _PaywallWidgetState extends State<PaywallWidget> {
                       wrapWithModel(
                         model: _model.fabModel,
                         updateCallback: () => safeSetState(() {}),
-                        child: const FabWidget(),
+                        child: FabWidget(),
                       ),
                     ],
                   ),
-                ].divide(const SizedBox(height: 24.0)),
+                ].divide(SizedBox(height: 24.0)),
               ),
             ),
           ),

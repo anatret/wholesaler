@@ -53,8 +53,8 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-20.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -73,8 +73,8 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-20.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -93,8 +93,8 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-20.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -113,8 +113,8 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
             curve: Curves.easeInOut,
             delay: 600.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-20.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -133,8 +133,8 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
             curve: Curves.easeInOut,
             delay: 800.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-20.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -153,8 +153,8 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-20.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -173,8 +173,8 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(30.0, -30.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(30.0, -30.0),
           ),
         ],
       ),
@@ -193,8 +193,8 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 1.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -221,7 +221,7 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 16.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 16.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -235,22 +235,22 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
               child: Container(
                 width: 160.0,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF14282B),
+                  color: Color(0xFF14282B),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Container(
                         width: double.infinity,
                         height: 50.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Color(0xFF14282B),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -262,7 +262,7 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                                 size: 26.0,
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -287,11 +287,11 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                       Container(
                         width: double.infinity,
                         height: 50.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Color(0xFF14282B),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -303,7 +303,7 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                                 size: 26.0,
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -328,11 +328,11 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                       Container(
                         width: double.infinity,
                         height: 50.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Color(0xFF14282B),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -344,7 +344,7 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                                 size: 26.0,
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -369,11 +369,11 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                       Container(
                         width: double.infinity,
                         height: 50.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Color(0xFF14282B),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -385,7 +385,7 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                                 size: 26.0,
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -410,11 +410,11 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                       Container(
                         width: double.infinity,
                         height: 50.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Color(0xFF14282B),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -426,7 +426,7 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                                 size: 26.0,
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -451,11 +451,11 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                       Container(
                         width: double.infinity,
                         height: 50.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Color(0xFF14282B),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -467,7 +467,7 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                                 size: 26.0,
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -497,7 +497,7 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
               animationsMap['containerOnActionTriggerAnimation1']!,
             ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
             child: InkWell(
               splashColor: Colors.transparent,
               focusColor: Colors.transparent,
@@ -616,11 +616,11 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                     shape: BoxShape.circle,
                   ),
                   child: Stack(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     children: [
                       Transform.rotate(
                         angle: -45.0 * (math.pi / 180),
-                        child: const Padding(
+                        child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 0.0, 0.0),
                           child: Icon(
@@ -632,7 +632,7 @@ class _FabWidgetState extends State<FabWidget> with TickerProviderStateMixin {
                       ).animateOnActionTrigger(
                         animationsMap['transformOnActionTriggerAnimation']!,
                       ),
-                      const Icon(
+                      Icon(
                         Icons.close_rounded,
                         color: Colors.white,
                         size: 24.0,

@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -41,7 +42,7 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
     _model = createModel(context, () => FABProdEditForAdminModel());
 
     animationsMap.addAll({
-      'containerOnActionTriggerAnimation': AnimationInfo(
+      'containerOnActionTriggerAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
         effectsBuilder: () => [
@@ -49,6 +50,66 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation4': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
           ),
@@ -62,8 +123,8 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(30.0, -30.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(30.0, -30.0),
           ),
         ],
       ),
@@ -82,8 +143,8 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 1.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -116,7 +177,7 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 16.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 16.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -134,7 +195,7 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -157,7 +218,7 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                               ),
                             }.withoutNulls,
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
+                              kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.fade,
                                 duration: Duration(milliseconds: 0),
@@ -172,8 +233,8 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                             color: FlutterFlowTheme.of(context).secondaryText,
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 0.0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -184,7 +245,7 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                                   size: 26.0,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -204,6 +265,8 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                             ),
                           ),
                         ),
+                      ).animateOnActionTrigger(
+                        animationsMap['containerOnActionTriggerAnimation2']!,
                       ),
                       if (currentUserDocument?.userType == UserTypes.admin)
                         AuthUserStreamWidget(
@@ -222,7 +285,7 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                                   ),
                                 }.withoutNulls,
                                 extra: <String, dynamic>{
-                                  kTransitionInfoKey: const TransitionInfo(
+                                  kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
                                     transitionType: PageTransitionType.fade,
                                     duration: Duration(milliseconds: 0),
@@ -238,8 +301,8 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                                     FlutterFlowTheme.of(context).secondaryText,
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 0.0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -250,7 +313,7 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                                       size: 26.0,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -271,6 +334,86 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                                 ),
                               ),
                             ),
+                          ).animateOnActionTrigger(
+                            animationsMap[
+                                'containerOnActionTriggerAnimation3']!,
+                          ),
+                        ),
+                      if (currentUserDocument?.userType == UserTypes.admin)
+                        AuthUserStreamWidget(
+                          builder: (context) => InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              _model.prodDoc =
+                                  await PizzaRecord.getDocumentOnce(
+                                      widget.prodRef!);
+
+                              context.pushNamed(
+                                'addPromotion1',
+                                queryParameters: {
+                                  'storeRef': serializeParam(
+                                    _model.prodDoc?.store,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.scale,
+                                    alignment: Alignment.bottomCenter,
+                                  ),
+                                },
+                              );
+
+                              safeSetState(() {});
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 50.0,
+                              decoration: BoxDecoration(
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Icon(
+                                      Icons.add_task,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      size: 26.0,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          '12s6b4b4' /* Добавить акцию */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ).animateOnActionTrigger(
+                            animationsMap[
+                                'containerOnActionTriggerAnimation4']!,
                           ),
                         ),
                     ],
@@ -278,10 +421,10 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                 ),
               ),
             ).animateOnActionTrigger(
-              animationsMap['containerOnActionTriggerAnimation']!,
+              animationsMap['containerOnActionTriggerAnimation1']!,
             ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
             child: InkWell(
               splashColor: Colors.transparent,
               focusColor: Colors.transparent,
@@ -291,11 +434,31 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                 if (FFAppState().isFabExpdProdPag) {
                   FFAppState().isFabExpdProdPag = false;
                   _model.updatePage(() {});
-                  if (animationsMap['containerOnActionTriggerAnimation'] !=
+                  if (animationsMap['containerOnActionTriggerAnimation1'] !=
                       null) {
-                    animationsMap['containerOnActionTriggerAnimation']!
+                    animationsMap['containerOnActionTriggerAnimation1']!
                         .controller
                         .reverse();
+                  }
+                  if (animationsMap['containerOnActionTriggerAnimation2'] !=
+                      null) {
+                    animationsMap['containerOnActionTriggerAnimation2']!
+                        .controller
+                        .reverse();
+                  }
+                  if (currentUserDocument?.userType == UserTypes.admin) {
+                    if (animationsMap['containerOnActionTriggerAnimation3'] !=
+                        null) {
+                      animationsMap['containerOnActionTriggerAnimation3']!
+                          .controller
+                          .reverse();
+                    }
+                    if (animationsMap['containerOnActionTriggerAnimation4'] !=
+                        null) {
+                      animationsMap['containerOnActionTriggerAnimation4']!
+                          .controller
+                          .reverse();
+                    }
                   }
                   if (animationsMap['transformOnActionTriggerAnimation'] !=
                       null) {
@@ -312,11 +475,31 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                   FFAppState().isFabExpdProdPag = true;
                   _model.updatePage(() {});
                   await Future.delayed(const Duration(milliseconds: 50));
-                  if (animationsMap['containerOnActionTriggerAnimation'] !=
+                  if (animationsMap['containerOnActionTriggerAnimation1'] !=
                       null) {
-                    animationsMap['containerOnActionTriggerAnimation']!
+                    animationsMap['containerOnActionTriggerAnimation1']!
                         .controller
                         .forward(from: 0.0);
+                  }
+                  if (animationsMap['containerOnActionTriggerAnimation2'] !=
+                      null) {
+                    animationsMap['containerOnActionTriggerAnimation2']!
+                        .controller
+                        .forward(from: 0.0);
+                  }
+                  if (currentUserDocument?.userType == UserTypes.admin) {
+                    if (animationsMap['containerOnActionTriggerAnimation3'] !=
+                        null) {
+                      animationsMap['containerOnActionTriggerAnimation3']!
+                          .controller
+                          .forward(from: 0.0);
+                    }
+                    if (animationsMap['containerOnActionTriggerAnimation4'] !=
+                        null) {
+                      animationsMap['containerOnActionTriggerAnimation4']!
+                          .controller
+                          .forward(from: 0.0);
+                    }
                   }
                   if (animationsMap['transformOnActionTriggerAnimation'] !=
                       null) {
@@ -340,11 +523,11 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                     shape: BoxShape.circle,
                   ),
                   child: Stack(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     children: [
                       Transform.rotate(
                         angle: -45.0 * (math.pi / 180),
-                        child: const Padding(
+                        child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 0.0, 0.0),
                           child: Icon(
@@ -356,7 +539,7 @@ class _FABProdEditForAdminWidgetState extends State<FABProdEditForAdminWidget>
                       ).animateOnActionTrigger(
                         animationsMap['transformOnActionTriggerAnimation']!,
                       ),
-                      const Icon(
+                      Icon(
                         Icons.close_rounded,
                         color: Colors.white,
                         size: 24.0,

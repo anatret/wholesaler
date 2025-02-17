@@ -1,10 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'sand_notice_page_model.dart';
@@ -84,7 +84,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(58.0),
+              preferredSize: Size.fromHeight(58.0),
               child: AppBar(
                 backgroundColor:
                     FlutterFlowTheme.of(context).secondaryBackground,
@@ -95,19 +95,19 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 5.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -128,42 +128,12 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                               ],
                             ),
                           ),
-                          badges.Badge(
-                            badgeContent: Text(
-                              FFLocalizations.of(context).getText(
-                                '18to02or' /* 1 */,
-                              ),
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                    fontSize: 12.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            showBadge: true,
-                            shape: badges.BadgeShape.circle,
-                            badgeColor: FlutterFlowTheme.of(context).primary,
-                            elevation: 0.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                8.0, 8.0, 8.0, 8.0),
-                            position: badges.BadgePosition.topEnd(),
-                            animationType: badges.BadgeAnimationType.scale,
-                            toAnimate: true,
-                            child: Icon(
-                              Icons.notifications_outlined,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 26.0,
-                            ),
-                          ),
                         ],
                       ),
                     ),
                   ],
                 ),
-                actions: const [],
+                actions: [],
                 centerTitle: false,
                 toolbarHeight: 58.0,
                 elevation: 0.0,
@@ -172,7 +142,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: StreamBuilder<PizzaRecord>(
                   stream: PizzaRecord.getDocument(widget.productRef!),
                   builder: (context, snapshot) {
@@ -196,16 +166,16 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                     return Container(
                       width: double.infinity,
                       height: double.infinity,
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         maxWidth: 450.0,
                       ),
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Container(
                         width: double.infinity,
                         height: double.infinity,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 24.0, 24.0, 24.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -223,7 +193,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 4.0,
                                           color: Color(0x2B202529),
@@ -236,7 +206,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 20.0, 20.0, 20.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -287,7 +257,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0xFFE0E0E0),
                                                   width: 1.0,
                                                 ),
@@ -295,7 +265,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                     BorderRadius.circular(8.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -303,7 +273,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                     BorderRadius.circular(8.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -312,7 +282,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -376,7 +346,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0xFFE0E0E0),
                                                   width: 1.0,
                                                 ),
@@ -384,7 +354,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                     BorderRadius.circular(8.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -392,7 +362,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                     BorderRadius.circular(8.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -401,7 +371,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -439,7 +409,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  final datePickedDate =
+                                                  final _datePickedDate =
                                                       await showDatePicker(
                                                     context: context,
                                                     initialDate:
@@ -500,9 +470,9 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                     },
                                                   );
 
-                                                  TimeOfDay? datePickedTime;
-                                                  if (datePickedDate != null) {
-                                                    datePickedTime =
+                                                  TimeOfDay? _datePickedTime;
+                                                  if (_datePickedDate != null) {
+                                                    _datePickedTime =
                                                         await showTimePicker(
                                                       context: context,
                                                       initialTime: TimeOfDay
@@ -562,17 +532,24 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                     );
                                                   }
 
-                                                  if (datePickedDate != null &&
-                                                      datePickedTime != null) {
+                                                  if (_datePickedDate != null &&
+                                                      _datePickedTime != null) {
                                                     safeSetState(() {
                                                       _model.datePicked =
                                                           DateTime(
-                                                        datePickedDate.year,
-                                                        datePickedDate.month,
-                                                        datePickedDate.day,
-                                                        datePickedTime!.hour,
-                                                        datePickedTime.minute,
+                                                        _datePickedDate.year,
+                                                        _datePickedDate.month,
+                                                        _datePickedDate.day,
+                                                        _datePickedTime!.hour,
+                                                        _datePickedTime.minute,
                                                       );
+                                                    });
+                                                  } else if (_model
+                                                          .datePicked !=
+                                                      null) {
+                                                    safeSetState(() {
+                                                      _model.datePicked =
+                                                          getCurrentTimestamp;
                                                     });
                                                   }
                                                   _model.dateTimeSand =
@@ -592,7 +569,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -609,7 +586,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   8.0,
                                                                   8.0,
@@ -680,7 +657,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -697,7 +674,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   8.0,
                                                                   8.0,
@@ -719,10 +696,34 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 30.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
+                                                await NewsRecord.collection
+                                                    .doc()
+                                                    .set({
+                                                  ...createNewsRecordData(
+                                                    title: _model
+                                                        .textFieldCardNumTextController1
+                                                        .text,
+                                                    body: _model
+                                                        .textFieldCardNumTextController2
+                                                        .text,
+                                                    imgUrl: containerPizzaRecord
+                                                        .img,
+                                                    userSender:
+                                                        currentUserReference,
+                                                    pageType: PageType.product,
+                                                    prodRef: widget.productRef,
+                                                  ),
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'create_time': FieldValue
+                                                          .serverTimestamp(),
+                                                    },
+                                                  ),
+                                                });
                                                 triggerPushNotification(
                                                   notificationTitle: _model
                                                       .textFieldCardNumTextController1
@@ -730,8 +731,6 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                   notificationText: _model
                                                       .textFieldCardNumTextController2
                                                       .text,
-                                                  notificationImageUrl:
-                                                      containerPizzaRecord.img,
                                                   scheduledTime:
                                                       _model.dateTimeSand !=
                                                               null
@@ -755,15 +754,15 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                   builder:
                                                       (alertDialogContext) {
                                                     return AlertDialog(
-                                                      title: const Text('Рассылка'),
-                                                      content: const Text(
+                                                      title: Text('Рассылка'),
+                                                      content: Text(
                                                           'Отправлено! Доставка по расписанию или в течение 5 минут.'),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: const Text('Ok'),
+                                                          child: Text('Ok'),
                                                         ),
                                                       ],
                                                     );
@@ -782,7 +781,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                   }.withoutNulls,
                                                   extra: <String, dynamic>{
                                                     kTransitionInfoKey:
-                                                        const TransitionInfo(
+                                                        TransitionInfo(
                                                       hasTransition: true,
                                                       transitionType:
                                                           PageTransitionType
@@ -797,7 +796,7 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                   .getText(
                                                 '4l7xph33' /* Отправить */,
                                               ),
-                                              icon: const Icon(
+                                              icon: Icon(
                                                 Icons.tap_and_play_sharp,
                                                 size: 26.0,
                                               ),
@@ -807,13 +806,13 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                                             .width *
                                                         1.0,
                                                 height: 56.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 0.0),
                                                 iconAlignment:
                                                     IconAlignment.end,
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
@@ -836,12 +835,12 @@ class _SandNoticePageWidgetState extends State<SandNoticePageWidget> {
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 16.0)),
+                                        ].divide(SizedBox(height: 16.0)),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ].divide(const SizedBox(height: 24.0)),
+                              ].divide(SizedBox(height: 24.0)),
                             ),
                           ),
                         ),

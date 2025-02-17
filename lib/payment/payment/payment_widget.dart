@@ -59,7 +59,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
               context.safePop();
             },
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -70,7 +70,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'fohtynin' /* Подписка/Оплата */,
@@ -82,7 +82,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'ixo7t97c' /* Ваша подписка */,
@@ -94,12 +94,12 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: const [
+                    boxShadow: [
                       BoxShadow(
                         blurRadius: 5.0,
                         color: Color(0x34111417),
@@ -113,7 +113,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -128,7 +128,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                   borderRadius: BorderRadius.circular(25),
                                 ),
                               ),
-                              unselectedWidgetColor: const Color(0xFF95A1AC),
+                              unselectedWidgetColor: Color(0xFF95A1AC),
                             ),
                             child: CheckboxListTile(
                               value: _model.checkboxListTileValue1 ??= true,
@@ -164,13 +164,13 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               checkColor: Colors.white,
                               dense: false,
                               controlAffinity: ListTileControlAffinity.trailing,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 12.0, 0.0),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 24.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
@@ -190,7 +190,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'k5b8ia5r' /* Другие предложения */,
@@ -202,12 +202,12 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: const [
+                    boxShadow: [
                       BoxShadow(
                         blurRadius: 5.0,
                         color: Color(0x34111417),
@@ -221,7 +221,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -273,13 +273,13 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                               checkColor: Colors.white,
                               dense: false,
                               controlAffinity: ListTileControlAffinity.trailing,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 12.0, 0.0),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 24.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
@@ -299,12 +299,12 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: const [
+                    boxShadow: [
                       BoxShadow(
                         blurRadius: 5.0,
                         color: Color(0x34111417),
@@ -317,7 +317,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                     child: Material(
                       color: Colors.transparent,
                       child: Theme(
@@ -364,7 +364,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                           checkColor: Colors.white,
                           dense: false,
                           controlAffinity: ListTileControlAffinity.trailing,
-                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                          contentPadding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                         ),
                       ),

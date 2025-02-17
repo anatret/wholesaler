@@ -40,15 +40,11 @@ class UserOrderListPageModel extends FlutterFlowModel<UserOrderListPageWidget> {
 
   @override
   void dispose() {
-    for (var s in listViewStreamSubscriptions1) {
-      s?.cancel();
-    }
+    listViewStreamSubscriptions1.forEach((s) => s?.cancel());
     listViewPagingController1?.dispose();
 
     itemOrderUserModels.dispose();
-    for (var s in listViewStreamSubscriptions3) {
-      s?.cancel();
-    }
+    listViewStreamSubscriptions3.forEach((s) => s?.cancel());
     listViewPagingController3?.dispose();
 
     itemOrderManagerModels.dispose();

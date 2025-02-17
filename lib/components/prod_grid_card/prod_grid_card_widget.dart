@@ -56,8 +56,8 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 70.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 70.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -75,8 +75,8 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
             curve: Curves.easeInOut,
             delay: 600.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(1.0, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -94,8 +94,8 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
             curve: Curves.easeInOut,
             delay: 600.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(1.0, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -116,7 +116,7 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
       child: StreamBuilder<PizzaRecord>(
         stream: PizzaRecord.getDocument(widget.productRef!),
         builder: (context, snapshot) {
@@ -142,7 +142,7 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
             height: 200.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0x2B202529),
@@ -200,7 +200,7 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 8.0, 8.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -243,14 +243,14 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                               ],
                             ),
                           ),
-                        ].divide(const SizedBox(height: 8.0)),
+                        ].divide(SizedBox(height: 8.0)),
                       ),
                     ),
                     if (currentUserDocument?.userType != UserTypes.manager)
                       Opacity(
                         opacity: containerPizzaRecord.inStock ? 1.0 : 0.25,
                         child: Align(
-                          alignment: const AlignmentDirectional(1.0, 1.0),
+                          alignment: AlignmentDirectional(1.0, 1.0),
                           child: AuthUserStreamWidget(
                             builder: (context) => Row(
                               mainAxisSize: MainAxisSize.max,
@@ -266,10 +266,10 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                                             .toList(),
                                         widget.productRef!)) {
                                       return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 4.0, 4.0),
                                         child: Container(
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Visibility(
                                             visible:
                                                 !stackStoresRecord.itsCoupang,
@@ -371,7 +371,7 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                                                                       Navigator.pop(
                                                                           alertDialogContext,
                                                                           false),
-                                                                  child: const Text(
+                                                                  child: Text(
                                                                       'Отмена'),
                                                                 ),
                                                                 TextButton(
@@ -379,7 +379,7 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                                                                       Navigator.pop(
                                                                           alertDialogContext,
                                                                           true),
-                                                                  child: const Text(
+                                                                  child: Text(
                                                                       'Очистить и добавить '),
                                                                 ),
                                                               ],
@@ -434,7 +434,7 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
-                                                  duration: const Duration(
+                                                  duration: Duration(
                                                       milliseconds: 1500),
                                                   backgroundColor:
                                                       FlutterFlowTheme.of(
@@ -446,14 +446,14 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                                           }
                                         },
                                         child: AnimatedContainer(
-                                          duration: const Duration(milliseconds: 600),
+                                          duration: Duration(milliseconds: 600),
                                           curve: Curves.bounceOut,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Visibility(
                                             visible:
                                                 !stackStoresRecord.itsCoupang,
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(6.0, 6.0, 6.0, 6.0),
                                               child: Icon(
                                                 Icons.add_shopping_cart,
@@ -476,7 +476,7 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                       ),
                     if (!containerPizzaRecord.inStock)
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             '61mxcz00' /* Будет позже */,
@@ -492,14 +492,14 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                       ),
                     if (currentUserDocument?.userType == UserTypes.manager)
                       Align(
-                        alignment: const AlignmentDirectional(1.0, 1.0),
+                        alignment: AlignmentDirectional(1.0, 1.0),
                         child: AuthUserStreamWidget(
                           builder: (context) => Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 4.0, 4.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -520,7 +520,7 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                                         ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
+                                        kTransitionInfoKey: TransitionInfo(
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.scale,
@@ -530,11 +530,11 @@ class _ProdGridCardWidgetState extends State<ProdGridCardWidget>
                                     );
                                   },
                                   child: Container(
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Visibility(
                                       visible: !stackStoresRecord.itsCoupang,
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 4.0, 0.0, 0.0),
                                         child: Icon(
                                           Icons.content_copy_outlined,

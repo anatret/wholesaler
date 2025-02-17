@@ -52,8 +52,8 @@ class _ItemOrderUserWidgetState extends State<ItemOrderUserWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 70.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 70.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -72,7 +72,7 @@ class _ItemOrderUserWidgetState extends State<ItemOrderUserWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
       child: StreamBuilder<OrderRecord>(
         stream: OrderRecord.getDocument(widget.orderRef!),
         builder: (context, snapshot) {
@@ -98,7 +98,7 @@ class _ItemOrderUserWidgetState extends State<ItemOrderUserWidget>
             height: 110.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0x2B202529),
@@ -111,7 +111,7 @@ class _ItemOrderUserWidgetState extends State<ItemOrderUserWidget>
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -217,11 +217,11 @@ class _ItemOrderUserWidgetState extends State<ItemOrderUserWidget>
                                   ),
                                 ],
                               ),
-                            ].divide(const SizedBox(width: 12.0)),
+                            ].divide(SizedBox(width: 12.0)),
                           );
                         },
                       ),
-                    ].divide(const SizedBox(width: 12.0)),
+                    ].divide(SizedBox(width: 12.0)),
                   ),
                   Container(
                     height: 1.0,
@@ -300,7 +300,7 @@ class _ItemOrderUserWidgetState extends State<ItemOrderUserWidget>
                       ),
                     ],
                   ),
-                ].divide(const SizedBox(height: 8.0)),
+                ].divide(SizedBox(height: 8.0)),
               ),
             ),
           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!);

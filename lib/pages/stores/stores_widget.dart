@@ -45,7 +45,7 @@ class _StoresWidgetState extends State<StoresWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(58.0),
+          preferredSize: Size.fromHeight(58.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
@@ -54,16 +54,16 @@ class _StoresWidgetState extends State<StoresWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Stack(
-                        alignment: const AlignmentDirectional(1.0, -1.0),
+                        alignment: AlignmentDirectional(1.0, -1.0),
                         children: [
-                          const Padding(
+                          Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 2.0, 5.0, 0.0),
                             child: Icon(
@@ -79,7 +79,7 @@ class _StoresWidgetState extends State<StoresWidget> {
                               color: FlutterFlowTheme.of(context).primary,
                               shape: BoxShape.circle,
                             ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'jpd1e78n' /* 3 */,
@@ -103,7 +103,7 @@ class _StoresWidgetState extends State<StoresWidget> {
                 ),
               ],
             ),
-            actions: const [],
+            actions: [],
             centerTitle: false,
             toolbarHeight: 58.0,
             elevation: 0.0,
@@ -112,14 +112,14 @@ class _StoresWidgetState extends State<StoresWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       '6zdbteg8' /* Мои магазины */,
@@ -175,7 +175,7 @@ class _StoresWidgetState extends State<StoresWidget> {
                             key: Key(
                               'Keylph_${listViewIndex.toString()}',
                             ),
-                            address: listViewStoresRecord.address,
+                            address: '${listViewStoresRecord.address}',
                             nameStore: listViewStoresRecord.storeName,
                           ),
                         );

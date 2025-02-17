@@ -1,12 +1,11 @@
-import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/fab/fab/fab_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'test_page_model.dart';
 export 'test_page_model.dart';
 
@@ -17,40 +16,15 @@ class TestPageWidget extends StatefulWidget {
   State<TestPageWidget> createState() => _TestPageWidgetState();
 }
 
-class _TestPageWidgetState extends State<TestPageWidget>
-    with TickerProviderStateMixin {
+class _TestPageWidgetState extends State<TestPageWidget> {
   late TestPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => TestPageModel());
-
-    animationsMap.addAll({
-      'listViewOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 600.0.ms,
-            duration: 600.0.ms,
-            begin: const Offset(1.0, 1.0),
-            end: const Offset(1.0, 1.0),
-          ),
-        ],
-      ),
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -80,7 +54,7 @@ class _TestPageWidgetState extends State<TestPageWidget>
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -100,7 +74,7 @@ class _TestPageWidgetState extends State<TestPageWidget>
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -122,73 +96,47 @@ class _TestPageWidgetState extends State<TestPageWidget>
                           letterSpacing: 0.0,
                         ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    child: PagedListView<DocumentSnapshot<Object?>?,
-                        PizzaRecord>.separated(
-                      pagingController: _model.setListViewController2(
-                        PizzaRecord.collection
-                            .orderBy('name', descending: true),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
-                      primary: false,
-                      shrinkWrap: true,
-                      reverse: false,
-                      scrollDirection: Axis.vertical,
-                      separatorBuilder: (_, __) => const SizedBox(height: 4.0),
-                      builderDelegate: PagedChildBuilderDelegate<PizzaRecord>(
-                        // Customize what your widget looks like when it's loading the first page.
-                        firstPageProgressIndicatorBuilder: (_) => Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+                  Container(
+                    width: double.infinity,
+                    height: 300.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: FlutterFlowRadioButton(
+                      options: ProductType.values.map((e) => e.name).toList(),
+                      onChanged: (val) => safeSetState(() {}),
+                      controller: _model.radioButtonValueController ??=
+                          FormFieldController<String>(
+                              ProductType.beautyandhealth.name),
+                      optionHeight: 32.0,
+                      textStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Readex Pro',
+                                letterSpacing: 0.0,
                               ),
-                            ),
-                          ),
-                        ),
-                        // Customize what your widget looks like when it's loading another page.
-                        newPageProgressIndicatorBuilder: (_) => Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+                      selectedTextStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.override(
+                                fontFamily: 'Readex Pro',
+                                letterSpacing: 0.0,
                               ),
-                            ),
-                          ),
-                        ),
-
-                        itemBuilder: (context, _, listViewIndex) {
-                          final listViewPizzaRecord = _model
-                              .listViewPagingController2!
-                              .itemList![listViewIndex];
-                          return Text(
-                            listViewPizzaRecord.name,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                          );
-                        },
-                      ),
-                    ).animateOnPageLoad(
-                        animationsMap['listViewOnPageLoadAnimation']!),
+                      buttonPosition: RadioButtonPosition.left,
+                      direction: Axis.vertical,
+                      radioButtonColor: FlutterFlowTheme.of(context).primary,
+                      inactiveRadioButtonColor:
+                          FlutterFlowTheme.of(context).secondaryText,
+                      toggleable: false,
+                      horizontalAlignment: WrapAlignment.start,
+                      verticalAlignment: WrapCrossAlignment.start,
+                    ),
                   ),
                 ],
               ),
               Align(
-                alignment: const AlignmentDirectional(1.0, 1.0),
+                alignment: AlignmentDirectional(1.0, 1.0),
                 child: wrapWithModel(
                   model: _model.fabModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: const FabWidget(),
+                  child: FabWidget(),
                 ),
               ),
             ],

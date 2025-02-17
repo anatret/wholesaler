@@ -45,7 +45,7 @@ class _ProductsPageWidgetState extends State<ProductsPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(58.0),
+          preferredSize: Size.fromHeight(58.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
@@ -54,19 +54,19 @@ class _ProductsPageWidgetState extends State<ProductsPageWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -87,50 +87,12 @@ class _ProductsPageWidgetState extends State<ProductsPageWidget> {
                           ],
                         ),
                       ),
-                      Stack(
-                        alignment: const AlignmentDirectional(1.0, -1.0),
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 2.0, 5.0, 0.0),
-                            child: Icon(
-                              Icons.notifications_none,
-                              color: Color(0xFF3C3C3C),
-                              size: 24.0,
-                            ),
-                          ),
-                          Container(
-                            width: 16.0,
-                            height: 16.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primary,
-                              shape: BoxShape.circle,
-                            ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'nedjrypz' /* 3 */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 9.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
                     ],
                   ),
                 ),
               ],
             ),
-            actions: const [],
+            actions: [],
             centerTitle: false,
             toolbarHeight: 58.0,
             elevation: 0.0,
@@ -139,13 +101,13 @@ class _ProductsPageWidgetState extends State<ProductsPageWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: ListView(
               padding: EdgeInsets.zero,
               scrollDirection: Axis.vertical,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'iul1iz1d' /* Список продуктов */,
@@ -179,13 +141,13 @@ class _ProductsPageWidgetState extends State<ProductsPageWidget> {
                     return MasonryGridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       gridDelegate:
-                          const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                          SliverSimpleGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       ),
                       crossAxisSpacing: 10.0,
                       mainAxisSpacing: 10.0,
                       itemCount: staggeredViewBanersRecordList.length,
-                      padding: const EdgeInsets.fromLTRB(
+                      padding: EdgeInsets.fromLTRB(
                         0,
                         0,
                         0,
@@ -209,7 +171,7 @@ class _ProductsPageWidgetState extends State<ProductsPageWidget> {
                                     elevation: 0,
                                     insetPadding: EdgeInsets.zero,
                                     backgroundColor: Colors.transparent,
-                                    alignment: const AlignmentDirectional(0.0, 0.0)
+                                    alignment: AlignmentDirectional(0.0, 0.0)
                                         .resolve(Directionality.of(context)),
                                     child: GestureDetector(
                                       onTap: () {
@@ -217,7 +179,7 @@ class _ProductsPageWidgetState extends State<ProductsPageWidget> {
                                         FocusManager.instance.primaryFocus
                                             ?.unfocus();
                                       },
-                                      child: SizedBox(
+                                      child: Container(
                                         height:
                                             MediaQuery.sizeOf(context).height *
                                                 1.0,

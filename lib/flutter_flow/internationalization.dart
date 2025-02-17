@@ -187,18 +187,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // HomePageOld
   {
-    'bu8386f5': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
-    '2wqzgu9f': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     'j9xftzng': {
       'ru': 'Водка',
       'en': 'Vodka',
@@ -325,12 +313,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '즐겨찾기',
       'zh_Hans': '收藏夹',
     },
-    '3j6kfelg': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'ps247s78': {
       'ru': 'Избранное',
       'en': 'Featured',
@@ -364,12 +346,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '바구니',
       'zh_Hans': '篮子',
     },
-    'kgz6qjxl': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'xf38p9sp': {
       'ru': 'Корзина',
       'en': 'Cart',
@@ -379,12 +355,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OrderPage
   {
-    'hbs8h33d': {
-      'ru': '3',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
     '2nu63wtu': {
       'ru': 'Оформление заказа',
       'en': 'Placing an order',
@@ -496,12 +466,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '명령',
       'zh_Hans': '订单',
     },
-    'f1fe1a17': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'cugi6x2m': {
       'ru': 'Заказы',
       'en': 'Orders',
@@ -511,12 +475,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OneOrderUserPage
   {
-    's10yrhop': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     'l0mvspnw': {
       'ru': 'Заказ',
       'en': 'Order',
@@ -573,12 +531,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Profile',
       'ko': '윤곽',
       'zh_Hans': '轮廓',
-    },
-    'f34qcecm': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
     },
     '3jcn9ln5': {
       'ru': 'Профиль',
@@ -684,12 +636,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // AdminPanel
   {
-    '09904rw0': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     'gcyzj88v': {
       'ru': 'Админ панель',
       'en': 'Admin panel',
@@ -759,12 +705,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // PromotionsPage
   {
-    'vyix0zm1': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     'vizj4y05': {
       'ru': 'Список акций',
       'en': 'List of shares',
@@ -780,12 +720,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // EditCopyDeletProduct
   {
-    'zl8t8jdm': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     '1502kfsw': {
       'ru': 'загрузите',
       'en': 'download',
@@ -931,6 +865,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '牛奶',
     },
     '5wbucmxe': {
+      'ru': 'Красота/Здоровье',
+      'en': 'Beauty/Health',
+      'ko': '뷰티/헬스',
+      'zh_Hans': '美容/健康',
+    },
+    'vubwoboz': {
       'ru': 'Прочее',
       'en': 'Other',
       'ko': '다른',
@@ -957,12 +897,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ProductsPage
   {
-    'nedjrypz': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     'iul1iz1d': {
       'ru': 'Список продуктов',
       'en': 'List of products',
@@ -978,12 +912,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ProductDeckPage
   {
-    'nz8x346p': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     '4ogbz3li': {
       'ru': 'Select Size',
       'en': 'Select Size',
@@ -1053,12 +981,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ManagerOrderListPage
   {
-    '1cefj9uw': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     's8tupd5o': {
       'ru': 'Новые',
       'en': 'New',
@@ -1170,12 +1092,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '사진 변경',
       'zh_Hans': '更改照片',
     },
-    'mn2d1u35': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'b5e49uua': {
       'ru': 'Дои',
       'en': 'Home',
@@ -1206,12 +1122,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OneOrderManagerPage
   {
-    'h5tz6tf9': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     '1w9buw09': {
       'ru': 'Заказ',
       'en': 'Order',
@@ -1245,12 +1155,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // MyClients
   {
-    'ts23ei51': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     'vw4cam08': {
       'ru': 'Option 1',
       'en': '',
@@ -1284,12 +1188,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': 'WholeSaler',
       'zh_Hans': 'WholeSaler',
     },
-    '8knbeohg': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'k3ci3v2w': {
       'ru': 'Часто заказывают',
       'en': 'Frequently ordered',
@@ -1311,12 +1209,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // WholeStorePage
   {
-    'asv7rqlm': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'znrsu42u': {
       'ru': 'Водка',
       'en': 'Vodka',
@@ -1456,10 +1348,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '甜点',
     },
     '8evzfba1': {
-      'ru': 'Сигареты',
-      'en': 'Cigarettes',
-      'ko': '담배',
-      'zh_Hans': '香烟',
+      'ru': 'Красота',
+      'en': 'Beauty',
+      'ko': '아름다움',
+      'zh_Hans': '美丽',
     },
     'xahqcoel': {
       'ru': 'Хоз товар',
@@ -1579,12 +1471,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ProfileEdit
   {
-    'sus98qct': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'm0fjc4jk': {
       'ru': '',
       'en': '',
@@ -2062,12 +1948,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '지불하다',
       'zh_Hans': '支付',
     },
-    '7bwrcrwf': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
   },
   // paidPage
   {
@@ -2128,12 +2008,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // SandNoticePage
   {
-    '18to02or': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'ji1kxumb': {
       'ru': 'Рассылка',
       'en': 'Newsletter',
@@ -2257,12 +2131,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
       'zh_Hans': '',
     },
-    'wqybv1d0': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     '0uoq2qyh': {
       'ru': 'Дом',
       'en': 'Home',
@@ -2314,12 +2182,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '보내다',
       'zh_Hans': '发送',
     },
-    'v9g516kr': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
   },
   // checkStoreList
   {
@@ -2328,12 +2190,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Shops under inspection',
       'ko': '점검중인 매장',
       'zh_Hans': '接受检查的商店',
-    },
-    'h6euseda': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
     },
   },
   // checkStorePageAdmin
@@ -2416,12 +2272,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '거절 저장',
       'zh_Hans': '保存拒绝',
     },
-    'z3m57ebj': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'zvj1p7a8': {
       'ru': 'Home',
       'en': 'Home',
@@ -2470,12 +2320,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // AddProduct
   {
-    'd975ub3p': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     '7bhysy77': {
       'ru': 'Добавление продукта',
       'en': 'Adding a product',
@@ -2633,6 +2477,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '牛奶',
     },
     'nodbfg50': {
+      'ru': 'Красота/Здоровье',
+      'en': 'Beauty and health',
+      'ko': '뷰티 앤 헬스',
+      'zh_Hans': '美容与健康',
+    },
+    'hs0ta2o8': {
       'ru': 'Прочее',
       'en': 'Other',
       'ko': '다른',
@@ -2665,12 +2515,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // SearchPage
   {
-    'rawujk8u': {
-      'ru': '1',
-      'en': '1',
-      'ko': '1',
-      'zh_Hans': '1',
-    },
     'j5izztn9': {
       'ru': 'Поиск',
       'en': 'Search',
@@ -2816,7 +2660,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '甜点',
     },
     'ml2hq84j': {
-      'ru': 'Сигареты',
+      'ru': 'Красота',
       'en': 'Cigarettes',
       'ko': '담배',
       'zh_Hans': '香烟',
@@ -2842,102 +2686,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // News
   {
-    'rsf3b9n9': {
-      'ru': '3',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
     'd73geix4': {
       'ru': 'Новости',
       'en': '',
       'ko': '',
       'zh_Hans': '',
     },
-    'ibdyfbsg': {
-      'ru': 'Новая пицца в меню!',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'idigltrj': {
-      'ru': '15 июня 2023',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'runzqmy6': {
-      'ru':
-          'Встречайте нашу новую пиццу \'Маргарита Делюкс\' с особым соусом и свежей моцареллой. Попробуйте первыми со скидкой 20%!',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
     '09n4iybu': {
-      'ru': 'Перейти к пицце',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '98wpar8c': {
-      'ru': 'Акция: 1+1=3',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'fergxz22': {
-      'ru': '10 июня 2023',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '96w9x2r5': {
-      'ru':
-          'При заказе двух больших пицц третья в подарок! Акция действует до конца месяца.',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'h6xdxkmu': {
-      'ru': 'Подробнее об акции',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'qjotita5': {
-      'ru': 'Бесплатная доставка',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'pqrg63hz': {
-      'ru': '5 июня 2023',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'y4mgsryk': {
-      'ru':
-          'Весь июнь бесплатная доставка при заказе от 2000 рублей! Время доставки всего 60 минут или пицца бесплатно.',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    's64z69n4': {
-      'ru': 'Условия акции',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
+      'ru': 'Перейти',
+      'en': 'Go to',
+      'ko': '이동하다',
+      'zh_Hans': '转至',
     },
   },
   // AdminOrderListPage
   {
-    '7lkllle7': {
-      'ru': '3',
-      'en': '3',
-      'ko': '3',
-      'zh_Hans': '3',
-    },
     'tb55yeod': {
       'ru': 'Новые',
       'en': 'New',
@@ -2983,6 +2746,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
       'zh_Hans': '',
     },
+    'j9cfa8gw': {
+      'ru': 'Option 1',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '3jn3hs25': {
+      'ru': 'Option 2',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'bnig5l1p': {
+      'ru': 'Option 3',
+      'en': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
     'td82motw': {
       'ru': 'Home',
       'en': '',
@@ -3004,55 +2785,55 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
       'zh_Hans': '',
     },
-    's1nez2su': {
+    'pmyryumf': {
       'ru': 'История заказов',
       'en': '',
       'ko': '',
       'zh_Hans': '',
     },
-    'a5ghhol0': {
+    '3viblh0l': {
       'ru': 'Заказ #1234',
       'en': '',
       'ko': '',
       'zh_Hans': '',
     },
-    '91hk3jtd': {
+    'gbmnmppi': {
       'ru': '15 июня 2023',
       'en': '',
       'ko': '',
       'zh_Hans': '',
     },
-    't3b5syxr': {
+    'j3p3qkjj': {
       'ru': '2 пиццы • 1500₽',
       'en': '',
       'ko': '',
       'zh_Hans': '',
     },
-    'llf0qo2a': {
+    'adow9ukl': {
       'ru': 'Доставлен',
       'en': '',
       'ko': '',
       'zh_Hans': '',
     },
-    'p7m70gl9': {
+    '76pobey0': {
       'ru': 'Заказ #1233',
       'en': '',
       'ko': '',
       'zh_Hans': '',
     },
-    'qa7qmnsy': {
+    'dwr5hesm': {
       'ru': '10 июня 2023',
       'en': '',
       'ko': '',
       'zh_Hans': '',
     },
-    'h5xfkzqc': {
+    '6lflg9sa': {
       'ru': '1 пицца • 800₽',
       'en': '',
       'ko': '',
       'zh_Hans': '',
     },
-    '8lgjkya8': {
+    'f9vboc8e': {
       'ru': 'Доставлен',
       'en': '',
       'ko': '',
@@ -3064,35 +2845,83 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
       'zh_Hans': '',
     },
-    'd1jh0dtq': {
-      'ru': 'Адреса доставки',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
+  },
+  // addPromotion1
+  {
+    '6nmpt9rm': {
+      'ru': 'Акция',
+      'en': 'Promotion',
+      'ko': '홍보',
+      'zh_Hans': '晋升',
     },
-    'phf6izih': {
-      'ru': 'Дом',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
+    'agow8ucr': {
+      'ru': 'загрузите',
+      'en': 'download',
+      'ko': '다운로드',
+      'zh_Hans': '下载',
     },
-    'zo5upg4v': {
-      'ru': 'ул. Ленина, 123, кв. 45',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
+    'uhl8eatv': {
+      'ru': 'фото акции для ленты 120x160',
+      'en': 'stock photo 120x160',
+      'ko': '액션 사진 120x160',
+      'zh_Hans': '行动照片 120x160',
     },
-    'f51xx9x3': {
-      'ru': 'Работа',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
+    'k01kjzwj': {
+      'ru': 'Формат: JPG, PNG',
+      'en': 'Format: JPG, PNG',
+      'ko': '형식: JPG, PNG',
+      'zh_Hans': '格式：JPG、PNG',
     },
-    'jpzr9qqe': {
-      'ru': 'ул. Пушкина, 10, офис 301',
-      'en': '',
-      'ko': '',
-      'zh_Hans': '',
+    '14isyw6k': {
+      'ru': 'Изменить фото',
+      'en': 'Edit photo',
+      'ko': '사진 변경',
+      'zh_Hans': '更改照片',
+    },
+    '80koprni': {
+      'ru': 'Заглавие акции',
+      'en': 'Title',
+      'ko': '제목',
+      'zh_Hans': '标题',
+    },
+    'aarv8mx0': {
+      'ru': 'Описание',
+      'en': 'Description',
+      'ko': '설명',
+      'zh_Hans': '描述',
+    },
+    'rtblic8e': {
+      'ru': 'Активный',
+      'en': 'Active',
+      'ko': '활동적인',
+      'zh_Hans': '积极的',
+    },
+    'fnvp7wjy': {
+      'ru': 'Сохранить',
+      'en': 'Save',
+      'ko': '구하다',
+      'zh_Hans': '节省',
+    },
+  },
+  // addPromotion2
+  {
+    'ijz24qhx': {
+      'ru': 'Акция',
+      'en': 'Promotion',
+      'ko': '홍보',
+      'zh_Hans': '晋升',
+    },
+    'lr1yadvj': {
+      'ru': 'Акционные товары',
+      'en': 'Promotional items',
+      'ko': '프로모션 아이템',
+      'zh_Hans': '促销品',
+    },
+    '9kc4zyt9': {
+      'ru': 'Сохранить',
+      'en': 'Save',
+      'ko': '구하다',
+      'zh_Hans': '节省',
     },
   },
   // PizzaItem
@@ -3531,6 +3360,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Notification',
       'ko': '공고',
       'zh_Hans': '通知',
+    },
+    '12s6b4b4': {
+      'ru': 'Добавить акцию',
+      'en': 'Hello World',
+      'ko': '안녕하세요 세계',
+      'zh_Hans': '你好世界',
     },
   },
   // Miscellaneous

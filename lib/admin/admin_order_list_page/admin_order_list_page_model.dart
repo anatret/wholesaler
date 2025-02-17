@@ -31,9 +31,7 @@ class AdminOrderListPageModel
 
   @override
   void dispose() {
-    for (var s in listViewStreamSubscriptions) {
-      s?.cancel();
-    }
+    listViewStreamSubscriptions.forEach((s) => s?.cancel());
     listViewPagingController?.dispose();
 
     itemOrderManagerModels.dispose();

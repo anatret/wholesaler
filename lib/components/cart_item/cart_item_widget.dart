@@ -70,8 +70,8 @@ class _CartItemWidgetState extends State<CartItemWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 70.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 70.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -92,13 +92,13 @@ class _CartItemWidgetState extends State<CartItemWidget>
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
       child: Container(
         width: double.infinity,
         height: 180.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
               color: Color(0x2B202529),
@@ -120,7 +120,7 @@ class _CartItemWidgetState extends State<CartItemWidget>
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.network(
@@ -140,7 +140,7 @@ class _CartItemWidgetState extends State<CartItemWidget>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 6.0),
                               child: Text(
                                 valueOrDefault<String>(
@@ -157,7 +157,7 @@ class _CartItemWidgetState extends State<CartItemWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 8.0),
                               child: Text(
                                 valueOrDefault<String>(
@@ -172,7 +172,7 @@ class _CartItemWidgetState extends State<CartItemWidget>
                                     .labelSmall
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: const Color(0xFF5B5B5B),
+                                      color: Color(0xFF5B5B5B),
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -181,11 +181,11 @@ class _CartItemWidgetState extends State<CartItemWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 8.0, 0.0),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFFFF0E6),
+                                      color: Color(0xFFFFF0E6),
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Row(
@@ -216,9 +216,9 @@ class _CartItemWidgetState extends State<CartItemWidget>
                                           child: Container(
                                             width: 48.0,
                                             height: 48.0,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -237,7 +237,7 @@ class _CartItemWidgetState extends State<CartItemWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 9.0, 0.0, 9.0),
                                           child: Text(
                                             '${formatNumber(
@@ -275,9 +275,9 @@ class _CartItemWidgetState extends State<CartItemWidget>
                                           child: Container(
                                             width: 48.0,
                                             height: 48.0,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -301,12 +301,12 @@ class _CartItemWidgetState extends State<CartItemWidget>
                                 Container(
                                   height: 48.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFFFF0E6),
+                                    color: Color(0xFFFFF0E6),
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         18.0, 9.0, 18.0, 9.0),
                                     child: Text(
                                       formatNumber(
@@ -330,9 +330,9 @@ class _CartItemWidgetState extends State<CartItemWidget>
                           ],
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(1.0, -1.0),
+                          alignment: AlignmentDirectional(1.0, -1.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 8.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,

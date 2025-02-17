@@ -16,7 +16,7 @@ class PromotionWidget extends StatefulWidget {
     bool? isEdit,
     this.banner,
     this.url,
-  }) : isEdit = isEdit ?? false;
+  }) : this.isEdit = isEdit ?? false;
 
   final bool isEdit;
   final DocumentReference? banner;
@@ -59,7 +59,7 @@ class _PromotionWidgetState extends State<PromotionWidget> {
       height: double.infinity,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(30.0),
@@ -67,28 +67,28 @@ class _PromotionWidgetState extends State<PromotionWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 4.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 4.0),
                 child: Container(
                   width: 90.0,
                   height: 4.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Color(0xFFD0D0D0),
                   ),
                 ),
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(1.0, -1.0),
+              alignment: AlignmentDirectional(1.0, -1.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 18.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 18.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -97,7 +97,7 @@ class _PromotionWidgetState extends State<PromotionWidget> {
                   onTap: () async {
                     Navigator.pop(context);
                   },
-                  child: const Icon(
+                  child: Icon(
                     Icons.close,
                     color: Color(0xFFBABABA),
                     size: 24.0,
@@ -106,7 +106,7 @@ class _PromotionWidgetState extends State<PromotionWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
               child: Text(
                 FFLocalizations.of(context).getText(
                   'ypagnwf4' /* Акция */,
@@ -122,12 +122,12 @@ class _PromotionWidgetState extends State<PromotionWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
                   child: Container(
                     width: 120.0,
                     height: 160.0,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF3F3F3),
+                      color: Color(0xFFF3F3F3),
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: Image.network(
@@ -237,10 +237,10 @@ class _PromotionWidgetState extends State<PromotionWidget> {
                       options: FFButtonOptions(
                         width: 140.0,
                         height: 34.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -250,18 +250,18 @@ class _PromotionWidgetState extends State<PromotionWidget> {
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                         ),
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                  ].divide(const SizedBox(height: 4.0)),
+                  ].divide(SizedBox(height: 4.0)),
                 ),
               ],
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 36.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 36.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   if (_model.uploadedFileUrl == '') {
@@ -269,13 +269,13 @@ class _PromotionWidgetState extends State<PromotionWidget> {
                       context: context,
                       builder: (alertDialogContext) {
                         return AlertDialog(
-                          title: const Text('Банер не загружен'),
-                          content: const Text('Загрузите банер'),
+                          title: Text('Банер не загружен'),
+                          content: Text('Загрузите банер'),
                           actions: [
                             TextButton(
                               onPressed: () =>
                                   Navigator.pop(alertDialogContext),
-                              child: const Text('Ok'),
+                              child: Text('Ok'),
                             ),
                           ],
                         );
@@ -297,7 +297,7 @@ class _PromotionWidgetState extends State<PromotionWidget> {
                               fontSize: 14.0,
                             ),
                           ),
-                          duration: const Duration(milliseconds: 4000),
+                          duration: Duration(milliseconds: 4000),
                           backgroundColor:
                               FlutterFlowTheme.of(context).secondary,
                         ),
@@ -321,7 +321,7 @@ class _PromotionWidgetState extends State<PromotionWidget> {
                               fontSize: 14.0,
                             ),
                           ),
-                          duration: const Duration(milliseconds: 4000),
+                          duration: Duration(milliseconds: 4000),
                           backgroundColor:
                               FlutterFlowTheme.of(context).secondary,
                         ),
@@ -347,9 +347,9 @@ class _PromotionWidgetState extends State<PromotionWidget> {
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 48.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
@@ -358,7 +358,7 @@ class _PromotionWidgetState extends State<PromotionWidget> {
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
                       ),
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     color: Colors.transparent,
                   ),
                   borderRadius: BorderRadius.circular(30.0),
@@ -367,7 +367,7 @@ class _PromotionWidgetState extends State<PromotionWidget> {
             ),
             if (widget.isEdit)
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -379,13 +379,13 @@ class _PromotionWidgetState extends State<PromotionWidget> {
                       context: context,
                       builder: (alertDialogContext) {
                         return AlertDialog(
-                          title: const Text('Удаление акции'),
-                          content: const Text('Акция удалена'),
+                          title: Text('Удаление акции'),
+                          content: Text('Акция удалена'),
                           actions: [
                             TextButton(
                               onPressed: () =>
                                   Navigator.pop(alertDialogContext),
-                              child: const Text('Ok'),
+                              child: Text('Ok'),
                             ),
                           ],
                         );

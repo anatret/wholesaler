@@ -42,14 +42,14 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         body: Align(
-          alignment: const AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxWidth: 970.0,
             ),
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+              padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -63,7 +63,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                       Container(
                         width: double.infinity,
                         height: 24.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                       ),
                     Material(
                       color: Colors.transparent,
@@ -74,11 +74,11 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFFFF3E0),
+                          color: Color(0xFFFFF3E0),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 16.0, 16.0, 16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -86,7 +86,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  const Icon(
+                                  Icon(
                                     Icons.warning_amber_rounded,
                                     color: Color(0xFFFF6F00),
                                     size: 24.0,
@@ -100,11 +100,11 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                         .headlineSmall
                                         .override(
                                           fontFamily: 'Outfit',
-                                          color: const Color(0xFFFF6F00),
+                                          color: Color(0xFFFF6F00),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
-                                ].divide(const SizedBox(width: 12.0)),
+                                ].divide(SizedBox(width: 12.0)),
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
@@ -114,16 +114,16 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: const Color(0xFFFF6F00),
+                                      color: Color(0xFFFF6F00),
                                       letterSpacing: 0.0,
                                     ),
                               ),
-                            ].divide(const SizedBox(height: 12.0)),
+                            ].divide(SizedBox(height: 12.0)),
                           ),
                         ),
                       ),
                     ),
-                  ].divide(const SizedBox(height: 24.0)),
+                  ].divide(SizedBox(height: 24.0)),
                 ),
               ),
             ),

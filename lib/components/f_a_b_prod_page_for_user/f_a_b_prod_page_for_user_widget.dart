@@ -64,8 +64,8 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-20.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -84,8 +84,8 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
             curve: Curves.easeInOut,
             delay: 600.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-20.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -104,8 +104,8 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(30.0, -30.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(30.0, -30.0),
           ),
         ],
       ),
@@ -124,8 +124,8 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 1.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -159,9 +159,9 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
 
     return Container(
       width: 100.0,
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 16.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -180,7 +180,7 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -239,7 +239,7 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
                             color: FlutterFlowTheme.of(context).secondaryText,
                           ),
                           child: Stack(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             children: [
                               FlutterFlowIconButton(
                                 borderRadius: 50.0,
@@ -254,7 +254,7 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
                                   context.pushNamed(
                                     'CartPage',
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: const TransitionInfo(
+                                      kTransitionInfoKey: TransitionInfo(
                                         hasTransition: true,
                                         transitionType:
                                             PageTransitionType.scale,
@@ -265,7 +265,7 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
                                 },
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.6, -0.6),
+                                alignment: AlignmentDirectional(0.6, -0.6),
                                 child: Text(
                                   valueOrDefault<String>(
                                     functions
@@ -290,7 +290,7 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
                         ).animateOnActionTrigger(
                           animationsMap['containerOnActionTriggerAnimation3']!,
                         ),
-                      ].divide(const SizedBox(height: 20.0)),
+                      ].divide(SizedBox(height: 20.0)),
                     ),
                   ),
                 ),
@@ -298,7 +298,7 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
                 animationsMap['containerOnActionTriggerAnimation1']!,
               ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -381,14 +381,14 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
                       color: FlutterFlowTheme.of(context).primary,
                       shape: BoxShape.circle,
                     ),
-                    child: SizedBox(
+                    child: Container(
                       width: 65.0,
                       child: Stack(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         children: [
                           Transform.rotate(
                             angle: -45.0 * (math.pi / 180),
-                            child: const Padding(
+                            child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   5.0, 0.0, 0.0, 0.0),
                               child: Icon(
@@ -400,7 +400,7 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
                           ).animateOnActionTrigger(
                             animationsMap['transformOnActionTriggerAnimation']!,
                           ),
-                          const Icon(
+                          Icon(
                             Icons.close_rounded,
                             color: Colors.white,
                             size: 24.0,
@@ -414,7 +414,7 @@ class _FABProdPageForUserWidgetState extends State<FABProdPageForUserWidget>
                 ),
               ),
             ),
-          ].divide(const SizedBox(height: 10.0)),
+          ].divide(SizedBox(height: 10.0)),
         ),
       ),
     );

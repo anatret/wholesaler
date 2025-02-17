@@ -47,15 +47,15 @@ class _OftenOrderedWidgetState extends State<OftenOrderedWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
       child: Container(
         height: 100.0,
-        constraints: const BoxConstraints(
+        constraints: BoxConstraints(
           minWidth: 200.0,
         ),
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
               color: Color(0x2B202529),
@@ -68,12 +68,12 @@ class _OftenOrderedWidgetState extends State<OftenOrderedWidget> {
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 10.0),
+          padding: EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 10.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 6.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 6.0, 0.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(0.0),
                   child: Image.network(
@@ -90,7 +90,7 @@ class _OftenOrderedWidgetState extends State<OftenOrderedWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
                     child: Text(
                       valueOrDefault<String>(
                         widget.name,
@@ -106,12 +106,12 @@ class _OftenOrderedWidgetState extends State<OftenOrderedWidget> {
                     ),
                   ),
                   Text(
-                    formatNumber(
+                    '${formatNumber(
                       widget.price,
                       formatType: FormatType.decimal,
                       decimalType: DecimalType.automatic,
                       currency: '₩ ',
-                    ),
+                    )}',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Readex Pro',
                           fontSize: 12.0,

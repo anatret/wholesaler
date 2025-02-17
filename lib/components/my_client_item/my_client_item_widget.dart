@@ -44,7 +44,7 @@ class _MyClientItemWidgetState extends State<MyClientItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
       child: StreamBuilder<UserRecord>(
         stream: UserRecord.getDocument(widget.userRef!),
         builder: (context, snapshot) {
@@ -73,7 +73,7 @@ class _MyClientItemWidgetState extends State<MyClientItemWidget> {
                 BoxShadow(
                   blurRadius: 0.0,
                   color: FlutterFlowTheme.of(context).alternate,
-                  offset: const Offset(
+                  offset: Offset(
                     0.0,
                     1.0,
                   ),
@@ -81,7 +81,7 @@ class _MyClientItemWidgetState extends State<MyClientItemWidget> {
               ],
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 6.0, 16.0, 6.0),
+              padding: EdgeInsetsDirectional.fromSTEB(16.0, 6.0, 16.0, 6.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -93,7 +93,7 @@ class _MyClientItemWidgetState extends State<MyClientItemWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Text(
                             containerUserRecord.displayName,
                             style: FlutterFlowTheme.of(context)
@@ -105,7 +105,7 @@ class _MyClientItemWidgetState extends State<MyClientItemWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: StreamBuilder<List<StoresRecord>>(
                             stream: queryStoresRecord(
                               queryBuilder: (storesRecord) =>
@@ -210,7 +210,7 @@ class _MyClientItemWidgetState extends State<MyClientItemWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 6.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(

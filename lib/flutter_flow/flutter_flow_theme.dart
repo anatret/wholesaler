@@ -122,7 +122,7 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
 
-  late Color colorLink = const Color(0xFF1E90FF);
+  late Color colorLink = Color(0xFF1E90FF);
 }
 
 abstract class Typography {
@@ -187,7 +187,7 @@ class ThemeTypography extends Typography {
   String get headlineLargeFamily => 'Outfit';
   TextStyle get headlineLarge => GoogleFonts.getFont(
         'Outfit',
-        color: const Color(0xFF3C3C3C),
+        color: Color(0xFF3C3C3C),
         fontWeight: FontWeight.w600,
         fontSize: 32.0,
       );
@@ -264,7 +264,7 @@ class ThemeTypography extends Typography {
   String get bodySmallFamily => 'Readex Pro';
   TextStyle get bodySmall => GoogleFonts.getFont(
         'Readex Pro',
-        color: const Color(0xFFD15700),
+        color: Color(0xFFD15700),
         fontWeight: FontWeight.w600,
         fontSize: 12.0,
       );

@@ -5,16 +5,15 @@ import '/components/add_to_cart_count/add_to_cart_count_widget.dart';
 import '/components/fab/f_a_b_prod_edit_for_admin/f_a_b_prod_edit_for_admin_widget.dart';
 import '/components/fab/f_a_b_whole_store_page/f_a_b_whole_store_page_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'product_deck_page_model.dart';
 export 'product_deck_page_model.dart';
 
@@ -92,7 +91,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(58.0),
+              preferredSize: Size.fromHeight(58.0),
               child: AppBar(
                 backgroundColor:
                     FlutterFlowTheme.of(context).secondaryBackground,
@@ -118,7 +117,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                           child: Container(
                             width: 36.0,
                             height: 36.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Icon(
                               Icons.arrow_back,
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -126,46 +125,11 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                             ),
                           ),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            badges.Badge(
-                              badgeContent: Text(
-                                FFLocalizations.of(context).getText(
-                                  'nz8x346p' /* 1 */,
-                                ),
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Colors.white,
-                                      fontSize: 12.0,
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                              showBadge: true,
-                              shape: badges.BadgeShape.circle,
-                              badgeColor: FlutterFlowTheme.of(context).primary,
-                              elevation: 0.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 8.0, 8.0, 8.0),
-                              position: badges.BadgePosition.topEnd(),
-                              animationType: badges.BadgeAnimationType.scale,
-                              toAnimate: true,
-                              child: Icon(
-                                Icons.notifications_outlined,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 26.0,
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ],
                 ),
-                actions: const [],
+                actions: [],
                 centerTitle: false,
                 toolbarHeight: 58.0,
                 elevation: 0.0,
@@ -195,18 +159,18 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                 return Stack(
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxWidth: 450.0,
                         ),
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 300.0,
                                 child: Stack(
@@ -231,69 +195,104 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 16.0, 16.0, 16.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.end,
                                         children: [
-                                          if (false)
-                                            FlutterFlowIconButton(
-                                              borderRadius: 20.0,
-                                              buttonSize: 40.0,
-                                              fillColor: const Color(0x33FFFFFF),
-                                              icon: const Icon(
-                                                Icons.favorite_border,
-                                                color: Colors.white,
-                                                size: 24.0,
-                                              ),
-                                              onPressed: () {
-                                                print('IconButton pressed ...');
-                                              },
-                                            ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: 48.0,
+                                                height: 48.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
                                                       .alternate,
-                                              borderRadius:
-                                                  BorderRadius.circular(24.0),
-                                            ),
-                                            child: ToggleIcon(
-                                              onPressed: () async {
-                                                safeSetState(
-                                                  () => FFAppState()
-                                                          .favorits
-                                                          .contains(widget
-                                                              .productRef)
-                                                      ? FFAppState()
-                                                          .removeFromFavorits(
-                                                              widget
-                                                                  .productRef!)
-                                                      : FFAppState()
-                                                          .addToFavorits(widget
-                                                              .productRef!),
-                                                );
-                                              },
-                                              value: FFAppState()
-                                                  .favorits
-                                                  .contains(widget.productRef),
-                                              onIcon: Icon(
-                                                Icons.favorite_sharp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          24.0),
+                                                ),
+                                                child: ToggleIcon(
+                                                  onPressed: () async {
+                                                    safeSetState(
+                                                      () => FFAppState()
+                                                              .favorits
+                                                              .contains(widget
+                                                                  .productRef)
+                                                          ? FFAppState()
+                                                              .removeFromFavorits(
+                                                                  widget
+                                                                      .productRef!)
+                                                          : FFAppState()
+                                                              .addToFavorits(widget
+                                                                  .productRef!),
+                                                    );
+                                                  },
+                                                  value: FFAppState()
+                                                      .favorits
+                                                      .contains(
+                                                          widget.productRef),
+                                                  onIcon: Icon(
+                                                    Icons.favorite_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .error,
-                                                size: 24.0,
-                                              ),
-                                              offIcon: Icon(
-                                                Icons.favorite_border,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                                    size: 24.0,
+                                                  ),
+                                                  offIcon: Icon(
+                                                    Icons.favorite_border,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .secondaryBackground,
-                                                size: 24.0,
+                                                    size: 24.0,
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                              Container(
+                                                width: 48.0,
+                                                height: 48.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .alternate,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          24.0),
+                                                  shape: BoxShape.rectangle,
+                                                ),
+                                                child: Builder(
+                                                  builder: (context) => InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      await Share.share(
+                                                        'wholesaler://wholesaler.com${GoRouterState.of(context).uri.toString()}',
+                                                        sharePositionOrigin:
+                                                            getWidgetBoundingBox(
+                                                                context),
+                                                      );
+                                                    },
+                                                    child: Icon(
+                                                      Icons.share_outlined,
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      size: 24.0,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ].divide(SizedBox(height: 4.0)),
                                           ),
                                         ],
                                       ),
@@ -306,7 +305,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(0.0),
                                     bottomRight: Radius.circular(0.0),
                                     topLeft: Radius.circular(32.0),
@@ -314,7 +313,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 12.0, 24.0, 24.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
@@ -326,9 +325,9 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(1.0, 0.0),
+                                                AlignmentDirectional(1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 0.0, 12.0),
                                               child: Row(
@@ -338,7 +337,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                                         .spaceBetween,
                                                 children: [
                                                   Text(
-                                                    formatNumber(
+                                                    '${formatNumber(
                                                       productDeckPagePizzaRecord
                                                           .price,
                                                       formatType:
@@ -346,7 +345,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                                       decimalType:
                                                           DecimalType.automatic,
                                                       currency: '₩ ',
-                                                    ),
+                                                    )}',
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -396,7 +395,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               productDeckPagePizzaRecord
@@ -417,7 +416,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                           if (productDeckPagePizzaRecord
                                               .itsCoupang)
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 12.0, 0.0, 0.0),
                                               child: InkWell(
@@ -462,13 +461,13 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                               MediaQuery.sizeOf(context).width *
                                                   1.0,
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFFF3F3F3),
+                                            color: Color(0xFFF3F3F3),
                                             borderRadius:
                                                 BorderRadius.circular(12.0),
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 16.0, 16.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
@@ -586,7 +585,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                                   ),
                                                   wrapped: true,
                                                 ),
-                                              ].divide(const SizedBox(height: 12.0)),
+                                              ].divide(SizedBox(height: 12.0)),
                                             ),
                                           ),
                                         ),
@@ -596,13 +595,13 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                               MediaQuery.sizeOf(context).width *
                                                   1.0,
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFFF3F3F3),
+                                            color: Color(0xFFF3F3F3),
                                             borderRadius:
                                                 BorderRadius.circular(12.0),
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 16.0, 16.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
@@ -720,28 +719,31 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                                   ),
                                                   wrapped: true,
                                                 ),
-                                              ].divide(const SizedBox(height: 12.0)),
+                                              ].divide(SizedBox(height: 12.0)),
                                             ),
                                           ),
                                         ),
-                                    ].divide(const SizedBox(height: 20.0)),
+                                    ].divide(SizedBox(height: 20.0)),
                                   ),
                                 ),
                               ),
-                            ].addToEnd(const SizedBox(height: 100.0)),
+                            ].addToEnd(SizedBox(height: 100.0)),
                           ),
                         ),
                       ),
                     ),
                     if (!productDeckPagePizzaRecord.itsCoupang)
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 8.0),
                           child: Container(
                             height: 80.0,
-                            decoration: const BoxDecoration(),
+                            constraints: BoxConstraints(
+                              maxWidth: 450.0,
+                            ),
+                            decoration: BoxDecoration(),
                             child: Visibility(
                               visible: (currentUserDocument?.userType ==
                                       UserTypes.user) ||
@@ -759,7 +761,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                         widget.productRef!)) {
                                       return Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 1.0),
+                                            AlignmentDirectional(0.0, 1.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -807,23 +809,23 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                                               builder:
                                                                   (alertDialogContext) {
                                                                 return AlertDialog(
-                                                                  title: const Text(
+                                                                  title: Text(
                                                                       'Ошибка добавления'),
-                                                                  content: const Text(
+                                                                  content: Text(
                                                                       'В корзине уже находятся товары от другого поставщика. Пожалуйста, завершите оформление текущего заказа или очистите корзину, чтобы добавить новый товар.'),
                                                                   actions: [
                                                                     TextButton(
                                                                       onPressed: () => Navigator.pop(
                                                                           alertDialogContext,
                                                                           false),
-                                                                      child: const Text(
+                                                                      child: Text(
                                                                           'Отмена'),
                                                                     ),
                                                                     TextButton(
                                                                       onPressed: () => Navigator.pop(
                                                                           alertDialogContext,
                                                                           true),
-                                                                      child: const Text(
+                                                                      child: Text(
                                                                           'Очистить и добавить '),
                                                                     ),
                                                                   ],
@@ -876,7 +878,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                                                       0.0,
                                                                 ),
                                                       ),
-                                                      duration: const Duration(
+                                                      duration: Duration(
                                                           milliseconds: 1500),
                                                       backgroundColor:
                                                           FlutterFlowTheme.of(
@@ -890,11 +892,11 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                                 options: FFButtonOptions(
                                                   width: 24.0,
                                                   height: 24.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -912,7 +914,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                   ),
                                                   borderRadius:
@@ -935,7 +937,7 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                                     } else {
                                       return Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'u3qxtluf' /* Продукт уже есть в вашей корзи... */,
@@ -964,9 +966,9 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                     if ((currentUserDocument?.userType == UserTypes.manager) ||
                         (currentUserDocument?.userType == UserTypes.admin))
                       Align(
-                        alignment: const AlignmentDirectional(1.0, 1.0),
+                        alignment: AlignmentDirectional(1.0, 1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 80.0),
                           child: AuthUserStreamWidget(
                             builder: (context) => wrapWithModel(
@@ -979,11 +981,12 @@ class _ProductDeckPageWidgetState extends State<ProductDeckPageWidget> {
                           ),
                         ),
                       ),
-                    if (currentUserDocument?.userType == UserTypes.user)
+                    if ((currentUserDocument?.userType == UserTypes.user) &&
+                        !productDeckPagePizzaRecord.itsCoupang)
                       Align(
-                        alignment: const AlignmentDirectional(1.0, 1.0),
+                        alignment: AlignmentDirectional(1.0, 1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 80.0),
                           child: AuthUserStreamWidget(
                             builder: (context) => wrapWithModel(

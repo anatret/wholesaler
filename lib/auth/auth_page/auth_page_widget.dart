@@ -75,9 +75,9 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 40.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
@@ -91,12 +91,12 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                         ),
                       ),
                       Container(
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxWidth: 400.0,
                         ),
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               40.0, 0.0, 40.0, 0.0),
                           child: SingleChildScrollView(
                             primary: false,
@@ -104,7 +104,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 8.0),
                                   child: TextFormField(
                                     controller: _model.emailFieldTextController,
@@ -189,7 +189,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 8.0),
                                   child: TextFormField(
                                     controller: _model.passFieldTextController,
@@ -288,11 +288,11 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      var shouldSetState = false;
+                                      var _shouldSetState = false;
                                       GoRouter.of(context).prepareAuthEvent();
 
                                       final user =
@@ -315,7 +315,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                         ),
                                         singleRecord: true,
                                       ).then((s) => s.firstOrNull);
-                                      shouldSetState = true;
+                                      _shouldSetState = true;
                                       if ((_model.usersStore != null) == true) {
                                         if ((_model.usersStore?.verifyStatus ==
                                                 null) ||
@@ -350,7 +350,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               );
@@ -368,7 +368,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             }.withoutNulls,
                                             extra: <String, dynamic>{
                                               kTransitionInfoKey:
-                                                  const TransitionInfo(
+                                                  TransitionInfo(
                                                 hasTransition: true,
                                                 transitionType:
                                                     PageTransitionType.scale,
@@ -378,9 +378,8 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             },
                                           );
 
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         } else if (_model
                                                 .usersStore?.verifyStatus ==
@@ -395,7 +394,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             context.mounted,
                                             extra: <String, dynamic>{
                                               kTransitionInfoKey:
-                                                  const TransitionInfo(
+                                                  TransitionInfo(
                                                 hasTransition: true,
                                                 transitionType:
                                                     PageTransitionType.scale,
@@ -419,7 +418,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
-                                          shouldSetState = true;
+                                          _shouldSetState = true;
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
@@ -443,7 +442,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               );
@@ -461,7 +460,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             }.withoutNulls,
                                             extra: <String, dynamic>{
                                               kTransitionInfoKey:
-                                                  const TransitionInfo(
+                                                  TransitionInfo(
                                                 hasTransition: true,
                                                 transitionType:
                                                     PageTransitionType.scale,
@@ -471,9 +470,12 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             },
                                           );
 
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
+                                          return;
+                                        } else {
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
                                           return;
                                         }
                                       } else {
@@ -481,16 +483,21 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                           'RegNewStorePre',
                                           context.mounted,
                                           extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
+                                            kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
+                                              transitionType:
+                                                  PageTransitionType.scale,
+                                              alignment: Alignment.bottomCenter,
                                             ),
                                           },
                                         );
+
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                        return;
                                       }
 
-                                      if (shouldSetState) safeSetState(() {});
+                                      if (_shouldSetState) safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'gnvt3by0' /* Логин */,
@@ -498,10 +505,10 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     options: FFButtonOptions(
                                       width: double.infinity,
                                       height: 48.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -514,7 +521,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.transparent,
                                       ),
                                       borderRadius: BorderRadius.circular(30.0),
@@ -522,7 +529,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 40.0, 0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -552,11 +559,11 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                           ),
                         ),
                       ),
-                    ].addToStart(const SizedBox(height: 60.0)),
+                    ].addToStart(SizedBox(height: 60.0)),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 48.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 48.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -571,7 +578,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Inter',
-                            color: const Color(0xFFB1B1B1),
+                            color: Color(0xFFB1B1B1),
                             fontSize: 14.0,
                             letterSpacing: 0.0,
                             decoration: TextDecoration.underline,

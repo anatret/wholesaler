@@ -13,6 +13,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
@@ -77,7 +78,9 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
         queryBuilder: (pizzaRecord) => pizzaRecord
             .where(
               'isDeleted',
-              isEqualTo: _model.showDeletedCheckboxValue ?? false,
+              isEqualTo: _model.showDeletedCheckboxValue != null
+                  ? _model.showDeletedCheckboxValue
+                  : false,
             )
             .where(
               'productType',
@@ -131,7 +134,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                     context.pushNamed(
                       'AddProduct',
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: const TransitionInfo(
+                        kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.scale,
                           alignment: Alignment.bottomCenter,
@@ -142,9 +145,9 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                   child: Container(
                     width: double.infinity,
                     height: double.infinity,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Stack(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       children: [
                         Icon(
                           Icons.add,
@@ -159,7 +162,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
             ),
           ),
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(58.0),
+            preferredSize: Size.fromHeight(58.0),
             child: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
               automaticallyImplyLeading: false,
@@ -169,87 +172,162 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          decoration: const BoxDecoration(),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 5.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.safePop();
-                                  },
-                                  child: Icon(
-                                    Icons.arrow_back,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.safePop();
+                          },
+                          child: Container(
+                            width: 36.0,
+                            height: 36.0,
+                            decoration: BoxDecoration(),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 5.0, 0.0),
+                              child: Icon(
+                                Icons.arrow_back,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 26.0,
                               ),
-                            ],
+                            ),
                           ),
                         ),
-                        badges.Badge(
-                          badgeContent: Text(
-                            FFLocalizations.of(context).getText(
-                              'asv7rqlm' /* 1 */,
+                        FutureBuilder<int>(
+                          future: queryUserReadRecordCount(
+                            queryBuilder: (userReadRecord) =>
+                                userReadRecord.where(
+                              'userRef',
+                              isEqualTo: currentUserReference,
                             ),
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Colors.white,
-                                  fontSize: 12.0,
-                                  letterSpacing: 0.0,
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 26.0,
+                                  height: 26.0,
+                                  child: SpinKitRipple(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 26.0,
+                                  ),
                                 ),
-                          ),
-                          showBadge: true,
-                          shape: badges.BadgeShape.circle,
-                          badgeColor: FlutterFlowTheme.of(context).primary,
-                          elevation: 0.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              8.0, 8.0, 8.0, 8.0),
-                          position: badges.BadgePosition.topEnd(),
-                          animationType: badges.BadgeAnimationType.scale,
-                          toAnimate: true,
-                          child: Icon(
-                            Icons.notifications_outlined,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 26.0,
-                          ),
+                              );
+                            }
+                            int containerCount = snapshot.data!;
+
+                            return Container(
+                              decoration: BoxDecoration(),
+                              child: FutureBuilder<int>(
+                                future: queryNewsRecordCount(),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 26.0,
+                                        height: 26.0,
+                                        child: SpinKitRipple(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 26.0,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  int badgeCount = snapshot.data!;
+
+                                  return InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'News',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.scale,
+                                            alignment: Alignment.bottomCenter,
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    child: badges.Badge(
+                                      badgeContent: Text(
+                                        valueOrDefault<String>(
+                                          (badgeCount - containerCount)
+                                              .toString(),
+                                          '0',
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color: Colors.white,
+                                              fontSize: 12.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                      showBadge: valueOrDefault<String>(
+                                            (badgeCount - containerCount)
+                                                .toString(),
+                                            '0',
+                                          ) !=
+                                          '0',
+                                      shape: badges.BadgeShape.circle,
+                                      badgeColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      elevation: 0.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 8.0, 8.0, 8.0),
+                                      position: badges.BadgePosition.topEnd(),
+                                      animationType:
+                                          badges.BadgeAnimationType.scale,
+                                      toAnimate: true,
+                                      child: Icon(
+                                        Icons.notifications_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 26.0,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),
                   ),
                 ],
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               toolbarHeight: 58.0,
               elevation: 0.0,
             ),
           ),
           body: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 450.0,
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: StreamBuilder<StoresRecord>(
                 stream: StoresRecord.getDocument(widget.wholeStore!),
                 builder: (context, snapshot) {
@@ -278,7 +356,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 12.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -290,7 +368,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                           return GridView(
                                             padding: EdgeInsets.zero,
                                             gridDelegate:
-                                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                                SliverGridDelegateWithFixedCrossAxisCount(
                                               crossAxisCount: 4,
                                               crossAxisSpacing: 10.0,
                                               mainAxisSpacing: 5.0,
@@ -322,7 +400,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -339,7 +417,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(6.0, 6.0,
                                                                 10.0, 6.0),
                                                     child: Row(
@@ -355,7 +433,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                         if (false)
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -433,7 +511,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -450,7 +528,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(6.0, 6.0,
                                                                 10.0, 6.0),
                                                     child: Row(
@@ -466,7 +544,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                         if (false)
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -544,7 +622,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -561,7 +639,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(6.0, 6.0,
                                                                 10.0, 6.0),
                                                     child: Row(
@@ -577,7 +655,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                         if (false)
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -653,7 +731,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -670,7 +748,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(6.0, 6.0,
                                                                 10.0, 6.0),
                                                     child: Row(
@@ -686,7 +764,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                         if (false)
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -762,7 +840,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -779,7 +857,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(6.0, 6.0,
                                                                 10.0, 6.0),
                                                     child: Row(
@@ -795,7 +873,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                         if (false)
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -871,7 +949,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -888,7 +966,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(6.0, 6.0,
                                                                 10.0, 6.0),
                                                     child: Column(
@@ -955,7 +1033,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -972,7 +1050,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(6.0, 6.0,
                                                                 10.0, 6.0),
                                                     child: Row(
@@ -988,7 +1066,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                         if (false)
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1057,7 +1135,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    boxShadow: const [
+                                                    boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4.0,
                                                         color:
@@ -1074,7 +1152,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(6.0, 6.0,
                                                                 10.0, 6.0),
                                                     child: Row(
@@ -1090,7 +1168,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                         if (false)
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1128,11 +1206,11 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                         } else {
                                           return Align(
                                             alignment:
-                                                const AlignmentDirectional(1.0, -1.0),
+                                                AlignmentDirectional(1.0, -1.0),
                                             child: GridView(
                                               padding: EdgeInsets.zero,
                                               gridDelegate:
-                                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                                  SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 4,
                                                 crossAxisSpacing: 10.0,
                                                 mainAxisSpacing: 5.0,
@@ -1167,7 +1245,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -1184,7 +1262,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -1203,7 +1281,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1283,7 +1361,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -1300,7 +1378,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -1319,7 +1397,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1399,7 +1477,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -1416,7 +1494,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -1435,7 +1513,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1515,7 +1593,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -1532,7 +1610,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -1551,7 +1629,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1631,7 +1709,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -1648,7 +1726,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -1667,7 +1745,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1748,7 +1826,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -1765,7 +1843,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -1784,7 +1862,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1864,7 +1942,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -1881,7 +1959,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -1900,7 +1978,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1981,7 +2059,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -1998,7 +2076,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -2017,7 +2095,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -2097,7 +2175,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -2114,7 +2192,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -2133,7 +2211,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -2213,7 +2291,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -2230,7 +2308,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -2249,7 +2327,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -2329,7 +2407,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -2346,7 +2424,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -2365,7 +2443,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -2445,7 +2523,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -2462,7 +2540,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -2481,7 +2559,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -2561,7 +2639,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -2578,7 +2656,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -2597,7 +2675,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -2679,7 +2757,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
-                                                        boxShadow: const [
+                                                        boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -2696,7 +2774,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     6.0,
                                                                     6.0,
@@ -2715,7 +2793,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                             if (false)
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -2796,7 +2874,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
-                                                        boxShadow: const [
+                                                        boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -2813,7 +2891,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     6.0,
                                                                     6.0,
@@ -2832,7 +2910,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                             if (false)
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -2911,7 +2989,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -2928,7 +3006,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -2947,7 +3025,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -3001,122 +3079,123 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                                if (false)
-                                                  InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      if (_model.tap ==
-                                                          ProductType.dessert) {
-                                                        _model.tap = null;
-                                                        safeSetState(() {});
-                                                      } else {
-                                                        _model.tap =
-                                                            ProductType.dessert;
-                                                        safeSetState(() {});
-                                                      }
-                                                    },
-                                                    child: Container(
-                                                      height: 30.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        boxShadow: const [
-                                                          BoxShadow(
-                                                            blurRadius: 4.0,
-                                                            color: Color(
-                                                                0x2B202529),
-                                                            offset: Offset(
-                                                              0.0,
-                                                              2.0,
-                                                            ),
-                                                          )
-                                                        ],
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    6.0,
-                                                                    6.0,
-                                                                    10.0,
-                                                                    6.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            if (false)
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            4.0,
+                                                InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    if (_model.tap ==
+                                                        ProductType
+                                                            .beautyandhealth) {
+                                                      _model.tap = null;
+                                                      safeSetState(() {});
+                                                    } else {
+                                                      _model.tap = ProductType
+                                                          .beautyandhealth;
+                                                      safeSetState(() {});
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    height: 30.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          blurRadius: 4.0,
+                                                          color:
+                                                              Color(0x2B202529),
+                                                          offset: Offset(
+                                                            0.0,
+                                                            2.0,
+                                                          ),
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  6.0,
+                                                                  6.0,
+                                                                  10.0,
+                                                                  6.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          if (false)
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          4.0,
+                                                                          0.0),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
                                                                             0.0),
                                                                 child:
-                                                                    ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              0.0),
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/images/pizzaicon.png',
-                                                                    width: 16.0,
-                                                                    height:
-                                                                        16.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
+                                                                    Image.asset(
+                                                                  'assets/images/pizzaicon.png',
+                                                                  width: 16.0,
+                                                                  height: 16.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
                                                                 ),
                                                               ),
-                                                            Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                '8evzfba1' /* Сигареты */,
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    color: _model.tap ==
-                                                                            ProductType
-                                                                                .dessert
-                                                                        ? FlutterFlowTheme.of(context)
-                                                                            .primary
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                    fontSize:
-                                                                        12.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
                                                             ),
-                                                          ],
-                                                        ),
+                                                          Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              '8evzfba1' /* Красота */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  color: _model
+                                                                              .tap ==
+                                                                          ProductType
+                                                                              .beautyandhealth
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                  fontSize:
+                                                                      12.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
+                                                ),
                                                 InkWell(
                                                   splashColor:
                                                       Colors.transparent,
@@ -3144,7 +3223,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -3161,7 +3240,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -3180,7 +3259,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -3260,7 +3339,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -3277,7 +3356,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -3296,7 +3375,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -3370,7 +3449,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -3387,7 +3466,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   6.0,
                                                                   6.0,
@@ -3406,7 +3485,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           if (false)
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -3486,7 +3565,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                 rowBanersRecordList[rowIndex];
                                             return Builder(
                                               builder: (context) => Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 12.0),
                                                 child: InkWell(
@@ -3509,12 +3588,12 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           backgroundColor:
                                                               Colors
                                                                   .transparent,
-                                                          alignment: const AlignmentDirectional(
+                                                          alignment: AlignmentDirectional(
                                                                   0.0, 0.0)
                                                               .resolve(
                                                                   Directionality.of(
                                                                       context)),
-                                                          child: SizedBox(
+                                                          child: Container(
                                                             height: MediaQuery
                                                                         .sizeOf(
                                                                             context)
@@ -3571,9 +3650,9 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                               ),
                                             );
                                           })
-                                              .divide(const SizedBox(width: 8.0))
-                                              .addToStart(const SizedBox(width: 16.0))
-                                              .addToEnd(const SizedBox(width: 16.0)),
+                                              .divide(SizedBox(width: 8.0))
+                                              .addToStart(SizedBox(width: 16.0))
+                                              .addToEnd(SizedBox(width: 16.0)),
                                         ),
                                       );
                                     },
@@ -3618,7 +3697,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                 rowBanersRecordList[rowIndex];
                                             return Builder(
                                               builder: (context) => Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 12.0),
                                                 child: InkWell(
@@ -3641,12 +3720,12 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                           backgroundColor:
                                                               Colors
                                                                   .transparent,
-                                                          alignment: const AlignmentDirectional(
+                                                          alignment: AlignmentDirectional(
                                                                   0.0, 0.0)
                                                               .resolve(
                                                                   Directionality.of(
                                                                       context)),
-                                                          child: SizedBox(
+                                                          child: Container(
                                                             height: MediaQuery
                                                                         .sizeOf(
                                                                             context)
@@ -3703,9 +3782,9 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                               ),
                                             );
                                           })
-                                              .divide(const SizedBox(width: 8.0))
-                                              .addToStart(const SizedBox(width: 16.0))
-                                              .addToEnd(const SizedBox(width: 16.0)),
+                                              .divide(SizedBox(width: 8.0))
+                                              .addToStart(SizedBox(width: 16.0))
+                                              .addToEnd(SizedBox(width: 16.0)),
                                         ),
                                       );
                                     },
@@ -3714,7 +3793,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                               },
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 4.0, 16.0, 16.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -3784,9 +3863,9 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                         ),
                                       );
                                     })
-                                            .divide(const SizedBox(width: 8.0))
-                                            .addToStart(const SizedBox(width: 16.0))
-                                            .addToEnd(const SizedBox(width: 16.0)),
+                                            .divide(SizedBox(width: 8.0))
+                                            .addToStart(SizedBox(width: 16.0))
+                                            .addToEnd(SizedBox(width: 16.0)),
                                   ),
                                 );
                               },
@@ -3796,13 +3875,13 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Expanded(
-                                        child: SizedBox(
+                                        child: Container(
                                           width: 200.0,
                                           child: TextFormField(
                                             controller: _model
@@ -3812,7 +3891,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                             onChanged: (_) =>
                                                 EasyDebounce.debounce(
                                               '_model.searchTextFieldTextController',
-                                              const Duration(milliseconds: 2000),
+                                              Duration(milliseconds: 2000),
                                               () async {
                                                 if (_model.searchTextFieldTextController
                                                             .text !=
@@ -4026,7 +4105,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                     (currentUserDocument?.userType ==
                                         UserTypes.admin))
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 16.0, 0.0),
                                     child: AuthUserStreamWidget(
                                       builder: (context) => Row(
@@ -4094,7 +4173,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                     ),
                                   ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 0.0),
                                   child: Builder(
                                     builder: (context) {
@@ -4104,19 +4183,19 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                               : wholeStorePagePizzaRecordList)
                                           .toList();
                                       if (llistOfPizza2.isEmpty) {
-                                        return const EmptyProductListWidget();
+                                        return EmptyProductListWidget();
                                       }
 
                                       return MasonryGridView.builder(
                                         physics:
                                             const NeverScrollableScrollPhysics(),
                                         gridDelegate:
-                                            const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                            SliverSimpleGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 3,
                                         ),
                                         crossAxisSpacing: 4.0,
                                         itemCount: llistOfPizza2.length,
-                                        padding: const EdgeInsets.fromLTRB(
+                                        padding: EdgeInsets.fromLTRB(
                                           0,
                                           8.0,
                                           0,
@@ -4160,7 +4239,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                                     }.withoutNulls,
                                                     extra: <String, dynamic>{
                                                       kTransitionInfoKey:
-                                                          const TransitionInfo(
+                                                          TransitionInfo(
                                                         hasTransition: true,
                                                         transitionType:
                                                             PageTransitionType
@@ -4204,7 +4283,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                                     },
                                   ),
                                 ),
-                              ].addToEnd(const SizedBox(height: 24.0)),
+                              ].addToEnd(SizedBox(height: 24.0)),
                             ),
                           ],
                         ),
@@ -4212,7 +4291,7 @@ class _WholeStorePageWidgetState extends State<WholeStorePageWidget> {
                       if ((currentUserDocument?.userType == UserTypes.user) &&
                           !stackStoresRecord.itsCoupang)
                         Align(
-                          alignment: const AlignmentDirectional(1.0, 1.0),
+                          alignment: AlignmentDirectional(1.0, 1.0),
                           child: AuthUserStreamWidget(
                             builder: (context) => wrapWithModel(
                               model: _model.fABWholeStorePageModel,

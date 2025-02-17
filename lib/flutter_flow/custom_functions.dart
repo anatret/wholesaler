@@ -102,3 +102,11 @@ DateTime addDaysToDate(
       .add(Duration(days: addDays));
   return newDate;
 }
+
+bool checkReadNews(
+  DocumentReference newsRef,
+  List<DocumentReference> appNews,
+) {
+  // создай функцию которая проверять есть ли ссылка в листе которая находится в appstate readedNewsRef
+  return appNews.contains(newsRef);
+}

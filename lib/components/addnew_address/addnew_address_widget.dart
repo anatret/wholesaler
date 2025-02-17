@@ -13,7 +13,7 @@ class AddnewAddressWidget extends StatefulWidget {
     this.data,
     bool? edit,
     this.indexoflist,
-  }) : edit = edit ?? false;
+  }) : this.edit = edit ?? false;
 
   final AddressStruct? data;
   final bool edit;
@@ -70,7 +70,7 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
       height: double.infinity,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(30.0),
@@ -78,28 +78,28 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 4.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 4.0),
                 child: Container(
                   width: 90.0,
                   height: 4.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Color(0xFFD0D0D0),
                   ),
                 ),
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(1.0, -1.0),
+              alignment: AlignmentDirectional(1.0, -1.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 18.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 18.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -108,7 +108,7 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
                   onTap: () async {
                     Navigator.pop(context);
                   },
-                  child: const Icon(
+                  child: Icon(
                     Icons.close,
                     color: Color(0xFFBABABA),
                     size: 24.0,
@@ -117,7 +117,7 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
               child: Text(
                 widget.edit ? 'Изменить адрес' : 'Добавить новый адрес',
                 style: FlutterFlowTheme.of(context).headlineSmall.override(
@@ -128,8 +128,8 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-              child: SizedBox(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+              child: Container(
                 width: double.infinity,
                 child: TextFormField(
                   controller: _model.sityFieldTextController,
@@ -154,7 +154,7 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
                               letterSpacing: 0.0,
                             ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0xFFE7E7E7),
                         width: 1.0,
                       ),
@@ -195,8 +195,8 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-              child: SizedBox(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+              child: Container(
                 width: double.infinity,
                 child: TextFormField(
                   controller: _model.streetFieldTextController,
@@ -221,7 +221,7 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
                               letterSpacing: 0.0,
                             ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0xFFE7E7E7),
                         width: 1.0,
                       ),
@@ -262,8 +262,8 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-              child: SizedBox(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+              child: Container(
                 width: double.infinity,
                 child: TextFormField(
                   controller: _model.homeFieldTextController,
@@ -288,7 +288,7 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
                               letterSpacing: 0.0,
                             ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0xFFE7E7E7),
                         width: 1.0,
                       ),
@@ -329,8 +329,8 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-              child: SizedBox(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+              child: Container(
                 width: double.infinity,
                 child: TextFormField(
                   controller: _model.apartFieldTextController,
@@ -355,7 +355,7 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
                               letterSpacing: 0.0,
                             ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0xFFE7E7E7),
                         width: 1.0,
                       ),
@@ -396,7 +396,7 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 88.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 88.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   if (widget.edit) {
@@ -471,7 +471,7 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
                           color: FlutterFlowTheme.of(context).primaryText,
                         ),
                       ),
-                      duration: const Duration(milliseconds: 2000),
+                      duration: Duration(milliseconds: 2000),
                       backgroundColor: FlutterFlowTheme.of(context).secondary,
                     ),
                   );
@@ -480,9 +480,9 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 48.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
@@ -491,7 +491,7 @@ class _AddnewAddressWidgetState extends State<AddnewAddressWidget> {
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
                       ),
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     color: Colors.transparent,
                   ),
                   borderRadius: BorderRadius.circular(30.0),

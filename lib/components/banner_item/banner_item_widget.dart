@@ -51,9 +51,9 @@ class _BannerItemWidgetState extends State<BannerItemWidget> {
     return Stack(
       children: [
         Align(
-          alignment: const AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.network(
@@ -66,7 +66,7 @@ class _BannerItemWidgetState extends State<BannerItemWidget> {
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+          padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +88,7 @@ class _BannerItemWidgetState extends State<BannerItemWidget> {
                         builder: (context) {
                           return Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: SizedBox(
+                            child: Container(
                               height: MediaQuery.sizeOf(context).height * 0.6,
                               child: PromotionWidget(
                                 isEdit: true,
@@ -101,10 +101,10 @@ class _BannerItemWidgetState extends State<BannerItemWidget> {
                       ).then((value) => safeSetState(() {}));
                     },
                     child: Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             '12tlsc2v' /* Редактировать */,

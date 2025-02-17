@@ -45,7 +45,7 @@ class _EmptyMyOrderListWidgetState extends State<EmptyMyOrderListWidget> {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+        padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -77,7 +77,7 @@ class _EmptyMyOrderListWidgetState extends State<EmptyMyOrderListWidget> {
                     letterSpacing: 0.0,
                   ),
             ),
-          ].divide(const SizedBox(height: 16.0)),
+          ].divide(SizedBox(height: 16.0)),
         ),
       ),
     );

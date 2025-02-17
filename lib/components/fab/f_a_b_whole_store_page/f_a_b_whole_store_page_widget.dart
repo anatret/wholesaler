@@ -43,7 +43,7 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
     _model = createModel(context, () => FABWholeStorePageModel());
 
     animationsMap.addAll({
-      'containerOnActionTriggerAnimation': AnimationInfo(
+      'containerOnActionTriggerAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
         effectsBuilder: () => [
@@ -51,6 +51,46 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(-20.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
           ),
@@ -64,8 +104,8 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(30.0, -30.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(30.0, -30.0),
           ),
         ],
       ),
@@ -84,8 +124,8 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 1.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -119,9 +159,9 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
 
     return Container(
       width: 85.0,
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -140,7 +180,7 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -189,6 +229,8 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                               );
                             },
                           ),
+                        ).animateOnActionTrigger(
+                          animationsMap['containerOnActionTriggerAnimation2']!,
                         ),
                         Container(
                           width: double.infinity,
@@ -197,7 +239,7 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                             color: FlutterFlowTheme.of(context).secondaryText,
                           ),
                           child: Stack(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             children: [
                               FlutterFlowIconButton(
                                 borderRadius: 50.0,
@@ -212,7 +254,7 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                                   context.pushNamed(
                                     'CartPage',
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: const TransitionInfo(
+                                      kTransitionInfoKey: TransitionInfo(
                                         hasTransition: true,
                                         transitionType:
                                             PageTransitionType.scale,
@@ -223,7 +265,7 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                                 },
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.6, -0.6),
+                                alignment: AlignmentDirectional(0.6, -0.6),
                                 child: Text(
                                   valueOrDefault<String>(
                                     functions
@@ -245,16 +287,18 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                               ),
                             ],
                           ),
+                        ).animateOnActionTrigger(
+                          animationsMap['containerOnActionTriggerAnimation3']!,
                         ),
-                      ].divide(const SizedBox(height: 20.0)),
+                      ].divide(SizedBox(height: 20.0)),
                     ),
                   ),
                 ),
               ).animateOnActionTrigger(
-                animationsMap['containerOnActionTriggerAnimation']!,
+                animationsMap['containerOnActionTriggerAnimation1']!,
               ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -264,9 +308,21 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                   if (FFAppState().isFabExpdProdPag) {
                     FFAppState().isFabExpdProdPag = false;
                     _model.updatePage(() {});
-                    if (animationsMap['containerOnActionTriggerAnimation'] !=
+                    if (animationsMap['containerOnActionTriggerAnimation1'] !=
                         null) {
-                      animationsMap['containerOnActionTriggerAnimation']!
+                      animationsMap['containerOnActionTriggerAnimation1']!
+                          .controller
+                          .reverse();
+                    }
+                    if (animationsMap['containerOnActionTriggerAnimation2'] !=
+                        null) {
+                      animationsMap['containerOnActionTriggerAnimation2']!
+                          .controller
+                          .reverse();
+                    }
+                    if (animationsMap['containerOnActionTriggerAnimation3'] !=
+                        null) {
+                      animationsMap['containerOnActionTriggerAnimation3']!
                           .controller
                           .reverse();
                     }
@@ -285,9 +341,21 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                     FFAppState().isFabExpdProdPag = true;
                     _model.updatePage(() {});
                     await Future.delayed(const Duration(milliseconds: 50));
-                    if (animationsMap['containerOnActionTriggerAnimation'] !=
+                    if (animationsMap['containerOnActionTriggerAnimation1'] !=
                         null) {
-                      animationsMap['containerOnActionTriggerAnimation']!
+                      animationsMap['containerOnActionTriggerAnimation1']!
+                          .controller
+                          .forward(from: 0.0);
+                    }
+                    if (animationsMap['containerOnActionTriggerAnimation2'] !=
+                        null) {
+                      animationsMap['containerOnActionTriggerAnimation2']!
+                          .controller
+                          .forward(from: 0.0);
+                    }
+                    if (animationsMap['containerOnActionTriggerAnimation3'] !=
+                        null) {
+                      animationsMap['containerOnActionTriggerAnimation3']!
                           .controller
                           .forward(from: 0.0);
                     }
@@ -312,14 +380,14 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                       color: FlutterFlowTheme.of(context).primary,
                       shape: BoxShape.circle,
                     ),
-                    child: SizedBox(
+                    child: Container(
                       width: 65.0,
                       child: Stack(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         children: [
                           Transform.rotate(
                             angle: -45.0 * (math.pi / 180),
-                            child: const Padding(
+                            child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   5.0, 0.0, 0.0, 0.0),
                               child: Icon(
@@ -331,7 +399,7 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                           ).animateOnActionTrigger(
                             animationsMap['transformOnActionTriggerAnimation']!,
                           ),
-                          const Icon(
+                          Icon(
                             Icons.close_rounded,
                             color: Colors.white,
                             size: 24.0,
@@ -345,7 +413,7 @@ class _FABWholeStorePageWidgetState extends State<FABWholeStorePageWidget>
                 ),
               ),
             ),
-          ].divide(const SizedBox(height: 10.0)),
+          ].divide(SizedBox(height: 10.0)),
         ),
       ),
     );

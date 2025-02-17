@@ -50,12 +50,12 @@ class _AddToCartCountWidgetState extends State<AddToCartCountWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
               color: Color(0x33000000),
@@ -68,7 +68,7 @@ class _AddToCartCountWidgetState extends State<AddToCartCountWidget> {
           borderRadius: BorderRadius.circular(0.0),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+          padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,7 +117,7 @@ class _AddToCartCountWidgetState extends State<AddToCartCountWidget> {
                     stepSize: 1,
                     minimum: 1,
                     contentPadding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                   ),
                 ),
               ),
@@ -135,7 +135,7 @@ class _AddToCartCountWidgetState extends State<AddToCartCountWidget> {
                     ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: FlutterFlowIconButton(
                   borderColor: FlutterFlowTheme.of(context).primary,
                   borderRadius: 50.0,
@@ -169,19 +169,19 @@ class _AddToCartCountWidgetState extends State<AddToCartCountWidget> {
                             context: context,
                             builder: (alertDialogContext) {
                               return AlertDialog(
-                                title: const Text('Ошибка добавления'),
-                                content: const Text(
+                                title: Text('Ошибка добавления'),
+                                content: Text(
                                     'В корзине уже находятся товары от другого поставщика. Пожалуйста, завершите оформление текущего заказа или очистите корзину, чтобы добавить новый товар.'),
                                 actions: [
                                   TextButton(
                                     onPressed: () => Navigator.pop(
                                         alertDialogContext, false),
-                                    child: const Text('Отмена'),
+                                    child: Text('Отмена'),
                                   ),
                                   TextButton(
                                     onPressed: () =>
                                         Navigator.pop(alertDialogContext, true),
-                                    child: const Text('Очистить и добавить '),
+                                    child: Text('Очистить и добавить '),
                                   ),
                                 ],
                               );
@@ -216,7 +216,7 @@ class _AddToCartCountWidgetState extends State<AddToCartCountWidget> {
                                     letterSpacing: 0.0,
                                   ),
                         ),
-                        duration: const Duration(milliseconds: 1500),
+                        duration: Duration(milliseconds: 1500),
                         backgroundColor: FlutterFlowTheme.of(context).primary,
                       ),
                     );

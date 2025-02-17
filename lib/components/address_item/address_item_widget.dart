@@ -12,7 +12,7 @@ class AddressItemWidget extends StatefulWidget {
     required this.building,
     required this.apart,
     bool? isedit,
-  }) : isedit = isedit ?? false;
+  }) : this.isedit = isedit ?? false;
 
   final String? city;
   final String? street;
@@ -56,7 +56,7 @@ class _AddressItemWidgetState extends State<AddressItemWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
           child: Icon(
             Icons.map_outlined,
             color: FlutterFlowTheme.of(context).primary,
@@ -95,7 +95,7 @@ class _AddressItemWidgetState extends State<AddressItemWidget> {
                       letterSpacing: 0.0,
                     ),
               ),
-          ].divide(const SizedBox(height: 6.0)),
+          ].divide(SizedBox(height: 6.0)),
         ),
       ],
     );

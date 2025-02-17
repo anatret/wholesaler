@@ -20,6 +20,7 @@ enum ProductType {
   hardwarestore,
   others,
   dairy,
+  beautyandhealth,
 }
 
 enum UserTypes {
@@ -60,6 +61,12 @@ enum VerifyStatus {
   inPause,
 }
 
+enum PageType {
+  product,
+  store,
+  promotion,
+}
+
 extension FFEnumExtensions<T extends Enum> on T {
   String serialize() => name;
 }
@@ -85,6 +92,8 @@ T? deserializeEnum<T>(String? value) {
       return ClientStatus.values.deserialize(value) as T?;
     case (VerifyStatus):
       return VerifyStatus.values.deserialize(value) as T?;
+    case (PageType):
+      return PageType.values.deserialize(value) as T?;
     default:
       return null;
   }

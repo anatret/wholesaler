@@ -62,7 +62,7 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).info,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(58.0),
+          preferredSize: Size.fromHeight(58.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
@@ -71,19 +71,19 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -104,50 +104,12 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                           ],
                         ),
                       ),
-                      Stack(
-                        alignment: const AlignmentDirectional(1.0, -1.0),
-                        children: [
-                          const Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 2.0, 5.0, 0.0),
-                            child: Icon(
-                              Icons.notifications_none,
-                              color: Color(0xFF3C3C3C),
-                              size: 24.0,
-                            ),
-                          ),
-                          Container(
-                            width: 16.0,
-                            height: 16.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primary,
-                              shape: BoxShape.circle,
-                            ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'hbs8h33d' /* 3 */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 9.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
                     ],
                   ),
                 ),
               ],
             ),
-            actions: const [],
+            actions: [],
             centerTitle: false,
             toolbarHeight: 58.0,
             elevation: 0.0,
@@ -155,143 +117,127 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-            child: ListView(
-              padding: const EdgeInsets.fromLTRB(
-                0,
-                0,
-                0,
-                40.0,
+          child: Align(
+            alignment: AlignmentDirectional(0.0, -1.0),
+            child: Container(
+              constraints: BoxConstraints(
+                maxWidth: 450.0,
               ),
-              scrollDirection: Axis.vertical,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      '2nu63wtu' /* Оформление заказа */,
-                    ),
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Outfit',
-                          fontSize: 32.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w600,
-                        ),
+              decoration: BoxDecoration(),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                child: ListView(
+                  padding: EdgeInsets.fromLTRB(
+                    0,
+                    0,
+                    0,
+                    40.0,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                  child: Builder(
-                    builder: (context) {
-                      final ordersItem = FFAppState().cart.toList();
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          '2nu63wtu' /* Оформление заказа */,
+                        ),
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: 'Outfit',
+                                  fontSize: 32.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                      child: Builder(
+                        builder: (context) {
+                          final ordersItem = FFAppState().cart.toList();
 
-                      return SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: List.generate(ordersItem.length,
-                              (ordersItemIndex) {
-                            final ordersItemItem = ordersItem[ordersItemIndex];
-                            return StreamBuilder<PizzaRecord>(
-                              stream: PizzaRecord.getDocument(
-                                  ordersItemItem.pizza!),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }
-
-                                final containerPizzaRecord = snapshot.data!;
-
-                                return Container(
-                                  width: 140.0,
-                                  decoration: const BoxDecoration(),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                        child: Image.network(
-                                          valueOrDefault<String>(
-                                            containerPizzaRecord.img,
-                                            'https://firebasestorage.googleapis.com/v0/b/f-f-pizza-7sui91.appspot.com/o/users%2FxTStZ2i0YXRPhMeUfHAa5l7U1W73%2Fuploads%2F1735104992906146.jpg?alt=media&token=ee7b07e9-1d04-485c-bbdd-06fcb3a1f355',
+                          return SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: List.generate(ordersItem.length,
+                                  (ordersItemIndex) {
+                                final ordersItemItem =
+                                    ordersItem[ordersItemIndex];
+                                return StreamBuilder<PizzaRecord>(
+                                  stream: PizzaRecord.getDocument(
+                                      ordersItemItem.pizza!),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
                                           ),
-                                          width: 110.0,
-                                          height: 110.0,
-                                          fit: BoxFit.contain,
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 8.0),
-                                        child: Text(
-                                          containerPizzaRecord.name,
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelSmall
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Text(
-                                          '${ordersItemItem.count.toString()} шт',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xFFFFF0E6),
+                                      );
+                                    }
+
+                                    final containerPizzaRecord = snapshot.data!;
+
+                                    return Container(
+                                      width: 140.0,
+                                      decoration: BoxDecoration(),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
                                             borderRadius:
-                                                BorderRadius.circular(16.0),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    18.0, 9.0, 18.0, 9.0),
-                                            child: Text(
-                                              formatNumber(
-                                                functions.summFunction(
-                                                    ordersItemItem.count,
-                                                    ordersItemItem.price),
-                                                formatType: FormatType.decimal,
-                                                decimalType:
-                                                    DecimalType.automatic,
-                                                currency: '₩ ',
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
+                                              valueOrDefault<String>(
+                                                containerPizzaRecord.img,
+                                                'https://firebasestorage.googleapis.com/v0/b/f-f-pizza-7sui91.appspot.com/o/users%2FxTStZ2i0YXRPhMeUfHAa5l7U1W73%2Fuploads%2F1735104992906146.jpg?alt=media&token=ee7b07e9-1d04-485c-bbdd-06fcb3a1f355',
                                               ),
+                                              width: 110.0,
+                                              height: 110.0,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 4.0, 0.0, 8.0),
+                                            child: Text(
+                                              '${containerPizzaRecord.name}',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 8.0),
+                                            child: Text(
+                                              '${ordersItemItem.count.toString()} шт',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodySmall
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
@@ -299,715 +245,831 @@ class _OrderPageWidgetState extends State<OrderPageWidget> {
                                                       ),
                                             ),
                                           ),
-                                        ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFFFFF0E6),
+                                                borderRadius:
+                                                    BorderRadius.circular(16.0),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        18.0, 9.0, 18.0, 9.0),
+                                                child: Text(
+                                                  formatNumber(
+                                                    functions.summFunction(
+                                                        ordersItemItem.count,
+                                                        ordersItemItem.price),
+                                                    formatType:
+                                                        FormatType.decimal,
+                                                    decimalType:
+                                                        DecimalType.automatic,
+                                                    currency: '₩ ',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
+                                    );
+                                  },
                                 );
-                              },
-                            );
-                          }).divide(const SizedBox(width: 8.0)),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        formatNumber(
-                          functions.summPizza(FFAppState().cart.toList()),
-                          formatType: FormatType.decimal,
-                          decimalType: DecimalType.automatic,
-                          currency: '₩ ',
-                        ),
-                        style: FlutterFlowTheme.of(context).titleSmall.override(
-                              fontFamily: 'Readex Pro',
-                              fontSize: 20.0,
-                              letterSpacing: 0.0,
+                              }).divide(SizedBox(width: 8.0)),
                             ),
+                          );
+                        },
                       ),
-                    ],
-                  ),
-                ),
-                StreamBuilder<StoresRecord>(
-                  stream: StoresRecord.getDocument(FFAppState().userStore!),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            formatNumber(
+                              functions.summPizza(FFAppState().cart.toList()),
+                              formatType: FormatType.decimal,
+                              decimalType: DecimalType.automatic,
+                              currency: '₩ ',
                             ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                ),
                           ),
-                        ),
-                      );
-                    }
+                        ],
+                      ),
+                    ),
+                    StreamBuilder<StoresRecord>(
+                      stream: StoresRecord.getDocument(FFAppState().userStore!),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
 
-                    final myStoreListViewStoresRecord = snapshot.data!;
+                        final myStoreListViewStoresRecord = snapshot.data!;
 
-                    return ListView(
-                      padding: EdgeInsets.zero,
-                      primary: false,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        Builder(
-                          builder: (context) {
-                            if ((myStoreListViewStoresRecord != null) == true) {
-                              return Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 8.0),
-                                    child: TextFormField(
-                                      controller:
-                                          _model.addressFieldTextController ??=
+                        return ListView(
+                          padding: EdgeInsets.zero,
+                          primary: false,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          children: [
+                            Builder(
+                              builder: (context) {
+                                if ((myStoreListViewStoresRecord != null) ==
+                                    true) {
+                                  return Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 8.0),
+                                        child: TextFormField(
+                                          controller: _model
+                                                  .addressFieldTextController ??=
                                               TextEditingController(
-                                        text:
-                                            myStoreListViewStoresRecord.address,
-                                      ),
-                                      focusNode: _model.addressFieldFocusNode,
-                                      onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.addressFieldTextController',
-                                        const Duration(milliseconds: 2000),
-                                        () => safeSetState(() {}),
-                                      ),
-                                      autofocus: true,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        isDense: false,
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '5m3tc28p' /* Адрес доставки */,
-                                        ),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              letterSpacing: 0.0,
+                                            text: myStoreListViewStoresRecord
+                                                .address,
+                                          ),
+                                          focusNode:
+                                              _model.addressFieldFocusNode,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.addressFieldTextController',
+                                            Duration(milliseconds: 2000),
+                                            () => safeSetState(() {}),
+                                          ),
+                                          autofocus: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            isDense: false,
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '5m3tc28p' /* Адрес доставки */,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent4,
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.mail_outline,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .accent4,
-                                              fontSize: 14.0,
-                                              letterSpacing: 0.0,
+                                                      .primary,
+                                              size: 16.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 1.0,
+                                            suffixIcon: _model
+                                                    .addressFieldTextController!
+                                                    .text
+                                                    .isNotEmpty
+                                                ? InkWell(
+                                                    onTap: () async {
+                                                      _model
+                                                          .addressFieldTextController
+                                                          ?.clear();
+                                                      safeSetState(() {});
+                                                    },
+                                                    child: Icon(
+                                                      Icons.clear,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 16.0,
+                                                    ),
+                                                  )
+                                                : null,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 14.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                          validator: _model
+                                              .addressFieldTextControllerValidator
+                                              .asValidator(context),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        prefixIcon: Icon(
-                                          Icons.mail_outline,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 16.0,
-                                        ),
-                                        suffixIcon: _model
-                                                .addressFieldTextController!
-                                                .text
-                                                .isNotEmpty
-                                            ? InkWell(
-                                                onTap: () async {
-                                                  _model
-                                                      .addressFieldTextController
-                                                      ?.clear();
-                                                  safeSetState(() {});
-                                                },
-                                                child: Icon(
-                                                  Icons.clear,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 16.0,
-                                                ),
-                                              )
-                                            : null,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 8.0),
+                                        child: TextFormField(
+                                          controller:
+                                              _model.roomFieldTextController ??=
+                                                  TextEditingController(
+                                            text: myStoreListViewStoresRecord
+                                                .room,
                                           ),
-                                      validator: _model
-                                          .addressFieldTextControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 8.0),
-                                    child: TextFormField(
-                                      controller:
-                                          _model.roomFieldTextController ??=
+                                          focusNode: _model.roomFieldFocusNode,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.roomFieldTextController',
+                                            Duration(milliseconds: 2000),
+                                            () => safeSetState(() {}),
+                                          ),
+                                          autofocus: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'oumzsela' /* Квартира */,
+                                            ),
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent4,
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.meeting_room_outlined,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 16.0,
+                                            ),
+                                            suffixIcon: _model
+                                                    .roomFieldTextController!
+                                                    .text
+                                                    .isNotEmpty
+                                                ? InkWell(
+                                                    onTap: () async {
+                                                      _model
+                                                          .roomFieldTextController
+                                                          ?.clear();
+                                                      safeSetState(() {});
+                                                    },
+                                                    child: Icon(
+                                                      Icons.clear,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 16.0,
+                                                    ),
+                                                  )
+                                                : null,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 14.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                          validator: _model
+                                              .roomFieldTextControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 8.0),
+                                        child: TextFormField(
+                                          controller: _model
+                                                  .phoneFieldTextController ??=
                                               TextEditingController(
-                                        text: myStoreListViewStoresRecord.room,
-                                      ),
-                                      focusNode: _model.roomFieldFocusNode,
-                                      onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.roomFieldTextController',
-                                        const Duration(milliseconds: 2000),
-                                        () => safeSetState(() {}),
-                                      ),
-                                      autofocus: true,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'oumzsela' /* Квартира */,
-                                        ),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              letterSpacing: 0.0,
+                                            text: myStoreListViewStoresRecord
+                                                .phone,
+                                          ),
+                                          focusNode: _model.phoneFieldFocusNode,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.phoneFieldTextController',
+                                            Duration(milliseconds: 2000),
+                                            () => safeSetState(() {}),
+                                          ),
+                                          autofocus: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'jwk74gzw' /* Телефон */,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent4,
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.phone,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .accent4,
-                                              fontSize: 14.0,
-                                              letterSpacing: 0.0,
+                                                      .primary,
+                                              size: 16.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 1.0,
+                                            suffixIcon: _model
+                                                    .phoneFieldTextController!
+                                                    .text
+                                                    .isNotEmpty
+                                                ? InkWell(
+                                                    onTap: () async {
+                                                      _model
+                                                          .phoneFieldTextController
+                                                          ?.clear();
+                                                      safeSetState(() {});
+                                                    },
+                                                    child: Icon(
+                                                      Icons.clear,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 16.0,
+                                                    ),
+                                                  )
+                                                : null,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 14.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                          keyboardType: TextInputType.phone,
+                                          validator: _model
+                                              .phoneFieldTextControllerValidator
+                                              .asValidator(context),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        prefixIcon: Icon(
-                                          Icons.meeting_room_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 16.0,
-                                        ),
-                                        suffixIcon: _model
-                                                .roomFieldTextController!
-                                                .text
-                                                .isNotEmpty
-                                            ? InkWell(
-                                                onTap: () async {
-                                                  _model.roomFieldTextController
-                                                      ?.clear();
-                                                  safeSetState(() {});
-                                                },
-                                                child: Icon(
-                                                  Icons.clear,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 16.0,
-                                                ),
-                                              )
-                                            : null,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 20.0),
+                                        child: TextFormField(
+                                          controller:
+                                              _model.commentFieldTextController,
+                                          focusNode:
+                                              _model.commentFieldFocusNode,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.commentFieldTextController',
+                                            Duration(milliseconds: 2000),
+                                            () => safeSetState(() {}),
                                           ),
-                                      validator: _model
-                                          .roomFieldTextControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 8.0),
-                                    child: TextFormField(
-                                      controller:
-                                          _model.phoneFieldTextController ??=
-                                              TextEditingController(
-                                        text: myStoreListViewStoresRecord.phone,
-                                      ),
-                                      focusNode: _model.phoneFieldFocusNode,
-                                      onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.phoneFieldTextController',
-                                        const Duration(milliseconds: 2000),
-                                        () => safeSetState(() {}),
-                                      ),
-                                      autofocus: true,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'jwk74gzw' /* Телефон */,
-                                        ),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              letterSpacing: 0.0,
+                                          autofocus: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '2iw62u2j' /* Комментарий */,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'iio8qo1v' /* Комментарий */,
+                                            ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent4,
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.comment_bank_outlined,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .accent4,
-                                              fontSize: 14.0,
-                                              letterSpacing: 0.0,
+                                                      .primary,
+                                              size: 16.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 1.0,
+                                            suffixIcon: _model
+                                                    .commentFieldTextController!
+                                                    .text
+                                                    .isNotEmpty
+                                                ? InkWell(
+                                                    onTap: () async {
+                                                      _model
+                                                          .commentFieldTextController
+                                                          ?.clear();
+                                                      safeSetState(() {});
+                                                    },
+                                                    child: Icon(
+                                                      Icons.clear,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 16.0,
+                                                    ),
+                                                  )
+                                                : null,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 14.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                          maxLines: 10,
+                                          minLines: 6,
+                                          validator: _model
+                                              .commentFieldTextControllerValidator
+                                              .asValidator(context),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        prefixIcon: Icon(
-                                          Icons.phone,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 16.0,
-                                        ),
-                                        suffixIcon: _model
-                                                .phoneFieldTextController!
-                                                .text
-                                                .isNotEmpty
-                                            ? InkWell(
-                                                onTap: () async {
-                                                  _model
-                                                      .phoneFieldTextController
-                                                      ?.clear();
-                                                  safeSetState(() {});
-                                                },
-                                                child: Icon(
-                                                  Icons.clear,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 16.0,
+                                      ),
+                                      FFButtonWidget(
+                                        onPressed: () async {
+                                          var orderRecordReference =
+                                              OrderRecord.collection.doc();
+                                          await orderRecordReference.set({
+                                            ...createOrderRecordData(
+                                              numOrder:
+                                                  random_data.randomInteger(
+                                                      100000, 999999),
+                                              address: _model
+                                                  .addressFieldTextController
+                                                  .text,
+                                              room: _model
+                                                  .roomFieldTextController.text,
+                                              phone: _model
+                                                  .phoneFieldTextController
+                                                  .text,
+                                              comment: _model
+                                                  .commentFieldTextController
+                                                  .text,
+                                              userOrder: currentUserReference,
+                                              orderStatus: OrderStatus.newOrder,
+                                              store: FFAppState().userStore,
+                                              wholeStore:
+                                                  FFAppState().wholeSalerinCart,
+                                            ),
+                                            ...mapToFirestore(
+                                              {
+                                                'createDate': FieldValue
+                                                    .serverTimestamp(),
+                                                'cart':
+                                                    getCartListFirestoreData(
+                                                  FFAppState().cart,
                                                 ),
-                                              )
-                                            : null,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      keyboardType: TextInputType.phone,
-                                      validator: _model
-                                          .phoneFieldTextControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 20.0),
-                                    child: TextFormField(
-                                      controller:
-                                          _model.commentFieldTextController,
-                                      focusNode: _model.commentFieldFocusNode,
-                                      onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.commentFieldTextController',
-                                        const Duration(milliseconds: 2000),
-                                        () => safeSetState(() {}),
-                                      ),
-                                      autofocus: true,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '2iw62u2j' /* Комментарий */,
-                                        ),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              letterSpacing: 0.0,
+                                              },
                                             ),
-                                        hintText:
-                                            FFLocalizations.of(context).getText(
-                                          'iio8qo1v' /* Комментарий */,
-                                        ),
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent4,
-                                              fontSize: 14.0,
-                                              letterSpacing: 0.0,
+                                          });
+                                          _model.newOrder =
+                                              OrderRecord.getDocumentFromData({
+                                            ...createOrderRecordData(
+                                              numOrder:
+                                                  random_data.randomInteger(
+                                                      100000, 999999),
+                                              address: _model
+                                                  .addressFieldTextController
+                                                  .text,
+                                              room: _model
+                                                  .roomFieldTextController.text,
+                                              phone: _model
+                                                  .phoneFieldTextController
+                                                  .text,
+                                              comment: _model
+                                                  .commentFieldTextController
+                                                  .text,
+                                              userOrder: currentUserReference,
+                                              orderStatus: OrderStatus.newOrder,
+                                              store: FFAppState().userStore,
+                                              wholeStore:
+                                                  FFAppState().wholeSalerinCart,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        prefixIcon: Icon(
-                                          Icons.comment_bank_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 16.0,
-                                        ),
-                                        suffixIcon: _model
-                                                .commentFieldTextController!
-                                                .text
-                                                .isNotEmpty
-                                            ? InkWell(
-                                                onTap: () async {
-                                                  _model
-                                                      .commentFieldTextController
-                                                      ?.clear();
-                                                  safeSetState(() {});
-                                                },
-                                                child: Icon(
-                                                  Icons.clear,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 16.0,
+                                            ...mapToFirestore(
+                                              {
+                                                'createDate': DateTime.now(),
+                                                'cart':
+                                                    getCartListFirestoreData(
+                                                  FFAppState().cart,
                                                 ),
-                                              )
-                                            : null,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      maxLines: 10,
-                                      minLines: 6,
-                                      validator: _model
-                                          .commentFieldTextControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                  ),
-                                  FFButtonWidget(
-                                    onPressed: () async {
-                                      var orderRecordReference =
-                                          OrderRecord.collection.doc();
-                                      await orderRecordReference.set({
-                                        ...createOrderRecordData(
-                                          numOrder: random_data.randomInteger(
-                                              100000, 999999),
-                                          address: _model
-                                              .addressFieldTextController.text,
-                                          room: _model
-                                              .roomFieldTextController.text,
-                                          phone: _model
-                                              .phoneFieldTextController.text,
-                                          comment: _model
-                                              .commentFieldTextController.text,
-                                          userOrder: currentUserReference,
-                                          orderStatus: OrderStatus.newOrder,
-                                          store: FFAppState().userStore,
-                                          wholeStore:
-                                              FFAppState().wholeSalerinCart,
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'createDate':
-                                                FieldValue.serverTimestamp(),
-                                            'cart': getCartListFirestoreData(
-                                              FFAppState().cart,
+                                              },
                                             ),
-                                          },
-                                        ),
-                                      });
-                                      _model.newOrder =
-                                          OrderRecord.getDocumentFromData({
-                                        ...createOrderRecordData(
-                                          numOrder: random_data.randomInteger(
-                                              100000, 999999),
-                                          address: _model
-                                              .addressFieldTextController.text,
-                                          room: _model
-                                              .roomFieldTextController.text,
-                                          phone: _model
-                                              .phoneFieldTextController.text,
-                                          comment: _model
-                                              .commentFieldTextController.text,
-                                          userOrder: currentUserReference,
-                                          orderStatus: OrderStatus.newOrder,
-                                          store: FFAppState().userStore,
-                                          wholeStore:
-                                              FFAppState().wholeSalerinCart,
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'createDate': DateTime.now(),
-                                            'cart': getCartListFirestoreData(
-                                              FFAppState().cart,
-                                            ),
-                                          },
-                                        ),
-                                      }, orderRecordReference);
-                                      _model.wholestore =
-                                          await StoresRecord.getDocumentOnce(
-                                              FFAppState().wholeSalerinCart!);
-                                      triggerPushNotification(
-                                        notificationTitle:
-                                            'Новый заказ от ${myStoreListViewStoresRecord.storeName}',
-                                        notificationText:
-                                            ' заказ на сумму ${formatNumber(
+                                          }, orderRecordReference);
+                                          _model.wholestore = await StoresRecord
+                                              .getDocumentOnce(FFAppState()
+                                                  .wholeSalerinCart!);
+                                          triggerPushNotification(
+                                            notificationTitle:
+                                                'Новый заказ от ${myStoreListViewStoresRecord.storeName}',
+                                            notificationText:
+                                                ' заказ на сумму ${formatNumber(
+                                              functions.summPizza(_model
+                                                  .newOrder!.cart
+                                                  .toList()),
+                                              formatType: FormatType.decimal,
+                                              decimalType:
+                                                  DecimalType.automatic,
+                                              currency: '₩ ',
+                                            )}',
+                                            notificationSound: 'default',
+                                            userRefs: [
+                                              _model.wholestore!.user!
+                                            ],
+                                            initialPageName:
+                                                'UserOrderListPage',
+                                            parameterData: {},
+                                          );
+                                          FFAppState().wholeSalerinCart = null;
+                                          FFAppState().cart = [];
+                                          FFAppState().update(() {});
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Заказ оформлен'),
+                                                content: Text(
+                                                    'Ожидайте подтверждения или звонка от поставщика. Спасибо за заказ!'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+
+                                          context.pushNamed(
+                                            'HomePageWholeStore',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.scale,
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                              ),
+                                            },
+                                          );
+
+                                          safeSetState(() {});
+                                        },
+                                        text: '${formatNumber(
                                           functions.summPizza(
-                                              _model.newOrder!.cart.toList()),
+                                              FFAppState().cart.toList()),
                                           formatType: FormatType.decimal,
                                           decimalType: DecimalType.automatic,
                                           currency: '₩ ',
-                                        )}',
-                                        notificationSound: 'default',
-                                        userRefs: [_model.wholestore!.user!],
-                                        initialPageName: 'UserOrderListPage',
-                                        parameterData: {},
-                                      );
-                                      FFAppState().wholeSalerinCart = null;
-                                      FFAppState().cart = [];
-                                      FFAppState().update(() {});
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: const Text('Заказ оформлен'),
-                                            content: const Text(
-                                                'Ожидайте подтверждения или звонка от поставщика. Спасибо за заказ!'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-
-                                      context.pushNamed(
-                                        'HomePageWholeStore',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: const TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.scale,
-                                            alignment: Alignment.bottomCenter,
+                                        )} Оформить заказ',
+                                        options: FFButtonOptions(
+                                          width: double.infinity,
+                                          height: 48.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                    fontSize: 14.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
                                           ),
-                                        },
-                                      );
-
-                                      safeSetState(() {});
-                                    },
-                                    text: '${formatNumber(
-                                      functions.summPizza(
-                                          FFAppState().cart.toList()),
-                                      formatType: FormatType.decimal,
-                                      decimalType: DecimalType.automatic,
-                                      currency: '₩ ',
-                                    )} Оформить заказ',
-                                    options: FFButtonOptions(
-                                      width: double.infinity,
-                                      height: 48.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: Colors.white,
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
+                                          borderRadius:
+                                              BorderRadius.circular(30.0),
+                                        ),
                                       ),
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            } else {
-                              return Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'qkwapva1' /* Ваш магазин не зарегистрирован */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
+                                    ],
+                                  );
+                                } else {
+                                  return Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'qkwapva1' /* Ваш магазин не зарегистрирован */,
                                         ),
-                                  ),
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'tagjt7no' /* Пройдите регистрацию */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'tagjt7no' /* Пройдите регистрацию */,
                                         ),
-                                  ),
-                                ].divide(const SizedBox(height: 10.0)),
-                              );
-                            }
-                          },
-                        ),
-                      ],
-                    );
-                  },
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 10.0)),
+                                  );
+                                }
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),

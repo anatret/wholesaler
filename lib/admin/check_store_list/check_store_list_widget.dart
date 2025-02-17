@@ -3,7 +3,6 @@ import '/backend/schema/enums/enums.dart';
 import '/components/check_store_card/check_store_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'check_store_list_model.dart';
 export 'check_store_list_model.dart';
@@ -46,7 +45,7 @@ class _CheckStoreListWidgetState extends State<CheckStoreListWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(58.0),
+          preferredSize: Size.fromHeight(58.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
@@ -55,19 +54,19 @@ class _CheckStoreListWidgetState extends State<CheckStoreListWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -88,41 +87,12 @@ class _CheckStoreListWidgetState extends State<CheckStoreListWidget> {
                           ],
                         ),
                       ),
-                      badges.Badge(
-                        badgeContent: Text(
-                          FFLocalizations.of(context).getText(
-                            'h6euseda' /* 1 */,
-                          ),
-                          textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                    fontSize: 12.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        showBadge: true,
-                        shape: badges.BadgeShape.circle,
-                        badgeColor: FlutterFlowTheme.of(context).primary,
-                        elevation: 0.0,
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                        position: badges.BadgePosition.topEnd(),
-                        animationType: badges.BadgeAnimationType.scale,
-                        toAnimate: true,
-                        child: Icon(
-                          Icons.notifications_outlined,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 26.0,
-                        ),
-                      ),
                     ],
                   ),
                 ),
               ],
             ),
-            actions: const [],
+            actions: [],
             centerTitle: false,
             toolbarHeight: 58.0,
             elevation: 0.0,
@@ -131,7 +101,7 @@ class _CheckStoreListWidgetState extends State<CheckStoreListWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+            padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -146,7 +116,7 @@ class _CheckStoreListWidgetState extends State<CheckStoreListWidget> {
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
                             blurRadius: 4.0,
                             color: Color(0x2B202529),
@@ -160,7 +130,7 @@ class _CheckStoreListWidgetState extends State<CheckStoreListWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 20.0, 20.0, 20.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -212,7 +182,7 @@ class _CheckStoreListWidgetState extends State<CheckStoreListWidget> {
                                   scrollDirection: Axis.vertical,
                                   itemCount: listViewStoresRecordList.length,
                                   separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 8.0),
+                                      SizedBox(height: 8.0),
                                   itemBuilder: (context, listViewIndex) {
                                     final listViewStoresRecord =
                                         listViewStoresRecordList[listViewIndex];
@@ -231,7 +201,7 @@ class _CheckStoreListWidgetState extends State<CheckStoreListWidget> {
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
+                                            kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
                                               transitionType:
                                                   PageTransitionType.scale,
@@ -261,12 +231,12 @@ class _CheckStoreListWidgetState extends State<CheckStoreListWidget> {
                                 );
                               },
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
                   ),
-                ].divide(const SizedBox(height: 24.0)),
+                ].divide(SizedBox(height: 24.0)),
               ),
             ),
           ),

@@ -82,7 +82,7 @@ class _OneOrderManagerPageWidgetState extends State<OneOrderManagerPageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(58.0),
+              preferredSize: Size.fromHeight(58.0),
               child: AppBar(
                 backgroundColor:
                     FlutterFlowTheme.of(context).secondaryBackground,
@@ -93,19 +93,19 @@ class _OneOrderManagerPageWidgetState extends State<OneOrderManagerPageWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 5.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -126,663 +126,421 @@ class _OneOrderManagerPageWidgetState extends State<OneOrderManagerPageWidget> {
                               ],
                             ),
                           ),
-                          Stack(
-                            alignment: const AlignmentDirectional(1.0, -1.0),
-                            children: [
-                              const Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 2.0, 5.0, 0.0),
-                                child: Icon(
-                                  Icons.notifications_none,
-                                  color: Color(0xFF3C3C3C),
-                                  size: 24.0,
-                                ),
-                              ),
-                              Container(
-                                width: 16.0,
-                                height: 16.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  shape: BoxShape.circle,
-                                ),
-                                alignment: const AlignmentDirectional(0.0, 0.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'h5tz6tf9' /* 3 */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        fontSize: 9.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
                         ],
                       ),
                     ),
                   ],
                 ),
-                actions: const [],
+                actions: [],
                 centerTitle: false,
                 toolbarHeight: 58.0,
                 elevation: 0.0,
               ),
             ),
-            body: ListView(
-              padding: const EdgeInsets.fromLTRB(
-                0,
-                0,
-                0,
-                20.0,
-              ),
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                  child: StreamBuilder<List<StoresRecord>>(
-                    stream: queryStoresRecord(
-                      queryBuilder: (storesRecord) => storesRecord.where(
-                        'user',
-                        isEqualTo: oneOrderManagerPageOrderRecord.userOrder,
-                      ),
-                      singleRecord: true,
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
-                              ),
-                            ),
+            body: Align(
+              alignment: AlignmentDirectional(0.0, -1.0),
+              child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: 450.0,
+                ),
+                decoration: BoxDecoration(),
+                child: ListView(
+                  padding: EdgeInsets.fromLTRB(
+                    0,
+                    0,
+                    0,
+                    20.0,
+                  ),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      child: StreamBuilder<List<StoresRecord>>(
+                        stream: queryStoresRecord(
+                          queryBuilder: (storesRecord) => storesRecord.where(
+                            'user',
+                            isEqualTo: oneOrderManagerPageOrderRecord.userOrder,
                           ),
-                        );
-                      }
-                      List<StoresRecord> listViewClientStoreStoresRecordList =
-                          snapshot.data!;
-                      // Return an empty Container when the item does not exist.
-                      if (snapshot.data!.isEmpty) {
-                        return Container();
-                      }
-                      final listViewClientStoreStoresRecord =
-                          listViewClientStoreStoresRecordList.isNotEmpty
-                              ? listViewClientStoreStoresRecordList.first
-                              : null;
+                          singleRecord: true,
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          List<StoresRecord>
+                              listViewClientStoreStoresRecordList =
+                              snapshot.data!;
+                          // Return an empty Container when the item does not exist.
+                          if (snapshot.data!.isEmpty) {
+                            return Container();
+                          }
+                          final listViewClientStoreStoresRecord =
+                              listViewClientStoreStoresRecordList.isNotEmpty
+                                  ? listViewClientStoreStoresRecordList.first
+                                  : null;
 
-                      return ListView(
-                        padding: EdgeInsets.zero,
-                        primary: false,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
+                          return ListView(
+                            padding: EdgeInsets.zero,
+                            primary: false,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
                             children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 4.0, 0.0),
-                                child: Icon(
-                                  Icons.storefront_sharp,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 18.0,
-                                ),
-                              ),
-                              Text(
-                                valueOrDefault<String>(
-                                  listViewClientStoreStoresRecord?.storeName,
-                                  'Магазин',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 18.0,
-                                      letterSpacing: 0.0,
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 4.0, 0.0),
+                                    child: Icon(
+                                      Icons.storefront_sharp,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 18.0,
                                     ),
+                                  ),
+                                  Text(
+                                    valueOrDefault<String>(
+                                      listViewClientStoreStoresRecord
+                                          ?.storeName,
+                                      'Магазин',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ],
                               ),
-                            ],
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 4.0, 0.0),
+                                      child: Icon(
+                                        Icons.location_on_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 18.0,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 10.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await Clipboard.setData(ClipboardData(
+                                              text:
+                                                  '${oneOrderManagerPageOrderRecord.address} ${oneOrderManagerPageOrderRecord.room}'));
+                                        },
+                                        child: Text(
+                                          '${oneOrderManagerPageOrderRecord.address} ${oneOrderManagerPageOrderRecord.room}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .colorLink,
+                                                fontSize: 20.0,
+                                                letterSpacing: 0.0,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 4.0, 0.0),
+                                      child: Icon(
+                                        Icons.phone_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 18.0,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 10.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          if (isWeb) {
+                                            await Clipboard.setData(ClipboardData(
+                                                text:
+                                                    oneOrderManagerPageOrderRecord
+                                                        .phone));
+                                          } else {
+                                            await launchUrl(Uri(
+                                              scheme: 'tel',
+                                              path:
+                                                  oneOrderManagerPageOrderRecord
+                                                      .phone,
+                                            ));
+                                          }
+                                        },
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            oneOrderManagerPageOrderRecord
+                                                .phone,
+                                            'телефон',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .colorLink,
+                                                fontSize: 20.0,
+                                                letterSpacing: 0.0,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ].divide(SizedBox(height: 6.0)),
+                          );
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 24.0, 0.0, 16.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                '1w9buw09' /* Заказ */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    fontSize: 32.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 10.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                await Clipboard.setData(ClipboardData(
-                                    text: oneOrderManagerPageOrderRecord
-                                        .address));
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 4.0, 0.0),
-                                    child: Icon(
-                                      Icons.location_on_outlined,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 18.0,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 10.0, 0.0),
-                                    child: Text(
-                                      '${listViewClientStoreStoresRecord?.address} ${listViewClientStoreStoresRecord?.room}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .colorLink,
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                  ),
-                                  Icon(
-                                    Icons.content_copy_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 16.0,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          if (responsiveVisibility(
-                            context: context,
-                            desktop: false,
-                          ))
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 10.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 4.0, 0.0),
-                                    child: Icon(
-                                      Icons.phone_outlined,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 18.0,
-                                    ),
-                                  ),
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      await launchUrl(Uri(
-                                        scheme: 'tel',
-                                        path: oneOrderManagerPageOrderRecord
-                                            .phone,
-                                      ));
-                                    },
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        oneOrderManagerPageOrderRecord.phone,
-                                        'телефон',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .colorLink,
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                            decoration:
-                                                TextDecoration.underline,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                        ].divide(const SizedBox(height: 6.0)),
-                      );
-                    },
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 24.0, 0.0, 16.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            '1w9buw09' /* Заказ */,
-                          ),
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                fontFamily: 'Outfit',
-                                fontSize: 32.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                              ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 24.0, 0.0, 16.0),
-                        child: Text(
-                          () {
-                            if (oneOrderManagerPageOrderRecord.orderStatus ==
-                                OrderStatus.newOrder) {
-                              return 'Новый';
-                            } else if (oneOrderManagerPageOrderRecord
-                                    .orderStatus ==
-                                OrderStatus.confirmed) {
-                              return 'Принят';
-                            } else if (oneOrderManagerPageOrderRecord
-                                    .orderStatus ==
-                                OrderStatus.completed) {
-                              return 'Выполнен';
-                            } else {
-                              return 'Отмена';
-                            }
-                          }(),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Readex Pro',
-                                color: () {
-                                  if (oneOrderManagerPageOrderRecord
-                                          .orderStatus ==
-                                      OrderStatus.newOrder) {
-                                    return FlutterFlowTheme.of(context).primary;
-                                  } else if (oneOrderManagerPageOrderRecord
-                                          .orderStatus ==
-                                      OrderStatus.confirmed) {
-                                    return FlutterFlowTheme.of(context).warning;
-                                  } else if (oneOrderManagerPageOrderRecord
-                                          .orderStatus ==
-                                      OrderStatus.completed) {
-                                    return FlutterFlowTheme.of(context).success;
-                                  } else {
-                                    return FlutterFlowTheme.of(context).error;
-                                  }
-                                }(),
-                                letterSpacing: 0.0,
-                              ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                  child: Builder(
-                    builder: (context) {
-                      final products = (FFAppState().orderForEdit.isNotEmpty
-                              ? FFAppState().orderForEdit
-                              : oneOrderManagerPageOrderRecord.cart)
-                          .toList();
-                      if (products.isEmpty) {
-                        return const Center(
-                          child: EmptyCartWidget(
-                            page: 'cart',
-                          ),
-                        );
-                      }
-
-                      return Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children:
-                            List.generate(products.length, (productsIndex) {
-                          final productsItem = products[productsIndex];
-                          return StreamBuilder<PizzaRecord>(
-                            stream:
-                                PizzaRecord.getDocument(productsItem.pizza!),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }
-
-                              final containerPizzaRecord = snapshot.data!;
-
-                              return Container(
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: wrapWithModel(
-                                  model: _model.cartItem2Models.getModel(
-                                    productsIndex.toString(),
-                                    productsIndex,
-                                  ),
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: CartItem2Widget(
-                                    key: Key(
-                                      'Keyjhl_${productsIndex.toString()}',
-                                    ),
-                                    name: containerPizzaRecord.name,
-                                    deskription:
-                                        containerPizzaRecord.description,
-                                    price: containerPizzaRecord.price,
-                                    image: containerPizzaRecord.img,
-                                    index: productsIndex,
-                                    cartItem: productsItem,
-                                  ),
-                                ),
-                              );
-                            },
-                          );
-                        }).divide(const SizedBox(height: 16.0)),
-                      );
-                    },
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 40.0, 16.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'f3xx2rjt' /* Сумма:  */,
-                        ),
-                        style: FlutterFlowTheme.of(context).titleSmall.override(
-                              fontFamily: 'Readex Pro',
-                              letterSpacing: 0.0,
-                            ),
-                      ),
-                      Text(
-                        formatNumber(
-                          functions.summPizza(
-                              (FFAppState().orderForEdit.isNotEmpty
-                                      ? FFAppState().orderForEdit
-                                      : oneOrderManagerPageOrderRecord.cart)
-                                  .toList()),
-                          formatType: FormatType.decimal,
-                          decimalType: DecimalType.automatic,
-                          currency: '₩',
-                        ),
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Outfit',
-                              color: const Color(0xFF3C3C3C),
-                              fontSize: 20.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-                if (valueOrDefault<bool>(
-                  (oneOrderManagerPageOrderRecord.orderStatus ==
-                          OrderStatus.newOrder) ||
-                      (oneOrderManagerPageOrderRecord.orderStatus ==
-                          OrderStatus.confirmed),
-                  false,
-                ))
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        await oneOrderManagerPageOrderRecord.reference.update({
-                          ...mapToFirestore(
-                            {
-                              'cart': FieldValue.delete(),
-                            },
-                          ),
-                        });
-                        if (FFAppState().orderForEdit.isNotEmpty) {
-                          await oneOrderManagerPageOrderRecord.reference
-                              .update({
-                            ...mapToFirestore(
-                              {
-                                'cart': getCartListFirestoreData(
-                                  FFAppState().orderForEdit,
-                                ),
-                              },
-                            ),
-                          });
-                        } else {
-                          FFAppState().orderForEdit =
-                              oneOrderManagerPageOrderRecord.cart
-                                  .toList()
-                                  .cast<CartStruct>();
-                          safeSetState(() {});
-
-                          await oneOrderManagerPageOrderRecord.reference
-                              .update({
-                            ...mapToFirestore(
-                              {
-                                'cart': getCartListFirestoreData(
-                                  FFAppState().orderForEdit,
-                                ),
-                              },
-                            ),
-                          });
-                        }
-
-                        if (oneOrderManagerPageOrderRecord.orderStatus ==
-                            OrderStatus.newOrder) {
-                          await oneOrderManagerPageOrderRecord.reference
-                              .update(createOrderRecordData(
-                            orderStatus: OrderStatus.confirmed,
-                          ));
-                        } else if (oneOrderManagerPageOrderRecord.orderStatus ==
-                            OrderStatus.confirmed) {
-                          await oneOrderManagerPageOrderRecord.reference
-                              .update(createOrderRecordData(
-                            orderStatus: OrderStatus.completed,
-                          ));
-                        }
-
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Заказ обработан',
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                            ),
-                            duration: const Duration(milliseconds: 2000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).primary,
-                          ),
-                        );
-
-                        context.goNamed(
-                          'UserOrderListPage',
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: const TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.scale,
-                              alignment: Alignment.bottomCenter,
-                            ),
-                          },
-                        );
-                      },
-                      text: () {
-                        if (oneOrderManagerPageOrderRecord.orderStatus ==
-                            OrderStatus.newOrder) {
-                          return 'Принять заказ';
-                        } else if (oneOrderManagerPageOrderRecord.orderStatus ==
-                            OrderStatus.confirmed) {
-                          return 'Заказ обработан';
-                        } else {
-                          return 'Отмена';
-                        }
-                      }(),
-                      options: FFButtonOptions(
-                        width: double.infinity,
-                        height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Colors.white,
-                                  fontSize: 14.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                        ),
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    ),
-                  ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    if (valueOrDefault<bool>(
-                      (oneOrderManagerPageOrderRecord.orderStatus ==
-                              OrderStatus.confirmed) ||
-                          (oneOrderManagerPageOrderRecord.orderStatus ==
-                              OrderStatus.canceled),
-                      false,
-                    ))
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 16.0, 16.0, 16.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              // deletingOrderAction
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: const Text('Отмена статуса'),
-                                            content: const Text(
-                                                'Вы уверенны что хотите отменить статус заказа? После отмены заказ появиться в Новых заказах'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: const Text('Отмена'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: const Text('Удать'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                              if (confirmDialogResponse) {
-                                await widget.order!
-                                    .update(createOrderRecordData(
-                                  orderStatus: OrderStatus.newOrder,
-                                ));
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Статус заказа отменен!',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).error,
-                                  ),
-                                );
-                                Navigator.pop(context);
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Отмененно',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                      ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).error,
-                                  ),
-                                );
-                                Navigator.pop(context);
-                              }
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              '6xlo3m9v' /* Отмена статуса */,
-                            ),
-                            icon: const Icon(
-                              Icons.cancel_outlined,
-                              size: 22.0,
-                            ),
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 24.0, 0.0, 16.0),
+                            child: Text(
+                              () {
+                                if (oneOrderManagerPageOrderRecord
+                                        .orderStatus ==
+                                    OrderStatus.newOrder) {
+                                  return 'Новый';
+                                } else if (oneOrderManagerPageOrderRecord
+                                        .orderStatus ==
+                                    OrderStatus.confirmed) {
+                                  return 'Принят';
+                                } else if (oneOrderManagerPageOrderRecord
+                                        .orderStatus ==
+                                    OrderStatus.completed) {
+                                  return 'Выполнен';
+                                } else {
+                                  return 'Отмена';
+                                }
+                              }(),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                    fontSize: 14.0,
+                                    color: () {
+                                      if (oneOrderManagerPageOrderRecord
+                                              .orderStatus ==
+                                          OrderStatus.newOrder) {
+                                        return FlutterFlowTheme.of(context)
+                                            .primary;
+                                      } else if (oneOrderManagerPageOrderRecord
+                                              .orderStatus ==
+                                          OrderStatus.confirmed) {
+                                        return FlutterFlowTheme.of(context)
+                                            .warning;
+                                      } else if (oneOrderManagerPageOrderRecord
+                                              .orderStatus ==
+                                          OrderStatus.completed) {
+                                        return FlutterFlowTheme.of(context)
+                                            .success;
+                                      } else {
+                                        return FlutterFlowTheme.of(context)
+                                            .error;
+                                      }
+                                    }(),
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
                                   ),
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                              ),
-                              borderRadius: BorderRadius.circular(30.0),
                             ),
                           ),
-                        ),
+                        ],
                       ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      child: Builder(
+                        builder: (context) {
+                          final products = (FFAppState().orderForEdit.isNotEmpty
+                                  ? FFAppState().orderForEdit
+                                  : oneOrderManagerPageOrderRecord.cart)
+                              .toList();
+                          if (products.isEmpty) {
+                            return Center(
+                              child: EmptyCartWidget(
+                                page: 'cart',
+                              ),
+                            );
+                          }
+
+                          return Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children:
+                                List.generate(products.length, (productsIndex) {
+                              final productsItem = products[productsIndex];
+                              return StreamBuilder<PizzaRecord>(
+                                stream: PizzaRecord.getDocument(
+                                    productsItem.pizza!),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }
+
+                                  final containerPizzaRecord = snapshot.data!;
+
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: wrapWithModel(
+                                      model: _model.cartItem2Models.getModel(
+                                        productsIndex.toString(),
+                                        productsIndex,
+                                      ),
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: CartItem2Widget(
+                                        key: Key(
+                                          'Keyjhl_${productsIndex.toString()}',
+                                        ),
+                                        name: containerPizzaRecord.name,
+                                        deskription:
+                                            containerPizzaRecord.description,
+                                        price: containerPizzaRecord.price,
+                                        image: containerPizzaRecord.img,
+                                        index: productsIndex,
+                                        cartItem: productsItem,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            }).divide(SizedBox(height: 16.0)),
+                          );
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 40.0, 16.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              'f3xx2rjt' /* Сумма:  */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Text(
+                            formatNumber(
+                              functions.summPizza(
+                                  (FFAppState().orderForEdit.isNotEmpty
+                                          ? FFAppState().orderForEdit
+                                          : oneOrderManagerPageOrderRecord.cart)
+                                      .toList()),
+                              formatType: FormatType.decimal,
+                              decimalType: DecimalType.automatic,
+                              currency: '₩',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  color: Color(0xFF3C3C3C),
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
                     if (valueOrDefault<bool>(
                       (oneOrderManagerPageOrderRecord.orderStatus ==
                               OrderStatus.newOrder) ||
@@ -790,117 +548,372 @@ class _OneOrderManagerPageWidgetState extends State<OneOrderManagerPageWidget> {
                               OrderStatus.confirmed),
                       false,
                     ))
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 16.0, 16.0, 16.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              if (oneOrderManagerPageOrderRecord.orderStatus !=
-                                  OrderStatus.canceled) {
-                                // deletingOrderAction
-                                var confirmDialogResponse =
-                                    await showDialog<bool>(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: const Text('Удаление заказа'),
-                                              content: const Text(
-                                                  'Вы уверенны что хотите удалить'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          false),
-                                                  child: const Text('Отмена'),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          true),
-                                                  child: const Text('Изменить'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ) ??
-                                        false;
-                                if (confirmDialogResponse) {
-                                  await widget.order!
-                                      .update(createOrderRecordData(
-                                    orderStatus: OrderStatus.canceled,
-                                  ));
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Зазаз удален',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                      ),
-                                      duration: const Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context).error,
-                                    ),
-                                  );
-                                  Navigator.pop(context);
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Удаление отмененно',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                      ),
-                                      duration: const Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context).error,
-                                    ),
-                                  );
-                                  Navigator.pop(context);
-                                }
-                              }
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              'qiboo5i9' /* Удалить заказ */,
-                            ),
-                            icon: const Icon(
-                              Icons.delete_forever_outlined,
-                              size: 22.0,
-                            ),
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).error,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 16.0, 16.0, 16.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            await oneOrderManagerPageOrderRecord.reference
+                                .update({
+                              ...mapToFirestore(
+                                {
+                                  'cart': FieldValue.delete(),
+                                },
                               ),
-                              borderRadius: BorderRadius.circular(30.0),
+                            });
+                            if (FFAppState().orderForEdit.isNotEmpty) {
+                              await oneOrderManagerPageOrderRecord.reference
+                                  .update({
+                                ...mapToFirestore(
+                                  {
+                                    'cart': getCartListFirestoreData(
+                                      FFAppState().orderForEdit,
+                                    ),
+                                  },
+                                ),
+                              });
+                            } else {
+                              FFAppState().orderForEdit =
+                                  oneOrderManagerPageOrderRecord.cart
+                                      .toList()
+                                      .cast<CartStruct>();
+                              safeSetState(() {});
+
+                              await oneOrderManagerPageOrderRecord.reference
+                                  .update({
+                                ...mapToFirestore(
+                                  {
+                                    'cart': getCartListFirestoreData(
+                                      FFAppState().orderForEdit,
+                                    ),
+                                  },
+                                ),
+                              });
+                            }
+
+                            if (oneOrderManagerPageOrderRecord.orderStatus ==
+                                OrderStatus.newOrder) {
+                              await oneOrderManagerPageOrderRecord.reference
+                                  .update(createOrderRecordData(
+                                orderStatus: OrderStatus.confirmed,
+                              ));
+                            } else if (oneOrderManagerPageOrderRecord
+                                    .orderStatus ==
+                                OrderStatus.confirmed) {
+                              await oneOrderManagerPageOrderRecord.reference
+                                  .update(createOrderRecordData(
+                                orderStatus: OrderStatus.completed,
+                              ));
+                            }
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Заказ обработан',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 2000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).primary,
+                              ),
+                            );
+
+                            context.goNamed(
+                              'UserOrderListPage',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.scale,
+                                  alignment: Alignment.bottomCenter,
+                                ),
+                              },
+                            );
+                          },
+                          text: () {
+                            if (oneOrderManagerPageOrderRecord.orderStatus ==
+                                OrderStatus.newOrder) {
+                              return 'Принять заказ';
+                            } else if (oneOrderManagerPageOrderRecord
+                                    .orderStatus ==
+                                OrderStatus.confirmed) {
+                              return 'Заказ обработан';
+                            } else {
+                              return 'Отмена';
+                            }
+                          }(),
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 48.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
                             ),
+                            borderRadius: BorderRadius.circular(30.0),
                           ),
                         ),
                       ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        if (valueOrDefault<bool>(
+                          (oneOrderManagerPageOrderRecord.orderStatus ==
+                                  OrderStatus.confirmed) ||
+                              (oneOrderManagerPageOrderRecord.orderStatus ==
+                                  OrderStatus.canceled),
+                          false,
+                        ))
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 16.0, 16.0, 16.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  // deletingOrderAction
+                                  var confirmDialogResponse =
+                                      await showDialog<bool>(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Отмена статуса'),
+                                                content: Text(
+                                                    'Вы уверенны что хотите отменить статус заказа? После отмены заказ появиться в Новых заказах'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            false),
+                                                    child: Text('Отмена'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            true),
+                                                    child: Text('Удать'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          ) ??
+                                          false;
+                                  if (confirmDialogResponse) {
+                                    await widget.order!
+                                        .update(createOrderRecordData(
+                                      orderStatus: OrderStatus.newOrder,
+                                    ));
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Статус заказа отменен!',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context).error,
+                                      ),
+                                    );
+                                    Navigator.pop(context);
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Отмененно',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context).error,
+                                      ),
+                                    );
+                                    Navigator.pop(context);
+                                  }
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  '6xlo3m9v' /* Отмена статуса */,
+                                ),
+                                icon: Icon(
+                                  Icons.cancel_outlined,
+                                  size: 22.0,
+                                ),
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 48.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                  ),
+                                  borderRadius: BorderRadius.circular(30.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        if (valueOrDefault<bool>(
+                          (oneOrderManagerPageOrderRecord.orderStatus ==
+                                  OrderStatus.newOrder) ||
+                              (oneOrderManagerPageOrderRecord.orderStatus ==
+                                  OrderStatus.confirmed),
+                          false,
+                        ))
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 16.0, 16.0, 16.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  if (oneOrderManagerPageOrderRecord
+                                          .orderStatus !=
+                                      OrderStatus.canceled) {
+                                    // deletingOrderAction
+                                    var confirmDialogResponse =
+                                        await showDialog<bool>(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title:
+                                                      Text('Удаление заказа'),
+                                                  content: Text(
+                                                      'Вы уверенны что хотите удалить'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext,
+                                                              false),
+                                                      child: Text('Отмена'),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext,
+                                                              true),
+                                                      child: Text('Изменить'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            ) ??
+                                            false;
+                                    if (confirmDialogResponse) {
+                                      await widget.order!
+                                          .update(createOrderRecordData(
+                                        orderStatus: OrderStatus.canceled,
+                                      ));
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Зазаз удален',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                        ),
+                                      );
+                                      Navigator.pop(context);
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Удаление отмененно',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                        ),
+                                      );
+                                      Navigator.pop(context);
+                                    }
+                                  }
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'qiboo5i9' /* Удалить заказ */,
+                                ),
+                                icon: Icon(
+                                  Icons.delete_forever_outlined,
+                                  size: 22.0,
+                                ),
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 48.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).error,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                  ),
+                                  borderRadius: BorderRadius.circular(30.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         );

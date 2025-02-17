@@ -11,9 +11,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class BanersRecord extends FirestoreRecord {
   BanersRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -32,10 +32,46 @@ class BanersRecord extends FirestoreRecord {
   DocumentReference? get userRef => _userRef;
   bool hasUserRef() => _userRef != null;
 
+  // "title" field.
+  String? _title;
+  String get title => _title ?? '';
+  bool hasTitle() => _title != null;
+
+  // "body" field.
+  String? _body;
+  String get body => _body ?? '';
+  bool hasBody() => _body != null;
+
+  // "products" field.
+  List<DocumentReference>? _products;
+  List<DocumentReference> get products => _products ?? const [];
+  bool hasProducts() => _products != null;
+
+  // "url2" field.
+  String? _url2;
+  String get url2 => _url2 ?? '';
+  bool hasUrl2() => _url2 != null;
+
+  // "inAction" field.
+  bool? _inAction;
+  bool get inAction => _inAction ?? false;
+  bool hasInAction() => _inAction != null;
+
+  // "creatTime" field.
+  DateTime? _creatTime;
+  DateTime? get creatTime => _creatTime;
+  bool hasCreatTime() => _creatTime != null;
+
   void _initializeFields() {
     _url = snapshotData['url'] as String?;
     _storeRef = snapshotData['storeRef'] as DocumentReference?;
     _userRef = snapshotData['userRef'] as DocumentReference?;
+    _title = snapshotData['title'] as String?;
+    _body = snapshotData['body'] as String?;
+    _products = getDataList(snapshotData['products']);
+    _url2 = snapshotData['url2'] as String?;
+    _inAction = snapshotData['inAction'] as bool?;
+    _creatTime = snapshotData['creatTime'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -70,6 +106,22 @@ class BanersRecord extends FirestoreRecord {
           'userRef': convertAlgoliaParam(
             snapshot.data['userRef'],
             ParamType.DocumentReference,
+            false,
+          ),
+          'title': snapshot.data['title'],
+          'body': snapshot.data['body'],
+          'products': safeGet(
+            () => convertAlgoliaParam<DocumentReference>(
+              snapshot.data['products'],
+              ParamType.DocumentReference,
+              true,
+            ).toList(),
+          ),
+          'url2': snapshot.data['url2'],
+          'inAction': snapshot.data['inAction'],
+          'creatTime': convertAlgoliaParam(
+            snapshot.data['creatTime'],
+            ParamType.DateTime,
             false,
           ),
         },
@@ -111,12 +163,22 @@ Map<String, dynamic> createBanersRecordData({
   String? url,
   DocumentReference? storeRef,
   DocumentReference? userRef,
+  String? title,
+  String? body,
+  String? url2,
+  bool? inAction,
+  DateTime? creatTime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'url': url,
       'storeRef': storeRef,
       'userRef': userRef,
+      'title': title,
+      'body': body,
+      'url2': url2,
+      'inAction': inAction,
+      'creatTime': creatTime,
     }.withoutNulls,
   );
 
@@ -128,14 +190,30 @@ class BanersRecordDocumentEquality implements Equality<BanersRecord> {
 
   @override
   bool equals(BanersRecord? e1, BanersRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.url == e2?.url &&
         e1?.storeRef == e2?.storeRef &&
-        e1?.userRef == e2?.userRef;
+        e1?.userRef == e2?.userRef &&
+        e1?.title == e2?.title &&
+        e1?.body == e2?.body &&
+        listEquality.equals(e1?.products, e2?.products) &&
+        e1?.url2 == e2?.url2 &&
+        e1?.inAction == e2?.inAction &&
+        e1?.creatTime == e2?.creatTime;
   }
 
   @override
-  int hash(BanersRecord? e) =>
-      const ListEquality().hash([e?.url, e?.storeRef, e?.userRef]);
+  int hash(BanersRecord? e) => const ListEquality().hash([
+        e?.url,
+        e?.storeRef,
+        e?.userRef,
+        e?.title,
+        e?.body,
+        e?.products,
+        e?.url2,
+        e?.inAction,
+        e?.creatTime
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is BanersRecord;

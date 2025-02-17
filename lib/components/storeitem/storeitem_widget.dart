@@ -50,7 +50,7 @@ class _StoreitemWidgetState extends State<StoreitemWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
           child: Icon(
             Icons.map_outlined,
             color: FlutterFlowTheme.of(context).primary,
@@ -95,7 +95,7 @@ class _StoreitemWidgetState extends State<StoreitemWidget> {
                       letterSpacing: 0.0,
                     ),
               ),
-          ].divide(const SizedBox(height: 6.0)),
+          ].divide(SizedBox(height: 6.0)),
         ),
       ],
     );

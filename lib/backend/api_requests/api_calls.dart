@@ -43,7 +43,7 @@ class GetAccessTokenCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getAccessToken',
-      apiUrl: '$baseUrl/users/getToken',
+      apiUrl: '${baseUrl}/users/getToken',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ class OnetimePaymentCall {
     final ffApiRequestBody = '''
 {
   "merchant_uid": "${escapeStringForJson(merchantUid)}",
-  "amount": $amount,
+  "amount": ${amount},
   "card_number": "${escapeStringForJson(cardNumber)}",
   "expiry": "${escapeStringForJson(expiry)}",
   "birth": "${escapeStringForJson(birth)}",
@@ -114,11 +114,11 @@ class OnetimePaymentCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'onetimePayment',
-      apiUrl: '$baseUrl/subscribe/payments/onetime',
+      apiUrl: '${baseUrl}/subscribe/payments/onetime',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': '$accessToken',
+        'Authorization': '${accessToken}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -220,6 +220,46 @@ class OnetimePaymentCall {
 }
 
 /// End ImpPgPayments Group Code
+
+class SendTelegramButtonCall {
+  static Future<ApiCallResponse> call() async {
+    final ffApiRequestBody = '''
+{
+  "chat_id": "-1002492519419",
+  "text": "Нажмите кнопку, чтобы открыть приложение:",
+  "reply_markup": {
+    "inline_keyboard": [
+      [
+        {
+          "text": "Открыть WholeSaler",
+          "web_app": {
+            "url": "https://wholekrsaler.flutterflow.app/"
+          }
+        }
+      ]
+    ]
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Send Telegram Button',
+      apiUrl:
+          'https://api.telegram.org/bot8159674607:AAGDEEpZg_4jA9GdjjTydCnYN0euzlfFMSE/sendMessage',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
 
 class ApiPagingParams {
   int nextPageNumber = 0;

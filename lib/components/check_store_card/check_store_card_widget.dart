@@ -70,7 +70,7 @@ class _CheckStoreCardWidgetState extends State<CheckStoreCardWidget> {
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -111,12 +111,12 @@ class _CheckStoreCardWidgetState extends State<CheckStoreCardWidget> {
                         ),
                       ],
                     ),
-                  ].divide(const SizedBox(width: 12.0)),
+                  ].divide(SizedBox(width: 12.0)),
                 ),
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
                     child: Icon(
                       Icons.chevron_right,
                       color: FlutterFlowTheme.of(context).secondaryText,

@@ -51,8 +51,8 @@ class _WholeStoreItemWidgetState extends State<WholeStoreItemWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 70.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 70.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -77,7 +77,7 @@ class _WholeStoreItemWidgetState extends State<WholeStoreItemWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
       child: StreamBuilder<StoresRecord>(
         stream: StoresRecord.getDocument(widget.storeDoc!),
         builder: (context, snapshot) {
@@ -102,7 +102,7 @@ class _WholeStoreItemWidgetState extends State<WholeStoreItemWidget>
             width: double.infinity,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0x2B202529),
@@ -119,13 +119,13 @@ class _WholeStoreItemWidgetState extends State<WholeStoreItemWidget>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               8.0, 4.0, 0.0, 4.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -133,7 +133,7 @@ class _WholeStoreItemWidgetState extends State<WholeStoreItemWidget>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 0.0),
                                 child: Text(
                                   carDetailsStoresRecord.storeName,
@@ -153,7 +153,7 @@ class _WholeStoreItemWidgetState extends State<WholeStoreItemWidget>
                         builder: (context) {
                           if (carDetailsStoresRecord.logoImg != '') {
                             return ClipRRect(
-                              borderRadius: const BorderRadius.only(
+                              borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(0.0),
                                 bottomRight: Radius.circular(12.0),
                                 topLeft: Radius.circular(0.0),

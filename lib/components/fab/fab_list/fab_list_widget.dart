@@ -39,18 +39,18 @@ class _FabListWidgetState extends State<FabListWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(1.0, 1.0),
+      alignment: AlignmentDirectional(1.0, 1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 40.0, 100.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 40.0, 100.0),
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Colors.transparent,
           ),
           child: Container(
             width: 60.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0x33000000),
@@ -64,7 +64,7 @@ class _FabListWidgetState extends State<FabListWidget> {
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+              padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -111,7 +111,7 @@ class _FabListWidgetState extends State<FabListWidget> {
                       print('IconButton pressed ...');
                     },
                   ),
-                ].divide(const SizedBox(height: 16.0)),
+                ].divide(SizedBox(height: 16.0)),
               ),
             ),
           ),

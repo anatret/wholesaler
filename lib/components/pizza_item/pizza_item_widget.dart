@@ -17,7 +17,7 @@ class PizzaItemWidget extends StatefulWidget {
     required this.image,
     bool? instock,
     this.refproduct,
-  }) : instock = instock ?? true;
+  }) : this.instock = instock ?? true;
 
   final String? name;
   final String? deskription;
@@ -62,8 +62,8 @@ class _PizzaItemWidgetState extends State<PizzaItemWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 70.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 70.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -84,9 +84,9 @@ class _PizzaItemWidgetState extends State<PizzaItemWidget>
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
       child: Stack(
-        alignment: const AlignmentDirectional(0.0, 0.0),
+        alignment: AlignmentDirectional(0.0, 0.0),
         children: [
           Opacity(
             opacity: widget.instock ? 1.0 : 0.25,
@@ -95,7 +95,7 @@ class _PizzaItemWidgetState extends State<PizzaItemWidget>
               height: 160.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                boxShadow: const [
+                boxShadow: [
                   BoxShadow(
                     blurRadius: 4.0,
                     color: Color(0x2B202529),
@@ -114,7 +114,7 @@ class _PizzaItemWidgetState extends State<PizzaItemWidget>
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(
@@ -133,9 +133,9 @@ class _PizzaItemWidgetState extends State<PizzaItemWidget>
                               .toList(),
                           widget.refproduct!))
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, -1.0),
+                          alignment: AlignmentDirectional(-1.0, -1.0),
                           child: Padding(
-                            padding: const EdgeInsets.all(5.0),
+                            padding: EdgeInsets.all(5.0),
                             child: Container(
                               width: 36.0,
                               height: 36.0,
@@ -161,7 +161,7 @@ class _PizzaItemWidgetState extends State<PizzaItemWidget>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 6.0),
                           child: Text(
                             valueOrDefault<String>(
@@ -178,7 +178,7 @@ class _PizzaItemWidgetState extends State<PizzaItemWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 8.0),
                           child: Text(
                             valueOrDefault<String>(
@@ -192,18 +192,18 @@ class _PizzaItemWidgetState extends State<PizzaItemWidget>
                                 .labelSmall
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFF5B5B5B),
+                                  color: Color(0xFF5B5B5B),
                                   letterSpacing: 0.0,
                                 ),
                           ),
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFFF0E6),
+                            color: Color(0xFFFFF0E6),
                             borderRadius: BorderRadius.circular(16.0),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 18.0, 9.0, 18.0, 9.0),
                             child: Text(
                               formatNumber(
@@ -230,7 +230,7 @@ class _PizzaItemWidgetState extends State<PizzaItemWidget>
           ),
           if (!widget.instock)
             Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getText(
                   'f8im7su4' /* Будет позже */,

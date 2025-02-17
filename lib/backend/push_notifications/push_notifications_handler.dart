@@ -11,7 +11,8 @@ import 'package:flutter/scheduler.dart';
 final _handledMessageIds = <String?>{};
 
 class PushNotificationsHandler extends StatefulWidget {
-  const PushNotificationsHandler({super.key, required this.child});
+  const PushNotificationsHandler({Key? key, required this.child})
+      : super(key: key);
 
   final Widget child;
 
@@ -99,7 +100,7 @@ class ParameterData {
       );
 
   static Future<ParameterData> Function(Map<String, dynamic>) none() =>
-      (data) async => const ParameterData();
+      (data) async => ParameterData();
 }
 
 final parametersBuilderMap =
@@ -192,6 +193,16 @@ final parametersBuilderMap =
   'UserPageInfo': (data) async => ParameterData(
         allParams: {
           'userRef': getParameter<DocumentReference>(data, 'userRef'),
+        },
+      ),
+  'addPromotion1': (data) async => ParameterData(
+        allParams: {
+          'storeRef': getParameter<DocumentReference>(data, 'storeRef'),
+        },
+      ),
+  'addPromotion2': (data) async => ParameterData(
+        allParams: {
+          'promotionRef': getParameter<DocumentReference>(data, 'promotionRef'),
         },
       ),
 };

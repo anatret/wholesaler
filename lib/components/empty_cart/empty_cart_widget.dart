@@ -9,7 +9,7 @@ class EmptyCartWidget extends StatefulWidget {
   const EmptyCartWidget({
     super.key,
     String? page,
-  }) : page = page ?? 'cart';
+  }) : this.page = page ?? 'cart';
 
   final String page;
 
@@ -44,7 +44,7 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+      padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -54,10 +54,10 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
             width: 200.0,
             height: 200.0,
             decoration: BoxDecoration(
-              color: const Color(0xFFF5F5F5),
+              color: Color(0xFFF5F5F5),
               borderRadius: BorderRadius.circular(100.0),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.shopping_cart,
               color: Color(0xFFBDBDBD),
               size: 80.0,
@@ -144,8 +144,8 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
             options: FFButtonOptions(
               width: 250.0,
               height: 50.0,
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
               color: FlutterFlowTheme.of(context).primary,
               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                     fontFamily: 'Readex Pro',
@@ -156,7 +156,7 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
               borderRadius: BorderRadius.circular(25.0),
             ),
           ),
-        ].divide(const SizedBox(height: 24.0)),
+        ].divide(SizedBox(height: 24.0)),
       ),
     );
   }

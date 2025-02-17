@@ -12,6 +12,7 @@ import 'package:badges/badges.dart' as badges;
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'home_page_whole_store_model.dart';
 export 'home_page_whole_store_model.dart';
@@ -36,7 +37,6 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      Function() navigate = () {};
       // checkStore
       _model.usersStore = await queryStoresRecordOnce(
         queryBuilder: (storesRecord) => storesRecord.where(
@@ -48,21 +48,21 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
       if (_model.usersStore != null) {
         if (_model.usersStore?.verifyStatus == VerifyStatus.done) {
         } else {
-          GoRouter.of(context).prepareAuthEvent();
-          await authManager.signOut();
-          GoRouter.of(context).clearRedirectLocation();
-
-          navigate = () => context.goNamedAuth('AuthPage', context.mounted);
+          context.pushNamed(
+            'EditStorePage',
+            queryParameters: {
+              'storeRef': serializeParam(
+                _model.usersStore?.reference,
+                ParamType.DocumentReference,
+              ),
+            }.withoutNulls,
+          );
         }
       } else {
-        GoRouter.of(context).prepareAuthEvent();
-        await authManager.signOut();
-        GoRouter.of(context).clearRedirectLocation();
+        context.pushNamed('RegNewStorePre');
 
-        navigate = () => context.goNamedAuth('AuthPage', context.mounted);
+        return;
       }
-
-      navigate();
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -85,7 +85,9 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
           queryBuilder: (pizzaRecord) => pizzaRecord
               .where(
                 'isDeleted',
-                isEqualTo: _model.showDeletedCheckboxValue ?? false,
+                isEqualTo: _model.showDeletedCheckboxValue != null
+                    ? _model.showDeletedCheckboxValue
+                    : false,
               )
               .where(
                 'productType',
@@ -139,7 +141,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                         context.pushNamed(
                           'CartPage',
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: const TransitionInfo(
+                            kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.scale,
                               alignment: Alignment.bottomCenter,
@@ -148,7 +150,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                         );
                       },
                       child: Stack(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         children: [
                           Icon(
                             Icons.shopping_cart_outlined,
@@ -156,7 +158,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                             size: 24.0,
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.6, -0.6),
+                            alignment: AlignmentDirectional(0.6, -0.6),
                             child: Text(
                               valueOrDefault<String>(
                                 functions
@@ -189,7 +191,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                         context.pushNamed(
                           'AddProduct',
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: const TransitionInfo(
+                            kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.scale,
                               alignment: Alignment.bottomCenter,
@@ -200,9 +202,9 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                       child: Container(
                         width: double.infinity,
                         height: double.infinity,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Stack(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           children: [
                             Icon(
                               Icons.add,
@@ -218,7 +220,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
               ),
             ),
             appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(58.0),
+              preferredSize: Size.fromHeight(58.0),
               child: AppBar(
                 backgroundColor:
                     FlutterFlowTheme.of(context).secondaryBackground,
@@ -231,19 +233,25 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            'qgqv4sff' /* WholeSaler */,
+                        Container(
+                          height: 36.0,
+                          decoration: BoxDecoration(),
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'qgqv4sff' /* WholeSaler */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodySmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                ),
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                  ),
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
@@ -251,7 +259,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                             if (currentUserDocument?.userType !=
                                 UserTypes.manager)
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 10.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -262,7 +270,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                     context.pushNamed(
                                       'SearchPage',
                                       extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
+                                        kTransitionInfoKey: TransitionInfo(
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.scale,
@@ -279,35 +287,122 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                   ),
                                 ),
                               ),
-                            badges.Badge(
-                              badgeContent: Text(
-                                FFLocalizations.of(context).getText(
-                                  '8knbeohg' /* 1 */,
+                            FutureBuilder<int>(
+                              future: queryUserReadRecordCount(
+                                queryBuilder: (userReadRecord) =>
+                                    userReadRecord.where(
+                                  'userRef',
+                                  isEqualTo: currentUserReference,
                                 ),
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Colors.white,
-                                      fontSize: 12.0,
-                                      letterSpacing: 0.0,
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 26.0,
+                                      height: 26.0,
+                                      child: SpinKitRipple(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 26.0,
+                                      ),
                                     ),
-                              ),
-                              showBadge: true,
-                              shape: badges.BadgeShape.circle,
-                              badgeColor: FlutterFlowTheme.of(context).primary,
-                              elevation: 0.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 8.0, 8.0, 8.0),
-                              position: badges.BadgePosition.topEnd(),
-                              animationType: badges.BadgeAnimationType.scale,
-                              toAnimate: true,
-                              child: Icon(
-                                Icons.notifications_outlined,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 26.0,
-                              ),
+                                  );
+                                }
+                                int containerCount = snapshot.data!;
+
+                                return Container(
+                                  height: 36.0,
+                                  decoration: BoxDecoration(),
+                                  child: FutureBuilder<int>(
+                                    future: queryNewsRecordCount(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 26.0,
+                                            height: 26.0,
+                                            child: SpinKitRipple(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 26.0,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      int badgeCount = snapshot.data!;
+
+                                      return InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                            'News',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.scale,
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                              ),
+                                            },
+                                          );
+                                        },
+                                        child: badges.Badge(
+                                          badgeContent: Text(
+                                            valueOrDefault<String>(
+                                              (badgeCount - containerCount)
+                                                  .toString(),
+                                              '0',
+                                            ),
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleSmall
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: Colors.white,
+                                                  fontSize: 12.0,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          showBadge: valueOrDefault<String>(
+                                                (badgeCount - containerCount)
+                                                    .toString(),
+                                                '0',
+                                              ) !=
+                                              '0',
+                                          shape: badges.BadgeShape.circle,
+                                          badgeColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          elevation: 0.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  8.0, 8.0, 8.0, 8.0),
+                                          position:
+                                              badges.BadgePosition.topEnd(),
+                                          animationType:
+                                              badges.BadgeAnimationType.scale,
+                                          toAnimate: true,
+                                          child: Icon(
+                                            Icons.notifications_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 26.0,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -315,26 +410,26 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                     ),
                   ],
                 ),
-                actions: const [],
+                actions: [],
                 centerTitle: false,
                 toolbarHeight: 58.0,
                 elevation: 0.0,
               ),
             ),
             body: Align(
-              alignment: const AlignmentDirectional(0.0, -1.0),
+              alignment: AlignmentDirectional(0.0, -1.0),
               child: Container(
-                constraints: const BoxConstraints(
+                constraints: BoxConstraints(
                   maxWidth: 450.0,
                 ),
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 4.0, 16.0, 16.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
@@ -399,9 +494,9 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                   ),
                                 );
                               })
-                                  .divide(const SizedBox(width: 8.0))
-                                  .addToStart(const SizedBox(width: 16.0))
-                                  .addToEnd(const SizedBox(width: 16.0)),
+                                  .divide(SizedBox(width: 8.0))
+                                  .addToStart(SizedBox(width: 16.0))
+                                  .addToEnd(SizedBox(width: 16.0)),
                             ),
                           );
                         },
@@ -444,7 +539,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                       return Builder(
                                         builder: (context) => Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -462,12 +557,12 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                                     backgroundColor:
                                                         Colors.transparent,
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                                 0.0, 0.0)
                                                             .resolve(
                                                                 Directionality.of(
                                                                     context)),
-                                                    child: SizedBox(
+                                                    child: Container(
                                                       height: MediaQuery.sizeOf(
                                                                   context)
                                                               .height *
@@ -517,9 +612,9 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                         ),
                                       );
                                     })
-                                            .divide(const SizedBox(width: 8.0))
-                                            .addToStart(const SizedBox(width: 16.0))
-                                            .addToEnd(const SizedBox(width: 16.0)),
+                                            .divide(SizedBox(width: 8.0))
+                                            .addToStart(SizedBox(width: 16.0))
+                                            .addToEnd(SizedBox(width: 16.0)),
                                   ),
                                 );
                               },
@@ -565,7 +660,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                       return Builder(
                                         builder: (context) => Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -583,12 +678,12 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                                     backgroundColor:
                                                         Colors.transparent,
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                                 0.0, 0.0)
                                                             .resolve(
                                                                 Directionality.of(
                                                                     context)),
-                                                    child: SizedBox(
+                                                    child: Container(
                                                       height: MediaQuery.sizeOf(
                                                                   context)
                                                               .height *
@@ -638,9 +733,9 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                         ),
                                       );
                                     })
-                                            .divide(const SizedBox(width: 8.0))
-                                            .addToStart(const SizedBox(width: 16.0))
-                                            .addToEnd(const SizedBox(width: 16.0)),
+                                            .divide(SizedBox(width: 8.0))
+                                            .addToStart(SizedBox(width: 16.0))
+                                            .addToEnd(SizedBox(width: 16.0)),
                                   ),
                                 );
                               },
@@ -657,7 +752,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                               (currentUserDocument?.userType ==
                                   UserTypes.admin))
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 16.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -714,7 +809,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                               ),
                             ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: Builder(
                               builder: (context) {
@@ -723,11 +818,11 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                         .unique((e) => e.store!)
                                         .toList();
                                 if (uniqStores.isEmpty) {
-                                  return const EmptyProductListWidget();
+                                  return EmptyProductListWidget();
                                 }
 
                                 return ListView.builder(
-                                  padding: const EdgeInsets.fromLTRB(
+                                  padding: EdgeInsets.fromLTRB(
                                     0,
                                     0,
                                     0,
@@ -759,7 +854,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                                             ),
                                           }.withoutNulls,
                                           extra: <String, dynamic>{
-                                            kTransitionInfoKey: const TransitionInfo(
+                                            kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
                                               transitionType:
                                                   PageTransitionType.fade,
@@ -790,7 +885,7 @@ class _HomePageWholeStoreWidgetState extends State<HomePageWholeStoreWidget> {
                               },
                             ),
                           ),
-                        ].addToEnd(const SizedBox(height: 24.0)),
+                        ].addToEnd(SizedBox(height: 24.0)),
                       ),
                     ],
                   ),
