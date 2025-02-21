@@ -18,20 +18,23 @@ void main() async {
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
 
+  final environmentValues = FFDevEnvironmentValues();
+  await environmentValues.initialize();
+
   await initFirebase();
+
+  await FFLocalizations.initialize();
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
-    child: const MyApp(),
+    child: MyApp(),
   ));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   State<MyApp> createState() => _MyAppState();
@@ -41,12 +44,20 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale? _locale;
+  Locale? _locale = FFLocalizations.getStoredLocale();
 
   ThemeMode _themeMode = ThemeMode.system;
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
+  String getRoute([RouteMatch? routeMatch]) {
+    final RouteMatch lastMatch =
+        routeMatch ?? _router.routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : _router.routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 
   late Stream<BaseAuthUser> userStream;
 
@@ -65,7 +76,7 @@ class _MyAppState extends State<MyApp> {
       });
     jwtTokenStream.listen((_) {});
     Future.delayed(
-      const Duration(milliseconds: 1000),
+      Duration(milliseconds: isWeb ? 0 : 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
@@ -79,6 +90,7 @@ class _MyAppState extends State<MyApp> {
 
   void setLocale(String language) {
     safeSetState(() => _locale = createLocale(language));
+    FFLocalizations.storeLocale(language);
   }
 
   void setThemeMode(ThemeMode mode) => safeSetState(() {
@@ -89,7 +101,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'WholeSaler',
-      localizationsDelegates: const [
+      localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -100,7 +112,9 @@ class _MyAppState extends State<MyApp> {
       locale: _locale,
       supportedLocales: const [
         Locale('ru'),
+        Locale('en'),
         Locale('ko'),
+        Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       ],
       theme: ThemeData(
         brightness: Brightness.light,
@@ -113,7 +127,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class NavBarPage extends StatefulWidget {
-  const NavBarPage({super.key, this.initialPage, this.page});
+  NavBarPage({Key? key, this.initialPage, this.page}) : super(key: key);
 
   final String? initialPage;
   final Widget? page;
@@ -124,7 +138,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'HomePage';
+  String _currentPageName = 'HomePageWholeStore';
   late Widget? _currentPage;
 
   @override
@@ -137,11 +151,11 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'HomePage': const HomePageWidget(),
-      'FavoritPage': const FavoritPageWidget(),
-      'UserOrderListPage': const UserOrderListPageWidget(),
-      'CartPage': const CartPageWidget(),
-      'Profile': const ProfileWidget(),
+      'HomePageWholeStore': HomePageWholeStoreWidget(),
+      'FavoritPage': FavoritPageWidget(),
+      'UserOrderListPage': UserOrderListPageWidget(),
+      'CartPage': CartPageWidget(),
+      'Profile': ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -161,52 +175,52 @@ class _NavBarPageState extends State<NavBarPage> {
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.home_outlined,
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              'onzurzzr' /* Home */,
+              'mc3n5gye' /* Дом */,
             ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.favorite_border,
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              'ps247s78' /* Home */,
+              'ps247s78' /* Избранное */,
             ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.format_list_bulleted,
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              'cugi6x2m' /* Home */,
+              'cugi6x2m' /* Заказы */,
             ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.shopping_cart_outlined,
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              'xf38p9sp' /* Home */,
+              'xf38p9sp' /* Корзина */,
             ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.person_outline_sharp,
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              '3jcn9ln5' /* Home */,
+              '3jcn9ln5' /* Профиль */,
             ),
             tooltip: '',
           )

@@ -48,6 +48,8 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DeckriptionItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -66,7 +68,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
       height: double.infinity,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(40.0),
@@ -76,13 +78,13 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
       child: Stack(
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,83 +92,53 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                     if ((currentUserDocument?.userType == UserTypes.manager) ||
                         (currentUserDocument?.userType == UserTypes.admin))
                       Align(
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 20.0),
                           child: AuthUserStreamWidget(
-                            builder: (context) => StreamBuilder<PizzaRecord>(
-                              stream: PizzaRecord.getDocument(widget.ref!),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
-                                      ),
+                            builder: (context) => InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(
+                                  'EditCopyDeletProduct',
+                                  queryParameters: {
+                                    'isEdit': serializeParam(
+                                      true,
+                                      ParamType.bool,
                                     ),
-                                  );
-                                }
-
-                                final textPizzaRecord = snapshot.data!;
-
-                                return InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed(
-                                      'AddProduct',
-                                      queryParameters: {
-                                        'isEdit': serializeParam(
-                                          true,
-                                          ParamType.bool,
-                                        ),
-                                        'productRef': serializeParam(
-                                          widget.ref,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'pizzaDoc': serializeParam(
-                                          textPizzaRecord,
-                                          ParamType.Document,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'pizzaDoc': textPizzaRecord,
-                                      },
-                                    );
-                                  },
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'sqaxzhgu' /* Редактировать */,
+                                    'productRef': serializeParam(
+                                      widget.ref,
+                                      ParamType.DocumentReference,
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
+                                  }.withoutNulls,
                                 );
                               },
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'sqaxzhgu' /* Редактировать */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
                             ),
                           ),
                         ),
                       ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 24.0, 0.0, 24.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(0.0),
@@ -174,7 +146,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                             widget.image!,
                             width: 208.0,
                             height: 208.0,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
@@ -182,7 +154,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                     if (false)
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                         child: Container(
                           height: 40.0,
                           decoration: BoxDecoration(
@@ -195,7 +167,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                             children: [
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -212,13 +184,13 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                                 Productsize.small
                                             ? FlutterFlowTheme.of(context)
                                                 .primary
-                                            : const Color(0x00000000),
+                                            : Color(0x00000000),
                                         borderRadius:
                                             BorderRadius.circular(30.0),
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'ihxjp0q9' /* Маленькая */,
@@ -245,7 +217,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -262,13 +234,13 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                                 Productsize.medium
                                             ? FlutterFlowTheme.of(context)
                                                 .primary
-                                            : const Color(0x00000000),
+                                            : Color(0x00000000),
                                         borderRadius:
                                             BorderRadius.circular(30.0),
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             '57b66eyg' /* Средняя */,
@@ -295,7 +267,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -312,13 +284,13 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                                 Productsize.large
                                             ? FlutterFlowTheme.of(context)
                                                 .primary
-                                            : const Color(0x00000000),
+                                            : Color(0x00000000),
                                         borderRadius:
                                             BorderRadius.circular(30.0),
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'pu204amo' /* Большая */,
@@ -350,7 +322,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                     if (false)
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                         child: Container(
                           height: 40.0,
                           decoration: BoxDecoration(
@@ -363,7 +335,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                             children: [
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -379,13 +351,13 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                         color: _model.isThin != true
                                             ? FlutterFlowTheme.of(context)
                                                 .primary
-                                            : const Color(0x00000000),
+                                            : Color(0x00000000),
                                         borderRadius:
                                             BorderRadius.circular(30.0),
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'a7i96tsd' /* Традиционнае */,
@@ -411,7 +383,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -427,13 +399,13 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                         color: _model.isThin == true
                                             ? FlutterFlowTheme.of(context)
                                                 .primary
-                                            : const Color(0x00000000),
+                                            : Color(0x00000000),
                                         borderRadius:
                                             BorderRadius.circular(30.0),
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'rl1c267q' /* Тонкае */,
@@ -463,7 +435,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                       ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Text(
                         valueOrDefault<String>(
                           widget.name,
@@ -480,7 +452,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                     Flexible(
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                         child: Text(
                           valueOrDefault<String>(
                             widget.deskription,
@@ -499,7 +471,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                     if (false)
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'gnuiny1r' /* Добавить ингридиенты */,
@@ -519,7 +491,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                         child: MasonryGridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           gridDelegate:
-                              const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                              SliverSimpleGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3,
                           ),
                           crossAxisSpacing: 4.0,
@@ -541,7 +513,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 4.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -588,7 +560,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 4.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -633,7 +605,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 4.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -678,7 +650,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 4.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -724,7 +696,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 4.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -770,7 +742,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 4.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -816,7 +788,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                 .toList(),
                             widget.ref!)) {
                           return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -840,7 +812,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                    duration: const Duration(milliseconds: 2400),
+                                    duration: Duration(milliseconds: 2400),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).secondary,
                                   ),
@@ -854,9 +826,9 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -868,7 +840,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
                                     ),
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                 ),
                                 borderRadius: BorderRadius.circular(30.0),
@@ -877,7 +849,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
                           );
                         } else {
                           return Align(
-                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(0.0, -1.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'wfdq730d' /* Продукт уже есть в вашей корзи... */,
@@ -903,7 +875,7 @@ class _DeckriptionItemWidgetState extends State<DeckriptionItemWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+            padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

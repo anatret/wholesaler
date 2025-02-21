@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -10,9 +12,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class ClientsRecord extends FirestoreRecord {
   ClientsRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -59,6 +61,46 @@ class ClientsRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       ClientsRecord._(reference, mapFromFirestore(data));
+
+  static ClientsRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      ClientsRecord.getDocumentFromData(
+        {
+          'store': convertAlgoliaParam(
+            snapshot.data['store'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'client': convertAlgoliaParam(
+            snapshot.data['client'],
+            ParamType.DocumentReference,
+            false,
+          ),
+          'clientStatus': convertAlgoliaParam<ClientStatus>(
+            snapshot.data['clientStatus'],
+            ParamType.Enum,
+            false,
+          ),
+        },
+        ClientsRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<ClientsRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'clients',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>

@@ -47,6 +47,66 @@ int summFunction(
   return count * price;
 }
 
-DocumentReference getWholeUserRef(StoresRecord wholeStore) {
-  return wholeStore.user as DocumentReference;
+int getSizeOfCartList(List<CartStruct> cartList) {
+  // верни длину cartList
+  return cartList.length;
+}
+
+DateTime addMonToExpiryDate(DateTime oldExpiryDate) {
+  // Добавляем 1 месяц
+  int newYear = oldExpiryDate.year;
+  int newMonth = oldExpiryDate.month + 1;
+
+  // Обрабатываем переход на следующий год
+  if (newMonth > 12) {
+    newYear += 1;
+    newMonth = 1;
+  }
+
+  // Сохраняем день
+  int newDay = oldExpiryDate.day;
+
+  // Если новый месяц не имеет нужного количества дней, корректируем
+  int maxDaysInNewMonth = DateTime(newYear, newMonth + 1, 0).day;
+  if (newDay > maxDaysInNewMonth) {
+    newDay = maxDaysInNewMonth;
+  }
+
+  // Новая дата с обнулением времени до 00:00
+  DateTime newExpireDate = DateTime(newYear, newMonth, newDay);
+
+  // Проверяем, нужно ли округлять в большую сторону
+  if (oldExpiryDate.hour > 0 ||
+      oldExpiryDate.minute > 0 ||
+      oldExpiryDate.second > 0 ||
+      oldExpiryDate.millisecond > 0) {
+    newExpireDate = newExpireDate.add(Duration(days: 1));
+  }
+
+  return newExpireDate;
+}
+
+int checkExpiryDate(DateTime expiryDate) {
+  // верни количество дней до expirydate
+  DateTime now = DateTime.now();
+  Duration difference = expiryDate.difference(now);
+  return difference.inDays;
+}
+
+DateTime addDaysToDate(
+  int addDays,
+  DateTime curDate,
+) {
+  // Обнуляем время, добавляем дни
+  DateTime newDate = DateTime(curDate.year, curDate.month, curDate.day)
+      .add(Duration(days: addDays));
+  return newDate;
+}
+
+bool checkReadNews(
+  DocumentReference newsRef,
+  List<DocumentReference> appNews,
+) {
+  // создай функцию которая проверять есть ли ссылка в листе которая находится в appstate readedNewsRef
+  return appNews.contains(newsRef);
 }

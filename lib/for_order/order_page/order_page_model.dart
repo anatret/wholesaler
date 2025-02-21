@@ -1,6 +1,5 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import 'order_page_widget.dart' show OrderPageWidget;
 import 'package:flutter/material.dart';
 
@@ -11,10 +10,6 @@ class OrderPageModel extends FlutterFlowModel<OrderPageWidget> {
   FocusNode? addressFieldFocusNode;
   TextEditingController? addressFieldTextController;
   String? Function(BuildContext, String?)? addressFieldTextControllerValidator;
-  // State field(s) for HomeField widget.
-  FocusNode? homeFieldFocusNode;
-  TextEditingController? homeFieldTextController;
-  String? Function(BuildContext, String?)? homeFieldTextControllerValidator;
   // State field(s) for RoomField widget.
   FocusNode? roomFieldFocusNode;
   TextEditingController? roomFieldTextController;
@@ -27,10 +22,10 @@ class OrderPageModel extends FlutterFlowModel<OrderPageWidget> {
   FocusNode? commentFieldFocusNode;
   TextEditingController? commentFieldTextController;
   String? Function(BuildContext, String?)? commentFieldTextControllerValidator;
-  // State field(s) for RadioButton widget.
-  FormFieldController<String>? radioButtonValueController;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   OrderRecord? newOrder;
+  // Stores action output result for [Backend Call - Read Document] action in Button widget.
+  StoresRecord? wholestore;
 
   @override
   void initState(BuildContext context) {}
@@ -39,9 +34,6 @@ class OrderPageModel extends FlutterFlowModel<OrderPageWidget> {
   void dispose() {
     addressFieldFocusNode?.dispose();
     addressFieldTextController?.dispose();
-
-    homeFieldFocusNode?.dispose();
-    homeFieldTextController?.dispose();
 
     roomFieldFocusNode?.dispose();
     roomFieldTextController?.dispose();
@@ -52,7 +44,4 @@ class OrderPageModel extends FlutterFlowModel<OrderPageWidget> {
     commentFieldFocusNode?.dispose();
     commentFieldTextController?.dispose();
   }
-
-  /// Additional helper methods.
-  String? get radioButtonValue => radioButtonValueController?.value;
 }

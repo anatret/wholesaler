@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -17,6 +19,8 @@ export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
+
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
@@ -75,175 +79,385 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
+      navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const AuthPageWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : AuthPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const AuthPageWidget(),
-        ),
-        FFRoute(
-          name: 'AuthPage',
-          path: '/authPage',
-          builder: (context, params) => const AuthPageWidget(),
-        ),
-        FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'HomePage')
-              : const HomePageWidget(),
-        ),
-        FFRoute(
-          name: 'RegPage',
-          path: '/regPage',
-          builder: (context, params) => const RegPageWidget(),
-        ),
-        FFRoute(
-          name: 'FavoritPage',
-          path: '/favoritPage',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'FavoritPage')
-              : const FavoritPageWidget(),
-        ),
-        FFRoute(
-          name: 'CartPage',
-          path: '/cartPage',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'CartPage')
-              : const CartPageWidget(),
-        ),
-        FFRoute(
-          name: 'OrderPage',
-          path: '/orderPage',
-          builder: (context, params) => const OrderPageWidget(),
-        ),
-        FFRoute(
-          name: 'UserOrderListPage',
-          path: '/userOrderListPage',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'UserOrderListPage')
-              : const UserOrderListPageWidget(),
-        ),
-        FFRoute(
-          name: 'OneOrderPage',
-          path: '/oneOrderPage',
-          builder: (context, params) => OneOrderPageWidget(
-            order: params.getParam(
-              'order',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['order'],
+              appStateNotifier.loggedIn ? NavBarPage() : AuthPageWidget(),
+          routes: [
+            FFRoute(
+              name: 'AuthPage',
+              path: 'authPage',
+              builder: (context, params) => AuthPageWidget(),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'Profile',
-          path: '/profile',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Profile')
-              : const ProfileWidget(),
-        ),
-        FFRoute(
-          name: 'RestorePage',
-          path: '/restorePage',
-          builder: (context, params) => const RestorePageWidget(),
-        ),
-        FFRoute(
-          name: 'RestoreInfoPage',
-          path: '/restoreInfoPage',
-          builder: (context, params) => const RestoreInfoPageWidget(),
-        ),
-        FFRoute(
-          name: 'Addresses',
-          path: '/addresses',
-          builder: (context, params) => const AddressesWidget(),
-        ),
-        FFRoute(
-          name: 'AdminPanel',
-          path: '/adminPanel',
-          builder: (context, params) => const AdminPanelWidget(),
-        ),
-        FFRoute(
-          name: 'PromotionsPage',
-          path: '/promotionsPage',
-          builder: (context, params) => const PromotionsPageWidget(),
-        ),
-        FFRoute(
-          name: 'AddProduct',
-          path: '/addProduct',
-          asyncParams: {
-            'pizzaDoc': getDoc(['pizza'], PizzaRecord.fromSnapshot),
-          },
-          builder: (context, params) => AddProductWidget(
-            isEdit: params.getParam(
-              'isEdit',
-              ParamType.bool,
+            FFRoute(
+              name: 'HomePageOld',
+              path: 'homePageOld',
+              requireAuth: true,
+              builder: (context, params) => HomePageOldWidget(),
             ),
-            productRef: params.getParam(
-              'productRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['pizza'],
+            FFRoute(
+              name: 'RegPage',
+              path: 'regPage',
+              builder: (context, params) => RegPageWidget(),
             ),
-            pizzaDoc: params.getParam(
-              'pizzaDoc',
-              ParamType.Document,
+            FFRoute(
+              name: 'FavoritPage',
+              path: 'favoritPage',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'FavoritPage')
+                  : FavoritPageWidget(),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'ProductsPage',
-          path: '/productsPage',
-          builder: (context, params) => const ProductsPageWidget(),
-        ),
-        FFRoute(
-          name: 'ProductDeckPage',
-          path: '/productDeckPage',
-          asyncParams: {
-            'documentProduct': getDoc(['pizza'], PizzaRecord.fromSnapshot),
-          },
-          builder: (context, params) => ProductDeckPageWidget(
-            documentProduct: params.getParam(
-              'documentProduct',
-              ParamType.Document,
+            FFRoute(
+              name: 'CartPage',
+              path: 'cartPage',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'CartPage')
+                  : CartPageWidget(),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'ManagerOrderListPage',
-          path: '/managerOrderListPage',
-          builder: (context, params) => const ManagerOrderListPageWidget(),
-        ),
-        FFRoute(
-          name: 'RegStorePage',
-          path: '/regStorePage',
-          builder: (context, params) => const RegStorePageWidget(),
-        ),
-        FFRoute(
-          name: 'Stores',
-          path: '/stores',
-          builder: (context, params) => const StoresWidget(),
-        ),
-        FFRoute(
-          name: 'OneOrderPage2',
-          path: '/oneOrderPage2',
-          builder: (context, params) => OneOrderPage2Widget(
-            order: params.getParam(
-              'order',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['order'],
+            FFRoute(
+              name: 'OrderPage',
+              path: 'orderPage',
+              requireAuth: true,
+              builder: (context, params) => OrderPageWidget(),
             ),
-          ),
+            FFRoute(
+              name: 'UserOrderListPage',
+              path: 'userOrderListPage',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'UserOrderListPage')
+                  : UserOrderListPageWidget(),
+            ),
+            FFRoute(
+              name: 'OneOrderUserPage',
+              path: 'oneOrderUserPage',
+              requireAuth: true,
+              builder: (context, params) => OneOrderUserPageWidget(
+                order: params.getParam(
+                  'order',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['order'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'Profile',
+              path: 'profile',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Profile')
+                  : ProfileWidget(),
+            ),
+            FFRoute(
+              name: 'RestorePage',
+              path: 'restorePage',
+              builder: (context, params) => RestorePageWidget(),
+            ),
+            FFRoute(
+              name: 'RestoreInfoPage',
+              path: 'restoreInfoPage',
+              builder: (context, params) => RestoreInfoPageWidget(),
+            ),
+            FFRoute(
+              name: 'Addresses',
+              path: 'addresses',
+              builder: (context, params) => AddressesWidget(),
+            ),
+            FFRoute(
+              name: 'AdminPanel',
+              path: 'adminPanel',
+              requireAuth: true,
+              builder: (context, params) => AdminPanelWidget(),
+            ),
+            FFRoute(
+              name: 'PromotionsPage',
+              path: 'promotionsPage',
+              requireAuth: true,
+              builder: (context, params) => PromotionsPageWidget(),
+            ),
+            FFRoute(
+              name: 'EditCopyDeletProduct',
+              path: 'editCopyDeletProduct',
+              requireAuth: true,
+              builder: (context, params) => EditCopyDeletProductWidget(
+                isEdit: params.getParam(
+                  'isEdit',
+                  ParamType.bool,
+                ),
+                productRef: params.getParam(
+                  'productRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['pizza'],
+                ),
+                itCopy: params.getParam(
+                  'itCopy',
+                  ParamType.bool,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'ProductsPage',
+              path: 'productsPage',
+              requireAuth: true,
+              builder: (context, params) => ProductsPageWidget(),
+            ),
+            FFRoute(
+              name: 'ProductDeckPage',
+              path: 'productDeckPage',
+              requireAuth: true,
+              builder: (context, params) => ProductDeckPageWidget(
+                productRef: params.getParam(
+                  'productRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['pizza'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'ManagerOrderListPage',
+              path: 'managerOrderListPage',
+              requireAuth: true,
+              builder: (context, params) => ManagerOrderListPageWidget(),
+            ),
+            FFRoute(
+              name: 'EditStorePage',
+              path: 'editStorePage',
+              builder: (context, params) => EditStorePageWidget(
+                storeRef: params.getParam(
+                  'storeRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['stores'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'Stores',
+              path: 'stores',
+              requireAuth: true,
+              builder: (context, params) => StoresWidget(),
+            ),
+            FFRoute(
+              name: 'OneOrderManagerPage',
+              path: 'oneOrderManagerPage',
+              requireAuth: true,
+              builder: (context, params) => OneOrderManagerPageWidget(
+                order: params.getParam(
+                  'order',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['order'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'MyClients',
+              path: 'myClients',
+              requireAuth: true,
+              builder: (context, params) => MyClientsWidget(),
+            ),
+            FFRoute(
+              name: 'HomePageWholeStore',
+              path: 'homePageWholeStore',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'HomePageWholeStore')
+                  : HomePageWholeStoreWidget(),
+            ),
+            FFRoute(
+              name: 'WholeStorePage',
+              path: 'wholeStorePage',
+              requireAuth: true,
+              builder: (context, params) => WholeStorePageWidget(
+                wholeStore: params.getParam(
+                  'wholeStore',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['stores'],
+                ),
+                productType: params.getParam<ProductType>(
+                  'productType',
+                  ParamType.Enum,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'payment',
+              path: 'payment',
+              requireAuth: true,
+              builder: (context, params) => PaymentWidget(),
+            ),
+            FFRoute(
+              name: 'ProfileEdit',
+              path: 'profileEdit',
+              requireAuth: true,
+              builder: (context, params) => ProfileEditWidget(),
+            ),
+            FFRoute(
+              name: 'deleteInstructionPage',
+              path: 'deleteInstructionPage',
+              builder: (context, params) => DeleteInstructionPageWidget(),
+            ),
+            FFRoute(
+              name: 'SupportPage',
+              path: 'supportPage',
+              builder: (context, params) => SupportPageWidget(),
+            ),
+            FFRoute(
+              name: 'PrivacyPolicy',
+              path: 'privacyPolicy',
+              builder: (context, params) => PrivacyPolicyWidget(),
+            ),
+            FFRoute(
+              name: 'paywall',
+              path: 'paywall',
+              requireAuth: true,
+              builder: (context, params) => PaywallWidget(),
+            ),
+            FFRoute(
+              name: 'onePortCreateCard',
+              path: 'onePortCreateCard',
+              builder: (context, params) => OnePortCreateCardWidget(),
+            ),
+            FFRoute(
+              name: 'paidPage',
+              path: 'paidPage',
+              builder: (context, params) => PaidPageWidget(
+                paymentRef: params.getParam(
+                  'paymentRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['payments'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'SandNoticePage',
+              path: 'sandNoticePage',
+              builder: (context, params) => SandNoticePageWidget(
+                productRef: params.getParam(
+                  'productRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['pizza'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'RegNewStore',
+              path: 'regNewStore',
+              requireAuth: true,
+              builder: (context, params) => RegNewStoreWidget(
+                isWholeStore: params.getParam(
+                  'isWholeStore',
+                  ParamType.bool,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'SendEmail',
+              path: 'sendEmail',
+              builder: (context, params) => SendEmailWidget(),
+            ),
+            FFRoute(
+              name: 'checkStoreList',
+              path: 'checkStoreList',
+              builder: (context, params) => CheckStoreListWidget(),
+            ),
+            FFRoute(
+              name: 'checkStorePageAdmin',
+              path: 'checkStorePageAdmin',
+              requireAuth: true,
+              builder: (context, params) => CheckStorePageAdminWidget(
+                storeRef: params.getParam(
+                  'storeRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['stores'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'RegNewStorePre',
+              path: 'regNewStorePre',
+              builder: (context, params) => RegNewStorePreWidget(),
+            ),
+            FFRoute(
+              name: 'AddProduct',
+              path: 'addProduct',
+              requireAuth: true,
+              builder: (context, params) => AddProductWidget(),
+            ),
+            FFRoute(
+              name: 'SearchPage',
+              path: 'searchPage',
+              requireAuth: true,
+              builder: (context, params) => SearchPageWidget(),
+            ),
+            FFRoute(
+              name: 'News',
+              path: 'news',
+              builder: (context, params) => NewsWidget(),
+            ),
+            FFRoute(
+              name: 'AdminOrderListPage',
+              path: 'adminOrderListPage',
+              requireAuth: true,
+              builder: (context, params) => AdminOrderListPageWidget(),
+            ),
+            FFRoute(
+              name: 'testPage',
+              path: 'testPage',
+              builder: (context, params) => TestPageWidget(),
+            ),
+            FFRoute(
+              name: 'UserPageInfo',
+              path: 'userPageInfo',
+              builder: (context, params) => UserPageInfoWidget(
+                userRef: params.getParam(
+                  'userRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['user'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'addPromotion1',
+              path: 'addPromotion1',
+              builder: (context, params) => AddPromotion1Widget(
+                storeRef: params.getParam(
+                  'storeRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['stores'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'addPromotion2',
+              path: 'addPromotion2',
+              builder: (context, params) => AddPromotion2Widget(
+                promotionRef: params.getParam(
+                  'promotionRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['baners'],
+                ),
+              ),
+            )
+          ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
-        FFRoute(
-          name: 'MyClients',
-          path: '/myClients',
-          builder: (context, params) => const MyClientsWidget(),
-        )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 
@@ -429,17 +643,15 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
+              ? isWeb
+                  ? Container()
+                  : Container(
+                      color: FlutterFlowTheme.of(context).primary,
+                      child: Image.asset(
+                        'assets/images/logo-color.png',
+                        fit: BoxFit.contain,
                       ),
-                    ),
-                  ),
-                )
+                    )
               : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
@@ -482,7 +694,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

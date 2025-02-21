@@ -1,10 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/components/addnew_address/addnew_address_widget.dart';
 import '/components/address_item/address_item_widget.dart';
+import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'addresses_model.dart';
 export 'addresses_model.dart';
 
@@ -24,6 +26,8 @@ class _AddressesWidgetState extends State<AddressesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AddressesModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -44,7 +48,7 @@ class _AddressesWidgetState extends State<AddressesWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(58.0),
+          preferredSize: Size.fromHeight(58.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
@@ -53,16 +57,16 @@ class _AddressesWidgetState extends State<AddressesWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Stack(
-                        alignment: const AlignmentDirectional(1.0, -1.0),
+                        alignment: AlignmentDirectional(1.0, -1.0),
                         children: [
-                          const Padding(
+                          Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 2.0, 5.0, 0.0),
                             child: Icon(
@@ -78,7 +82,7 @@ class _AddressesWidgetState extends State<AddressesWidget> {
                               color: FlutterFlowTheme.of(context).primary,
                               shape: BoxShape.circle,
                             ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'j9eagpc8' /* 3 */,
@@ -102,7 +106,7 @@ class _AddressesWidgetState extends State<AddressesWidget> {
                 ),
               ],
             ),
-            actions: const [],
+            actions: [],
             centerTitle: false,
             toolbarHeight: 58.0,
             elevation: 0.0,
@@ -115,7 +119,7 @@ class _AddressesWidgetState extends State<AddressesWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,7 +127,7 @@ class _AddressesWidgetState extends State<AddressesWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'n6mmdoet' /* Адреса */,
@@ -144,80 +148,78 @@ class _AddressesWidgetState extends State<AddressesWidget> {
                               (currentUserDocument?.addresses.toList() ?? [])
                                   .toList();
 
-                          return SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: List.generate(addresses.length,
-                                  (addressesIndex) {
-                                final addressesItem = addresses[addressesIndex];
-                                return InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    await showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
-                                      context: context,
-                                      builder: (context) {
-                                        return GestureDetector(
-                                          onTap: () {
-                                            FocusScope.of(context).unfocus();
-                                            FocusManager.instance.primaryFocus
-                                                ?.unfocus();
-                                          },
-                                          child: Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: SizedBox(
-                                              height: MediaQuery.sizeOf(context)
-                                                      .height *
-                                                  0.8,
-                                              child: AddnewAddressWidget(
-                                                data: addressesItem,
-                                                edit: true,
-                                                indexoflist: addressesIndex,
-                                              ),
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: addresses.length,
+                            itemBuilder: (context, addressesIndex) {
+                              final addressesItem = addresses[addressesIndex];
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    context: context,
+                                    builder: (context) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          FocusScope.of(context).unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: Container(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.8,
+                                            child: AddnewAddressWidget(
+                                              data: addressesItem,
+                                              edit: true,
+                                              indexoflist: addressesIndex,
                                             ),
                                           ),
-                                        );
-                                      },
-                                    ).then((value) => safeSetState(() {}));
-                                  },
-                                  child: wrapWithModel(
-                                    model: _model.addressItemModels.getModel(
-                                      addressesIndex.toString(),
-                                      addressesIndex,
-                                    ),
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: AddressItemWidget(
-                                      key: Key(
-                                        'Key7w8_${addressesIndex.toString()}',
-                                      ),
-                                      city: addressesItem.city,
-                                      street: addressesItem.street,
-                                      building: addressesItem.building,
-                                      apart: addressesItem.apart,
-                                      isedit: true,
-                                    ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                },
+                                child: wrapWithModel(
+                                  model: _model.addressItemModels.getModel(
+                                    addressesIndex.toString(),
+                                    addressesIndex,
                                   ),
-                                );
-                              }).divide(const SizedBox(height: 8.0)),
-                            ),
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: AddressItemWidget(
+                                    key: Key(
+                                      'Key7w8_${addressesIndex.toString()}',
+                                    ),
+                                    city: addressesItem.city,
+                                    street: addressesItem.street,
+                                    building: addressesItem.building,
+                                    apart: addressesItem.apart,
+                                    isedit: true,
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         },
                       ),
                     ),
                   ]
-                      .addToStart(const SizedBox(height: 8.0))
-                      .addToEnd(const SizedBox(height: 16.0)),
+                      .addToStart(SizedBox(height: 8.0))
+                      .addToEnd(SizedBox(height: 16.0)),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 88.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 88.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     await showModalBottomSheet(
@@ -232,9 +234,9 @@ class _AddressesWidgetState extends State<AddressesWidget> {
                           },
                           child: Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: SizedBox(
+                            child: Container(
                               height: MediaQuery.sizeOf(context).height * 0.8,
-                              child: const AddnewAddressWidget(),
+                              child: AddnewAddressWidget(),
                             ),
                           ),
                         );
@@ -248,9 +250,9 @@ class _AddressesWidgetState extends State<AddressesWidget> {
                     width: double.infinity,
                     height: 48.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Readex Pro',
@@ -259,11 +261,98 @@ class _AddressesWidgetState extends State<AddressesWidget> {
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,
                         ),
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                     ),
                     borderRadius: BorderRadius.circular(30.0),
                   ),
+                ),
+              ),
+              Slidable(
+                endActionPane: ActionPane(
+                  motion: const ScrollMotion(),
+                  extentRatio: 0.25,
+                  children: [
+                    SlidableAction(
+                      label: FFLocalizations.of(context).getText(
+                        'iyzaqn1o' /* Delete */,
+                      ),
+                      backgroundColor: FlutterFlowTheme.of(context).error,
+                      icon: Icons.delete_outline_rounded,
+                      onPressed: (_) {
+                        print('SlidableActionWidget pressed ...');
+                      },
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: ListTile(
+                    title: Text(
+                      FFLocalizations.of(context).getText(
+                        'cs6y0j8b' /* Title */,
+                      ),
+                      style: FlutterFlowTheme.of(context).titleLarge.override(
+                            fontFamily: 'Outfit',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                    subtitle: Text(
+                      FFLocalizations.of(context).getText(
+                        'tyo1oa05' /* Subtitle */,
+                      ),
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                    tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    dense: false,
+                    contentPadding:
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                width: 120.0,
+                height: 40.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  borderRadius: BorderRadius.circular(8.0),
+                  shape: BoxShape.rectangle,
+                ),
+                child: FlutterFlowCountController(
+                  decrementIconBuilder: (enabled) => Icon(
+                    Icons.remove_rounded,
+                    color: enabled
+                        ? FlutterFlowTheme.of(context).secondaryText
+                        : FlutterFlowTheme.of(context).alternate,
+                    size: 24.0,
+                  ),
+                  incrementIconBuilder: (enabled) => Icon(
+                    Icons.add_rounded,
+                    color: enabled
+                        ? FlutterFlowTheme.of(context).primary
+                        : FlutterFlowTheme.of(context).alternate,
+                    size: 24.0,
+                  ),
+                  countBuilder: (count) => Text(
+                    count.toString(),
+                    style: FlutterFlowTheme.of(context).titleLarge.override(
+                          fontFamily: 'Outfit',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                  count: _model.countControllerValue ??= 0,
+                  updateCount: (count) =>
+                      safeSetState(() => _model.countControllerValue = count),
+                  stepSize: 1,
+                  minimum: 0,
+                  contentPadding:
+                      EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                 ),
               ),
             ],

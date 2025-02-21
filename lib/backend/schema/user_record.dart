@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import '/backend/algolia/serialization_util.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -10,9 +12,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class UserRecord extends FirestoreRecord {
   UserRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -56,10 +58,10 @@ class UserRecord extends FirestoreRecord {
   UserTypes? get userType => _userType;
   bool hasUserType() => _userType != null;
 
-  // "store" field.
-  DocumentReference? _store;
-  DocumentReference? get store => _store;
-  bool hasStore() => _store != null;
+  // "expireDate" field.
+  DateTime? _expireDate;
+  DateTime? get expireDate => _expireDate;
+  bool hasExpireDate() => _expireDate != null;
 
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
@@ -75,7 +77,7 @@ class UserRecord extends FirestoreRecord {
     _userType = snapshotData['userType'] is UserTypes
         ? snapshotData['userType']
         : deserializeEnum<UserTypes>(snapshotData['userType']);
-    _store = snapshotData['store'] as DocumentReference?;
+    _expireDate = snapshotData['expireDate'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -98,6 +100,56 @@ class UserRecord extends FirestoreRecord {
   ) =>
       UserRecord._(reference, mapFromFirestore(data));
 
+  static UserRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      UserRecord.getDocumentFromData(
+        {
+          'email': snapshot.data['email'],
+          'display_name': snapshot.data['display_name'],
+          'photo_url': snapshot.data['photo_url'],
+          'uid': snapshot.data['uid'],
+          'created_time': convertAlgoliaParam(
+            snapshot.data['created_time'],
+            ParamType.DateTime,
+            false,
+          ),
+          'phone_number': snapshot.data['phone_number'],
+          'addresses': safeGet(
+            () => (snapshot.data['addresses'] as Iterable)
+                .map((d) => AddressStruct.fromAlgoliaData(d).toMap())
+                .toList(),
+          ),
+          'userType': convertAlgoliaParam<UserTypes>(
+            snapshot.data['userType'],
+            ParamType.Enum,
+            false,
+          ),
+          'expireDate': convertAlgoliaParam(
+            snapshot.data['expireDate'],
+            ParamType.DateTime,
+            false,
+          ),
+        },
+        UserRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<UserRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'user',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
+
   @override
   String toString() =>
       'UserRecord(reference: ${reference.path}, data: $snapshotData)';
@@ -119,7 +171,7 @@ Map<String, dynamic> createUserRecordData({
   DateTime? createdTime,
   String? phoneNumber,
   UserTypes? userType,
-  DocumentReference? store,
+  DateTime? expireDate,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -130,7 +182,7 @@ Map<String, dynamic> createUserRecordData({
       'created_time': createdTime,
       'phone_number': phoneNumber,
       'userType': userType,
-      'store': store,
+      'expireDate': expireDate,
     }.withoutNulls,
   );
 
@@ -151,7 +203,7 @@ class UserRecordDocumentEquality implements Equality<UserRecord> {
         e1?.phoneNumber == e2?.phoneNumber &&
         listEquality.equals(e1?.addresses, e2?.addresses) &&
         e1?.userType == e2?.userType &&
-        e1?.store == e2?.store;
+        e1?.expireDate == e2?.expireDate;
   }
 
   @override
@@ -164,7 +216,7 @@ class UserRecordDocumentEquality implements Equality<UserRecord> {
         e?.phoneNumber,
         e?.addresses,
         e?.userType,
-        e?.store
+        e?.expireDate
       ]);
 
   @override

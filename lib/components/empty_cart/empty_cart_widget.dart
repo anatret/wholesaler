@@ -9,7 +9,7 @@ class EmptyCartWidget extends StatefulWidget {
   const EmptyCartWidget({
     super.key,
     String? page,
-  }) : page = page ?? 'cart';
+  }) : this.page = page ?? 'cart';
 
   final String page;
 
@@ -30,6 +30,8 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EmptyCartModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -42,7 +44,7 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+      padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -52,10 +54,10 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
             width: 200.0,
             height: 200.0,
             decoration: BoxDecoration(
-              color: const Color(0xFFF5F5F5),
+              color: Color(0xFFF5F5F5),
               borderRadius: BorderRadius.circular(100.0),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.shopping_cart,
               color: Color(0xFFBDBDBD),
               size: 80.0,
@@ -64,15 +66,40 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
           Text(
             () {
               if (widget.page == 'cart') {
-                return 'Ваша корзина пуста';
+                return FFLocalizations.of(context).getVariableText(
+                  ruText: 'Ваша корзина пуста',
+                  enText: 'Your cart is empty',
+                  koText: '장바구니가 비어있습니다',
+                  zh_HansText: '您的购物车是空的',
+                );
               } else if (widget.page == 'order') {
-                return 'Заказов нет';
+                return FFLocalizations.of(context).getVariableText(
+                  ruText: 'Заказов нет',
+                  enText: 'No orders',
+                  koText: '주문 없음',
+                  zh_HansText: '沒有訂單',
+                );
               } else if (widget.page == 'favorit') {
-                return 'Список избранных пуст';
+                return FFLocalizations.of(context).getVariableText(
+                  ruText: 'Список избранных пуст',
+                  enText: 'Favorites list is empty',
+                  koText: '즐겨찾기 목록이 비어 있습니다',
+                  zh_HansText: '收藏夹列表为空',
+                );
               } else if (widget.page == 'newOrder') {
-                return 'Новых заказов нет';
+                return FFLocalizations.of(context).getVariableText(
+                  ruText: 'Новых заказов нет',
+                  enText: 'There are no new orders',
+                  koText: '새로운 주문이 없습니다',
+                  zh_HansText: '没有新订单',
+                );
               } else {
-                return 'Пусто';
+                return FFLocalizations.of(context).getVariableText(
+                  ruText: 'Пусто',
+                  enText: 'Empty',
+                  koText: '비어 있는',
+                  zh_HansText: '空的',
+                );
               }
             }(),
             textAlign: TextAlign.center,
@@ -104,7 +131,7 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
           FFButtonWidget(
             onPressed: () async {
               if ((widget.page == 'cart') || (widget.page == 'favorit')) {
-                context.pushNamed('HomePage');
+                context.pushNamed('HomePageWholeStore');
               } else if (widget.page == 'order') {
                 context.goNamed('CartPage');
               } else if (widget.page == 'newOrder') {
@@ -117,8 +144,8 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
             options: FFButtonOptions(
               width: 250.0,
               height: 50.0,
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
               color: FlutterFlowTheme.of(context).primary,
               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                     fontFamily: 'Readex Pro',
@@ -129,7 +156,7 @@ class _EmptyCartWidgetState extends State<EmptyCartWidget> {
               borderRadius: BorderRadius.circular(25.0),
             ),
           ),
-        ].divide(const SizedBox(height: 24.0)),
+        ].divide(SizedBox(height: 24.0)),
       ),
     );
   }

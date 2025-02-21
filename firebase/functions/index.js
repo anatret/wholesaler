@@ -283,7 +283,6 @@ function getCharForIndex(charIdx) {
 exports.onUserDeleted = functions.auth.user().onDelete(async (user) => {
   let firestore = admin.firestore();
   let userRef = firestore.doc("user/" + user.uid);
-  await firestore.collection("user").doc(user.uid).delete();
   await firestore
     .collection("order")
     .where("userOrder", "==", userRef)
@@ -291,16 +290,6 @@ exports.onUserDeleted = functions.auth.user().onDelete(async (user) => {
     .then(async (querySnapshot) => {
       for (var doc of querySnapshot.docs) {
         console.log(`Deleting document ${doc.id} from collection order`);
-        await doc.ref.delete();
-      }
-    });
-  await firestore
-    .collection("stores")
-    .where("user", "==", userRef)
-    .get()
-    .then(async (querySnapshot) => {
-      for (var doc of querySnapshot.docs) {
-        console.log(`Deleting document ${doc.id} from collection stores`);
         await doc.ref.delete();
       }
     });

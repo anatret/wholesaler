@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'serialization_util.dart';
-import '../backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -12,7 +11,8 @@ import 'package:flutter/scheduler.dart';
 final _handledMessageIds = <String?>{};
 
 class PushNotificationsHandler extends StatefulWidget {
-  const PushNotificationsHandler({super.key, required this.child});
+  const PushNotificationsHandler({Key? key, required this.child})
+      : super(key: key);
 
   final Widget child;
 
@@ -72,17 +72,15 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
 
   @override
   Widget build(BuildContext context) => _loading
-      ? Center(
-          child: SizedBox(
-            width: 50.0,
-            height: 50.0,
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                FlutterFlowTheme.of(context).primary,
+      ? isWeb
+          ? Container()
+          : Container(
+              color: FlutterFlowTheme.of(context).primary,
+              child: Image.asset(
+                'assets/images/logo-color.png',
+                fit: BoxFit.contain,
               ),
-            ),
-          ),
-        )
+            )
       : widget.child;
 }
 
@@ -102,19 +100,19 @@ class ParameterData {
       );
 
   static Future<ParameterData> Function(Map<String, dynamic>) none() =>
-      (data) async => const ParameterData();
+      (data) async => ParameterData();
 }
 
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
   'AuthPage': ParameterData.none(),
-  'HomePage': ParameterData.none(),
+  'HomePageOld': ParameterData.none(),
   'RegPage': ParameterData.none(),
   'FavoritPage': ParameterData.none(),
   'CartPage': ParameterData.none(),
   'OrderPage': ParameterData.none(),
   'UserOrderListPage': ParameterData.none(),
-  'OneOrderPage': (data) async => ParameterData(
+  'OneOrderUserPage': (data) async => ParameterData(
         allParams: {
           'order': getParameter<DocumentReference>(data, 'order'),
         },
@@ -125,30 +123,88 @@ final parametersBuilderMap =
   'Addresses': ParameterData.none(),
   'AdminPanel': ParameterData.none(),
   'PromotionsPage': ParameterData.none(),
-  'AddProduct': (data) async => ParameterData(
+  'EditCopyDeletProduct': (data) async => ParameterData(
         allParams: {
           'isEdit': getParameter<bool>(data, 'isEdit'),
           'productRef': getParameter<DocumentReference>(data, 'productRef'),
-          'pizzaDoc': await getDocumentParameter<PizzaRecord>(
-              data, 'pizzaDoc', PizzaRecord.fromSnapshot),
+          'itCopy': getParameter<bool>(data, 'itCopy'),
         },
       ),
   'ProductsPage': ParameterData.none(),
   'ProductDeckPage': (data) async => ParameterData(
         allParams: {
-          'documentProduct': await getDocumentParameter<PizzaRecord>(
-              data, 'documentProduct', PizzaRecord.fromSnapshot),
+          'productRef': getParameter<DocumentReference>(data, 'productRef'),
         },
       ),
   'ManagerOrderListPage': ParameterData.none(),
-  'RegStorePage': ParameterData.none(),
+  'EditStorePage': (data) async => ParameterData(
+        allParams: {
+          'storeRef': getParameter<DocumentReference>(data, 'storeRef'),
+        },
+      ),
   'Stores': ParameterData.none(),
-  'OneOrderPage2': (data) async => ParameterData(
+  'OneOrderManagerPage': (data) async => ParameterData(
         allParams: {
           'order': getParameter<DocumentReference>(data, 'order'),
         },
       ),
   'MyClients': ParameterData.none(),
+  'HomePageWholeStore': ParameterData.none(),
+  'WholeStorePage': (data) async => ParameterData(
+        allParams: {
+          'wholeStore': getParameter<DocumentReference>(data, 'wholeStore'),
+        },
+      ),
+  'payment': ParameterData.none(),
+  'ProfileEdit': ParameterData.none(),
+  'deleteInstructionPage': ParameterData.none(),
+  'SupportPage': ParameterData.none(),
+  'PrivacyPolicy': ParameterData.none(),
+  'paywall': ParameterData.none(),
+  'onePortCreateCard': ParameterData.none(),
+  'paidPage': (data) async => ParameterData(
+        allParams: {
+          'paymentRef': getParameter<DocumentReference>(data, 'paymentRef'),
+        },
+      ),
+  'SandNoticePage': (data) async => ParameterData(
+        allParams: {
+          'productRef': getParameter<DocumentReference>(data, 'productRef'),
+        },
+      ),
+  'RegNewStore': (data) async => ParameterData(
+        allParams: {
+          'isWholeStore': getParameter<bool>(data, 'isWholeStore'),
+        },
+      ),
+  'SendEmail': ParameterData.none(),
+  'checkStoreList': ParameterData.none(),
+  'checkStorePageAdmin': (data) async => ParameterData(
+        allParams: {
+          'storeRef': getParameter<DocumentReference>(data, 'storeRef'),
+        },
+      ),
+  'RegNewStorePre': ParameterData.none(),
+  'AddProduct': ParameterData.none(),
+  'SearchPage': ParameterData.none(),
+  'News': ParameterData.none(),
+  'AdminOrderListPage': ParameterData.none(),
+  'testPage': ParameterData.none(),
+  'UserPageInfo': (data) async => ParameterData(
+        allParams: {
+          'userRef': getParameter<DocumentReference>(data, 'userRef'),
+        },
+      ),
+  'addPromotion1': (data) async => ParameterData(
+        allParams: {
+          'storeRef': getParameter<DocumentReference>(data, 'storeRef'),
+        },
+      ),
+  'addPromotion2': (data) async => ParameterData(
+        allParams: {
+          'promotionRef': getParameter<DocumentReference>(data, 'promotionRef'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

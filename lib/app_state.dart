@@ -40,6 +40,17 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _favorits;
     });
+    _safeInit(() {
+      _wholeSalerinCart =
+          prefs.getString('ff_wholeSalerinCart')?.ref ?? _wholeSalerinCart;
+    });
+    _safeInit(() {
+      _userStore = prefs.getString('ff_userStore')?.ref ?? _userStore;
+    });
+    _safeInit(() {
+      _isFabExpdProdPag =
+          prefs.getBool('ff_isFabExpdProdPag') ?? _isFabExpdProdPag;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -146,6 +157,37 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInOrderForEdit(int index, CartStruct value) {
     orderForEdit.insert(index, value);
+  }
+
+  DocumentReference? _wholeSalerinCart;
+  DocumentReference? get wholeSalerinCart => _wholeSalerinCart;
+  set wholeSalerinCart(DocumentReference? value) {
+    _wholeSalerinCart = value;
+    value != null
+        ? prefs.setString('ff_wholeSalerinCart', value.path)
+        : prefs.remove('ff_wholeSalerinCart');
+  }
+
+  DocumentReference? _userStore;
+  DocumentReference? get userStore => _userStore;
+  set userStore(DocumentReference? value) {
+    _userStore = value;
+    value != null
+        ? prefs.setString('ff_userStore', value.path)
+        : prefs.remove('ff_userStore');
+  }
+
+  int _daysUntilExpiryDay = 0;
+  int get daysUntilExpiryDay => _daysUntilExpiryDay;
+  set daysUntilExpiryDay(int value) {
+    _daysUntilExpiryDay = value;
+  }
+
+  bool _isFabExpdProdPag = false;
+  bool get isFabExpdProdPag => _isFabExpdProdPag;
+  set isFabExpdProdPag(bool value) {
+    _isFabExpdProdPag = value;
+    prefs.setBool('ff_isFabExpdProdPag', value);
   }
 }
 

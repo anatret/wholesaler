@@ -1,8 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'auth_page_model.dart';
 export 'auth_page_model.dart';
 
@@ -23,11 +27,22 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
     super.initState();
     _model = createModel(context, () => AuthPageModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      GoRouter.of(context).prepareAuthEvent();
+      await authManager.signOut();
+      GoRouter.of(context).clearRedirectLocation();
+
+      context.goNamedAuth('AuthPage', context.mounted);
+    });
+
     _model.emailFieldTextController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
 
     _model.passFieldTextController ??= TextEditingController();
     _model.passFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -60,9 +75,9 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 40.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
@@ -75,271 +90,480 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            40.0, 0.0, 40.0, 0.0),
-                        child: SingleChildScrollView(
-                          primary: false,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 8.0),
-                                child: TextFormField(
-                                  controller: _model.emailFieldTextController,
-                                  focusNode: _model.emailFieldFocusNode,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintText:
-                                        FFLocalizations.of(context).getText(
-                                      'cqrdl5at' /* Email */,
-                                    ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
+                      Container(
+                        constraints: BoxConstraints(
+                          maxWidth: 400.0,
+                        ),
+                        decoration: BoxDecoration(),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              40.0, 0.0, 40.0, 0.0),
+                          child: SingleChildScrollView(
+                            primary: false,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 8.0),
+                                  child: TextFormField(
+                                    controller: _model.emailFieldTextController,
+                                    focusNode: _model.emailFieldFocusNode,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'cqrdl5at' /* Email */,
+                                      ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent4,
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
-                                              .accent4,
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
+                                              .alternate,
+                                          width: 1.0,
                                         ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 1.0,
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    prefixIcon: Icon(
-                                      Icons.mail_outline,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 16.0,
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 18.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                  keyboardType: TextInputType.emailAddress,
-                                  validator: _model
-                                      .emailFieldTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 8.0, 0.0, 8.0),
-                                child: TextFormField(
-                                  controller: _model.passFieldTextController,
-                                  focusNode: _model.passFieldFocusNode,
-                                  autofocus: true,
-                                  obscureText: !_model.passFieldVisibility,
-                                  decoration: InputDecoration(
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintText:
-                                        FFLocalizations.of(context).getText(
-                                      '7a7uldtu' /* Пароль */,
-                                    ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
-                                              .accent4,
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
+                                              .primary,
+                                          width: 1.0,
                                         ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 1.0,
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      prefixIcon: Icon(
+                                        Icons.mail_outline,
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
-                                        width: 1.0,
+                                        size: 16.0,
                                       ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    prefixIcon: Icon(
-                                      Icons.vpn_key_outlined,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 16.0,
-                                    ),
-                                    suffixIcon: InkWell(
-                                      onTap: () => safeSetState(
-                                        () => _model.passFieldVisibility =
-                                            !_model.passFieldVisibility,
-                                      ),
-                                      focusNode: FocusNode(skipTraversal: true),
-                                      child: Icon(
-                                        _model.passFieldVisibility
-                                            ? Icons.visibility_outlined
-                                            : Icons.visibility_off_outlined,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 12.0,
-                                      ),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 18.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .passFieldTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 8.0, 0.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    GoRouter.of(context).prepareAuthEvent();
-
-                                    final user =
-                                        await authManager.signInWithEmail(
-                                      context,
-                                      _model.emailFieldTextController.text,
-                                      _model.passFieldTextController.text,
-                                    );
-                                    if (user == null) {
-                                      return;
-                                    }
-
-                                    context.goNamedAuth(
-                                        'HomePage', context.mounted);
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    'gnvt3by0' /* Войти */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: double.infinity,
-                                    height: 48.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          fontSize: 14.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                    ),
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 40.0, 0.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed('RegPage');
-                                  },
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'xogc70w9' /* Зарегистрироваться */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                          fontSize: 18.0,
                                           letterSpacing: 0.0,
                                         ),
+                                    keyboardType: TextInputType.emailAddress,
+                                    validator: _model
+                                        .emailFieldTextControllerValidator
+                                        .asValidator(context),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 8.0, 0.0, 8.0),
+                                  child: TextFormField(
+                                    controller: _model.passFieldTextController,
+                                    focusNode: _model.passFieldFocusNode,
+                                    autofocus: true,
+                                    obscureText: !_model.passFieldVisibility,
+                                    decoration: InputDecoration(
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        '7a7uldtu' /* Пароль */,
+                                      ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent4,
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      prefixIcon: Icon(
+                                        Icons.vpn_key_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 16.0,
+                                      ),
+                                      suffixIcon: InkWell(
+                                        onTap: () => safeSetState(
+                                          () => _model.passFieldVisibility =
+                                              !_model.passFieldVisibility,
+                                        ),
+                                        focusNode:
+                                            FocusNode(skipTraversal: true),
+                                        child: Icon(
+                                          _model.passFieldVisibility
+                                              ? Icons.visibility_outlined
+                                              : Icons.visibility_off_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 12.0,
+                                        ),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    validator: _model
+                                        .passFieldTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 8.0, 0.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      var _shouldSetState = false;
+                                      GoRouter.of(context).prepareAuthEvent();
+
+                                      final user =
+                                          await authManager.signInWithEmail(
+                                        context,
+                                        _model.emailFieldTextController.text,
+                                        _model.passFieldTextController.text,
+                                      );
+                                      if (user == null) {
+                                        return;
+                                      }
+
+                                      // checkStore
+                                      _model.usersStore =
+                                          await queryStoresRecordOnce(
+                                        queryBuilder: (storesRecord) =>
+                                            storesRecord.where(
+                                          'user',
+                                          isEqualTo: currentUserReference,
+                                        ),
+                                        singleRecord: true,
+                                      ).then((s) => s.firstOrNull);
+                                      _shouldSetState = true;
+                                      if ((_model.usersStore != null) == true) {
+                                        if ((_model.usersStore?.verifyStatus ==
+                                                null) ||
+                                            (_model.usersStore?.verifyStatus ==
+                                                VerifyStatus.newApplication)) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  ruText: 'Проверка магазина',
+                                                  enText: 'Store check',
+                                                  koText: '매장 확인 중',
+                                                  zh_HansText: '检查商店',
+                                                )),
+                                                content: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  ruText:
+                                                      'Ваш магазин проходит проверку. Ожидайте результатов. Если вы хотите изменить данные о магазине, сделайте это сейчас, так как после завершения проверки изменения будут невозможны.',
+                                                  enText:
+                                                      'Your store is being verified. Please wait for the results. If you want to change your store details, do so now, as changes will not be possible after the verification is complete.',
+                                                  koText:
+                                                      '귀하의 매장을 검증 중입니다. 결과를 기다리세요. 매장 정보를 변경하고 싶다면 지금 당장 변경하세요. 검증이 완료된 후에는 변경할 수 없습니다.',
+                                                  zh_HansText:
+                                                      '您的商店正在验证。等待结果。如果您想更改商店详细信息，请立即进行，因为验证完成后将无法进行更改。',
+                                                )),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+
+                                          context.pushNamedAuth(
+                                            'EditStorePage',
+                                            context.mounted,
+                                            queryParameters: {
+                                              'storeRef': serializeParam(
+                                                _model.usersStore?.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.scale,
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                              ),
+                                            },
+                                          );
+
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        } else if (_model
+                                                .usersStore?.verifyStatus ==
+                                            VerifyStatus.done) {
+                                          // upudateUserStore
+                                          FFAppState().userStore =
+                                              _model.usersStore?.reference;
+                                          safeSetState(() {});
+
+                                          context.pushNamedAuth(
+                                            'HomePageWholeStore',
+                                            context.mounted,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.scale,
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                              ),
+                                            },
+                                          );
+                                        } else if (_model
+                                                .usersStore?.verifyStatus ==
+                                            VerifyStatus.failure) {
+                                          _model.storeVerifaedMassage =
+                                              await queryStoreVerifaedMassageRecordOnce(
+                                            queryBuilder:
+                                                (storeVerifaedMassageRecord) =>
+                                                    storeVerifaedMassageRecord
+                                                        .where(
+                                              'storeRef',
+                                              isEqualTo:
+                                                  _model.usersStore?.reference,
+                                            ),
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          _shouldSetState = true;
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  ruText:
+                                                      'Магазин не прошел проверку',
+                                                  enText:
+                                                      'The store has not passed verification',
+                                                  koText:
+                                                      '해당 매장은 검증을 통과하지 못했습니다.',
+                                                  zh_HansText: '店铺尚未通过验证',
+                                                )),
+                                                content: Text(_model
+                                                    .storeVerifaedMassage!
+                                                    .message),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+
+                                          context.pushNamedAuth(
+                                            'EditStorePage',
+                                            context.mounted,
+                                            queryParameters: {
+                                              'storeRef': serializeParam(
+                                                _model.usersStore?.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.scale,
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                              ),
+                                            },
+                                          );
+
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        } else {
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
+                                      } else {
+                                        context.goNamedAuth(
+                                          'RegNewStorePre',
+                                          context.mounted,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.scale,
+                                              alignment: Alignment.bottomCenter,
+                                            ),
+                                          },
+                                        );
+
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                        return;
+                                      }
+
+                                      if (_shouldSetState) safeSetState(() {});
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'gnvt3by0' /* Логин */,
+                                    ),
+                                    options: FFButtonOptions(
+                                      width: double.infinity,
+                                      height: 48.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: Colors.white,
+                                            fontSize: 14.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                      ),
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 40.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed('RegPage');
+                                    },
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'xogc70w9' /* Зарегистрироваться */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ].addToStart(const SizedBox(height: 60.0)),
+                    ].addToStart(SizedBox(height: 60.0)),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 48.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 48.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -350,11 +574,11 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                     },
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        '5huu9gbx' /* Забыли пароль? */,
+                        '87yyv8xt' /* Забыли пароль? */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Inter',
-                            color: const Color(0xFFB1B1B1),
+                            color: Color(0xFFB1B1B1),
                             fontSize: 14.0,
                             letterSpacing: 0.0,
                             decoration: TextDecoration.underline,
